@@ -55,7 +55,7 @@ export default function App() {
       {/* Header */}
       <header className="fixed top-0 left-0 w-full z-40 px-6 py-10 flex justify-between items-start pointer-events-none">
         <div className="bg-white/40 backdrop-blur-md p-6 rounded-3xl border border-white/20">
-          <h1 className="text-2xl font-serif italic tracking-tight">A-Frame</h1>
+          <h1 className="text-2xl font-serif italic tracking-tight">Chez les vendredis</h1>
           <p className="text-[10px] uppercase tracking-[0.3em] opacity-60 mt-1 font-sans">Martinique, West Indies</p>
         </div>
         <div className="bg-[#5a5a40] text-white px-4 py-2 rounded-full text-[10px] uppercase tracking-[0.2em] font-sans">
@@ -97,16 +97,17 @@ export default function App() {
       </main>
 
       {/* Footer */}
-      <footer className="px-10 py-20 border-t border-[#5a5a40]/10 flex flex-col md:flex-row justify-between items-center gap-12">
+      <footer className="px-10 py-20 border-t border-[#5a5a40]/10 flex flex-col justify-center items-center gap-6">
+        <a 
+          href="https://wa.me/33666535289" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="bg-[#25D366] text-white px-8 py-3 rounded-full text-[12px] uppercase tracking-[0.2em] font-sans hover:opacity-80 transition-opacity pointer-events-auto"
+        >
+          WhatsApp
+        </a>
         <div className="text-[11px] uppercase tracking-[0.3em] opacity-40 font-sans">
-          © 2026 A-Frame Martinique
-        </div>
-        <div className="flex gap-12">
-          {['The Cabin', 'Location', 'Booking'].map(item => (
-            <a key={item} href="#" className="text-[11px] uppercase tracking-[0.3em] opacity-40 hover:opacity-100 transition-opacity font-sans border-b border-transparent hover:border-[#5a5a40]/40 pb-1">
-              {item}
-            </a>
-          ))}
+          © 2026 Chez les vendredis
         </div>
       </footer>
 
