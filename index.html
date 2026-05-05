@@ -4,20 +4,23 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Les Vendredis · Sainte-Luce, Martinique</title>
-  <meta name="description" content="An A-frame cabin and garden in the south of Martinique. Built by hand by Anaïs, Bolo, Léon and Same. A place to disconnect." />
+  <meta name="description" content="An A-frame cabin and private garden on the southern coast of Martinique. Built by hand by Anaïs, Bolo, Léon and Samsam." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter+Tight:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
     /* ── variables ── */
     :root {
-      --cream:  #FFF1D6;
-      --ink:    #3A1A0C;
-      --muted:  #B89070;
-      --accent: #E2611D;
-      --rule:   rgba(58,26,12,.14);
-      --serif:  'Cormorant Garamond', 'Times New Roman', serif;
-      --sans:   'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+      --cream:      #F8F1E4;
+      --cream-soft: #F2EAD9;
+      --ink:        #1F1611;
+      --ink-soft:   #4A3A2D;
+      --muted:      #8C7B66;
+      --rule:       rgba(31,22,17,.14);
+      --gold:       #B08A4D;
+      --accent:     #B85F38;
+      --serif:      'Cormorant Garamond', 'Times New Roman', serif;
+      --sans:       'Inter Tight', ui-sans-serif, system-ui, sans-serif;
     }
 
     /* ── reset ── */
@@ -28,6 +31,12 @@
       font-family: var(--sans);
       font-weight: 300;
       -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    body {
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(255,240,210,.5) 0%, transparent 60%),
+        var(--cream);
     }
     img { max-width: 100%; display: block; }
     a { color: inherit; text-decoration: none; }
@@ -35,181 +44,279 @@
 
     /* ── layout ── */
     .wrap {
-      max-width: 1200px;
+      max-width: 1240px;
       margin: 0 auto;
-      padding: 0 clamp(20px, 5vw, 64px);
+      padding: 0 clamp(24px, 5vw, 72px);
     }
 
     /* ── top bar ── */
     .top-bar {
-      display: flex;
-      justify-content: space-between;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
       align-items: center;
-      padding: 28px 0;
-      font-size: 11px;
-      letter-spacing: .18em;
+      padding: 32px 0;
+      gap: 24px;
+      font-size: 10.5px;
+      letter-spacing: .28em;
       text-transform: uppercase;
       color: var(--muted);
+      font-weight: 400;
     }
+    .top-left { justify-self: start; }
+    .top-right { justify-self: end; display: flex; gap: 28px; }
+    .top-right a { transition: color .25s; }
+    .top-right a:hover { color: var(--ink); }
     .mark {
+      justify-self: center;
       font-family: var(--serif);
       font-style: italic;
-      font-size: 20px;
-      letter-spacing: 0;
+      font-size: 24px;
+      letter-spacing: .01em;
       text-transform: none;
       color: var(--ink);
+      font-weight: 400;
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
-    .top-nav { display: flex; gap: 24px; }
-    .top-nav a { transition: color .2s; }
-    .top-nav a:hover { color: var(--ink); }
+    .ornament { width: 24px; height: 1px; background: var(--gold); opacity: .7; display: inline-block; }
 
     /* ── hero ── */
     .hero {
       display: grid;
-      grid-template-columns: 1.1fr 1fr;
-      gap: clamp(40px, 7vw, 90px);
+      grid-template-columns: 1fr 1.05fr;
+      gap: clamp(48px, 7vw, 100px);
       align-items: center;
-      padding: 40px 0 80px;
+      padding: 60px 0 100px;
     }
     .image-frame {
       position: relative;
-      aspect-ratio: 4/5;
+      aspect-ratio: 3/4;
       overflow: hidden;
       background: var(--ink);
+      box-shadow: 0 30px 60px -30px rgba(31,22,17,.35), 0 1px 0 rgba(255,255,255,.4) inset;
     }
     .image-frame img { width: 100%; height: 100%; object-fit: cover; }
     .image-cap {
       position: absolute;
-      left: 14px; bottom: 12px;
-      font-size: 10px;
-      letter-spacing: .18em;
+      left: 18px; bottom: 16px;
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 14px;
+      color: rgba(248,241,228,.85);
+      z-index: 2;
+    }
+    .image-num {
+      position: absolute;
+      right: 18px; top: 18px;
+      font-size: 9.5px;
+      letter-spacing: .32em;
       text-transform: uppercase;
-      color: rgba(255,241,214,.78);
+      color: rgba(248,241,228,.7);
+      z-index: 2;
     }
     .eyebrow {
-      font-size: 11px;
-      letter-spacing: .22em;
+      font-size: 10.5px;
+      letter-spacing: .32em;
       text-transform: uppercase;
-      color: var(--muted);
+      color: var(--gold);
       display: flex;
       align-items: center;
       gap: 14px;
-      margin-bottom: 24px;
+      margin-bottom: 32px;
+      font-weight: 500;
     }
-    .eyebrow::before { content: ""; width: 28px; height: 1px; background: var(--muted); }
+    .eyebrow::before { content: ""; width: 32px; height: 1px; background: var(--gold); }
     h1 {
       font-family: var(--serif);
       font-weight: 300;
-      font-size: clamp(48px, 6.5vw, 84px);
-      line-height: 1;
-      letter-spacing: -.01em;
-      margin-bottom: 24px;
+      font-size: clamp(56px, 7.5vw, 108px);
+      line-height: .96;
+      letter-spacing: -.015em;
+      margin-bottom: 32px;
     }
-    h1 em { font-style: italic; color: var(--accent); }
+    h1 em { font-style: italic; font-weight: 400; color: var(--accent); }
     .lead {
       font-family: var(--serif);
-      font-size: clamp(18px, 1.4vw, 21px);
+      font-size: clamp(19px, 1.5vw, 23px);
       line-height: 1.5;
+      color: var(--ink-soft);
+      margin-bottom: 18px;
       font-weight: 400;
-      margin-bottom: 16px;
     }
-    .lead.muted { color: var(--muted); }
-    .ctas { display: flex; gap: 12px; margin-top: 32px; flex-wrap: wrap; }
+    .lead + .lead { color: var(--muted); font-style: italic; }
+    .ctas { display: flex; gap: 14px; margin-top: 44px; flex-wrap: wrap; align-items: center; }
     .btn {
       display: inline-flex;
       align-items: center;
       gap: 14px;
-      padding: 13px 22px;
-      font-size: 11px;
-      letter-spacing: .22em;
+      padding: 15px 26px;
+      font-size: 10.5px;
+      letter-spacing: .28em;
       text-transform: uppercase;
       border: 1px solid var(--ink);
       color: var(--ink);
       font-family: var(--sans);
       font-weight: 500;
-      transition: all .25s ease;
+      background: transparent;
+      transition: all .35s ease;
     }
-    .btn .arrow { transition: transform .25s ease; }
+    .btn .arrow { transition: transform .35s ease; }
     .btn:hover { background: var(--ink); color: var(--cream); }
-    .btn:hover .arrow { transform: translateX(4px); }
+    .btn:hover .arrow { transform: translateX(5px); }
     .btn.primary { background: var(--ink); color: var(--cream); }
     .btn.primary:hover { background: var(--accent); border-color: var(--accent); }
 
-    /* ── section heads ── */
-    .section-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      gap: 40px;
-      padding: 80px 0 48px;
+    /* ── credentials strip ── */
+    .creds {
+      padding: 32px 0;
       border-top: 1px solid var(--rule);
-      flex-wrap: wrap;
+      border-bottom: 1px solid var(--rule);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
     }
-    .section-head h2 {
+    .cred { display: flex; flex-direction: column; gap: 6px; }
+    .cred .k {
+      font-size: 9.5px;
+      letter-spacing: .32em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 500;
+    }
+    .cred .v {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 18px;
+      color: var(--ink);
+      font-weight: 400;
+    }
+
+    /* ── section heads ── */
+    .journal-head {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: end;
+      gap: 60px;
+      margin-bottom: 64px;
+    }
+    .journal-head h2 {
       font-family: var(--serif);
       font-weight: 300;
-      font-size: clamp(40px, 5vw, 64px);
+      font-size: clamp(48px, 5.5vw, 80px);
       line-height: 1;
-      letter-spacing: -.01em;
+      letter-spacing: -.015em;
     }
-    .section-head h2 em { font-style: italic; color: var(--accent); }
-    .section-sub {
-      font-size: 13px;
+    .journal-head h2 em { font-style: italic; color: var(--accent); }
+    .journal-head .sub {
+      font-family: var(--serif);
+      font-size: 18px;
       color: var(--muted);
-      max-width: 32ch;
-      text-align: right;
-      line-height: 1.5;
+      line-height: 1.55;
+      font-style: italic;
+      max-width: 36ch;
     }
 
     /* ── journal entries ──
        TO ADD AN ENTRY: copy one <article class="entry"> block,
-       paste it above the others, and fill in your content.
+       paste it above the others, update the Roman numeral, date, tag, title, text, image.
     ── */
-    .journal { padding-bottom: 40px; }
+    .journal { padding: 120px 0 60px; }
     .entry {
       display: grid;
-      grid-template-columns: 140px 1fr 1fr;
-      gap: clamp(24px, 4vw, 56px);
-      padding: 36px 0;
+      grid-template-columns: 160px 1fr 1.1fr;
+      gap: clamp(28px, 4vw, 64px);
+      padding: 48px 0;
       border-top: 1px solid var(--rule);
       align-items: start;
     }
-    .entry:first-of-type { border-top-color: var(--ink); }
-    .entry-meta { display: flex; flex-direction: column; gap: 6px; }
-    .entry-date { font-family: var(--serif); font-style: italic; font-size: 18px; }
-    .entry-tag { font-size: 10px; letter-spacing: .22em; text-transform: uppercase; color: var(--muted); }
+    .entry:first-of-type { border-top-color: var(--ink-soft); }
+    .entry-meta { display: flex; flex-direction: column; gap: 10px; }
+    .entry-num {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 32px;
+      color: var(--gold);
+      font-weight: 400;
+      line-height: 1;
+    }
+    .entry-date {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 16px;
+      color: var(--ink);
+      font-weight: 400;
+    }
+    .entry-tag {
+      font-size: 9.5px;
+      letter-spacing: .32em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 500;
+    }
     .entry-body h3 {
       font-family: var(--serif);
       font-weight: 300;
-      font-size: clamp(24px, 2.4vw, 32px);
-      line-height: 1.1;
+      font-size: clamp(28px, 2.6vw, 38px);
+      line-height: 1.08;
       letter-spacing: -.01em;
-      margin-bottom: 14px;
+      margin-bottom: 18px;
     }
     .entry-body h3 em { font-style: italic; color: var(--accent); }
     .entry-body p {
       font-family: var(--serif);
       font-size: 18px;
-      line-height: 1.55;
+      line-height: 1.6;
+      color: var(--ink-soft);
+      font-weight: 400;
     }
-    .entry-body p + p { margin-top: 10px; }
-    .entry-img { aspect-ratio: 4/3; overflow: hidden; }
+    .entry-body p + p { margin-top: 12px; }
+    .entry-img {
+      aspect-ratio: 4/3;
+      overflow: hidden;
+      box-shadow: 0 20px 40px -25px rgba(31,22,17,.3);
+    }
     .entry-img img { width: 100%; height: 100%; object-fit: cover; }
     .journal-foot {
-      padding: 32px 0;
-      font-size: 11px;
-      letter-spacing: .22em;
-      text-transform: uppercase;
-      color: var(--muted);
+      padding: 48px 0 0;
       text-align: center;
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 16px;
+      color: var(--muted);
     }
+    .journal-foot::before, .journal-foot::after { content: "·"; margin: 0 14px; color: var(--gold); }
 
     /* ── gallery ── */
+    .gallery-section { padding: 80px 0 0; border-top: 1px solid var(--rule); margin-bottom: 0; }
+    .gallery-head {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: end;
+      gap: 60px;
+      margin-bottom: 48px;
+    }
+    .gallery-head h2 {
+      font-family: var(--serif);
+      font-weight: 300;
+      font-size: clamp(48px, 5.5vw, 80px);
+      line-height: 1;
+      letter-spacing: -.015em;
+    }
+    .gallery-head h2 em { font-style: italic; color: var(--accent); }
+    .gallery-head .sub {
+      font-family: var(--serif);
+      font-size: 18px;
+      color: var(--muted);
+      line-height: 1.55;
+      font-style: italic;
+      max-width: 36ch;
+    }
     .gallery-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 16px;
-      margin-bottom: 80px;
+      margin-bottom: 120px;
     }
     .gallery-item {
       position: relative;
@@ -227,7 +334,7 @@
     .gallery-caption {
       position: absolute;
       inset: 0;
-      background: linear-gradient(to top, rgba(58,26,12,.55) 0%, transparent 55%);
+      background: linear-gradient(to top, rgba(31,22,17,.6) 0%, transparent 55%);
       opacity: 0;
       transition: opacity .4s ease;
       display: flex;
@@ -239,76 +346,108 @@
       font-family: var(--serif);
       font-style: italic;
       font-size: 18px;
-      color: white;
+      color: var(--cream);
     }
 
     /* ── booking ── */
     .booking {
       background: var(--ink);
       color: var(--cream);
-      padding: 80px 0;
+      padding: 120px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .booking::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 80% at 75% 30%, rgba(184,95,56,.15) 0%, transparent 65%);
     }
     .booking-inner {
+      position: relative;
+      z-index: 1;
       display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: 60px;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
       align-items: center;
     }
+    .booking .eyebrow { color: var(--gold); }
+    .booking .eyebrow::before { background: var(--gold); }
     .booking h2 {
       font-family: var(--serif);
       font-weight: 300;
-      font-size: clamp(36px, 4.5vw, 56px);
+      font-size: clamp(40px, 5vw, 64px);
       line-height: 1.05;
       letter-spacing: -.01em;
+      color: var(--cream);
     }
-    .booking h2 em { font-style: italic; color: #f0935c; }
+    .booking h2 em { font-style: italic; color: var(--accent); }
     .booking-sub {
       font-family: var(--serif);
-      font-size: 18px;
-      color: rgba(255,241,214,.7);
-      margin-top: 14px;
+      font-size: 19px;
+      color: rgba(248,241,228,.7);
+      margin-top: 18px;
       max-width: 42ch;
-      line-height: 1.5;
+      line-height: 1.55;
+      font-style: italic;
     }
-    .b-ctas { display: flex; flex-direction: column; gap: 12px; }
+    .b-ctas {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      border-top: 1px solid rgba(248,241,228,.16);
+    }
     .b-btn {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 18px 22px;
-      border: 1px solid rgba(255,241,214,.3);
+      padding: 28px 0;
+      border-bottom: 1px solid rgba(248,241,228,.16);
       color: var(--cream);
-      font-size: 12px;
-      letter-spacing: .22em;
-      text-transform: uppercase;
-      font-weight: 500;
-      font-family: var(--sans);
-      transition: all .25s ease;
+      transition: all .35s ease;
     }
-    .b-btn:hover { border-color: var(--accent); color: var(--accent); }
+    .b-btn:hover { padding-left: 14px; padding-right: 14px; color: var(--accent); }
     .b-label {
       font-family: var(--serif);
       font-style: italic;
-      font-size: 24px;
-      letter-spacing: 0;
-      text-transform: none;
+      font-size: 32px;
       font-weight: 400;
       color: var(--cream);
-      transition: color .25s ease;
+      transition: color .35s;
     }
     .b-btn:hover .b-label { color: var(--accent); }
+    .b-meta {
+      font-size: 10px;
+      letter-spacing: .32em;
+      text-transform: uppercase;
+      color: rgba(248,241,228,.55);
+    }
 
     /* ── footer ── */
     .foot {
-      padding: 40px 0;
-      display: flex;
-      justify-content: space-between;
-      font-size: 10.5px;
-      letter-spacing: .18em;
+      padding: 48px 0;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 24px;
+      font-size: 10px;
+      letter-spacing: .28em;
       text-transform: uppercase;
       color: var(--muted);
       border-top: 1px solid var(--rule);
+      font-weight: 500;
     }
+    .foot-center {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 14px;
+      letter-spacing: .02em;
+      text-transform: none;
+      color: var(--ink);
+      font-weight: 400;
+    }
+    .foot-left { justify-self: start; }
+    .foot-right { justify-self: end; }
 
     /* ── lightbox ── */
     .lightbox {
@@ -316,7 +455,7 @@
       position: fixed;
       inset: 0;
       z-index: 100;
-      background: rgba(255,241,214,.97);
+      background: rgba(248,241,228,.97);
       backdrop-filter: blur(20px);
       align-items: center;
       justify-content: center;
@@ -325,14 +464,15 @@
     .lb-close {
       position: absolute;
       top: 28px; right: 28px;
-      font-size: 28px;
+      font-size: 24px;
       color: var(--ink);
-      opacity: .4;
+      opacity: .35;
       cursor: pointer;
       background: none;
       border: none;
       line-height: 1;
       transition: opacity .2s;
+      font-family: var(--sans);
     }
     .lb-close:hover { opacity: 1; }
     .lb-nav {
@@ -347,6 +487,7 @@
       padding: 20px;
       line-height: 1;
       transition: opacity .2s;
+      font-family: var(--sans);
     }
     .lb-nav:hover { opacity: .7; }
     .lb-prev { left: 16px; }
@@ -358,16 +499,8 @@
       padding: clamp(24px, 6vw, 96px);
       max-width: 100%;
     }
-    .lb-img {
-      max-width: 100%;
-      max-height: 68vh;
-      object-fit: contain;
-    }
-    .lb-caption {
-      margin-top: 32px;
-      text-align: center;
-      max-width: 560px;
-    }
+    .lb-img { max-width: 100%; max-height: 68vh; object-fit: contain; }
+    .lb-caption { margin-top: 32px; text-align: center; max-width: 560px; }
     .lb-caption h3 {
       font-family: var(--serif);
       font-style: italic;
@@ -391,18 +524,25 @@
     }
 
     /* ── responsive ── */
-    @media (max-width: 800px) {
-      .top-bar { flex-direction: column; gap: 8px; text-align: center; }
-      .top-nav { gap: 18px; }
-      .hero { grid-template-columns: 1fr; gap: 32px; padding: 24px 0 60px; }
-      .image-frame { aspect-ratio: 4/3; }
-      .entry { grid-template-columns: 1fr; gap: 14px; padding: 32px 0; }
-      .entry-meta { flex-direction: row; gap: 14px; align-items: baseline; }
+    @media (max-width: 900px) {
+      .top-bar { grid-template-columns: 1fr; gap: 12px; text-align: center; padding: 24px 0; }
+      .top-left, .top-right { justify-self: center; }
+      .top-right { flex-wrap: wrap; justify-content: center; gap: 18px; }
+      .hero { grid-template-columns: 1fr; gap: 40px; padding: 24px 0 60px; }
+      .image-frame { aspect-ratio: 4/5; max-height: 64vh; }
+      .creds { grid-template-columns: 1fr 1fr; gap: 20px; }
+      .journal { padding: 80px 0 40px; }
+      .journal-head { grid-template-columns: 1fr; gap: 14px; margin-bottom: 40px; }
+      .gallery-head { grid-template-columns: 1fr; gap: 14px; }
+      .entry { grid-template-columns: 1fr; gap: 18px; padding: 36px 0; }
+      .entry-meta { flex-direction: row; gap: 14px; align-items: baseline; flex-wrap: wrap; }
+      .entry-num { font-size: 24px; }
       .gallery-grid { grid-template-columns: repeat(2, 1fr); }
-      .section-sub { text-align: left; }
-      .booking { padding: 60px 0; }
-      .booking-inner { grid-template-columns: 1fr; gap: 32px; }
-      .foot { flex-direction: column; gap: 8px; text-align: center; }
+      .booking { padding: 80px 0; }
+      .booking-inner { grid-template-columns: 1fr; gap: 36px; }
+      .b-label { font-size: 24px; }
+      .foot { grid-template-columns: 1fr; text-align: center; gap: 10px; }
+      .foot-left, .foot-right { justify-self: center; }
     }
     @media (max-width: 480px) {
       .gallery-grid { grid-template-columns: 1fr; }
@@ -419,13 +559,15 @@
 ══════════════════════════════════════════ -->
 <div class="wrap">
   <header class="top-bar">
-    <a href="/" class="mark">Les Vendredis</a>
-    <nav class="top-nav">
+    <span class="top-left">Sainte-Luce · Martinique</span>
+    <a href="/" class="mark">
+      <span class="ornament"></span>Les Vendredis<span class="ornament"></span>
+    </a>
+    <nav class="top-right">
       <a href="#journal">Journal</a>
       <a href="#gallery">Gallery</a>
-      <a href="#stay">Stay</a>
+      <a href="#stay">Réserver</a>
     </nav>
-    <span>Sainte-Luce · Martinique</span>
   </header>
 </div>
 
@@ -436,23 +578,32 @@
   <section class="hero">
     <div class="image-frame">
       <img src="public/images/IMG_0387.jpg" alt="The A-frame cabin at Les Vendredis" />
-      <span class="image-cap">A-frame · Sainte-Luce, Martinique</span>
+      <span class="image-num">No. 01</span>
+      <span class="image-cap">The cabin at golden hour</span>
     </div>
     <div>
-      <div class="eyebrow">A-frame · Sainte-Luce</div>
+      <div class="eyebrow">Maison d'hôtes · Sainte-Luce</div>
       <h1>A Friday<br>that <em>lasts.</em></h1>
-      <p class="lead">An A-frame cabin and a garden in the south of Martinique. Built by hand by Anaïs, Bolo, Léon and Same — from the foundation to the last plank.</p>
-      <p class="lead muted">A small house, a wide garden, and the sea three minutes away. A place to disconnect.</p>
+      <p class="lead">An A-frame cabin and a private garden on the southern coast of Martinique — built by hand by Anaïs, Bolo, Léon and Samsam (our dog).</p>
+      <p class="lead">A small house, a wide garden, the sea three minutes down the path.</p>
       <div class="ctas">
         <a class="btn primary" href="https://www.airbnb.fr/rooms/1651467419646453001" target="_blank" rel="noopener">
-          Book on Airbnb <span class="arrow">→</span>
+          Réserver sur Airbnb <span class="arrow">→</span>
         </a>
         <a class="btn" href="https://www.booking.com/hotel/mq/an-atypical-cabin.fr.html" target="_blank" rel="noopener">
-          Book on Booking <span class="arrow">→</span>
+          Booking.com <span class="arrow">→</span>
         </a>
       </div>
     </div>
   </section>
+
+  <!-- ── credentials strip ── -->
+  <div class="creds">
+    <div class="cred"><span class="k">Location</span><span class="v">Sainte-Luce</span></div>
+    <div class="cred"><span class="k">Built</span><span class="v">By hand · 2022—2024</span></div>
+    <div class="cred"><span class="k">Sleeps</span><span class="v">Two adults &amp; one child</span></div>
+    <div class="cred"><span class="k">To the sea</span><span class="v">Three minutes on foot</span></div>
+  </div>
 </div>
 
 <!-- ══════════════════════════════════════════
@@ -460,23 +611,24 @@
      ─────────────────────────────────────────
      TO ADD AN ENTRY:
      1. Copy one <article class="entry"> block
-     2. Paste it just below the <div class="journal"> line
-     3. Fill in: date, tag, title, paragraphs, image filename
+     2. Paste it just below <div class="journal">
+     3. Update: Roman numeral, date, tag, title, paragraphs, image filename
 ══════════════════════════════════════════ -->
 <div class="wrap">
-  <section id="journal">
-    <div class="section-head">
+  <section class="journal" id="journal">
+    <div class="journal-head">
       <h2>The <em>journal.</em></h2>
-      <p class="section-sub">Notes from the build, the garden, and the slow life of Sainte-Luce.</p>
+      <p class="sub">Notes from the build, the garden, and the slow life of Sainte-Luce. Updated by the family.</p>
     </div>
 
-    <div class="journal">
+    <div>
 
       <!-- ENTRY — copy this block to add a new one -->
       <article class="entry">
         <div class="entry-meta">
+          <span class="entry-num">III</span>
           <span class="entry-date">Monday, May 5th 2026</span>
-          <span class="entry-tag">N°03 · Build log</span>
+          <span class="entry-tag">Build log</span>
         </div>
         <div class="entry-body">
           <h3>The pipe goes in, the water <em>follows.</em></h3>
@@ -492,8 +644,9 @@
       <!-- ENTRY — copy this block to add a new one -->
       <article class="entry">
         <div class="entry-meta">
+          <span class="entry-num">II</span>
           <span class="entry-date">Sunday, May 3rd 2026</span>
-          <span class="entry-tag">N°02 · Build log</span>
+          <span class="entry-tag">Build log</span>
         </div>
         <div class="entry-body">
           <h3>Digging the trenches for hot <em>water.</em></h3>
@@ -509,8 +662,9 @@
       <!-- ENTRY — copy this block to add a new one -->
       <article class="entry">
         <div class="entry-meta">
+          <span class="entry-num">I</span>
           <span class="entry-date">Saturday, April 12th 2026</span>
-          <span class="entry-tag">N°01 · Garden</span>
+          <span class="entry-tag">The garden</span>
         </div>
         <div class="entry-body">
           <h3>The mango trees are <em>heavy</em> again.</h3>
@@ -523,8 +677,8 @@
       </article>
       <!-- END ENTRY -->
 
-    </div><!-- /.journal -->
-    <div class="journal-foot">— more entries to come —</div>
+    </div>
+    <div class="journal-foot">More entries to come</div>
   </section>
 </div>
 
@@ -532,87 +686,87 @@
      GALLERY
 ══════════════════════════════════════════ -->
 <div class="wrap" id="gallery">
-  <div class="section-head">
-    <h2>The <em>place.</em></h2>
-    <p class="section-sub">Views of the cabin, the garden, and the land we built from scratch.</p>
-  </div>
-</div>
+  <section class="gallery-section">
+    <div class="gallery-head">
+      <h2>The <em>place.</em></h2>
+      <p class="sub">Views of the cabin, the garden, and the land we built from scratch.</p>
+    </div>
 
-<div class="wrap">
-  <div class="gallery-grid">
-    <div class="gallery-item" onclick="openLightbox(0)">
-      <img src="public/images/IMG_0387.jpg" alt="The A-Frame Exterior" loading="lazy" />
-      <div class="gallery-caption"><span>The A-Frame Exterior</span></div>
+    <div class="gallery-grid">
+      <div class="gallery-item" onclick="openLightbox(0)">
+        <img src="public/images/IMG_0387.jpg" alt="The A-Frame Exterior" loading="lazy" />
+        <div class="gallery-caption"><span>The A-Frame Exterior</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(1)">
+        <img src="public/images/IMG_0390.jpg" alt="Verdant Canopy" loading="lazy" />
+        <div class="gallery-caption"><span>Verdant Canopy</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(2)">
+        <img src="public/images/IMG_0391.jpg" alt="Artisanal Details" loading="lazy" />
+        <div class="gallery-caption"><span>Artisanal Details</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(3)">
+        <img src="public/images/IMG_0392.jpg" alt="Coastal Proximity" loading="lazy" />
+        <div class="gallery-caption"><span>Coastal Proximity</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(4)">
+        <img src="public/images/IMG_0396.jpg" alt="Golden Hour" loading="lazy" />
+        <div class="gallery-caption"><span>Golden Hour</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(5)">
+        <img src="public/images/IMG_0896.jpg" alt="Botanical Sanctuary" loading="lazy" />
+        <div class="gallery-caption"><span>Botanical Sanctuary</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(6)">
+        <img src="public/images/IMG_0940.jpg" alt="Morning Mist" loading="lazy" />
+        <div class="gallery-caption"><span>Morning Mist</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(7)">
+        <img src="public/images/IMG_1251.jpg" alt="Natural Light" loading="lazy" />
+        <div class="gallery-caption"><span>Natural Light</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(8)">
+        <img src="public/images/IMG_1348.jpg" alt="Forest Serenity" loading="lazy" />
+        <div class="gallery-caption"><span>Forest Serenity</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(9)">
+        <img src="public/images/IMG_1355.jpg" alt="Architectural Detail" loading="lazy" />
+        <div class="gallery-caption"><span>Architectural Detail</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(10)">
+        <img src="public/images/IMG_3290.jpg" alt="Tropical Flora" loading="lazy" />
+        <div class="gallery-caption"><span>Tropical Flora</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(11)">
+        <img src="public/images/IMG_3343.jpg" alt="Sunset View" loading="lazy" />
+        <div class="gallery-caption"><span>Sunset View</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(12)">
+        <img src="public/images/IMG_3936.jpg" alt="Wooden Frame" loading="lazy" />
+        <div class="gallery-caption"><span>Wooden Frame</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(13)">
+        <img src="public/images/IMG_4621.JPG" alt="Aerial View" loading="lazy" />
+        <div class="gallery-caption"><span>Aerial View</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(14)">
+        <img src="public/images/IMG_4688.JPG" alt="Mountain Backdrop" loading="lazy" />
+        <div class="gallery-caption"><span>Mountain Backdrop</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(15)">
+        <img src="public/images/IMG_6303.jpg" alt="Garden Path" loading="lazy" />
+        <div class="gallery-caption"><span>Garden Path</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(16)">
+        <img src="public/images/IMG_7953.jpg" alt="The Domain" loading="lazy" />
+        <div class="gallery-caption"><span>The Domain</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(17)">
+        <img src="public/images/AA4940C0-AE7D-4C3A-8304-688BF02A1955.jpg" alt="Garden Path" loading="lazy" />
+        <div class="gallery-caption"><span>Garden Path</span></div>
+      </div>
     </div>
-    <div class="gallery-item" onclick="openLightbox(1)">
-      <img src="public/images/IMG_0390.jpg" alt="Verdant Canopy" loading="lazy" />
-      <div class="gallery-caption"><span>Verdant Canopy</span></div>
-    </div>
-    <div class="gallery-item" onclick="openLightbox(2)">
-      <img src="public/images/IMG_0391.jpg" alt="Artisanal Details" loading="lazy" />
-      <div class="gallery-caption"><span>Artisanal Details</span></div>
-    </div>
-    <div class="gallery-item" onclick="openLightbox(3)">
-      <img src="public/images/IMG_0392.jpg" alt="Coastal Proximity" loading="lazy" />
-      <div class="gallery-caption"><span>Coastal Proximity</span></div>
-    </div>
-    <div class="gallery-item" onclick="openLightbox(4)">
-      <img src="public/images/IMG_0396.jpg" alt="Golden Hour" loading="lazy" />
-      <div class="gallery-caption"><span>Golden Hour</span></div>
-    </div>
-    <div class="gallery-item" onclick="openLightbox(5)">
-      <img src="public/images/IMG_0896.jpg" alt="Botanical Sanctuary" loading="lazy" />
-      <div class="gallery-caption"><span>Botanical Sanctuary</span></div>
-    </div>
-    <div class="gallery-item" onclick="openLightbox(6)">
-      <img src="public/images/IMG_0940.jpg" alt="Morning Mist" loading="lazy" />
-      <div class="gallery-caption"><span>Morning Mist</span></div>
-    </div>
-    <div class="gallery-item" onclick="openLightbox(7)">
-      <img src="public/images/IMG_1251.jpg" alt="Natural Light" loading="lazy" />
-      <div class="gallery-caption"><span>Natural Light</span></div>
-    </div>
-    <div class="gallery-item" onclick="openLightbox(8)">
-      <img src="public/images/IMG_1348.jpg" alt="Forest Serenity" loading="lazy" />
-      <div class="gallery-caption"><span>Forest Serenity</span></div>
-    </div>
-    <div class="gallery-item" onclick="openLightbox(9)">
-      <img src="public/images/IMG_1355.jpg" alt="Architectural Detail" loading="lazy" />
-      <div class="gallery-caption"><span>Architectural Detail</span></div>
-    </div>
-    <div class="gallery-item" onclick="openLightbox(10)">
-      <img src="public/images/IMG_3290.jpg" alt="Tropical Flora" loading="lazy" />
-      <div class="gallery-caption"><span>Tropical Flora</span></div>
-    </div>
-    <div class="gallery-item" onclick="openLightbox(11)">
-      <img src="public/images/IMG_3343.jpg" alt="Sunset View" loading="lazy" />
-      <div class="gallery-caption"><span>Sunset View</span></div>
-    </div>
-    <div class="gallery-item" onclick="openLightbox(12)">
-      <img src="public/images/IMG_3936.jpg" alt="Wooden Frame" loading="lazy" />
-      <div class="gallery-caption"><span>Wooden Frame</span></div>
-    </div>
-    <div class="gallery-item" onclick="openLightbox(13)">
-      <img src="public/images/IMG_4621.JPG" alt="Aerial View" loading="lazy" />
-      <div class="gallery-caption"><span>Aerial View</span></div>
-    </div>
-    <div class="gallery-item" onclick="openLightbox(14)">
-      <img src="public/images/IMG_4688.JPG" alt="Mountain Backdrop" loading="lazy" />
-      <div class="gallery-caption"><span>Mountain Backdrop</span></div>
-    </div>
-    <div class="gallery-item" onclick="openLightbox(15)">
-      <img src="public/images/IMG_6303.jpg" alt="Garden Path" loading="lazy" />
-      <div class="gallery-caption"><span>Garden Path</span></div>
-    </div>
-    <div class="gallery-item" onclick="openLightbox(16)">
-      <img src="public/images/IMG_7953.jpg" alt="The Domain" loading="lazy" />
-      <div class="gallery-caption"><span>The Domain</span></div>
-    </div>
-    <div class="gallery-item" onclick="openLightbox(17)">
-      <img src="public/images/AA4940C0-AE7D-4C3A-8304-688BF02A1955.jpg" alt="Garden Path" loading="lazy" />
-      <div class="gallery-caption"><span>Garden Path</span></div>
-    </div>
-  </div>
+  </section>
 </div>
 
 <!-- ══════════════════════════════════════════
@@ -621,15 +775,16 @@
 <section class="booking" id="stay">
   <div class="wrap booking-inner">
     <div>
+      <div class="eyebrow">Réservations</div>
       <h2>Come stay in <em>our Friday.</em></h2>
-      <p class="booking-sub">Book through whichever platform you already trust — the cabin and the welcome are the same.</p>
+      <p class="booking-sub">Listed on Airbnb and Booking.com. The cabin and the welcome are the same — choose the platform you prefer.</p>
     </div>
     <div class="b-ctas">
       <a class="b-btn" href="https://www.airbnb.fr/rooms/1651467419646453001" target="_blank" rel="noopener">
-        <span class="b-label">Airbnb</span><span>Open ↗</span>
+        <span class="b-label">Airbnb</span><span class="b-meta">Open ↗</span>
       </a>
       <a class="b-btn" href="https://www.booking.com/hotel/mq/an-atypical-cabin.fr.html" target="_blank" rel="noopener">
-        <span class="b-label">Booking.com</span><span>Open ↗</span>
+        <span class="b-label">Booking.com</span><span class="b-meta">Open ↗</span>
       </a>
     </div>
   </div>
@@ -640,8 +795,9 @@
 ══════════════════════════════════════════ -->
 <div class="wrap">
   <footer class="foot">
-    <span>© 2026 · Built by hand</span>
-    <span>Anaïs &amp; Bolo · hello@lesvendredis.casa</span>
+    <span class="foot-left">© MMXXVI</span>
+    <span class="foot-center">Anaïs &amp; Bolo · Built by hand</span>
+    <span class="foot-right">hello@lesvendredis.casa</span>
   </footer>
 </div>
 
@@ -681,7 +837,7 @@
     { src: "public/images/IMG_4688.JPG",  title: "Mountain Backdrop",     desc: "The A-Frame framed against the dramatic Martinique landscape." },
     { src: "public/images/IMG_6303.jpg",  title: "Garden Path",           desc: "The winding path leading through the botanical sanctuary." },
     { src: "public/images/IMG_7953.jpg",  title: "The Domain",            desc: "The full domain — cabin, garden, and sky." },
-    { src: "public/images/AA4940C0-AE7D-4C3A-8304-688BF02A1955.jpg", title: "Garden Path", desc: "Morning light on the garden path. May 2024." },
+    { src: "public/images/AA4940C0-AE7D-4C3A-8304-688BF02A1955.jpg", title: "Garden Path", desc: "Morning light on the garden path." },
   ];
 
   let current = 0;
