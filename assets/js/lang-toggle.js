@@ -1,10 +1,15 @@
 (function() {
-  const savedLang = localStorage.getItem('les-vendredis-lang') || 'fr';
+  const savedLang = localStorage.getItem('les-vendredis-lang') || 'en';
   
   function setLanguage(lang) {
     localStorage.setItem('les-vendredis-lang', lang);
-    document.querySelectorAll('[class^="lang-"]').forEach(el => {
-      el.style.display = el.classList.contains(`lang-${lang}`) ? 'block' : 'none';
+    document.querySelectorAll('.lang-en, .lang-fr').forEach(el => {
+      if (!el.classList.contains(`lang-${lang}`)) {
+        el.style.display = 'none';
+        return;
+      }
+
+      el.style.display = el.tagName === 'SPAN' ? 'inline' : 'block';
     });
     document.querySelectorAll('.lang-btn').forEach(btn => {
       btn.classList.toggle('active', btn.dataset.lang === lang);

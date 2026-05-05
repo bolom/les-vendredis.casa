@@ -23,8 +23,16 @@ jobs:
         with:
           ruby-version: 3.3
           bundler-cache: true
+      - name: Install gems
+        run: bundle install --jobs 4 --retry 3
+        working-directory: ${{ github.workspace }}
+        env:
+          BUNDLE_GEMFILE: ${{ github.workspace }}/Gemfile
       - name: Build with Jekyll
         run: bundle exec jekyll build --source . --destination _site
+        working-directory: ${{ github.workspace }}
+        env:
+          BUNDLE_GEMFILE: ${{ github.workspace }}/Gemfile
       - uses: actions/upload-pages-artifact@v4
         with:
           path: '_site/'
