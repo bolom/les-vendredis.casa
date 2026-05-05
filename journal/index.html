@@ -18,7 +18,8 @@ title: "Journal — All Entries"
       {% for post in site.posts %}
       <article class="entry">
         <div class="entry-meta">
-          <span class="entry-num">{% include roman.html number=site.posts.size | minus: forloop.index0 %}</span>
+          {% assign post_num = site.posts.size | minus: forloop.index0 %}
+          <span class="entry-num">{% include roman.html number=post_num %}</span>
           <span class="entry-date">{{ post.date | date: "%B %d, %Y" }}</span>
           <span class="entry-tag">{{ post.tag }}</span>
         </div>

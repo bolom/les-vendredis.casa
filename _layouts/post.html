@@ -4,8 +4,9 @@ layout: default
 
 <article class="post">
   <div class="post-header">
+    {% assign post_num = site.posts.size | minus: forloop.index0 %}
     <span class="roman-numeral">
-      {% include roman.html number=site.posts.size | minus: forloop.index0 %}
+      {% include roman.html number=post_num %}
     </span>
     <time datetime="{{ page.date | date: '%Y-%m-%d' }}">
       {{ page.date | date: "%B %d, %Y" }}
