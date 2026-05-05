@@ -1,10 +1,15 @@
-# Tropical Homesteading: The Labor Behind the Paradise
-
-![Worker in outdoor shelter area with exposed soil, irrigation setup, tropical plants](/images/IMG_1251.jpg)
+---
+layout: article
+title: "Tropical Homesteading: The Labor Behind the Paradise"
+summary: "Paradise doesn't emerge spontaneously from land. It requires infrastructure—water systems, soil preparation, planting plans executed with precision. The work of creating the landscape is less visible, less dramatic, and absolutely essential."
+tag: "Journal"
+date: "2026-02-14"
+image: "IMG_1251.jpg"
+image_alt: "Worker in outdoor shelter area with exposed soil, irrigation setup, tropical plants"
+lang: "en"
+---
 
 ## The Unsexy Essential Work
-
-Paradise doesn't emerge spontaneously from land. It requires infrastructure—water systems, soil preparation, planting plans executed with precision. The work of creating the landscape is less visible, less dramatic, and absolutely essential.
 
 This image documents that labor. Not the final aesthetic result, but the moment of active creation. The exposed soil, the hose systems being installed, the plants waiting to be positioned, the shelter providing shade for work hours that extend through heat most people avoid.
 

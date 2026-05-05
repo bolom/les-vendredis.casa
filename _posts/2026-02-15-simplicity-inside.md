@@ -1,10 +1,15 @@
-# Simple Living: The Interior Promise
-
-![Interior of A-frame structure with two people on inflatable mattresses, tropical view framing](/images/IMG_1251.jpg)
+---
+layout: article
+title: "Simple Living: The Interior Promise"
+summary: "There's a particular power in a photograph that shows the interior of a structure you're building, still unfinished, already inhabited. Two people lying on air mattresses, looking out at tropical landscape through the triangular opening of an A-frame. No furniture. No finishes. Just raw wood, tropical air, and view."
+tag: "Journal"
+date: "2026-02-15"
+image: "IMG_1251.jpg"
+image_alt: "Interior of A-frame structure with two people on inflatable mattresses, tropical view framing"
+lang: "en"
+---
 
 ## The Minimalist Manifesto, Made Physical
-
-There's a particular power in a photograph that shows the interior of a structure you're building, still unfinished, already inhabited. Two people lying on air mattresses, looking out at tropical landscape through the triangular opening of an A-frame. No furniture. No finishes. Just raw wood, tropical air, and view.
 
 This is the building in its most essential state. Not yet decorated. Not yet compromised by furnishings and systems. Just shelter and view and the space between them.
 

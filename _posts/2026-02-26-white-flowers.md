@@ -1,10 +1,15 @@
-# Tropical Flora: White Blooms in Dense Foliage
-
-![Peace Lily white flower with red foliage plants, tropical garden, natural daylight](/images/IMG_3594.jpg)
+---
+layout: article
+title: "Tropical Flora: White Blooms in Dense Foliage"
+summary: "In intense tropical sunlight, white flowers function as visual anchors. They're high-contrast against dark foliage, visible from distance, and they command attention."
+tag: "Journal"
+date: "2026-02-26"
+image: "IMG_3594.jpg"
+image_alt: "Peace Lily white flower with red foliage plants, tropical garden, natural daylight"
+lang: "en"
+---
 
 ## The Visual Logic of White
-
-In intense tropical sunlight, white flowers function as visual anchors. They're high-contrast against dark foliage, visible from distance, and they command attention.
 
 This photograph shows that principle: the white spathe (flower) of a Peace Lily stands out clearly against surrounding red and green foliage. The composition draws your eye to the white first, then allows it to explore the surrounding colors and textures.
 

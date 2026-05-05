@@ -1,10 +1,15 @@
-# Building in Harmony: Craftsmanship Meets Nature
-
-![Construction site with wooden shingles and palm trees during golden hour sunset](/images/IMG_6303.jpg)
+---
+layout: article
+title: "Building in Harmony: Craftsmanship Meets Nature"
+summary: "There's a particular light that happens in late tropical afternoon, maybe two hours before sunset, when the sun angles through palm fronds and turns construction debris into something luminous. It's the kind of light that photographers seek and builders barely notice—too busy finishing the day's work."
+tag: "Journal"
+date: "2026-02-08"
+image: "IMG_6303.jpg"
+image_alt: "Construction site with wooden shingles and palm trees during golden hour sunset"
+lang: "en"
+---
 
 ## When Labor Becomes Beautiful
-
-There's a particular light that happens in late tropical afternoon, maybe two hours before sunset, when the sun angles through palm fronds and turns construction debris into something luminous. It's the kind of light that photographers seek and builders barely notice—too busy finishing the day's work.
 
 This image captures that moment. The freshly-installed wooden shingles glow with reddish warmth. The palm fronds are backlit, creating haloes. The geometric pattern of the shingles creates visual rhythm. What could be an ordinary construction update—another phase completed—becomes something with emotional resonance.
 

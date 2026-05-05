@@ -1,10 +1,15 @@
-# DIY Scaffolding: Engineering Makeshift at Height
-
-![Woman on multi-tiered wooden scaffolding with vapor barrier and wooden shingles visible](/images/IMG_0896.jpg)
+---
+layout: article
+title: "DIY Scaffolding: Engineering Makeshift at Height"
+summary: "There's a particular moment in construction when you realize that the scaffolding surrounding a building is more impressive engineering than the building itself. Every project is unique—different wall height, different angles, different access points. Rather than buying generic commercial scaffolding (expensive, often overkill), sophisticated builders construct specific solutions."
+tag: "Journal"
+date: "2026-02-12"
+image: "IMG_0896.jpg"
+image_alt: "Woman on multi-tiered wooden scaffolding with vapor barrier and wooden shingles visible"
+lang: "en"
+---
 
 ## Built for This Specific Wall
-
-There's a particular moment in construction when you realize that the scaffolding surrounding a building is more impressive engineering than the building itself. Every project is unique—different wall height, different angles, different access points. Rather than buying generic commercial scaffolding (expensive, often overkill), sophisticated builders construct specific solutions.
 
 This image documents that specificity. The scaffolding has been built for this exact wall, at this exact height, with these specific access requirements. It's not transportable to another project. It's engineered and built to work here, then it will be disassembled.
 

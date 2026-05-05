@@ -1,10 +1,15 @@
-# Garden to Table: The Promise of Tropical Harvests
-
-![Ripe yellow guavas hanging from branch against blue sky](/images/IMG_0392.jpg)
+---
+layout: article
+title: "Garden to Table: The Promise of Tropical Harvests"
+summary: "Agriculture in the tropics follows different rules than temperate farming. There are no seasons to wait through. There's no frost that cleanses the system. Instead, there's year-round growth, year-round opportunity, and year-round production if you manage the land correctly."
+tag: "Journal"
+date: "2026-02-07"
+image: "IMG_0392.jpg"
+image_alt: "Ripe yellow guavas hanging from branch against blue sky"
+lang: "en"
+---
 
 ## The Economics of Sweetness
-
-Agriculture in the tropics follows different rules than temperate farming. There are no seasons to wait through. There's no frost that cleanses the system. Instead, there's year-round growth, year-round opportunity, and year-round production if you manage the land correctly.
 
 This photograph captures that possibility concentrated into two perfect yellow guavas: the promise that land maintained thoughtfully will feed you. Not symbolically. Actually.
 

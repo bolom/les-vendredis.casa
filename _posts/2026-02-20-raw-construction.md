@@ -1,10 +1,15 @@
-# The Reality of Development: Construction Materials and Resourcefulness
-
-![Woman walking through construction site filled with salvaged materials, barrels, cables, tilees](/images/IMG_4688.JPG)
+---
+layout: article
+title: "The Reality of Development: Construction Materials and Resourcefulness"
+summary: "There's a particular aesthetic that emerges from resourcefulness—from using what's available, from salvaging and repurposing rather than importing new. This photograph captures that aesthetic: not beautiful in conventional terms, but beautiful in its honesty about how building actually happens in remote locations."
+tag: "Journal"
+date: "2026-02-20"
+image: "IMG_4688.JPG"
+image_alt: "Woman walking through construction site filled with salvaged materials, barrels, cables, tilees"
+lang: "en"
+---
 
 ## The Aesthetic of Necessity
-
-There's a particular aesthetic that emerges from resourcefulness—from using what's available, from salvaging and repurposing rather than importing new. This photograph captures that aesthetic: not beautiful in conventional terms, but beautiful in its honesty about how building actually happens in remote locations.
 
 The visible materials—metal barrels, wooden cable reels, stacks of terracotta roof tiles, coiled rope, salvaged metal siding—represent the physical vocabulary available to the builders. Not a warehouse visit. Not ordering from manufacturers. Using what can be sourced locally, salvaged, or repurposed.
 

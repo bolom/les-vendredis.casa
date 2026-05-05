@@ -1,10 +1,15 @@
-# Botanical Contrast: Composing the Wild Garden
-
-![Close-up of white Peace Lily with red foliage plants in tropical garden setting](/images/IMG_0390.jpg)
+---
+layout: article
+title: "Botanical Contrast: Composing the Wild Garden"
+summary: "Garden design at its most sophisticated isn't about individual plants. It's about composition—how plants of different textures, colors, and forms interact to create visual interest. This photograph captures that composition in a single, detailed frame."
+tag: "Journal"
+date: "2026-02-16"
+image: "IMG_0390.jpg"
+image_alt: "Close-up of white Peace Lily with red foliage plants in tropical garden setting"
+lang: "en"
+---
 
 ## The Art of Layering Plant Material
-
-Garden design at its most sophisticated isn't about individual plants. It's about composition—how plants of different textures, colors, and forms interact to create visual interest. This photograph captures that composition in a single, detailed frame.
 
 The central subject is a white spathe flower (Peace Lily, likely), which creates a high-contrast focal point against darker foliage. Surrounding it are plants with vibrant red stems and leaves, creating color dialogue. In the background, the out-of-focus green represents the volume of vegetation, the abundance of a truly planted space.
 

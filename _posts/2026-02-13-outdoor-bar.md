@@ -1,10 +1,15 @@
-# DIY Tropical Architecture: Building the Signature Look
-
-![Wooden shingle-clad partition wall under corrugated metal roof with string lights](/images/IMG_3343.jpg)
+---
+layout: article
+title: "DIY Tropical Architecture: Building the Signature Look"
+summary: "A location's character isn't created by the main structures—the buildings people sleep in, the rooms they gather in. It's created by the in-between spaces: the shelters that partially enclose, the walls that divide spaces without fully separating them, the small architectural decisions that accumulate into a coherent aesthetic."
+tag: "Journal"
+date: "2026-02-13"
+image: "IMG_3343.jpg"
+image_alt: "Wooden shingle-clad partition wall under corrugated metal roof with string lights"
+lang: "en"
+---
 
 ## The Details That Define a Place
-
-A location's character isn't created by the main structures—the buildings people sleep in, the rooms they gather in. It's created by the in-between spaces: the shelters that partially enclose, the walls that divide spaces without fully separating them, the small architectural decisions that accumulate into a coherent aesthetic.
 
 This image captures that accumulation. A simple wooden structure with shingle-clad walls, a corrugated metal roof, string lights suspended underneath. Nothing here is architecturally complex. Everything here is architecturally *right*.
 

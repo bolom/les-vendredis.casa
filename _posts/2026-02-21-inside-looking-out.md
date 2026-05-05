@@ -1,10 +1,15 @@
-# A New Perspective: Building a Space for the Future
-
-![Extreme low-angle shot from beneath wooden slats, two people visible from waist down peering over edge](/images/IMG_0397.jpg)
+---
+layout: article
+title: "A New Perspective: Building a Space for the Future"
+summary: "This photograph breaks the normal composition rules. It's shot from below, looking upward, framing two people (an adult and child) against sky and foliage. It's a vertiginous angle that makes the structure feel monumental, the people feel small but present."
+tag: "Journal"
+date: "2026-02-21"
+image: "IMG_0397.jpg"
+image_alt: "Extreme low-angle shot from beneath wooden slats, two people visible from waist down peering over edge"
+lang: "en"
+---
 
 ## The Unique Vantage Point
-
-This photograph breaks the normal composition rules. It's shot from below, looking upward, framing two people (an adult and child) against sky and foliage. It's a vertiginous angle that makes the structure feel monumental, the people feel small but present.
 
 The composition—taken from beneath a partially-built floor or wall, looking upward—creates a sense of enclosure even as it frames openness. The wooden slats create rhythm. The people are momentary occupants of the frame.
 

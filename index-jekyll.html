@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "Les Vendredis"
+noindex: true
+canonical_url: https://les-vendredis.casa/
 ---
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -71,11 +73,11 @@ title: "Les Vendredis"
           <span class="entry-tag">{{ post.tag }}</span>
         </div>
         <div class="entry-body">
-          <h3>{{ post.title_fr }}</h3>
-          <p>{{ post.excerpt_fr }}</p>
+          <h3>{{ post.title }}</h3>
+          <p>{{ post.summary }}</p>
         </div>
         <div class="entry-img">
-          <img src="{{ '/public/images/' | append: post.image | relative_url }}" alt="{{ post.image_alt_fr }}" />
+          <img src="{{ '/public/images/' | append: post.image | relative_url }}" alt="{{ post.image_alt }}" />
         </div>
       </article>
       {% endfor %}

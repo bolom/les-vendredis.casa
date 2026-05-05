@@ -1,10 +1,15 @@
-# Hand-Built in the Tropics: The Realities of DIY Construction
-
-![Man standing on high timber frame structure wearing white head covering, reaching toward apex](/images/IMG_4621.JPG)
+---
+layout: article
+title: "Hand-Built in the Tropics: The Realities of DIY Construction"
+summary: "There's an iconic composition in construction photography: the solitary figure, dwarfed by the structure being built, emphasizing the ambition of the project. This image plays with that icon, but honestly. Not a hero pose. A working pose."
+tag: "Journal"
+date: "2026-02-09"
+image: "IMG_4621.JPG"
+image_alt: "Man standing on high timber frame structure wearing white head covering, reaching toward apex"
+lang: "en"
+---
 
 ## The Individual Against Scale
-
-There's an iconic composition in construction photography: the solitary figure, dwarfed by the structure being built, emphasizing the ambition of the project. This image plays with that icon, but honestly. Not a hero pose. A working pose.
 
 The figure here is engaged—reaching, adjusting, solving some immediate problem. The white head covering isn't aesthetic. It's practical protection from the tropical sun reflecting off the structure. The positioning suggests someone working at height for the nth time that day, comfortable with the exposure but not casual about it.
 

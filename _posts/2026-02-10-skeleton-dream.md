@@ -1,10 +1,15 @@
-# The Skeleton of Dreams: Witnessing Structural Becoming
-
-![A-frame skeleton with new and weathered wood shingles in various stages of installation](/images/IMG_1355.jpg)
+---
+layout: article
+title: "The Skeleton of Dreams: Witnessing Structural Becoming"
+summary: "Architecture exists in phases. There's the dream phase—sketches, concepts, possibilities. There's the completed phase—interior furnished, systems operational, the building doing its job. And between these exists the construction phase, the most honest phase, where intention meets reality and decisions can still redirect outcomes."
+tag: "Journal"
+date: "2026-02-10"
+image: "IMG_1355.jpg"
+image_alt: "A-frame skeleton with new and weathered wood shingles in various stages of installation"
+lang: "en"
+---
 
 ## The Transition Zone
-
-Architecture exists in phases. There's the dream phase—sketches, concepts, possibilities. There's the completed phase—interior furnished, systems operational, the building doing its job. And between these exists the construction phase, the most honest phase, where intention meets reality and decisions can still redirect outcomes.
 
 This image captures that middle moment with particular clarity. The skeleton of the A-frame is complete. The weatherproofing has begun—shingles are being installed. The darker, weathered shingles visible here might represent previous installation attempts, or perhaps material that was exposed to weather before being installed. The newer, brighter shingles show the current day's progress.
 

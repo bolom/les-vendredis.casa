@@ -334,6 +334,85 @@ h1 em { font-style: italic; font-weight: 400; color: var(--accent); }
 .entry-img { aspect-ratio: 4/3; overflow: hidden; background: var(--ink); }
 .entry-img img { width: 100%; height: 100%; object-fit: cover; }
 
+/* ── article page ── */
+.article-page {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 80px 24px 120px;
+}
+.article-header {
+  margin-bottom: 28px;
+}
+.article-meta {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+}
+.article-meta time {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 16px;
+  color: var(--ink);
+  font-weight: 400;
+}
+.article-kicker {
+  font-size: 9.5px;
+  letter-spacing: .32em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 500;
+}
+.article-title {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(36px, 5vw, 64px);
+  line-height: 1.04;
+  letter-spacing: -.015em;
+  margin-bottom: 18px;
+}
+.article-summary {
+  font-family: var(--serif);
+  font-size: 20px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  margin-bottom: 28px;
+}
+.article-image {
+  overflow: hidden;
+  margin-bottom: 32px;
+  background: var(--ink);
+  box-shadow: 0 20px 40px -25px rgba(31,22,17,.3);
+}
+.article-image img {
+  width: 100%;
+  display: block;
+}
+.article-body {
+  font-family: var(--serif);
+  font-size: 18px;
+  line-height: 1.7;
+  color: var(--ink);
+}
+.article-body h2 {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(28px, 3vw, 40px);
+  line-height: 1.12;
+  margin: 32px 0 16px;
+}
+.article-body p {
+  margin-bottom: 16px;
+}
+.article-body ul,
+.article-body ol {
+  margin: 0 0 16px 22px;
+}
+.article-body strong {
+  font-weight: 500;
+}
+
 /* ── journal footer ── */
 .journal-foot { padding: 48px 0; text-align: center; }
 .journal-foot a { border-bottom: 1px solid var(--rule); padding-bottom: 2px; transition: border-color .25s; }

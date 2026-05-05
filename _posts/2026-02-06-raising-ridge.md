@@ -1,10 +1,15 @@
-# Raising the Ridge: The Frame Takes Shape
-
-![A-frame wooden frame skeleton standing in tropical environment with blue sky](/images/IMG_0938.jpg)
+---
+layout: article
+title: "Raising the Ridge: The Frame Takes Shape"
+summary: "There's a particular magic in the moment when a building frame stands alone, before walls, before infill, before the thousand details that transform frame into enclosed space. At this moment, the building exists as pure geometry, pure intention."
+tag: "Journal"
+date: "2026-02-06"
+image: "IMG_0938.jpg"
+image_alt: "A-frame wooden frame skeleton standing in tropical environment with blue sky"
+lang: "en"
+---
 
 ## The Moment Structure Becomes Real
-
-There's a particular magic in the moment when a building frame stands alone, before walls, before infill, before the thousand details that transform frame into enclosed space. At this moment, the building exists as pure geometry, pure intention.
 
 This photograph captures that threshold. The A-frame has been raised. The triangular form is resolved. The rafters converge at their peak with mathematical inevitability. Looking at this skeletal structure, you can imagine the entire building, but you also see it reduced to essentials: load paths made visible, the honest way materials respond to forces.
 

@@ -1,10 +1,15 @@
-# Vertical Living: Building Upward in Tropical Mountain Space
-
-![Tall narrow wooden structure with multiple levels and construction materials surrounding](/images/IMG_0938.jpg)
+---
+layout: article
+title: "Vertical Living: Building Upward in Tropical Mountain Space"
+summary: "Mountain properties often have limited flat space. The option is to sprawl horizontally (consuming more landscape, creating larger footprint) or to build vertically (maximizing volume within minimal footprint)."
+tag: "Journal"
+date: "2026-02-23"
+image: "IMG_0938.jpg"
+image_alt: "Tall narrow wooden structure with multiple levels and construction materials surrounding"
+lang: "en"
+---
 
 ## Maximizing Limited Space
-
-Mountain properties often have limited flat space. The option is to sprawl horizontally (consuming more landscape, creating larger footprint) or to build vertically (maximizing volume within minimal footprint).
 
 This frame represents vertical strategy: reaching upward rather than outward. In a property with limited developable space, this approach preserves landscape while maximizing living area.
 

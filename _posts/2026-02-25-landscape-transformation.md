@@ -1,10 +1,15 @@
-# Abundant Landscape: Working With Existing Vegetation
-
-![Ti plants with pink foliage, young guava tree, stone retaining wall, dense background vegetation](/images/IMG_0391.jpg)
+---
+layout: article
+title: "Abundant Landscape: Working With Existing Vegetation"
+summary: "Good landscape design doesn't create plants from nothing. It works with what's present, shapes it, composes it, creates visual meaning through arrangement."
+tag: "Journal"
+date: "2026-02-25"
+image: "IMG_0391.jpg"
+image_alt: "Ti plants with pink foliage, young guava tree, stone retaining wall, dense background vegetation"
+lang: "en"
+---
 
 ## Landscape Design Through Existing Material
-
-Good landscape design doesn't create plants from nothing. It works with what's present, shapes it, composes it, creates visual meaning through arrangement.
 
 This photograph shows a landscape design that's working with existing and cultivated plants to create visual hierarchy:
 

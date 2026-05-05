@@ -1,10 +1,15 @@
-# Building Your Dream: The Next Generation at Les Vendredis
-
-![Young boy standing on wooden deck of A-frame structure, framing tropical ocean view](/images/IMG_1348.jpg)
+---
+layout: article
+title: "Building Your Dream: The Next Generation at Les Vendredis"
+summary: "There's a moment in every major project when you step back and realize it's stopped being about the structure—and started being about the story. For Les Vendredis, that moment arrived when we looked through the lens of our A-frame and saw not just a building taking shape, but a family legacy being constructed, one timber frame at a time."
+tag: "Journal"
+date: "2026-02-01"
+image: "IMG_1348.jpg"
+image_alt: "Young boy standing on wooden deck of A-frame structure, framing tropical ocean view"
+lang: "en"
+---
 
 ## When Architecture Becomes Family Legacy
-
-There's a moment in every major project when you step back and realize it's stopped being about the structure—and started being about the story. For Les Vendredis, that moment arrived when we looked through the lens of our A-frame and saw not just a building taking shape, but a family legacy being constructed, one timber frame at a time.
 
 This image captures that exact moment: a young builder standing confidently on the upper deck of the structure, the tropical landscape framing itself perfectly through the geometric precision of the A-frame roof. Behind him, a ladder represents both the challenges climbed and the heights yet to reach. The green weatherproofing membrane on the interior wall speaks to the technical rigor of the project, while the child's silhouette against the ocean and hills tells the human story we're really building here.
 

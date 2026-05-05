@@ -1,10 +1,15 @@
-# Breaking Ground: The Foundation Phase and Raw Landscape
-
-![Concrete foundation slab with construction materials and tropical foliage in background](/images/IMG_3038.jpg)
+---
+layout: article
+title: "Breaking Ground: The Foundation Phase and Raw Landscape"
+summary: "Before structure rises, before form becomes visible, there's the foundation phase. The concrete slab that will support everything. The moment when raw earth becomes prepared surface, when the landscape is fractured and reconfigured to receive human construction."
+tag: "Journal"
+date: "2026-02-17"
+image: "IMG_3038.jpg"
+image_alt: "Concrete foundation slab with construction materials and tropical foliage in background"
+lang: "en"
+---
 
 ## The Absolute Beginning
-
-Before structure rises, before form becomes visible, there's the foundation phase. The concrete slab that will support everything. The moment when raw earth becomes prepared surface, when the landscape is fractured and reconfigured to receive human construction.
 
 This photograph captures that moment with unflinching honesty. Not the cleaned-up site after concrete has cured. The active moment: concrete slab newly laid or in early curing, surrounded by construction detritus, the tropical landscape still overwhelming the human presence.
 

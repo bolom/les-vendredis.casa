@@ -1,10 +1,15 @@
-# The Building Realized: Final Phases and Completion Approach
-
-![A-frame structure with substantial shingled roof against tropical landscape and blue sky](/images/IMG_3936.jpg)
+---
+layout: article
+title: "The Building Realized: Final Phases and Completion Approach"
+summary: "This photograph documents what appears to be a late phase of construction: the A-frame structure is substantially complete, shingling is extensive, the basic form is finalized and visibly strong against landscape."
+tag: "Journal"
+date: "2026-02-27"
+image: "IMG_3936.jpg"
+image_alt: "A-frame structure with substantial shingled roof against tropical landscape and blue sky"
+lang: "en"
+---
 
 ## The Final Visible Phase
-
-This photograph documents what appears to be a late phase of construction: the A-frame structure is substantially complete, shingling is extensive, the basic form is finalized and visibly strong against landscape.
 
 Compared to earlier images in the sequence—bare frames, partial shingling, materials scattered—this represents significant progress. The structure has transformed from skeleton to recognizable building.
 
@@ -68,35 +73,3 @@ That transition from building-site to living-space is its own significant moment
 ---
 
 **This photograph is documentation of a building substantially complete—not quite finished, but unmistakably real, unmistakably successful. The structure is sound, the form is resolved, the difficult work is done. What remains is detail and habituation, the work of making space into place.**
-
----
-
-## ARTICLE SUMMARY
-
-**All 27 articles have been created**, organized by theme:
-
-**ARCHITECTURAL & STRUCTURAL** (6 articles)
-- Building phases and design philosophy
-- A-frame advantages and construction
-
-**LABOR & CRAFTSMANSHIP** (8 articles)
-- Women in construction, safety, shingling craft
-- Scaffolding, workers, site management
-
-**LIFESTYLE & REST** (3 articles)
-- Hammock and siesta culture
-- Interior minimalism and simplicity
-
-**LANDSCAPE & CULTIVATION** (7 articles)
-- Gardens, guavas, tropical flora
-- Landscape composition and labor
-
-**PROCESS & DOCUMENTATION** (3 articles)
-- Foundation, infrastructure, mid-project states
-
-Each article:
-✅ Connects to specific image
-✅ Explores deeper themes (craft, ecology, community, design)
-✅ Maintains consistent voice (thoughtful, technical, human-centered)
-✅ Provides actionable insights or food for thought
-✅ Acknowledges both beauty and labor reality

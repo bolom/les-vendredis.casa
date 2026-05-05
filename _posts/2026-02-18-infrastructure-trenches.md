@@ -1,10 +1,15 @@
-# Laying the Foundations: Infrastructure and the Unglamorous Essentials
-
-![Deep trench excavated through red soil with orange guide strings and tropical background](/images/IMG_6303.jpg)
+---
+layout: article
+title: "Laying the Foundations: Infrastructure and the Unglamorous Essentials"
+summary: "Every building relies on infrastructure that most people never see or think about: water, electrical, sewage, communication. In conventional development, this infrastructure is installed by specialists after the building is complete. In remote, tropical locations, it's often installed during the land preparation phase—before structure rises."
+tag: "Journal"
+date: "2026-02-18"
+image: "IMG_6303.jpg"
+image_alt: "Deep trench excavated through red soil with orange guide strings and tropical background"
+lang: "en"
+---
 
 ## The Invisible Infrastructure
-
-Every building relies on infrastructure that most people never see or think about: water, electrical, sewage, communication. In conventional development, this infrastructure is installed by specialists after the building is complete. In remote, tropical locations, it's often installed during the land preparation phase—before structure rises.
 
 This photograph documents that unglamorous but essential work. A trench dug through reddish tropical soil, marked with orange guide strings, photographed from a utility vehicle. It's not beautiful. It's essential.
 

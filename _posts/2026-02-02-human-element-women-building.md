@@ -1,10 +1,15 @@
-# The Human Element: Women Building Paradise
-
-![Woman on wooden scaffolding giving double thumbs-up, wearing safety harness](/images/IMG_0940.jpg)
+---
+layout: article
+title: "The Human Element: Women Building Paradise"
+summary: "There's a particular kind of joy that comes from standing high on scaffolding, covered in the dust of the day's work, and declaring victory. The double thumbs-up in this photograph isn't performative—it's genuine satisfaction. It's the moment when effort becomes visible, when sweat becomes structure."
+tag: "Journal"
+date: "2026-02-02"
+image: "IMG_0940.jpg"
+image_alt: "Woman on wooden scaffolding giving double thumbs-up, wearing safety harness"
+lang: "en"
+---
 
 ## Progress Looks Like This
-
-There's a particular kind of joy that comes from standing high on scaffolding, covered in the dust of the day's work, and declaring victory. The double thumbs-up in this photograph isn't performative—it's genuine satisfaction. It's the moment when effort becomes visible, when sweat becomes structure.
 
 This image documents something crucial about Les Vendredis that often gets glossed over in architectural portfolios: the *people* doing the work. Not the concept of people, but actual individuals, risking their bodies, focusing their expertise, and taking pride in craftsmanship that will outlast their involvement in the project.
 

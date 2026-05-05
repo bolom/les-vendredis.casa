@@ -1,10 +1,15 @@
-# Why A-Frame? The Perfect Geometry for Tropical Living
-
-![Wooden skeletal frame of A-frame structure under construction against tropical sky](/images/IMG_STRUCTURE.jpg)
+---
+layout: article
+title: "Why A-Frame? The Perfect Geometry for Tropical Living"
+summary: "The A-frame is deceptive in its simplicity. Four timber pieces converging at a peak, and already you've created shelter. Add horizontal supports and you have a structure capable of spanning significant space. Add weatherproofing and you have a home."
+tag: "Journal"
+date: "2026-02-04"
+image: "IMG_STRUCTURE.jpg"
+image_alt: "Wooden skeletal frame of A-frame structure under construction against tropical sky"
+lang: "en"
+---
 
 ## The Simplest Shape, Infinite Complexity
-
-The A-frame is deceptive in its simplicity. Four timber pieces converging at a peak, and already you've created shelter. Add horizontal supports and you have a structure capable of spanning significant space. Add weatherproofing and you have a home.
 
 Yet beneath this apparent simplicity lies sophisticated structural engineering, centuries of building tradition, and a profound understanding of how geometry interacts with climate, human psychology, and material properties.
 

@@ -1,10 +1,15 @@
-# Breaking Ground: Landscape Preparation and the Traveler's Palm
-
-![Tropical slope with Traveler's Palm focal point and yellow survey line, overcast sky](/images/IMG_3290.jpg)
+---
+layout: article
+title: "Breaking Ground: Landscape Preparation and the Traveler's Palm"
+summary: "Before construction truly begins, the site must be understood and prepared. Not cleared and stripped bare (which would be destructive), but surveyed, marked, and staged for the work to come."
+tag: "Journal"
+date: "2026-02-19"
+image: "IMG_3290.jpg"
+image_alt: "Tropical slope with Traveler's Palm focal point and yellow survey line, overcast sky"
+lang: "en"
+---
 
 ## The Site Before Construction
-
-Before construction truly begins, the site must be understood and prepared. Not cleared and stripped bare (which would be destructive), but surveyed, marked, and staged for the work to come.
 
 This photograph captures that pre-construction moment. The landscape hasn't been disrupted yet—the vegetation is still present, still impressive. But it's been measured. The yellow line is evidence of that measurement: the survey line that marks boundaries, that indicates where the structure will begin.
 

@@ -1,10 +1,15 @@
-# Timber Framing: The Skeleton Phase
-
-![Vertical wooden frame structure with multiple levels and surrounding construction materials in tropical setting](/images/IMG_4688.JPG)
+---
+layout: article
+title: "Timber Framing: The Skeleton Phase"
+summary: "This frame is tall. Rising from a construction site strewn with materials and equipment, the wooden skeleton reaches upward with purpose. The frame isn't wide—it's a lean vertical structure, perhaps designed as a tower or narrow multi-story space."
+tag: "Journal"
+date: "2026-02-22"
+image: "IMG_4688.JPG"
+image_alt: "Vertical wooden frame structure with multiple levels and surrounding construction materials in tropical setting"
+lang: "en"
+---
 
 ## The Vertical Ambition
-
-This frame is tall. Rising from a construction site strewn with materials and equipment, the wooden skeleton reaches upward with purpose. The frame isn't wide—it's a lean vertical structure, perhaps designed as a tower or narrow multi-story space.
 
 The verticality itself is statement. In a landscape of sprawling tropical vegetation, this frame carves out vertical space. It creates height, which creates view, which creates something architecturally distinct from typical low tropical structures.
 

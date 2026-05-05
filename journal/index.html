@@ -1,6 +1,7 @@
 ---
 layout: default
 title: "Journal — All Entries"
+description: "A complete archive of journal entries from Sainte-Luce, Martinique."
 ---
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -24,18 +25,12 @@ title: "Journal — All Entries"
           <span class="entry-tag">{{ post.tag }}</span>
         </div>
         <div class="entry-body">
-          <h3>
-            <span class="lang-en">{{ post.title_en }}</span>
-            <span class="lang-fr" style="display:none;">{{ post.title_fr }}</span>
-          </h3>
-          <p>
-            <span class="lang-en">{{ post.excerpt_en }}</span>
-            <span class="lang-fr" style="display:none;">{{ post.excerpt_fr }}</span>
-          </p>
+          <h3>{{ post.title }}</h3>
+          <p>{{ post.summary }}</p>
           <a href="{{ post.url | relative_url }}" class="read-more" style="display:inline-block; margin-top:12px; border-bottom:1px solid var(--rule); padding-bottom:2px; color:var(--accent); transition:border-color .25s;">Read more →</a>
         </div>
         <div class="entry-img">
-          <img src="{{ '/public/images/' | append: post.image | relative_url }}" alt="{{ post.image_alt_fr }}" />
+          <img src="{{ '/public/images/' | append: post.image | relative_url }}" alt="{{ post.image_alt }}" />
         </div>
       </article>
       {% endfor %}
