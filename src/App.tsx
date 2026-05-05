@@ -1,19 +1,44 @@
-/**
- * @license
- * SPDX-License-Identifier: Apache-2.0
- */
-
 import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { X, ChevronLeft, ChevronRight, Maximize2 } from 'lucide-react';
+import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { IMAGES } from './constants';
-import { ImageItem } from './types';
+
+const BOOKING = {
+  airbnb: 'https://www.airbnb.fr/hosting/listings/editor/1651467419646453001/details/photo-tour',
+  booking:
+    'https://www.booking.com/hotel/mq/an-atypical-cabin.fr.html?label=gen173bo-10CAsomQFCEWFuLWF0eXBpY2FsLWNhYmluSDNYA2iZAYgBAZgBM7gBB8gBDdgBA-gBAfgBAYgCAZgCBqgCAbgC4fTTzwbAAgHSAiRkNDRmY2NlYi02M2ZiLTQ3NGYtYjk5OC0zYmY2ZTNlNjZkYmXYAgHgAgE&sid=c7e1c5589f91f2a47df92f453ef0ca6a&aid=304142',
+};
+
+const ENTRIES = [
+  {
+    date: 'Sunday, May 3rd 2026',
+    tag: 'N°02 · Build log',
+    title: 'Digging the trenches for hot water.',
+    titleAccent: 'water',
+    body: [
+      'This Sunday we started cutting the trenches to bring hot water into the kitchen and the A-frame.',
+      'Slow, hot work — but every line in the dirt is one more thing finished by hand. Léon helped carry the pipe.',
+    ],
+    image: '/images/IMG_3038.jpg',
+  },
+  {
+    date: 'Saturday, April 12th 2026',
+    tag: 'N°01 · Garden',
+    title: 'The mango trees are heavy again.',
+    titleAccent: 'heavy',
+    body: [
+      'First mangoes of the season fell this week. The garden is lush after two weeks of rain — the bougainvillea by the path is opening.',
+      'We left a crate at the gate for the neighbours. Some came back with bananas.',
+    ],
+    image: '/images/IMG_0390.jpg',
+  },
+];
 
 export default function App() {
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [currentIndex, setCurrentIndex] = useState<number>(0);
 
-  const selectedImage = IMAGES.find(img => img.id === selectedId);
+  const selectedImage = IMAGES.find((img) => img.id === selectedId);
 
   const handleOpen = (id: string, index: number) => {
     setSelectedId(id);
@@ -38,7 +63,6 @@ export default function App() {
     setSelectedId(IMAGES[prevIndex].id);
   }, [currentIndex]);
 
-  // Keyboard navigation
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (!selectedId) return;
@@ -50,66 +74,159 @@ export default function App() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [selectedId, handleClose, handleNext, handlePrev]);
 
-  return (
-    <div className="min-h-screen bg-[#f5f5f0] text-[#2c2c24] selection:bg-[#5a5a40] selection:text-white">
-      {/* Header */}
-      <header className="fixed top-0 left-0 w-full z-40 px-6 py-10 flex justify-between items-start pointer-events-none">
-        <div className="bg-white/40 backdrop-blur-md p-6 rounded-3xl border border-white/20">
-          <h1 className="text-2xl font-serif italic tracking-tight">Chez les vendredis</h1>
-          <p className="text-[10px] uppercase tracking-[0.3em] opacity-60 mt-1 font-sans">Martinique, West Indies</p>
-        </div>
-        <div className="bg-[#5a5a40] text-white px-4 py-2 rounded-full text-[10px] uppercase tracking-[0.2em] font-sans">
-          {IMAGES.length} Views
-        </div>
-      </header>
+  function renderEntryTitle(title: string, accent: string) {
+    const parts = title.split(accent);
+    if (parts.length < 2) return <>{title}</>;
+    return (
+      <>
+        {parts[0]}
+        <em className="italic text-accent">{accent}</em>
+        {parts[1]}
+      </>
+    );
+  }
 
-      {/* Main Grid */}
-      <main className="pt-48 pb-24 px-4 md:px-8 max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
+  return (
+    <div className="min-h-screen bg-cream text-ink selection:bg-accent selection:text-cream">
+      {/* Top bar */}
+      <div className="wrap">
+        <header className="top-bar">
+          <a href="/" className="mark">Les Vendredis</a>
+          <nav className="top-nav">
+            <a href="#journal">Journal</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#stay">Stay</a>
+          </nav>
+          <span className="location-tag">Sainte-Luce · Martinique</span>
+        </header>
+      </div>
+
+      {/* Hero */}
+      <div className="wrap">
+        <section className="hero">
+          <div className="image-frame">
+            <img
+              src="/images/IMG_0387.jpg"
+              alt="The A-frame cabin at Les Vendredis, Sainte-Luce, Martinique"
+              className="w-full h-full object-cover"
+            />
+            <span className="image-cap">A-frame · Sainte-Luce, Martinique</span>
+          </div>
+
+          <div className="copy">
+            <div className="eyebrow">A-frame · Sainte-Luce</div>
+            <h1>
+              A Friday<br />that <em className="italic text-accent">lasts.</em>
+            </h1>
+            <p className="lead">
+              An A-frame cabin and a garden in the south of Martinique. Built by hand by Anaïs, Bolo, Léon and Same — from the foundation to the last plank.
+            </p>
+            <p className="lead muted">
+              A small house, a wide garden, and the sea three minutes away. A place to disconnect.
+            </p>
+            <div className="ctas">
+              <a className="btn primary" href={BOOKING.airbnb} target="_blank" rel="noopener noreferrer">
+                Book on Airbnb <span className="arrow">→</span>
+              </a>
+              <a className="btn" href={BOOKING.booking} target="_blank" rel="noopener noreferrer">
+                Book on Booking <span className="arrow">→</span>
+              </a>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      {/* Journal */}
+      <div className="wrap">
+        <section className="journal" id="journal">
+          <div className="journal-head">
+            <h2>The <em className="italic text-accent">journal.</em></h2>
+            <p className="journal-sub">Notes from the build, the garden, and the slow life of Sainte-Luce.</p>
+          </div>
+
+          {ENTRIES.map((entry, i) => (
+            <article className="entry" key={i}>
+              <div className="entry-meta">
+                <span className="entry-date">{entry.date}</span>
+                <span className="entry-tag">{entry.tag}</span>
+              </div>
+              <div className="entry-body">
+                <h3>{renderEntryTitle(entry.title, entry.titleAccent)}</h3>
+                {entry.body.map((p, j) => <p key={j}>{p}</p>)}
+              </div>
+              <div className="entry-img">
+                <img src={entry.image} alt={entry.title} className="w-full h-full object-cover" />
+              </div>
+            </article>
+          ))}
+
+          <div className="journal-foot">— more entries to come —</div>
+        </section>
+      </div>
+
+      {/* Gallery */}
+      <div className="wrap" id="gallery">
+        <div className="gallery-head">
+          <h2>The <em className="italic text-accent">place.</em></h2>
+          <p className="journal-sub">Views of the cabin, the garden, and the land we built from scratch.</p>
+        </div>
+      </div>
+
+      <div className="gallery-grid-wrap">
+        <div className="gallery-grid">
           {IMAGES.map((image, index) => (
             <motion.div
               key={image.id}
               layoutId={`container-${image.id}`}
               onClick={() => handleOpen(image.id, index)}
-              className="group relative aspect-[3/4] overflow-hidden bg-[#e8e8e0] cursor-pointer rounded-[40px] shadow-sm hover:shadow-xl transition-shadow duration-500"
-              whileHover={{ y: -10 }}
+              className="gallery-item"
+              whileHover={{ y: -6 }}
               transition={{ type: 'spring', stiffness: 200, damping: 25 }}
             >
               <motion.img
                 layoutId={`image-${image.id}`}
                 src={image.url}
                 alt={image.title}
-                referrerPolicy="no-referrer"
-                className="w-full h-full object-cover transition-transform duration-1000 ease-out scale-110 group-hover:scale-100"
+                className="w-full h-full object-cover transition-transform duration-700 ease-out scale-105 group-hover:scale-100"
               />
-              
-              {/* Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[#2c2c24]/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              
-              {/* Info on Hover */}
-              <div className="absolute bottom-0 left-0 w-full p-10 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 ease-out">
-                <h3 className="text-white text-xl font-serif italic">{image.title}</h3>
-                <p className="text-white/80 text-[10px] uppercase tracking-widest mt-2 font-sans">Perspective {index + 1}</p>
+              <div className="gallery-overlay" />
+              <div className="gallery-info">
+                <h3>{image.title}</h3>
               </div>
             </motion.div>
           ))}
         </div>
-      </main>
+      </div>
+
+      {/* Booking */}
+      <section className="booking" id="stay">
+        <div className="wrap booking-inner">
+          <div>
+            <h2>Come stay in <em className="italic text-accent-light">our Friday.</em></h2>
+            <p className="booking-sub">
+              Book through whichever platform you already trust — the cabin and the welcome are the same.
+            </p>
+          </div>
+          <div className="b-ctas">
+            <a className="b-btn" href={BOOKING.airbnb} target="_blank" rel="noopener noreferrer">
+              <span className="b-label">Airbnb</span>
+              <span className="b-open">Open ↗</span>
+            </a>
+            <a className="b-btn" href={BOOKING.booking} target="_blank" rel="noopener noreferrer">
+              <span className="b-label">Booking.com</span>
+              <span className="b-open">Open ↗</span>
+            </a>
+          </div>
+        </div>
+      </section>
 
       {/* Footer */}
-      <footer className="px-10 py-20 border-t border-[#5a5a40]/10 flex flex-col justify-center items-center gap-6">
-        <a 
-          href="https://wa.me/33666535289" 
-          target="_blank" 
-          rel="noopener noreferrer"
-          className="bg-[#25D366] text-white px-8 py-3 rounded-full text-[12px] uppercase tracking-[0.2em] font-sans hover:opacity-80 transition-opacity pointer-events-auto"
-        >
-          WhatsApp
-        </a>
-        <div className="text-[11px] uppercase tracking-[0.3em] opacity-40 font-sans">
-          © 2026 Chez les vendredis
-        </div>
-      </footer>
+      <div className="wrap">
+        <footer className="foot">
+          <span>© 2026 · Built by hand</span>
+          <span>Anaïs &amp; Bolo · hello@lesvendredis.casa</span>
+        </footer>
+      </div>
 
       {/* Lightbox */}
       <AnimatePresence>
@@ -118,78 +235,51 @@ export default function App() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-[#f5f5f0]/98 backdrop-blur-xl"
+            className="lightbox-overlay"
           >
-            {/* Close Button */}
-            <button
-              onClick={handleClose}
-              className="absolute top-10 right-10 z-[60] p-4 text-[#5a5a40] hover:scale-110 transition-transform"
-            >
-              <X className="w-8 h-8 stroke-[1px]" />
+            <button onClick={handleClose} className="lightbox-close">
+              <X className="w-7 h-7 stroke-[1px]" />
             </button>
 
-            {/* Navigation Buttons (Desktop) */}
             <div className="hidden md:contents">
-              <button
-                onClick={handlePrev}
-                className="absolute left-10 top-1/2 -translate-y-1/2 z-[60] p-6 text-[#5a5a40]/30 hover:text-[#5a5a40] transition-colors"
-              >
-                <ChevronLeft className="w-12 h-12 stroke-[1px]" />
+              <button onClick={handlePrev} className="lightbox-nav left">
+                <ChevronLeft className="w-10 h-10 stroke-[1px]" />
               </button>
-              <button
-                onClick={handleNext}
-                className="absolute right-10 top-1/2 -translate-y-1/2 z-[60] p-6 text-[#5a5a40]/30 hover:text-[#5a5a40] transition-colors"
-              >
-                <ChevronRight className="w-12 h-12 stroke-[1px]" />
+              <button onClick={handleNext} className="lightbox-nav right">
+                <ChevronRight className="w-10 h-10 stroke-[1px]" />
               </button>
             </div>
 
-            {/* Image Container */}
             <motion.div
               layoutId={`container-${selectedId}`}
-              className="relative w-full h-full flex flex-col items-center justify-center p-6 md:p-24"
+              className="lightbox-content"
               drag
               dragConstraints={{ top: 0, bottom: 0, left: 0, right: 0 }}
               dragElastic={0.7}
               onDragEnd={(_, info) => {
-                const swipeThreshold = 100;
-                if (Math.abs(info.offset.y) > 150) {
-                  handleClose();
-                } else if (info.offset.x > swipeThreshold) {
-                  handlePrev();
-                } else if (info.offset.x < -swipeThreshold) {
-                  handleNext();
-                }
+                if (Math.abs(info.offset.y) > 150) handleClose();
+                else if (info.offset.x > 100) handlePrev();
+                else if (info.offset.x < -100) handleNext();
               }}
             >
               <motion.img
                 layoutId={`image-${selectedId}`}
                 src={selectedImage.url}
                 alt={selectedImage.title}
-                referrerPolicy="no-referrer"
-                className="max-w-full max-h-[65vh] md:max-h-[75vh] object-contain rounded-[40px] shadow-2xl pointer-events-none"
+                className="lightbox-img"
                 initial={{ scale: 0.95, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ delay: 0.1 }}
               />
-
-              {/* Info (Lightbox) */}
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 }}
-                className="mt-12 text-center max-w-2xl px-8"
+                transition={{ delay: 0.25 }}
+                className="lightbox-caption"
               >
-                <h2 className="text-[#2c2c24] text-3xl font-serif italic">
-                  {selectedImage.title}
-                </h2>
-                <p className="text-[#2c2c24]/60 text-base font-serif italic mt-6 leading-relaxed">
-                  {selectedImage.description}
-                </p>
-                <div className="mt-10 h-[1px] w-16 bg-[#5a5a40]/20 mx-auto" />
-                <p className="mt-8 text-[#5a5a40]/40 text-[11px] uppercase tracking-[0.4em] font-sans">
-                  {currentIndex + 1} — {IMAGES.length}
-                </p>
+                <h2>{selectedImage.title}</h2>
+                <p>{selectedImage.description}</p>
+                <span className="lightbox-counter">{currentIndex + 1} — {IMAGES.length}</span>
               </motion.div>
             </motion.div>
           </motion.div>
@@ -198,4 +288,3 @@ export default function App() {
     </div>
   );
 }
-

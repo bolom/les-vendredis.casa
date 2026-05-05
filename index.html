@@ -1,13 +1,712 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Chez les vendredis</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
-</html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Les Vendredis · Sainte-Luce, Martinique</title>
+  <meta name="description" content="An A-frame cabin and garden in the south of Martinique. Built by hand by Anaïs, Bolo, Léon and Same. A place to disconnect." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    /* ── variables ── */
+    :root {
+      --cream:  #FFF1D6;
+      --ink:    #3A1A0C;
+      --muted:  #B89070;
+      --accent: #E2611D;
+      --rule:   rgba(58,26,12,.14);
+      --serif:  'Cormorant Garamond', 'Times New Roman', serif;
+      --sans:   'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+    }
 
+    /* ── reset ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-weight: 300;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    ::selection { background: var(--accent); color: var(--cream); }
+
+    /* ── layout ── */
+    .wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 clamp(20px, 5vw, 64px);
+    }
+
+    /* ── top bar ── */
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 28px 0;
+      font-size: 11px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .mark {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 20px;
+      letter-spacing: 0;
+      text-transform: none;
+      color: var(--ink);
+    }
+    .top-nav { display: flex; gap: 24px; }
+    .top-nav a { transition: color .2s; }
+    .top-nav a:hover { color: var(--ink); }
+
+    /* ── hero ── */
+    .hero {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: clamp(40px, 7vw, 90px);
+      align-items: center;
+      padding: 40px 0 80px;
+    }
+    .image-frame {
+      position: relative;
+      aspect-ratio: 4/5;
+      overflow: hidden;
+      background: var(--ink);
+    }
+    .image-frame img { width: 100%; height: 100%; object-fit: cover; }
+    .image-cap {
+      position: absolute;
+      left: 14px; bottom: 12px;
+      font-size: 10px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: rgba(255,241,214,.78);
+    }
+    .eyebrow {
+      font-size: 11px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+    .eyebrow::before { content: ""; width: 28px; height: 1px; background: var(--muted); }
+    h1 {
+      font-family: var(--serif);
+      font-weight: 300;
+      font-size: clamp(48px, 6.5vw, 84px);
+      line-height: 1;
+      letter-spacing: -.01em;
+      margin-bottom: 24px;
+    }
+    h1 em { font-style: italic; color: var(--accent); }
+    .lead {
+      font-family: var(--serif);
+      font-size: clamp(18px, 1.4vw, 21px);
+      line-height: 1.5;
+      font-weight: 400;
+      margin-bottom: 16px;
+    }
+    .lead.muted { color: var(--muted); }
+    .ctas { display: flex; gap: 12px; margin-top: 32px; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      padding: 13px 22px;
+      font-size: 11px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      border: 1px solid var(--ink);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-weight: 500;
+      transition: all .25s ease;
+    }
+    .btn .arrow { transition: transform .25s ease; }
+    .btn:hover { background: var(--ink); color: var(--cream); }
+    .btn:hover .arrow { transform: translateX(4px); }
+    .btn.primary { background: var(--ink); color: var(--cream); }
+    .btn.primary:hover { background: var(--accent); border-color: var(--accent); }
+
+    /* ── section heads ── */
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 40px;
+      padding: 80px 0 48px;
+      border-top: 1px solid var(--rule);
+      flex-wrap: wrap;
+    }
+    .section-head h2 {
+      font-family: var(--serif);
+      font-weight: 300;
+      font-size: clamp(40px, 5vw, 64px);
+      line-height: 1;
+      letter-spacing: -.01em;
+    }
+    .section-head h2 em { font-style: italic; color: var(--accent); }
+    .section-sub {
+      font-size: 13px;
+      color: var(--muted);
+      max-width: 32ch;
+      text-align: right;
+      line-height: 1.5;
+    }
+
+    /* ── journal entries ──
+       TO ADD AN ENTRY: copy one <article class="entry"> block,
+       paste it above the others, and fill in your content.
+    ── */
+    .journal { padding-bottom: 40px; }
+    .entry {
+      display: grid;
+      grid-template-columns: 140px 1fr 1fr;
+      gap: clamp(24px, 4vw, 56px);
+      padding: 36px 0;
+      border-top: 1px solid var(--rule);
+      align-items: start;
+    }
+    .entry:first-of-type { border-top-color: var(--ink); }
+    .entry-meta { display: flex; flex-direction: column; gap: 6px; }
+    .entry-date { font-family: var(--serif); font-style: italic; font-size: 18px; }
+    .entry-tag { font-size: 10px; letter-spacing: .22em; text-transform: uppercase; color: var(--muted); }
+    .entry-body h3 {
+      font-family: var(--serif);
+      font-weight: 300;
+      font-size: clamp(24px, 2.4vw, 32px);
+      line-height: 1.1;
+      letter-spacing: -.01em;
+      margin-bottom: 14px;
+    }
+    .entry-body h3 em { font-style: italic; color: var(--accent); }
+    .entry-body p {
+      font-family: var(--serif);
+      font-size: 18px;
+      line-height: 1.55;
+    }
+    .entry-body p + p { margin-top: 10px; }
+    .entry-img { aspect-ratio: 4/3; overflow: hidden; }
+    .entry-img img { width: 100%; height: 100%; object-fit: cover; }
+    .journal-foot {
+      padding: 32px 0;
+      font-size: 11px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    /* ── gallery ── */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 80px;
+    }
+    .gallery-item {
+      position: relative;
+      aspect-ratio: 3/4;
+      overflow: hidden;
+      background: var(--ink);
+      cursor: pointer;
+    }
+    .gallery-item img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform .7s ease;
+    }
+    .gallery-item:hover img { transform: scale(1.05); }
+    .gallery-caption {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(58,26,12,.55) 0%, transparent 55%);
+      opacity: 0;
+      transition: opacity .4s ease;
+      display: flex;
+      align-items: flex-end;
+      padding: 20px;
+    }
+    .gallery-item:hover .gallery-caption { opacity: 1; }
+    .gallery-caption span {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 18px;
+      color: white;
+    }
+
+    /* ── booking ── */
+    .booking {
+      background: var(--ink);
+      color: var(--cream);
+      padding: 80px 0;
+    }
+    .booking-inner {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .booking h2 {
+      font-family: var(--serif);
+      font-weight: 300;
+      font-size: clamp(36px, 4.5vw, 56px);
+      line-height: 1.05;
+      letter-spacing: -.01em;
+    }
+    .booking h2 em { font-style: italic; color: #f0935c; }
+    .booking-sub {
+      font-family: var(--serif);
+      font-size: 18px;
+      color: rgba(255,241,214,.7);
+      margin-top: 14px;
+      max-width: 42ch;
+      line-height: 1.5;
+    }
+    .b-ctas { display: flex; flex-direction: column; gap: 12px; }
+    .b-btn {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 22px;
+      border: 1px solid rgba(255,241,214,.3);
+      color: var(--cream);
+      font-size: 12px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      font-weight: 500;
+      font-family: var(--sans);
+      transition: all .25s ease;
+    }
+    .b-btn:hover { border-color: var(--accent); color: var(--accent); }
+    .b-label {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 24px;
+      letter-spacing: 0;
+      text-transform: none;
+      font-weight: 400;
+      color: var(--cream);
+      transition: color .25s ease;
+    }
+    .b-btn:hover .b-label { color: var(--accent); }
+
+    /* ── footer ── */
+    .foot {
+      padding: 40px 0;
+      display: flex;
+      justify-content: space-between;
+      font-size: 10.5px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border-top: 1px solid var(--rule);
+    }
+
+    /* ── lightbox ── */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      background: rgba(255,241,214,.97);
+      backdrop-filter: blur(20px);
+      align-items: center;
+      justify-content: center;
+    }
+    .lightbox.open { display: flex; }
+    .lb-close {
+      position: absolute;
+      top: 28px; right: 28px;
+      font-size: 28px;
+      color: var(--ink);
+      opacity: .4;
+      cursor: pointer;
+      background: none;
+      border: none;
+      line-height: 1;
+      transition: opacity .2s;
+    }
+    .lb-close:hover { opacity: 1; }
+    .lb-nav {
+      position: absolute;
+      top: 50%; transform: translateY(-50%);
+      font-size: 36px;
+      color: var(--ink);
+      opacity: .2;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 20px;
+      line-height: 1;
+      transition: opacity .2s;
+    }
+    .lb-nav:hover { opacity: .7; }
+    .lb-prev { left: 16px; }
+    .lb-next { right: 16px; }
+    .lb-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: clamp(24px, 6vw, 96px);
+      max-width: 100%;
+    }
+    .lb-img {
+      max-width: 100%;
+      max-height: 68vh;
+      object-fit: contain;
+    }
+    .lb-caption {
+      margin-top: 32px;
+      text-align: center;
+      max-width: 560px;
+    }
+    .lb-caption h3 {
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(22px, 2.5vw, 30px);
+    }
+    .lb-caption p {
+      font-family: var(--serif);
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--muted);
+      margin-top: 10px;
+    }
+    .lb-counter {
+      display: block;
+      margin-top: 20px;
+      font-size: 10px;
+      letter-spacing: .3em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ── responsive ── */
+    @media (max-width: 800px) {
+      .top-bar { flex-direction: column; gap: 8px; text-align: center; }
+      .top-nav { gap: 18px; }
+      .hero { grid-template-columns: 1fr; gap: 32px; padding: 24px 0 60px; }
+      .image-frame { aspect-ratio: 4/3; }
+      .entry { grid-template-columns: 1fr; gap: 14px; padding: 32px 0; }
+      .entry-meta { flex-direction: row; gap: 14px; align-items: baseline; }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+      .section-sub { text-align: left; }
+      .booking { padding: 60px 0; }
+      .booking-inner { grid-template-columns: 1fr; gap: 32px; }
+      .foot { flex-direction: column; gap: 8px; text-align: center; }
+    }
+    @media (max-width: 480px) {
+      .gallery-grid { grid-template-columns: 1fr; }
+    }
+
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-thumb { background: var(--muted); border-radius: 10px; }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+     TOP BAR
+══════════════════════════════════════════ -->
+<div class="wrap">
+  <header class="top-bar">
+    <a href="/" class="mark">Les Vendredis</a>
+    <nav class="top-nav">
+      <a href="#journal">Journal</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#stay">Stay</a>
+    </nav>
+    <span>Sainte-Luce · Martinique</span>
+  </header>
+</div>
+
+<!-- ══════════════════════════════════════════
+     HERO
+══════════════════════════════════════════ -->
+<div class="wrap">
+  <section class="hero">
+    <div class="image-frame">
+      <img src="public/images/IMG_0387.jpg" alt="The A-frame cabin at Les Vendredis" />
+      <span class="image-cap">A-frame · Sainte-Luce, Martinique</span>
+    </div>
+    <div>
+      <div class="eyebrow">A-frame · Sainte-Luce</div>
+      <h1>A Friday<br>that <em>lasts.</em></h1>
+      <p class="lead">An A-frame cabin and a garden in the south of Martinique. Built by hand by Anaïs, Bolo, Léon and Same — from the foundation to the last plank.</p>
+      <p class="lead muted">A small house, a wide garden, and the sea three minutes away. A place to disconnect.</p>
+      <div class="ctas">
+        <a class="btn primary" href="https://www.airbnb.fr/rooms/1651467419646453001" target="_blank" rel="noopener">
+          Book on Airbnb <span class="arrow">→</span>
+        </a>
+        <a class="btn" href="https://www.booking.com/hotel/mq/an-atypical-cabin.fr.html" target="_blank" rel="noopener">
+          Book on Booking <span class="arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ══════════════════════════════════════════
+     JOURNAL
+     ─────────────────────────────────────────
+     TO ADD AN ENTRY:
+     1. Copy one <article class="entry"> block
+     2. Paste it just below the <div class="journal"> line
+     3. Fill in: date, tag, title, paragraphs, image filename
+══════════════════════════════════════════ -->
+<div class="wrap">
+  <section id="journal">
+    <div class="section-head">
+      <h2>The <em>journal.</em></h2>
+      <p class="section-sub">Notes from the build, the garden, and the slow life of Sainte-Luce.</p>
+    </div>
+
+    <div class="journal">
+
+      <!-- ENTRY — copy this block to add a new one -->
+      <article class="entry">
+        <div class="entry-meta">
+          <span class="entry-date">Sunday, May 3rd 2026</span>
+          <span class="entry-tag">N°02 · Build log</span>
+        </div>
+        <div class="entry-body">
+          <h3>Digging the trenches for hot <em>water.</em></h3>
+          <p>This Sunday we started cutting the trenches to bring hot water into the kitchen and the A-frame.</p>
+          <p>Slow, hot work — but every line in the dirt is one more thing finished by hand. Léon helped carry the pipe.</p>
+        </div>
+        <div class="entry-img">
+          <img src="public/images/IMG_3038.jpg" alt="Digging trenches" />
+        </div>
+      </article>
+      <!-- END ENTRY -->
+
+      <!-- ENTRY — copy this block to add a new one -->
+      <article class="entry">
+        <div class="entry-meta">
+          <span class="entry-date">Saturday, April 12th 2026</span>
+          <span class="entry-tag">N°01 · Garden</span>
+        </div>
+        <div class="entry-body">
+          <h3>The mango trees are <em>heavy</em> again.</h3>
+          <p>First mangoes of the season fell this week. The garden is lush after two weeks of rain — the bougainvillea by the path is opening.</p>
+          <p>We left a crate at the gate for the neighbours. Some came back with bananas.</p>
+        </div>
+        <div class="entry-img">
+          <img src="public/images/IMG_0390.jpg" alt="Garden" />
+        </div>
+      </article>
+      <!-- END ENTRY -->
+
+    </div><!-- /.journal -->
+    <div class="journal-foot">— more entries to come —</div>
+  </section>
+</div>
+
+<!-- ══════════════════════════════════════════
+     GALLERY
+══════════════════════════════════════════ -->
+<div class="wrap" id="gallery">
+  <div class="section-head">
+    <h2>The <em>place.</em></h2>
+    <p class="section-sub">Views of the cabin, the garden, and the land we built from scratch.</p>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="gallery-grid">
+    <div class="gallery-item" onclick="openLightbox(0)">
+      <img src="public/images/IMG_0387.jpg" alt="The A-Frame Exterior" loading="lazy" />
+      <div class="gallery-caption"><span>The A-Frame Exterior</span></div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox(1)">
+      <img src="public/images/IMG_0390.jpg" alt="Verdant Canopy" loading="lazy" />
+      <div class="gallery-caption"><span>Verdant Canopy</span></div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox(2)">
+      <img src="public/images/IMG_0391.jpg" alt="Artisanal Details" loading="lazy" />
+      <div class="gallery-caption"><span>Artisanal Details</span></div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox(3)">
+      <img src="public/images/IMG_0392.jpg" alt="Coastal Proximity" loading="lazy" />
+      <div class="gallery-caption"><span>Coastal Proximity</span></div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox(4)">
+      <img src="public/images/IMG_0396.jpg" alt="Golden Hour" loading="lazy" />
+      <div class="gallery-caption"><span>Golden Hour</span></div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox(5)">
+      <img src="public/images/IMG_0896.jpg" alt="Botanical Sanctuary" loading="lazy" />
+      <div class="gallery-caption"><span>Botanical Sanctuary</span></div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox(6)">
+      <img src="public/images/IMG_0940.jpg" alt="Morning Mist" loading="lazy" />
+      <div class="gallery-caption"><span>Morning Mist</span></div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox(7)">
+      <img src="public/images/IMG_1251.jpg" alt="Natural Light" loading="lazy" />
+      <div class="gallery-caption"><span>Natural Light</span></div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox(8)">
+      <img src="public/images/IMG_1348.jpg" alt="Forest Serenity" loading="lazy" />
+      <div class="gallery-caption"><span>Forest Serenity</span></div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox(9)">
+      <img src="public/images/IMG_1355.jpg" alt="Architectural Detail" loading="lazy" />
+      <div class="gallery-caption"><span>Architectural Detail</span></div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox(10)">
+      <img src="public/images/IMG_3290.jpg" alt="Tropical Flora" loading="lazy" />
+      <div class="gallery-caption"><span>Tropical Flora</span></div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox(11)">
+      <img src="public/images/IMG_3343.jpg" alt="Sunset View" loading="lazy" />
+      <div class="gallery-caption"><span>Sunset View</span></div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox(12)">
+      <img src="public/images/IMG_3936.jpg" alt="Wooden Frame" loading="lazy" />
+      <div class="gallery-caption"><span>Wooden Frame</span></div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox(13)">
+      <img src="public/images/IMG_4621.JPG" alt="Aerial View" loading="lazy" />
+      <div class="gallery-caption"><span>Aerial View</span></div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox(14)">
+      <img src="public/images/IMG_4688.JPG" alt="Mountain Backdrop" loading="lazy" />
+      <div class="gallery-caption"><span>Mountain Backdrop</span></div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox(15)">
+      <img src="public/images/IMG_6303.jpg" alt="Garden Path" loading="lazy" />
+      <div class="gallery-caption"><span>Garden Path</span></div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox(16)">
+      <img src="public/images/IMG_7953.jpg" alt="The Domain" loading="lazy" />
+      <div class="gallery-caption"><span>The Domain</span></div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox(17)">
+      <img src="public/images/AA4940C0-AE7D-4C3A-8304-688BF02A1955.jpg" alt="Garden Path" loading="lazy" />
+      <div class="gallery-caption"><span>Garden Path</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     BOOKING
+══════════════════════════════════════════ -->
+<section class="booking" id="stay">
+  <div class="wrap booking-inner">
+    <div>
+      <h2>Come stay in <em>our Friday.</em></h2>
+      <p class="booking-sub">Book through whichever platform you already trust — the cabin and the welcome are the same.</p>
+    </div>
+    <div class="b-ctas">
+      <a class="b-btn" href="https://www.airbnb.fr/rooms/1651467419646453001" target="_blank" rel="noopener">
+        <span class="b-label">Airbnb</span><span>Open ↗</span>
+      </a>
+      <a class="b-btn" href="https://www.booking.com/hotel/mq/an-atypical-cabin.fr.html" target="_blank" rel="noopener">
+        <span class="b-label">Booking.com</span><span>Open ↗</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════ -->
+<div class="wrap">
+  <footer class="foot">
+    <span>© 2026 · Built by hand</span>
+    <span>Anaïs &amp; Bolo · hello@lesvendredis.casa</span>
+  </footer>
+</div>
+
+<!-- ══════════════════════════════════════════
+     LIGHTBOX
+══════════════════════════════════════════ -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true">
+  <button class="lb-close" onclick="closeLightbox()" aria-label="Close">✕</button>
+  <button class="lb-nav lb-prev" onclick="moveLightbox(-1)" aria-label="Previous">‹</button>
+  <button class="lb-nav lb-next" onclick="moveLightbox(1)" aria-label="Next">›</button>
+  <div class="lb-content">
+    <img class="lb-img" id="lb-img" src="" alt="" />
+    <div class="lb-caption">
+      <h3 id="lb-title"></h3>
+      <p id="lb-desc"></p>
+      <span class="lb-counter" id="lb-counter"></span>
+    </div>
+  </div>
+</div>
+
+<script>
+  const GALLERY = [
+    { src: "public/images/IMG_0387.jpg",  title: "The A-Frame Exterior",  desc: "Sustainable wooden architecture nestled in the lush tropical forest of Martinique." },
+    { src: "public/images/IMG_0390.jpg",  title: "Verdant Canopy",        desc: "The view from the loft, looking out into the heart of the garden." },
+    { src: "public/images/IMG_0391.jpg",  title: "Artisanal Details",     desc: "Hand-crafted local timber used throughout the interior structure." },
+    { src: "public/images/IMG_0392.jpg",  title: "Coastal Proximity",     desc: "Just a short walk from the cabin to the pristine Caribbean shores." },
+    { src: "public/images/IMG_0396.jpg",  title: "Golden Hour",           desc: "Warm light filtering through the palm leaves at dusk." },
+    { src: "public/images/IMG_0896.jpg",  title: "Botanical Sanctuary",   desc: "The private garden surrounding the A-Frame, filled with native flora." },
+    { src: "public/images/IMG_0940.jpg",  title: "Morning Mist",          desc: "The cabin emerging from the mist on a humid tropical morning." },
+    { src: "public/images/IMG_1251.jpg",  title: "Natural Light",         desc: "Sunlight streaming through the architectural lines of the cabin." },
+    { src: "public/images/IMG_1348.jpg",  title: "Forest Serenity",       desc: "Surrounded by the tranquility of untouched tropical nature." },
+    { src: "public/images/IMG_1355.jpg",  title: "Architectural Detail",  desc: "The geometric precision of the A-Frame design against natural elements." },
+    { src: "public/images/IMG_3290.jpg",  title: "Tropical Flora",        desc: "The lush vegetation surrounding and embracing the structure." },
+    { src: "public/images/IMG_3343.jpg",  title: "Sunset View",           desc: "The cabin silhouetted against the Caribbean sunset." },
+    { src: "public/images/IMG_3936.jpg",  title: "Wooden Frame",          desc: "The structural beauty of locally sourced timber." },
+    { src: "public/images/IMG_4621.JPG",  title: "Aerial View",           desc: "A panoramic view from above the cabin and surrounding forest." },
+    { src: "public/images/IMG_4688.JPG",  title: "Mountain Backdrop",     desc: "The A-Frame framed against the dramatic Martinique landscape." },
+    { src: "public/images/IMG_6303.jpg",  title: "Garden Path",           desc: "The winding path leading through the botanical sanctuary." },
+    { src: "public/images/IMG_7953.jpg",  title: "The Domain",            desc: "The full domain — cabin, garden, and sky." },
+    { src: "public/images/AA4940C0-AE7D-4C3A-8304-688BF02A1955.jpg", title: "Garden Path", desc: "Morning light on the garden path. May 2024." },
+  ];
+
+  let current = 0;
+
+  function openLightbox(index) {
+    current = index;
+    render();
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function moveLightbox(dir) {
+    current = (current + dir + GALLERY.length) % GALLERY.length;
+    render();
+  }
+
+  function render() {
+    const item = GALLERY[current];
+    document.getElementById('lb-img').src = item.src;
+    document.getElementById('lb-img').alt = item.title;
+    document.getElementById('lb-title').textContent = item.title;
+    document.getElementById('lb-desc').textContent = item.desc;
+    document.getElementById('lb-counter').textContent = (current + 1) + ' — ' + GALLERY.length;
+  }
+
+  document.addEventListener('keydown', e => {
+    const lb = document.getElementById('lightbox');
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowRight') moveLightbox(1);
+    if (e.key === 'ArrowLeft') moveLightbox(-1);
+  });
+
+  document.getElementById('lightbox').addEventListener('click', e => {
+    if (e.target === e.currentTarget) closeLightbox();
+  });
+</script>
+
+</body>
+</html>
