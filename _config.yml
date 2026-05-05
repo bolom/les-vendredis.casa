@@ -1,0 +1,18 @@
+title: "Les Vendredis"
+description: "Journal from Martinique"
+url: "https://les-vendredis.casa"
+baseurl: ""
+
+permalink: /journal/:slug/
+
+source: .
+destination: _site
+plugins:
+  - jekyll-feed
+
+collections:
+  posts:
+    output: true
+
+liquid:
+  error_mode: strict

@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
-import { IMAGES } from './constants';
+import { IMAGES, ALL_ENTRIES } from './constants';
 
 const BOOKING = {
   airbnb: 'https://www.airbnb.fr/hosting/listings/editor/1651467419646453001/details/photo-tour',
@@ -9,34 +9,12 @@ const BOOKING = {
     'https://www.booking.com/hotel/mq/an-atypical-cabin.fr.html?label=gen173bo-10CAsomQFCEWFuLWF0eXBpY2FsLWNhYmluSDNYA2iZAYgBAZgBM7gBB8gBDdgBA-gBAfgBAYgCAZgCBqgCAbgC4fTTzwbAAgHSAiRkNDRmY2NlYi02M2ZiLTQ3NGYtYjk5OC0zYmY2ZTNlNjZkYmXYAgHgAgE&sid=c7e1c5589f91f2a47df92f453ef0ca6a&aid=304142',
 };
 
-const ENTRIES = [
-  {
-    date: 'Sunday, May 3rd 2026',
-    tag: 'N°02 · Build log',
-    title: 'Digging the trenches for hot water.',
-    titleAccent: 'water',
-    body: [
-      'This Sunday we started cutting the trenches to bring hot water into the kitchen and the A-frame.',
-      'Slow, hot work — but every line in the dirt is one more thing finished by hand. Léon helped carry the pipe.',
-    ],
-    image: '/images/IMG_3038.jpg',
-  },
-  {
-    date: 'Saturday, April 12th 2026',
-    tag: 'N°01 · Garden',
-    title: 'The mango trees are heavy again.',
-    titleAccent: 'heavy',
-    body: [
-      'First mangoes of the season fell this week. The garden is lush after two weeks of rain — the bougainvillea by the path is opening.',
-      'We left a crate at the gate for the neighbours. Some came back with bananas.',
-    ],
-    image: '/images/IMG_0390.jpg',
-  },
-];
-
 export default function App() {
-  const [selectedId, setSelectedId] = useState<string | null>(null);
-  const [currentIndex, setCurrentIndex] = useState<number>(0);
+   const [selectedId, setSelectedId] = useState<string | null>(null);
+   const [currentIndex, setCurrentIndex] = useState<number>(0);
+   const [showAllEntries, setShowAllEntries] = useState<boolean>(false);
+   
+   const entriesToShow = showAllEntries ? ALL_ENTRIES : ALL_ENTRIES.slice(0, 2);
 
   const selectedImage = IMAGES.find((img) => img.id === selectedId);
 
@@ -144,23 +122,30 @@ export default function App() {
             <p className="journal-sub">Notes from the build, the garden, and the slow life of Sainte-Luce.</p>
           </div>
 
-          {ENTRIES.map((entry, i) => (
-            <article className="entry" key={i}>
-              <div className="entry-meta">
-                <span className="entry-date">{entry.date}</span>
-                <span className="entry-tag">{entry.tag}</span>
-              </div>
-              <div className="entry-body">
-                <h3>{renderEntryTitle(entry.title, entry.titleAccent)}</h3>
-                {entry.body.map((p, j) => <p key={j}>{p}</p>)}
-              </div>
-              <div className="entry-img">
-                <img src={entry.image} alt={entry.title} className="w-full h-full object-cover" />
-              </div>
-            </article>
-          ))}
+          {entriesToShow.map((entry, i) => (
+             <article className="entry" key={i}>
+               <div className="entry-meta">
+                 <span className="entry-date">{entry.date}</span>
+                 <span className="entry-tag">{entry.tag}</span>
+               </div>
+               <div className="entry-body">
+                 <h3>{renderEntryTitle(entry.title, entry.titleAccent)}</h3>
+                 {entry.body.map((p, j) => <p key={j}>{p}</p>)}
+               </div>
+               <div className="entry-img">
+                 <img src={entry.image} alt={entry.title} className="w-full h-full object-cover" />
+               </div>
+             </article>
+           ))}
 
-          <div className="journal-foot">— more entries to come —</div>
+           {!showAllEntries && ALL_ENTRIES.length > 2 && (
+             <button 
+               onClick={() => setShowAllEntries(true)}
+               className="journal-foot hover:text-accent transition-colors"
+             >
+               — {ALL_ENTRIES.length - 2} more entries —
+             </button>
+           )}
         </section>
       </div>
 

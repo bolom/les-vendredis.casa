@@ -1,0 +1,51 @@
+---
+layout: default
+title: "Journal — All Entries"
+---
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter+Tight:wght@300;400;500&display=swap" rel="stylesheet" />
+
+<div class="wrap">
+  <section class="journal">
+    <div class="journal-head">
+      <h2>All <em>Entries.</em></h2>
+      <p class="sub">A complete archive of the journal, from newest to oldest. Each entry has its own page with full content.</p>
+    </div>
+
+    <div class="journal-entries">
+      {% for post in site.posts %}
+      <article class="entry">
+        <div class="entry-meta">
+          <span class="entry-num">{% include roman.html number=site.posts.size | minus: forloop.index0 %}</span>
+          <span class="entry-date">{{ post.date | date: "%B %d, %Y" }}</span>
+          <span class="entry-tag">{{ post.tag }}</span>
+        </div>
+        <div class="entry-body">
+          <h3>
+            <span class="lang-fr">{{ post.title_fr }}</span>
+            <span class="lang-en" style="display:none;">{{ post.title_en }}</span>
+          </h3>
+          <p>
+            <span class="lang-fr">{{ post.excerpt_fr }}</span>
+            <span class="lang-en" style="display:none;">{{ post.excerpt_en }}</span>
+          </p>
+          <a href="{{ post.url | relative_url }}" class="read-more" style="display:inline-block; margin-top:12px; border-bottom:1px solid var(--rule); padding-bottom:2px; color:var(--accent); transition:border-color .25s;">Read more →</a>
+        </div>
+        <div class="entry-img">
+          <img src="{{ '/public/images/' | append: post.image | relative_url }}" alt="{{ post.image_alt_fr }}" />
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </section>
+</div>
+
+<div class="wrap">
+  <footer class="foot">
+    <span class="foot-left">© MMXXVI</span>
+    <span class="foot-center">Anaïs &amp; Bolo · Built by hand</span>
+    <span class="foot-right">hello@lesvendredis.casa</span>
+  </footer>
+</div>

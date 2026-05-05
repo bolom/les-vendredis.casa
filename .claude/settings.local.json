@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(gunzip -c /Users/bolo/.claude/projects/-Users-bolo-Documents-Code-lobo-studio-les-vendredis-casa/3300be3e-fdec-4125-8ef0-43a7c4a20d50/tool-results/webfetch-1777976880065-fhsvj3.bin)",
+      "Bash(tar -x -O 'les-vendredis-casa/project/Les Vendredis Casa.html')",
+      "Bash(npm run *)",
+      "Bash(git push *)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "WebFetch(domain:api.anthropic.com)",
+      "Bash(gunzip -c /Users/bolo/.claude/projects/-Users-bolo-Documents-Code-lobo-studio-les-vendredis-casa/3300be3e-fdec-4125-8ef0-43a7c4a20d50/tool-results/webfetch-1777986487066-78jofi.bin)",
+      "Bash(tar -t)",
+      "Bash(tar -x -O 'les-vendredis-casa/chats/chat1.md')",
+      "Bash(python3 *)"
+    ]
+  }
+}

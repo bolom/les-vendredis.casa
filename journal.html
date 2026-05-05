@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Journal · Les Vendredis · Sainte-Luce, Martinique</title>
+  <meta name="description" content="Notes from the build, the garden, and the slow life of Sainte-Luce. Updated by Anaïs, Bolo, Léon and Samsam." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter+Tight:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --cream:      #F8F1E4;
+      --cream-soft: #F2EAD9;
+      --ink:        #1F1611;
+      --ink-soft:   #4A3A2D;
+      --muted:      #8C7B66;
+      --rule:       rgba(31,22,17,.14);
+      --gold:       #B08A4D;
+      --accent:     #B85F38;
+      --serif:      'Cormorant Garamond', 'Times New Roman', serif;
+      --sans:       'Inter Tight', ui-sans-serif, system-ui, sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-weight: 300;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    body {
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(255,240,210,.5) 0%, transparent 60%),
+        var(--cream);
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    ::selection { background: var(--accent); color: var(--cream); }
+
+    .wrap {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 clamp(24px, 5vw, 72px);
+    }
+
+    /* ── top bar ── */
+    .top-bar {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      padding: 32px 0;
+      gap: 24px;
+      font-size: 10.5px;
+      letter-spacing: .28em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 400;
+    }
+    .top-left { justify-self: start; }
+    .top-right { justify-self: end; display: flex; gap: 28px; }
+    .top-right a { transition: color .25s; }
+    .top-right a:hover { color: var(--ink); }
+    .mark {
+      justify-self: center;
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 24px;
+      letter-spacing: .01em;
+      text-transform: none;
+      color: var(--ink);
+      font-weight: 400;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .ornament { width: 24px; height: 1px; background: var(--gold); opacity: .7; display: inline-block; }
+
+    /* ── journal ── */
+    .journal { padding: 80px 0 60px; }
+    .journal-head {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: end;
+      gap: 60px;
+      margin-bottom: 64px;
+    }
+    .journal-head h1 {
+      font-family: var(--serif);
+      font-weight: 300;
+      font-size: clamp(48px, 5.5vw, 80px);
+      line-height: 1;
+      letter-spacing: -.015em;
+    }
+    .journal-head h1 em { font-style: italic; color: var(--accent); }
+    .journal-head .sub {
+      font-family: var(--serif);
+      font-size: 18px;
+      color: var(--muted);
+      line-height: 1.55;
+      font-style: italic;
+      max-width: 36ch;
+    }
+
+    .entry {
+      display: grid;
+      grid-template-columns: 160px 1fr 1.1fr;
+      gap: clamp(28px, 4vw, 64px);
+      padding: 48px 0;
+      border-top: 1px solid var(--rule);
+      align-items: start;
+    }
+    .entry:first-of-type { border-top-color: var(--ink-soft); }
+    .entry-meta { display: flex; flex-direction: column; gap: 10px; }
+    .entry-num {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 32px;
+      color: var(--gold);
+      font-weight: 400;
+      line-height: 1;
+    }
+    .entry-date {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 16px;
+      color: var(--ink);
+      font-weight: 400;
+    }
+    .entry-tag {
+      font-size: 9.5px;
+      letter-spacing: .32em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 500;
+    }
+    .entry-body h2 {
+      font-family: var(--serif);
+      font-weight: 300;
+      font-size: clamp(28px, 2.6vw, 38px);
+      line-height: 1.08;
+      letter-spacing: -.01em;
+      margin-bottom: 18px;
+    }
+    .entry-body h2 em { font-style: italic; color: var(--accent); }
+    .entry-body p {
+      font-family: var(--serif);
+      font-size: 18px;
+      line-height: 1.6;
+      color: var(--ink-soft);
+      font-weight: 400;
+    }
+    .entry-body p + p { margin-top: 12px; }
+    .entry-img {
+      aspect-ratio: 4/3;
+      overflow: hidden;
+      box-shadow: 0 20px 40px -25px rgba(31,22,17,.3);
+    }
+    .entry-img img { width: 100%; height: 100%; object-fit: cover; }
+
+    /* ── footer ── */
+    .foot {
+      padding: 48px 0;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 24px;
+      font-size: 10px;
+      letter-spacing: .28em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border-top: 1px solid var(--rule);
+      font-weight: 500;
+      margin-top: 60px;
+    }
+    .foot-center {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 14px;
+      letter-spacing: .02em;
+      text-transform: none;
+      color: var(--ink);
+      font-weight: 400;
+    }
+    .foot-left { justify-self: start; }
+    .foot-right { justify-self: end; }
+
+    @media (max-width: 900px) {
+      .top-bar { grid-template-columns: 1fr; gap: 12px; text-align: center; padding: 24px 0; }
+      .top-left, .top-right { justify-self: center; }
+      .top-right { flex-wrap: wrap; justify-content: center; gap: 18px; }
+      .journal { padding: 60px 0 40px; }
+      .journal-head { grid-template-columns: 1fr; gap: 14px; margin-bottom: 40px; }
+      .entry { grid-template-columns: 1fr; gap: 18px; padding: 36px 0; }
+      .entry-meta { flex-direction: row; gap: 14px; align-items: baseline; flex-wrap: wrap; }
+      .entry-num { font-size: 24px; }
+      .foot { grid-template-columns: 1fr; text-align: center; gap: 10px; }
+      .foot-left, .foot-right { justify-self: center; }
+    }
+
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-thumb { background: var(--muted); border-radius: 10px; }
+  </style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="top-bar">
+    <span class="top-left">Sainte-Luce · Martinique</span>
+    <a href="/" class="mark">
+      <span class="ornament"></span>Les Vendredis<span class="ornament"></span>
+    </a>
+    <nav class="top-right">
+      <a href="/#journal">Journal</a>
+      <a href="/#gallery">Gallery</a>
+      <a href="/#stay">Réserver</a>
+    </nav>
+  </header>
+</div>
+
+<div class="wrap">
+  <section class="journal">
+    <div class="journal-head">
+      <h1>The <em>journal.</em></h1>
+      <p class="sub">Notes from the build, the garden, and the slow life of Sainte-Luce. Updated by the family.</p>
+    </div>
+
+    <div>
+
+      <!-- ENTRY — copy this block to add a new one -->
+      <article class="entry">
+        <div class="entry-meta">
+          <span class="entry-num">III</span>
+          <span class="entry-date">Monday, May 5th 2026</span>
+          <span class="entry-tag">Build log</span>
+        </div>
+        <div class="entry-body">
+          <h2>The pipe goes in, the water <em>follows.</em></h2>
+          <p>Two days of digging through the red Martinique earth. The trench runs from the main line, under the terrace, all the way to the A-frame and the kitchen — about thirty metres of pipe laid by hand.</p>
+          <p>Hot water is coming. One more thing we built ourselves, from the ground up.</p>
+        </div>
+        <div class="entry-img">
+          <img src="public/images/IMG_3594.jpg" alt="Bolo digging the trench for the water pipe" />
+        </div>
+      </article>
+      <!-- END ENTRY -->
+
+      <!-- ENTRY — copy this block to add a new one -->
+      <article class="entry">
+        <div class="entry-meta">
+          <span class="entry-num">II</span>
+          <span class="entry-date">Sunday, May 3rd 2026</span>
+          <span class="entry-tag">Build log</span>
+        </div>
+        <div class="entry-body">
+          <h2>Digging the trenches for hot <em>water.</em></h2>
+          <p>This Sunday we started cutting the trenches to bring hot water into the kitchen and the A-frame.</p>
+          <p>Slow, hot work — but every line in the dirt is one more thing finished by hand. Léon helped carry the pipe.</p>
+        </div>
+        <div class="entry-img">
+          <img src="public/images/IMG_3038.jpg" alt="Digging trenches" />
+        </div>
+      </article>
+      <!-- END ENTRY -->
+
+      <!-- ENTRY — copy this block to add a new one -->
+      <article class="entry">
+        <div class="entry-meta">
+          <span class="entry-num">I</span>
+          <span class="entry-date">Saturday, April 12th 2026</span>
+          <span class="entry-tag">The garden</span>
+        </div>
+        <div class="entry-body">
+          <h2>The mango trees are <em>heavy</em> again.</h2>
+          <p>First mangoes of the season fell this week. The garden is lush after two weeks of rain — the bougainvillea by the path is opening.</p>
+          <p>We left a crate at the gate for the neighbours. Some came back with bananas.</p>
+        </div>
+        <div class="entry-img">
+          <img src="public/images/IMG_0390.jpg" alt="Garden" />
+        </div>
+      </article>
+      <!-- END ENTRY -->
+
+    </div>
+  </section>
+</div>
+
+<div class="wrap">
+  <footer class="foot">
+    <span class="foot-left">© MMXXVI</span>
+    <span class="foot-center">Anaïs &amp; Bolo · Built by hand</span>
+    <span class="foot-right">hello@lesvendredis.casa</span>
+  </footer>
+</div>
+
+</body>
+</html>

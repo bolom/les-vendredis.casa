@@ -1,5 +1,314 @@
 import { ImageItem } from './types';
 
+export interface Entry {
+  date: string;
+  tag: string;
+  title: string;
+  titleAccent: string;
+  body: string[];
+  image: string;
+}
+
+export const ALL_ENTRIES: Entry[] = [
+  {
+    date: 'Sunday, May 3rd 2026',
+    tag: 'N°02 · Build log',
+    title: 'Digging the trenches for hot water.',
+    titleAccent: 'water',
+    body: [
+      'This Sunday we started cutting the trenches to bring hot water into the kitchen and the A-frame.',
+      'Slow, hot work — but every line in the dirt is one more thing finished by hand. Léon helped carry the pipe.',
+    ],
+    image: '/images/IMG_3038.jpg',
+  },
+  {
+    date: 'Saturday, April 12th 2026',
+    tag: 'N°01 · Garden',
+    title: 'The mango trees are heavy again.',
+    titleAccent: 'heavy',
+    body: [
+      'First mangoes of the season fell this week. The garden is lush after two weeks of rain — the bougainvillea by the path is opening.',
+      'We left a crate at the gate for the neighbours. Some came back with bananas.',
+    ],
+    image: '/images/IMG_0390.jpg',
+  },
+  {
+    date: 'Friday, May 2nd 2026',
+    tag: 'N°03 · Build documentation',
+    title: 'Building Your Dream: The Next Generation at Les Vendredis',
+    titleAccent: 'Generation',
+    body: [
+      'A young builder standing on the upper deck frames the ultimate promise of the project: shelter for the people you love, built with your own hands.',
+      'This is not just architecture. This is family legacy being constructed, one timber frame at a time.',
+    ],
+    image: '/images/IMG_1348.jpg',
+  },
+  {
+    date: 'Thursday, May 1st 2026',
+    tag: 'N°04 · People',
+    title: 'The Human Element: Women Building Paradise',
+    titleAccent: 'Building',
+    body: [
+      'The double thumbs-up visible in this photograph isn\'t performative—it\'s genuine satisfaction of someone who knows they\'ve done skilled work well.',
+      'In construction contexts, women remain underrepresented. Yet here, in a tropical climate where precision matters, excellence speaks regardless of gender.',
+    ],
+    image: '/images/IMG_0940.jpg',
+  },
+  {
+    date: 'Wednesday, April 30th 2026',
+    tag: 'N°05 · Shelter',
+    title: 'The Art of the Siesta: Designing Spaces for Rest',
+    titleAccent: 'Rest',
+    body: [
+      'In a world obsessed with productivity, the siesta is a radical act. The hammock suspended between ancient trees isn\'t a luxury amenity—it\'s architecture for stillness.',
+      'Every aspect of the design prioritizes not doing but being. This is revolutionary in how we think about shelter.',
+    ],
+    image: '/images/IMG_0396.jpg',
+  },
+  {
+    date: 'Tuesday, April 29th 2026',
+    tag: 'N°06 · Architecture',
+    title: 'Why A-Frame? The Perfect Geometry for Tropical Living',
+    titleAccent: 'Perfect',
+    body: [
+      'The A-frame is deceptive in its simplicity. Four timber pieces converging at a peak, and already you\'ve created shelter.',
+      'Beneath apparent simplicity lies sophisticated structural engineering, proven across centuries of building tradition.',
+    ],
+    image: '/images/IMG_STRUCTURE.jpg',
+  },
+  {
+    date: 'Monday, April 28th 2026',
+    tag: 'N°07 · Craft',
+    title: 'The Craft of Shingling: Detail in Every Row',
+    titleAccent: 'Detail',
+    body: [
+      'The first time you run your hand across properly installed wooden shingles, you understand something specifications can\'t convey: this is craft.',
+      'Not mass production. Not factory uniformity. Each shingle is an individual piece of material, shaped by grain, placed with intention.',
+    ],
+    image: '/images/IMG_1355.jpg',
+  },
+  {
+    date: 'Sunday, April 27th 2026',
+    tag: 'N°08 · Progress',
+    title: 'Raising the Ridge: The Frame Takes Shape',
+    titleAccent: 'Ridge',
+    body: [
+      'There\'s a particular magic in the moment when a building frame stands alone, before walls, before infill, before the thousand details that transform frame into enclosed space.',
+      'At this moment, the building exists as pure geometry, pure intention. The frame is the building\'s skeleton made visible.',
+    ],
+    image: '/images/IMG_0938.jpg',
+  },
+  {
+    date: 'Saturday, April 26th 2026',
+    tag: 'N°09 · Garden',
+    title: 'Garden to Table: The Promise of Tropical Harvests',
+    titleAccent: 'Promise',
+    body: [
+      'Two perfect yellow guavas represent a simple proposition: that the land, treated well, will feed you.',
+      'Not as a cute concept, but as daily reality of walking outside and picking breakfast from a tree you\'ve helped maintain.',
+    ],
+    image: '/images/IMG_0392.jpg',
+  },
+  {
+    date: 'Friday, April 25th 2026',
+    tag: 'N°10 · Build log',
+    title: 'Building in Harmony: Craftsmanship Meets Nature',
+    titleAccent: 'Harmony',
+    body: [
+      'Construction photographed in golden hour reveals both the beauty of genuine work and the integration of human-made structure with tropical landscape.',
+      'The freshly-installed wooden shingles glow with reddish warmth as palm fronds are backlit, creating haloes.',
+    ],
+    image: '/images/IMG_6303.jpg',
+  },
+  {
+    date: 'Thursday, April 24th 2026',
+    tag: 'N°11 · People',
+    title: 'Hand-Built in the Tropics: The Realities of DIY Construction',
+    titleAccent: 'Tropics',
+    body: [
+      'One person, at height, building structure through personal commitment and accumulated expertise.',
+      'The building exists because this individual decided to invest the effort to make it real.',
+    ],
+    image: '/images/IMG_4621.JPG',
+  },
+  {
+    date: 'Wednesday, April 23rd 2026',
+    tag: 'N°12 · Process',
+    title: 'The Skeleton of Dreams: Witnessing Structural Becoming',
+    titleAccent: 'Skeleton',
+    body: [
+      'The transition between weathered and fresh shingles documents work that won\'t exist in the final result.',
+      'Making it precious as historical record of the building\'s becoming.',
+    ],
+    image: '/images/IMG_1355.jpg',
+  },
+  {
+    date: 'Tuesday, April 22nd 2026',
+    tag: 'N°13 · Safety',
+    title: 'Working at Heights: Safety, Competence, and Respect for Risk',
+    titleAccent: 'Safety',
+    body: [
+      'A harness worn correctly, a cap for sun protection, gloves visible—these are visual indicators that someone respects the risk they\'re taking.',
+      'Every safety element is present and properly used, evidence of professionalism.',
+    ],
+    image: '/images/IMG_0943.jpg',
+  },
+  {
+    date: 'Monday, April 21st 2026',
+    tag: 'N°14 · Engineering',
+    title: 'DIY Scaffolding: Engineering Makeshift at Height',
+    titleAccent: 'Engineering',
+    body: [
+      'Rather than buying generic commercial scaffolding, sophisticated builders construct specific solutions.',
+      'This scaffolding has been engineered and built to work here, then it will be disassembled.',
+    ],
+    image: '/images/IMG_0896.jpg',
+  },
+  {
+    date: 'Sunday, April 20th 2026',
+    tag: 'N°15 · Design',
+    title: 'DIY Tropical Architecture: Building the Signature Look',
+    titleAccent: 'Signature',
+    body: [
+      'A wooden structure with shingle-clad walls, a corrugated metal roof, string lights suspended underneath.',
+      'Nothing here is architecturally complex. Everything here is architecturally right.',
+    ],
+    image: '/images/IMG_3343.jpg',
+  },
+  {
+    date: 'Saturday, April 19th 2026',
+    tag: 'N°16 · Labor',
+    title: 'Tropical Homesteading: The Labor Behind the Paradise',
+    titleAccent: 'Labor',
+    body: [
+      'The person working in exposed soil is managing aggressive tropical growth—not fighting it but directing it toward desired outcomes.',
+      'This landscape isn\'t passive. It requires ongoing engagement, attention, care.',
+    ],
+    image: '/images/IMG_1251.jpg',
+  },
+  {
+    date: 'Friday, April 18th 2026',
+    tag: 'N°17 · Interior',
+    title: 'Simple Living: The Interior Promise',
+    titleAccent: 'Simple',
+    body: [
+      'Two people on air mattresses in an unfinished building, looking at tropical landscape through triangular opening.',
+      'Experiencing the building\'s essential promise before completion.',
+    ],
+    image: '/images/IMG_1251.jpg',
+  },
+  {
+    date: 'Thursday, April 17th 2026',
+    tag: 'N°18 · Garden',
+    title: 'Botanical Contrast: Composing the Wild Garden',
+    titleAccent: 'Contrast',
+    body: [
+      'White Peace Lily and red foliage create composition that draws eye through layered depth.',
+      'Beauty built on regular labor and horticultural knowledge.',
+    ],
+    image: '/images/IMG_0390.jpg',
+  },
+  {
+    date: 'Wednesday, April 16th 2026',
+    tag: 'N°19 · Foundation',
+    title: 'The Foundation Phase: Breaking Ground',
+    titleAccent: 'Foundation',
+    body: [
+      'Concrete slab that will be unseen but absolutely essential.',
+      'The foundation\'s value is invisible in the final result but fundamental to longevity.',
+    ],
+    image: '/images/IMG_3038.jpg',
+  },
+  {
+    date: 'Tuesday, April 15th 2026',
+    tag: 'N°20 · Infrastructure',
+    title: 'Laying the Foundations: Infrastructure and the Unglamorous Essentials',
+    titleAccent: 'Infrastructure',
+    body: [
+      'A trench dug through reddish tropical soil, marked with orange guide strings.',
+      'It\'s not beautiful. It\'s essential.',
+    ],
+    image: '/images/IMG_6303.jpg',
+  },
+  {
+    date: 'Monday, April 14th 2026',
+    tag: 'N°21 · People',
+    title: 'A New Perspective: Building a Space for the Future',
+    titleAccent: 'Perspective',
+    body: [
+      'Shot from below looking upward at structure and sky, capturing the building\'s essential promise.',
+      'Shelter that maintains connection to landscape.',
+    ],
+    image: '/images/IMG_0397.jpg',
+  },
+  {
+    date: 'Sunday, April 13th 2026',
+    tag: 'N°22 · Structure',
+    title: 'Timber Framing: The Skeleton Phase',
+    titleAccent: 'Skeleton',
+    body: [
+      'The structural frame is the building in its most honest moment. All engineering decisions are visible.',
+      'Once walls are added, this honesty will be hidden beneath finishes.',
+    ],
+    image: '/images/IMG_4688.JPG',
+  },
+  {
+    date: 'Saturday, April 12th 2026',
+    tag: 'N°23 · Vertical',
+    title: 'Vertical Living: Building Upward in Tropical Mountain Space',
+    titleAccent: 'Vertical',
+    body: [
+      'Mountain properties often have limited flat space. The option is to sprawl or build vertically.',
+      'This frame represents vertical strategy: reaching upward rather than outward.',
+    ],
+    image: '/images/IMG_0938.jpg',
+  },
+  {
+    date: 'Friday, April 11th 2026',
+    tag: 'N°24 · Progress',
+    title: 'Progress Report: The Roof Systems in Transition',
+    titleAccent: 'Progress',
+    body: [
+      'Partial shingling documents progress and the rhythm of tropical construction.',
+      'Working with seasons, not against them.',
+    ],
+    image: '/images/IMG_7953.jpg',
+  },
+  {
+    date: 'Thursday, April 10th 2026',
+    tag: 'N°25 · Landscape',
+    title: 'Abundant Landscape: Working With Existing Vegetation',
+    titleAccent: 'Abundant',
+    body: [
+      'Ti plants with pink foliage, young guava tree, stone retaining wall, dense background vegetation.',
+      'Good landscape design works with what\'s present, shapes it, composes it.',
+    ],
+    image: '/images/IMG_0391.jpg',
+  },
+  {
+    date: 'Wednesday, April 9th 2026',
+    tag: 'N°26 · Flora',
+    title: 'Tropical Flora: White Blooms in Dense Foliage',
+    titleAccent: 'Blooms',
+    body: [
+      'In intense tropical sunlight, white flowers function as visual anchors.',
+      'The Peace Lily, white-flowered and vibrant, is visual punctuation mark.',
+    ],
+    image: '/images/IMG_3594.jpg',
+  },
+  {
+    date: 'Tuesday, April 8th 2026',
+    tag: 'N°27 · Completion',
+    title: 'The Building Realized: Final Phases and Completion Approach',
+    titleAccent: 'Realized',
+    body: [
+      'The structure is substantially complete—no longer in danger of abandonment.',
+      'Unmistakably becoming the building it was designed to be.',
+    ],
+    image: '/images/IMG_3936.jpg',
+  },
+];
+
 export const IMAGES: ImageItem[] = [
   {
     id: '1',

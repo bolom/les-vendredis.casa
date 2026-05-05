@@ -1,0 +1,272 @@
+---
+layout: default
+title: "Les Vendredis"
+---
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter+Tight:wght@300;400;500&display=swap" rel="stylesheet" />
+
+<div class="wrap">
+  <div class="top-bar">
+    <div class="top-left"></div>
+    <div class="mark"><span class="ornament"></span>Les Vendredis<span class="ornament"></span></div>
+    <div class="top-right">
+      <a href="https://www.airbnb.fr/rooms/1651467419646453001" target="_blank">Airbnb</a>
+      <a href="https://www.booking.com/hotel/mq/an-atypical-cabin.fr.html" target="_blank">Booking</a>
+    </div>
+  </div>
+
+  <section class="hero">
+    <div class="image-frame">
+      <img src="public/images/IMG_0387.jpg" alt="The A-frame cabin" />
+      <span class="image-num">Sainte-Luce</span>
+      <span class="image-cap">The A-frame, hand-built.</span>
+    </div>
+    <div>
+      <div class="eyebrow">Welcome</div>
+      <h1>Come for <em>Fridays.</em></h1>
+      <p class="lead">An A-frame cabin and private garden on the southern coast of Martinique.</p>
+      <p class="lead">Built by hand, for friends and guests.</p>
+      <div class="ctas">
+        <a href="#stay" class="btn primary">Reserve Now <span class="arrow">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <div class="creds">
+    <div class="cred">
+      <span class="k">Region</span>
+      <span class="v">Sainte-Luce</span>
+    </div>
+    <div class="cred">
+      <span class="k">Country</span>
+      <span class="v">Martinique</span>
+    </div>
+    <div class="cred">
+      <span class="k">Guests</span>
+      <span class="v">2–4</span>
+    </div>
+    <div class="cred">
+      <span class="k">Builders</span>
+      <span class="v">Anaïs &amp; Bolo</span>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+  <section class="journal">
+    <div class="journal-head">
+      <h2>Recent <em>Entries.</em></h2>
+      <p class="sub">A live journal from the garden and the build. Updated whenever something worth sharing happens.</p>
+    </div>
+
+    <div class="journal-entries">
+      {% for post in site.posts limit: 3 %}
+      <article class="entry">
+        <div class="entry-meta">
+          <span class="entry-num">{% include roman.html number=site.posts.size | minus: forloop.index0 %}</span>
+          <span class="entry-date">{{ post.date | date: "%B %d, %Y" }}</span>
+          <span class="entry-tag">{{ post.tag }}</span>
+        </div>
+        <div class="entry-body">
+          <h3>{{ post.title_fr }}</h3>
+          <p>{{ post.excerpt_fr }}</p>
+        </div>
+        <div class="entry-img">
+          <img src="{{ '/public/images/' | append: post.image | relative_url }}" alt="{{ post.image_alt_fr }}" />
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+
+    <div class="journal-foot"><a href="{{ '/journal/' | relative_url }}">See all entries →</a></div>
+  </section>
+</div>
+
+<div class="wrap" id="gallery">
+  <section class="gallery-section">
+    <div class="gallery-head">
+      <h2>The <em>place.</em></h2>
+      <p class="sub">Views of the cabin, the garden, and the land we built from scratch.</p>
+    </div>
+
+    <div class="gallery-grid">
+      <div class="gallery-item" onclick="openLightbox(0)">
+        <img src="public/images/IMG_0387.jpg" alt="The A-Frame Exterior" loading="lazy" />
+        <div class="gallery-caption"><span>The A-Frame Exterior</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(1)">
+        <img src="public/images/IMG_0390.jpg" alt="Verdant Canopy" loading="lazy" />
+        <div class="gallery-caption"><span>Verdant Canopy</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(2)">
+        <img src="public/images/IMG_0391.jpg" alt="Artisanal Details" loading="lazy" />
+        <div class="gallery-caption"><span>Artisanal Details</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(3)">
+        <img src="public/images/IMG_0392.jpg" alt="Coastal Proximity" loading="lazy" />
+        <div class="gallery-caption"><span>Coastal Proximity</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(4)">
+        <img src="public/images/IMG_0396.jpg" alt="Golden Hour" loading="lazy" />
+        <div class="gallery-caption"><span>Golden Hour</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(5)">
+        <img src="public/images/IMG_0896.jpg" alt="Botanical Sanctuary" loading="lazy" />
+        <div class="gallery-caption"><span>Botanical Sanctuary</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(6)">
+        <img src="public/images/IMG_0940.jpg" alt="Morning Mist" loading="lazy" />
+        <div class="gallery-caption"><span>Morning Mist</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(7)">
+        <img src="public/images/IMG_1251.jpg" alt="Natural Light" loading="lazy" />
+        <div class="gallery-caption"><span>Natural Light</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(8)">
+        <img src="public/images/IMG_1348.jpg" alt="Forest Serenity" loading="lazy" />
+        <div class="gallery-caption"><span>Forest Serenity</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(9)">
+        <img src="public/images/IMG_1355.jpg" alt="Architectural Detail" loading="lazy" />
+        <div class="gallery-caption"><span>Architectural Detail</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(10)">
+        <img src="public/images/IMG_3290.jpg" alt="Tropical Flora" loading="lazy" />
+        <div class="gallery-caption"><span>Tropical Flora</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(11)">
+        <img src="public/images/IMG_3343.jpg" alt="Sunset View" loading="lazy" />
+        <div class="gallery-caption"><span>Sunset View</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(12)">
+        <img src="public/images/IMG_3936.jpg" alt="Wooden Frame" loading="lazy" />
+        <div class="gallery-caption"><span>Wooden Frame</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(13)">
+        <img src="public/images/IMG_4621.JPG" alt="Aerial View" loading="lazy" />
+        <div class="gallery-caption"><span>Aerial View</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(14)">
+        <img src="public/images/IMG_4688.JPG" alt="Mountain Backdrop" loading="lazy" />
+        <div class="gallery-caption"><span>Mountain Backdrop</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(15)">
+        <img src="public/images/IMG_6303.jpg" alt="Garden Path" loading="lazy" />
+        <div class="gallery-caption"><span>Garden Path</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(16)">
+        <img src="public/images/IMG_7953.jpg" alt="The Domain" loading="lazy" />
+        <div class="gallery-caption"><span>The Domain</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(17)">
+        <img src="public/images/AA4940C0-AE7D-4C3A-8304-688BF02A1955.jpg" alt="Garden Path" loading="lazy" />
+        <div class="gallery-caption"><span>Garden Path</span></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<section class="booking" id="stay">
+  <div class="wrap booking-inner">
+    <div>
+      <div class="eyebrow">Réservations</div>
+      <h2>Come stay in <em>our Friday.</em></h2>
+      <p class="booking-sub">Listed on Airbnb and Booking.com. The cabin and the welcome are the same — choose the platform you prefer.</p>
+    </div>
+    <div class="b-ctas">
+      <a class="b-btn" href="https://www.airbnb.fr/rooms/1651467419646453001" target="_blank" rel="noopener">
+        <span class="b-label">Airbnb</span><span class="b-meta">Open ↗</span>
+      </a>
+      <a class="b-btn" href="https://www.booking.com/hotel/mq/an-atypical-cabin.fr.html" target="_blank" rel="noopener">
+        <span class="b-label">Booking.com</span><span class="b-meta">Open ↗</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <footer class="foot">
+    <span class="foot-left">© MMXXVI</span>
+    <span class="foot-center">Anaïs &amp; Bolo · Built by hand</span>
+    <span class="foot-right">hello@lesvendredis.casa</span>
+  </footer>
+</div>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true">
+  <button class="lb-close" onclick="closeLightbox()" aria-label="Close">✕</button>
+  <button class="lb-nav lb-prev" onclick="moveLightbox(-1)" aria-label="Previous">‹</button>
+  <button class="lb-nav lb-next" onclick="moveLightbox(1)" aria-label="Next">›</button>
+  <div class="lb-content">
+    <img class="lb-img" id="lb-img" src="" alt="" />
+    <div class="lb-caption">
+      <h3 id="lb-title"></h3>
+      <p id="lb-desc"></p>
+      <span class="lb-counter" id="lb-counter"></span>
+    </div>
+  </div>
+</div>
+
+<script>
+  const GALLERY = [
+    { src: "public/images/IMG_0387.jpg",  title: "The A-Frame Exterior",  desc: "Sustainable wooden architecture nestled in the lush tropical forest of Martinique." },
+    { src: "public/images/IMG_0390.jpg",  title: "Verdant Canopy",        desc: "The view from the loft, looking out into the heart of the garden." },
+    { src: "public/images/IMG_0391.jpg",  title: "Artisanal Details",     desc: "Hand-crafted local timber used throughout the interior structure." },
+    { src: "public/images/IMG_0392.jpg",  title: "Coastal Proximity",     desc: "Just a short walk from the cabin to the pristine Caribbean shores." },
+    { src: "public/images/IMG_0396.jpg",  title: "Golden Hour",           desc: "Warm light filtering through the palm leaves at dusk." },
+    { src: "public/images/IMG_0896.jpg",  title: "Botanical Sanctuary",   desc: "The private garden surrounding the A-Frame, filled with native flora." },
+    { src: "public/images/IMG_0940.jpg",  title: "Morning Mist",          desc: "The cabin emerging from the mist on a humid tropical morning." },
+    { src: "public/images/IMG_1251.jpg",  title: "Natural Light",         desc: "Sunlight streaming through the architectural lines of the cabin." },
+    { src: "public/images/IMG_1348.jpg",  title: "Forest Serenity",       desc: "Surrounded by the tranquility of untouched tropical nature." },
+    { src: "public/images/IMG_1355.jpg",  title: "Architectural Detail",  desc: "The geometric precision of the A-Frame design against natural elements." },
+    { src: "public/images/IMG_3290.jpg",  title: "Tropical Flora",        desc: "The lush vegetation surrounding and embracing the structure." },
+    { src: "public/images/IMG_3343.jpg",  title: "Sunset View",           desc: "The cabin silhouetted against the Caribbean sunset." },
+    { src: "public/images/IMG_3936.jpg",  title: "Wooden Frame",          desc: "The structural beauty of locally sourced timber." },
+    { src: "public/images/IMG_4621.JPG",  title: "Aerial View",           desc: "A panoramic view from above the cabin and surrounding forest." },
+    { src: "public/images/IMG_4688.JPG",  title: "Mountain Backdrop",     desc: "The A-Frame framed against the dramatic Martinique landscape." },
+    { src: "public/images/IMG_6303.jpg",  title: "Garden Path",           desc: "The winding path leading through the botanical sanctuary." },
+    { src: "public/images/IMG_7953.jpg",  title: "The Domain",            desc: "The full domain — cabin, garden, and sky." },
+    { src: "public/images/AA4940C0-AE7D-4C3A-8304-688BF02A1955.jpg", title: "Garden Path", desc: "Morning light on the garden path." },
+  ];
+
+  let current = 0;
+
+  function openLightbox(index) {
+    current = index;
+    render();
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function moveLightbox(dir) {
+    current = (current + dir + GALLERY.length) % GALLERY.length;
+    render();
+  }
+
+  function render() {
+    const item = GALLERY[current];
+    document.getElementById('lb-img').src = item.src;
+    document.getElementById('lb-img').alt = item.title;
+    document.getElementById('lb-title').textContent = item.title;
+    document.getElementById('lb-desc').textContent = item.desc;
+    document.getElementById('lb-counter').textContent = (current + 1) + ' — ' + GALLERY.length;
+  }
+
+  document.addEventListener('keydown', e => {
+    const lb = document.getElementById('lightbox');
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowRight') moveLightbox(1);
+    if (e.key === 'ArrowLeft') moveLightbox(-1);
+  });
+
+  document.getElementById('lightbox').addEventListener('click', e => {
+    if (e.target === e.currentTarget) closeLightbox();
+  });
+</script>

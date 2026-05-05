@@ -1,0 +1,35 @@
+---
+layout: default
+---
+
+<article class="post">
+  <div class="post-header">
+    <span class="roman-numeral">
+      {% include roman.html number=site.posts.size | minus: forloop.index0 %}
+    </span>
+    <time datetime="{{ page.date | date: '%Y-%m-%d' }}">
+      {{ page.date | date: "%B %d, %Y" }}
+    </time>
+    <span class="tag">{{ page.tag }}</span>
+  </div>
+
+  <img src="{{ '/public/images/' | append: page.image | relative_url }}" 
+       alt="{% if page.image_alt_en %}{{ page.image_alt_en }}{% endif %}">
+
+  <div class="language-toggle">
+    <button class="lang-btn" data-lang="fr">FR</button>
+    <button class="lang-btn active" data-lang="en">EN</button>
+  </div>
+
+  <div class="post-content">
+    <h1 class="lang-en" style="display:none;">{{ page.title_en }}</h1>
+    <h1 class="lang-fr">{{ page.title_fr }}</h1>
+    
+    <div class="lang-en" style="display:none;">
+      {{ page.body_en | markdownify }}
+    </div>
+    <div class="lang-fr">
+      {{ page.body_fr | markdownify }}
+    </div>
+  </div>
+</article>
