@@ -57,7 +57,7 @@ body_fr: |
 
 ### Homepage (`/`)
 
-- Shows the 3 most recent posts using `site.posts | limit: 3`
+- Shows the most recent posts, limit configurable via `posts_on_homepage` in `_config.yml` (default: 3)
 - Each entry displays: Roman numeral, date, tag, FR title, FR excerpt, image
 - "See all entries →" link at the bottom points to `/journal/`
 - Gallery, booking, and footer sections unchanged from current design
@@ -75,13 +75,14 @@ body_fr: |
 - Full entry content: image, date, tag, FR/EN body text
 - Language toggle (FR / EN buttons) at top of entry — shows one language at a time, toggled with JavaScript
 - Default language: French
+- Toggle state resets on each page load (no localStorage persistence)
 - Same header/footer as homepage
 
 ## Roman Numerals
 
 Auto-calculated in Liquid templates. The most recent post = highest number. Calculated by finding the post's index in `site.posts` (which is reverse-chronological) and computing `site.posts.size - index`.
 
-Numeral conversion handled by a Liquid include `_includes/roman.html` that maps integers 1–50 to Roman numerals.
+Numeral conversion handled by a Liquid include `_includes/roman.html` that maps integers 1–100 to Roman numerals. Entries beyond 100 fall back to the Arabic number. The limit is documented in a comment inside the include.
 
 ## Design
 
