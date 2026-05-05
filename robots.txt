@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://les-vendredis.casa/sitemap.xml
+Sitemap: https://lesvendredis.casa/sitemap.xml
