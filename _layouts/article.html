@@ -2,25 +2,20 @@
 layout: default
 ---
 
-{% assign canonical_url = page.canonical_url | default: page.url | absolute_url %}
 {% assign page_lang = page.lang | default: 'en' %}
+{% assign canonical_url = page.canonical_url | default: page.url | absolute_url %}
+{% assign article_description = page.summary | default: page.description | default: site.description | strip_html | strip_newlines %}
 {% assign home_label = 'Home' %}
 {% assign journal_label = 'Journal' %}
 {% assign home_url = '/' | relative_url %}
 {% assign journal_url = '/journal/' | relative_url %}
 {% assign absolute_journal_url = '/journal/' | absolute_url %}
 {% if page_lang == 'fr' %}
-{% assign home_label = 'Accueil' %}
-{% assign journal_label = 'Journal' %}
-{% assign home_url = '/fr/' | relative_url %}
-{% assign journal_url = '/fr/journal/' | relative_url %}
-{% assign absolute_journal_url = '/fr/journal/' | absolute_url %}
+  {% assign home_label = 'Accueil' %}
+  {% assign home_url = '/fr/' | relative_url %}
+  {% assign journal_url = '/fr/journal/' | relative_url %}
+  {% assign absolute_journal_url = '/fr/journal/' | absolute_url %}
 {% endif %}
-{% assign article_image = '' %}
-{% if page.image %}
-{% assign article_image = '/public/images/' | append: page.image | absolute_url %}
-{% endif %}
-{% assign article_description = page.summary | default: page.description | default: site.description | strip_html | strip_newlines %}
 
 <article class="article-page">
   <header class="article-header">
@@ -31,11 +26,17 @@ layout: default
       <span aria-hidden="true">/</span>
       <span aria-current="page">{{ page.title }}</span>
     </nav>
+
     <div class="article-meta">
-      <time datetime="{{ page.date | date: '%Y-%m-%d' }}">
-        {{ page.date | date: "%B %d, %Y" }}
+      {% if page.entry_num %}
+      <span class="entry-num">{{ page.entry_num }}</span>
+      {% endif %}
+      <time class="entry-date" datetime="{{ page.date | date: '%Y-%m-%d' }}">
+        {{ page.date | date: "%B %-d, %Y" }}
       </time>
-      <span class="article-kicker">Journal</span>
+      {% if page.tag %}
+      <span class="entry-tag">{{ page.tag }}</span>
+      {% endif %}
     </div>
 
     <h1 class="article-title">{{ page.title }}</h1>
@@ -46,8 +47,16 @@ layout: default
   </header>
 
   {% if page.image %}
-  <figure class="article-image">
-    <img src="{{ '/public/images/' | append: page.image | relative_url }}" alt="{{ page.image_alt | default: page.summary | default: page.title }}">
+  <figure class="article-hero">
+    <img src="{{ '/public/images/' | append: page.image | relative_url }}"
+         alt="{{ page.image_alt | default: page.title }}"
+         loading="eager">
+    {% if page.entry_num %}
+    <span class="image-num">No. {{ page.entry_num }}</span>
+    {% endif %}
+    {% if page.image_caption %}
+    <figcaption class="image-cap">{{ page.image_caption }}</figcaption>
+    {% endif %}
   </figure>
   {% endif %}
 
@@ -63,50 +72,24 @@ layout: default
     {
       "@type": "BlogPosting",
       "@id": "{{ canonical_url }}#article",
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "{{ canonical_url }}"
-      },
+      "mainEntityOfPage": { "@type": "WebPage", "@id": "{{ canonical_url }}" },
       "headline": {{ page.title | jsonify }},
       "description": {{ article_description | jsonify }},
-      {% if article_image != '' %}
-      "image": {{ article_image | jsonify }},
-      {% endif %}
+      {% if page.image %}"image": {{ '/public/images/' | append: page.image | absolute_url | jsonify }},{% endif %}
       "datePublished": "{{ page.date | date_to_xmlschema }}",
       "dateModified": "{{ page.date | date_to_xmlschema }}",
       "inLanguage": "{{ page_lang }}",
       "articleSection": {{ page.tag | default: 'Journal' | jsonify }},
-      "author": {
-        "@type": "Organization",
-        "name": {{ site.title | jsonify }}
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": {{ site.title | jsonify }}
-      }
+      "author": { "@type": "Organization", "name": {{ site.title | jsonify }} },
+      "publisher": { "@type": "Organization", "name": {{ site.title | jsonify }} }
     },
     {
       "@type": "BreadcrumbList",
       "@id": "{{ canonical_url }}#breadcrumbs",
       "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": {{ home_label | jsonify }},
-          "item": "{{ '/' | absolute_url }}"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": {{ journal_label | jsonify }},
-          "item": "{{ absolute_journal_url }}"
-        },
-        {
-          "@type": "ListItem",
-          "position": 3,
-          "name": {{ page.title | jsonify }},
-          "item": "{{ canonical_url }}"
-        }
+        { "@type": "ListItem", "position": 1, "name": {{ home_label | jsonify }}, "item": "{{ home_url | absolute_url }}" },
+        { "@type": "ListItem", "position": 2, "name": {{ journal_label | jsonify }}, "item": "{{ absolute_journal_url }}" },
+        { "@type": "ListItem", "position": 3, "name": {{ page.title | jsonify }}, "item": "{{ canonical_url }}" }
       ]
     }
   ]
