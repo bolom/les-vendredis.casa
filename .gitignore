@@ -8,3 +8,7 @@ coverage/
 !.env.example
 # gh-pages cache
 .gh-pages/
+# Jekyll build output and dependencies
+_site/
+.bundle/
+vendor/
