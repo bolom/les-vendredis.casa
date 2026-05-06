@@ -1,14 +1,10 @@
-node_modules/
-build/
-dist/
 coverage/
 .DS_Store
 *.log
-.env*
-!.env.example
-# gh-pages cache
-.gh-pages/
 # Jekyll build output and dependencies
 _site/
 .bundle/
 vendor/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata

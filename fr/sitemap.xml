@@ -4,22 +4,19 @@ layout: null
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>{{ "/" | absolute_url }}</loc>
+    <loc>{{ "/fr/" | absolute_url }}</loc>
     <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>{{ "/journal/" | absolute_url }}</loc>
+    <loc>{{ "/fr/journal/" | absolute_url }}</loc>
     <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
-    <changefreq>daily</changefreq>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
-  {% assign english_posts = site.posts | where_exp: "post", "post.lang != 'fr'" %}
-  {% if english_posts.size == 0 %}
-  {% assign english_posts = site.posts %}
-  {% endif %}
-  {% for post in english_posts %}
+  {% assign french_posts = site.pages | where_exp: "post", "post.lang == 'fr' and post.layout == 'article'" | sort: "date" | reverse %}
+  {% for post in french_posts %}
   <url>
     <loc>{{ post.url | absolute_url }}</loc>
     <lastmod>{{ post.date | date_to_xmlschema }}</lastmod>

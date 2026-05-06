@@ -8,12 +8,18 @@
   <link rel="canonical" href="https://lesvendredis.casa/">
   <link rel="alternate" hreflang="en" href="https://lesvendredis.casa/">
   <link rel="alternate" hreflang="fr" href="https://lesvendredis.casa/fr/">
+  <link rel="alternate" hreflang="x-default" href="https://lesvendredis.casa/">
   <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Les Vendredis">
+  <meta property="og:locale" content="en_US">
   <meta property="og:title" content="A-frame cabin in Sainte-Luce, Martinique | Les Vendredis">
   <meta property="og:description" content="Book a handmade A-frame cabin with a private garden in Sainte-Luce, Martinique. A quiet vacation rental on the south coast, with Airbnb and Booking.com links.">
   <meta property="og:url" content="https://lesvendredis.casa/">
   <meta property="og:image" content="https://lesvendredis.casa/public/images/IMG_0387.jpg">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="A-frame cabin in Sainte-Luce, Martinique | Les Vendredis">
+  <meta name="twitter:description" content="Book a handmade A-frame cabin with a private garden in Sainte-Luce, Martinique. A quiet vacation rental on the south coast, with Airbnb and Booking.com links.">
+  <meta name="twitter:image" content="https://lesvendredis.casa/public/images/IMG_0387.jpg">
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -31,6 +37,70 @@
       "sameAs": [
         "https://www.airbnb.fr/rooms/1651467419646453001",
         "https://www.booking.com/hotel/mq/an-atypical-cabin.fr.html"
+      ]
+    }
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Where is Les Vendredis located?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Les Vendredis is located in Sainte-Luce on the south coast of Martinique."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How close is Les Vendredis to the beach?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The cabin is close to the Sainte-Luce coast. Check the booking listing or contact us on WhatsApp for exact travel time from the property."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I book Les Vendredis?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You can book Les Vendredis on Airbnb or Booking.com, or contact us on WhatsApp at +33 6 66 53 52 89."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How many guests can stay at Les Vendredis?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Les Vendredis is designed as an intimate cabin for couples or small groups. Confirm the current guest capacity on Airbnb or Booking.com."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does Les Vendredis have a garden?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Les Vendredis has a private tropical garden around the cabin, with mango trees, bougainvillea, and planted paths."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the A-frame cabin at Les Vendredis?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The A-frame cabin is a handmade wooden cabin built by Anais, Bolo, Leon, and Samsam in Sainte-Luce, Martinique."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is Sainte-Luce?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sainte-Luce is a village on the south coast of Martinique, a French Caribbean island."
+          }
+        }
       ]
     }
   </script>
@@ -452,6 +522,39 @@
       color: rgba(248,241,228,.55);
     }
 
+    /* ── FAQ ── */
+    .faq-section {
+      padding: 100px 0;
+      border-top: 1px solid var(--rule);
+    }
+    .faq-grid {
+      display: grid;
+      grid-template-columns: .9fr 1.4fr;
+      gap: clamp(40px, 6vw, 90px);
+      align-items: start;
+    }
+    .faq-list {
+      display: grid;
+      gap: 18px;
+    }
+    .faq-item {
+      border-top: 1px solid var(--rule);
+      padding-top: 18px;
+    }
+    .faq-item h3 {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: clamp(22px, 2vw, 30px);
+      line-height: 1.18;
+      margin-bottom: 8px;
+    }
+    .faq-item p {
+      font-family: var(--serif);
+      font-size: 17px;
+      line-height: 1.65;
+      color: var(--ink-soft);
+    }
+
     /* ── footer ── */
     .foot {
       padding: 48px 0;
@@ -569,6 +672,8 @@
       .gallery-grid { grid-template-columns: repeat(2, 1fr); }
       .booking { padding: 80px 0; }
       .booking-inner { grid-template-columns: 1fr; gap: 36px; }
+      .faq-section { padding: 72px 0; }
+      .faq-grid { grid-template-columns: 1fr; gap: 28px; }
       .b-label { font-size: 24px; }
       .foot { grid-template-columns: 1fr; text-align: center; gap: 10px; }
       .foot-left, .foot-right { justify-self: center; }
@@ -711,7 +816,7 @@
       <!-- END ENTRY -->
 
     </div>
-    <div class="journal-foot"><a href="journal.html" style="color:inherit;border-bottom:1px solid var(--rule);padding-bottom:2px;transition:border-color .25s;">See all entries →</a></div>
+    <div class="journal-foot"><a href="/journal/" style="color:inherit;border-bottom:1px solid var(--rule);padding-bottom:2px;transition:border-color .25s;">See all entries →</a></div>
   </section>
 </div>
 
@@ -797,6 +902,50 @@
       <div class="gallery-item" onclick="openLightbox(17)">
         <img src="public/images/AA4940C0-AE7D-4C3A-8304-688BF02A1955.jpg" alt="Garden Path" loading="lazy" />
         <div class="gallery-caption"><span>Garden Path</span></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ══════════════════════════════════════════
+     FAQ
+══════════════════════════════════════════ -->
+<div class="wrap">
+  <section class="faq-section" aria-labelledby="faq-title">
+    <div class="faq-grid">
+      <div class="journal-head" style="display:block;margin-bottom:0;">
+        <h2 id="faq-title">Good to <em>know.</em></h2>
+        <p class="sub" style="margin-top:18px;">Practical details for finding, booking, and staying at Les Vendredis.</p>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <h3>Where is Les Vendredis located?</h3>
+          <p>Les Vendredis is located in Sainte-Luce on the south coast of Martinique.</p>
+        </div>
+        <div class="faq-item">
+          <h3>How close is Les Vendredis to the beach?</h3>
+          <p>The cabin is close to the Sainte-Luce coast. Check the booking listing or contact us on WhatsApp for exact travel time from the property.</p>
+        </div>
+        <div class="faq-item">
+          <h3>How do I book Les Vendredis?</h3>
+          <p>You can book Les Vendredis on Airbnb or Booking.com, or contact us on WhatsApp at +33 6 66 53 52 89.</p>
+        </div>
+        <div class="faq-item">
+          <h3>How many guests can stay at Les Vendredis?</h3>
+          <p>Les Vendredis is designed as an intimate cabin for couples or small groups. Confirm the current guest capacity on Airbnb or Booking.com.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Does Les Vendredis have a garden?</h3>
+          <p>Yes. Les Vendredis has a private tropical garden around the cabin, with mango trees, bougainvillea, and planted paths.</p>
+        </div>
+        <div class="faq-item">
+          <h3>What is the A-frame cabin at Les Vendredis?</h3>
+          <p>The A-frame cabin is a handmade wooden cabin built by Anais, Bolo, Leon, and Samsam in Sainte-Luce, Martinique.</p>
+        </div>
+        <div class="faq-item">
+          <h3>What is Sainte-Luce?</h3>
+          <p>Sainte-Luce is a village on the south coast of Martinique, a French Caribbean island.</p>
+        </div>
       </div>
     </div>
   </section>

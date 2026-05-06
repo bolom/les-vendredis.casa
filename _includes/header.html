@@ -1,14 +1,45 @@
+{% assign current_lang = 'en' %}
+{% if page.url contains '/fr/' %}
+{% assign current_lang = 'fr' %}
+{% endif %}
+{% assign home_label = 'Home' %}
+{% assign journal_label = 'Journal' %}
+{% assign home_url = '/' | relative_url %}
+{% assign journal_url = '/journal/' | relative_url %}
+{% if current_lang == 'fr' %}
+{% assign home_label = 'Accueil' %}
+{% assign journal_label = 'Journal' %}
+{% assign home_url = '/fr/' | relative_url %}
+{% assign journal_url = '/fr/journal/' | relative_url %}
+{% endif %}
+{% assign lang_en_url = '/' | relative_url %}
+{% assign lang_fr_url = '/fr/' | relative_url %}
+{% if page.url == '/journal/' or page.url == '/fr/journal/' %}
+{% assign lang_en_url = '/journal/' | relative_url %}
+{% assign lang_fr_url = '/fr/journal/' | relative_url %}
+{% elsif page.translation_key %}
+  {% for post in site.posts %}
+    {% if post.translation_key == page.translation_key and post.lang != 'fr' %}
+      {% assign lang_en_url = post.url | relative_url %}
+    {% endif %}
+  {% endfor %}
+  {% for site_page in site.pages %}
+    {% if site_page.translation_key == page.translation_key and site_page.lang == 'fr' %}
+      {% assign lang_fr_url = site_page.url | relative_url %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
 <header class="site-header">
   <nav class="site-nav">
-    <a href="{{ '/' | relative_url }}" class="site-title">Les Vendredis</a>
+    <a href="{{ home_url }}" class="site-title">Les Vendredis</a>
     <ul>
-      <li><a href="{{ '/' | relative_url }}">Home</a></li>
-      <li><a href="{{ '/journal/' | relative_url }}">Journal</a></li>
+      <li><a href="{{ home_url }}">{{ home_label }}</a></li>
+      <li><a href="{{ journal_url }}">{{ journal_label }}</a></li>
       <li><a href="https://wa.me/33666535289" target="_blank" rel="noopener">WhatsApp</a></li>
     </ul>
     <div class="language-toggle" aria-label="Language switcher">
-      <button class="lang-btn" data-lang="fr" type="button">FR</button>
-      <button class="lang-btn active" data-lang="en" type="button">EN</button>
+      <a class="lang-btn{% if current_lang == 'fr' %} active{% endif %}" data-lang="fr" href="{{ lang_fr_url }}">FR</a>
+      <a class="lang-btn{% if current_lang != 'fr' %} active{% endif %}" data-lang="en" href="{{ lang_en_url }}">EN</a>
     </div>
   </nav>
 </header>

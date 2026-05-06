@@ -16,3 +16,9 @@ collections:
 
 liquid:
   error_mode: strict
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - docs

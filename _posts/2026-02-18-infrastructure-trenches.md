@@ -1,6 +1,7 @@
 ---
 layout: article
 title: "Laying the Foundations: Infrastructure and the Unglamorous Essentials"
+seo_title: "Installing Underground Infrastructure in Sainte-Luce Martinique — Les Vendredis"
 summary: "Every building relies on infrastructure that most people never see or think about: water, electrical, sewage, communication. In conventional development, this infrastructure is installed by specialists after the building is complete. In remote, tropical locations, it's often installed during the land preparation phase—before structure rises."
 tag: "Journal"
 date: "2026-02-18"

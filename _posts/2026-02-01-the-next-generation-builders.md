@@ -1,12 +1,14 @@
 ---
 layout: article
 title: "Building Your Dream: The Next Generation at Les Vendredis"
+seo_title: "Family A-Frame Building Project in Martinique — Les Vendredis"
 summary: "There's a moment in every major project when you step back and realize it's stopped being about the structure—and started being about the story. For Les Vendredis, that moment arrived when we looked through the lens of our A-frame and saw not just a building taking shape, but a family legacy being constructed, one timber frame at a time."
 tag: "Journal"
 date: "2026-02-01"
 image: "IMG_1348.jpg"
 image_alt: "Young boy standing on wooden deck of A-frame structure, framing tropical ocean view"
 lang: "en"
+translation_key: "the-next-generation-builders"
 ---
 
 ## When Architecture Becomes Family Legacy

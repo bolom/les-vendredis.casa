@@ -1,18 +1,40 @@
 ---
 layout: default
-title: "Journal Français — Les Vendredis"
+seo_title: "Journal français"
+title: "Journal français"
+description: "Une archive en français des notes du chantier, du jardin et de la vie à Sainte-Luce."
+lang: "fr"
 permalink: /fr/journal/
-noindex: true
-canonical_url: https://lesvendredis.casa/journal/
+canonical_url: https://lesvendredis.casa/fr/journal/
 ---
 
-<div class="wrap" style="padding: 80px 0 120px;">
-  <p style="font-family: var(--serif); font-size: 22px; color: var(--ink-soft);">
-    Loading the French journal...
-  </p>
-</div>
+<div class="wrap">
+  <section class="journal">
+    <div class="journal-head">
+      <h1>Journal <em>français</em></h1>
+      <p class="sub">Les notes du chantier, du jardin et de la vie lente à Sainte-Luce. Les articles sont encore publiés en anglais.</p>
+    </div>
 
-<script>
-  localStorage.setItem('les-vendredis-lang', 'fr');
-  window.location.replace('{{ "/journal/" | relative_url }}');
-</script>
+    <div class="journal-entries">
+      {% assign french_posts = site.pages | where_exp: "post", "post.lang == 'fr' and post.layout == 'article'" | sort: "date" | reverse %}
+      {% for post in french_posts %}
+      <article class="entry">
+        <div class="entry-meta">
+          {% assign post_num = french_posts.size | minus: forloop.index0 %}
+          <span class="entry-num">{% include roman.html number=post_num %}</span>
+          <span class="entry-date">{{ post.date | date: "%B %d, %Y" }}</span>
+          <span class="entry-tag">{{ post.tag }}</span>
+        </div>
+        <div class="entry-body">
+          <h3>{{ post.title }}</h3>
+          <p>{{ post.summary }}</p>
+          <a href="{{ post.url | relative_url }}" class="read-more" style="display:inline-block; margin-top:12px; border-bottom:1px solid var(--rule); padding-bottom:2px; color:var(--accent); transition:border-color .25s;">Lire l’article →</a>
+        </div>
+        <div class="entry-img">
+          <img src="{{ '/public/images/' | append: post.image | relative_url }}" alt="{{ post.image_alt | default: post.title }}" />
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </section>
+</div>

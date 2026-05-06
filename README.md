@@ -1,20 +1,30 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Les Vendredis
 
-# Run and deploy your AI Studio app
+A Jekyll site for Les Vendredis, a handmade A-frame cabin and private garden in Sainte-Luce, Martinique.
 
-This contains everything you need to run your app locally.
+## Local Development
 
-View your app in AI Studio: https://ai.studio/apps/32559cc7-cd5f-4db6-9502-45c126abcb87
+Prerequisites:
 
-## Run Locally
+- Ruby 3.3
+- Bundler
 
-**Prerequisites:**  Node.js
+Install dependencies:
 
+```bash
+bundle install
+```
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+Run the site locally:
+
+```bash
+bundle exec jekyll serve
+```
+
+Build the production site:
+
+```bash
+bundle exec jekyll build
+```
+
+GitHub Pages deploys the generated `_site/` output through `.github/workflows/static.yml`.

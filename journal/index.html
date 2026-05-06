@@ -1,7 +1,9 @@
 ---
 layout: default
-title: "Journal — All Entries"
+seo_title: "Journal"
+title: "Journal"
 description: "A complete archive of journal entries from Sainte-Luce, Martinique."
+lang: "en"
 ---
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -16,10 +18,14 @@ description: "A complete archive of journal entries from Sainte-Luce, Martinique
     </div>
 
     <div class="journal-entries">
-      {% for post in site.posts %}
+      {% assign english_posts = site.posts | where_exp: "post", "post.lang != 'fr'" %}
+      {% if english_posts.size == 0 %}
+      {% assign english_posts = site.posts %}
+      {% endif %}
+      {% for post in english_posts %}
       <article class="entry">
         <div class="entry-meta">
-          {% assign post_num = site.posts.size | minus: forloop.index0 %}
+          {% assign post_num = english_posts.size | minus: forloop.index0 %}
           <span class="entry-num">{% include roman.html number=post_num %}</span>
           <span class="entry-date">{{ post.date | date: "%B %d, %Y" }}</span>
           <span class="entry-tag">{{ post.tag }}</span>
