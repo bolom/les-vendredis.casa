@@ -10,11 +10,10 @@ canonical_url: https://lesvendredis.casa/fr/journal/
 
 <div class="wrap">
   <section class="journal">
-    <div class="journal-head">
-      <h1>Journal <em>français</em></h1>
-      <p class="sub">Les notes du chantier, du jardin et de la vie lente à Sainte-Luce. Les articles sont encore publiés en anglais.</p>
+    <div class="section-head">
+      <h2>Journal <em>français.</em></h2>
+      <p class="sub">Les notes du chantier, du jardin et de la vie lente à Sainte-Luce.</p>
     </div>
-
     <div class="journal-entries">
       {% assign french_posts = site.pages | where_exp: "post", "post.lang == 'fr' and post.layout == 'article'" | sort: "date" | reverse %}
       {% for post in french_posts %}
@@ -22,16 +21,16 @@ canonical_url: https://lesvendredis.casa/fr/journal/
         <div class="entry-meta">
           {% assign post_num = french_posts.size | minus: forloop.index0 %}
           <span class="entry-num">{% include roman.html number=post_num %}</span>
-          <span class="entry-date">{{ post.date | date: "%B %d, %Y" }}</span>
+          <span class="entry-date">{{ post.date | date: "%-d %B %Y" }}</span>
           <span class="entry-tag">{{ post.tag }}</span>
         </div>
         <div class="entry-body">
-          <h3>{{ post.title }}</h3>
+          <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
           <p>{{ post.summary }}</p>
-          <a href="{{ post.url | relative_url }}" class="read-more" style="display:inline-block; margin-top:12px; border-bottom:1px solid var(--rule); padding-bottom:2px; color:var(--accent); transition:border-color .25s;">Lire l’article →</a>
+          <a href="{{ post.url | relative_url }}" class="read-more">Lire →</a>
         </div>
         <div class="entry-img">
-          <img src="{{ '/public/images/' | append: post.image | relative_url }}" alt="{{ post.image_alt | default: post.title }}" />
+          {% if post.image %}<img src="{{ '/public/images/' | append: post.image | relative_url }}" alt="{{ post.image_alt }}" loading="lazy" />{% endif %}
         </div>
       </article>
       {% endfor %}

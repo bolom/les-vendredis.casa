@@ -6,48 +6,33 @@ description: "A complete archive of journal entries from Sainte-Luce, Martinique
 lang: "en"
 ---
 
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter+Tight:wght@300;400;500&display=swap" rel="stylesheet" />
-
 <div class="wrap">
   <section class="journal">
-    <div class="journal-head">
+    <div class="section-head">
       <h2>All <em>Entries.</em></h2>
-      <p class="sub">A complete archive of the journal, from newest to oldest. Each entry has its own page with full content.</p>
+      <p class="sub">A complete archive of the journal, from newest to oldest.</p>
     </div>
-
     <div class="journal-entries">
       {% assign english_posts = site.posts | where_exp: "post", "post.lang != 'fr'" %}
-      {% if english_posts.size == 0 %}
-      {% assign english_posts = site.posts %}
-      {% endif %}
+      {% if english_posts.size == 0 %}{% assign english_posts = site.posts %}{% endif %}
       {% for post in english_posts %}
       <article class="entry">
         <div class="entry-meta">
           {% assign post_num = english_posts.size | minus: forloop.index0 %}
           <span class="entry-num">{% include roman.html number=post_num %}</span>
-          <span class="entry-date">{{ post.date | date: "%B %d, %Y" }}</span>
+          <span class="entry-date">{{ post.date | date: "%B %-d, %Y" }}</span>
           <span class="entry-tag">{{ post.tag }}</span>
         </div>
         <div class="entry-body">
-          <h3>{{ post.title }}</h3>
+          <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
           <p>{{ post.summary }}</p>
-          <a href="{{ post.url | relative_url }}" class="read-more" style="display:inline-block; margin-top:12px; border-bottom:1px solid var(--rule); padding-bottom:2px; color:var(--accent); transition:border-color .25s;">Read more →</a>
+          <a href="{{ post.url | relative_url }}" class="read-more">Read more →</a>
         </div>
         <div class="entry-img">
-          <img src="{{ '/public/images/' | append: post.image | relative_url }}" alt="{{ post.image_alt }}" />
+          {% if post.image %}<img src="{{ '/public/images/' | append: post.image | relative_url }}" alt="{{ post.image_alt }}" loading="lazy" />{% endif %}
         </div>
       </article>
       {% endfor %}
     </div>
   </section>
-</div>
-
-<div class="wrap">
-  <footer class="foot">
-    <span class="foot-left">© MMXXVI</span>
-    <span class="foot-center">Anaïs &amp; Bolo · Built by hand</span>
-    <span class="foot-right"><a href="https://wa.me/33666535289" target="_blank" rel="noopener">WhatsApp +33 6 66 53 52 89</a></span>
-  </footer>
 </div>
