@@ -1,0 +1,28 @@
+<div class="wrap">
+  <section class="journal" id="journal">
+    <div class="section-head">
+      <h2>The <em>journal.</em></h2>
+      <p class="sub">Notes from the build, the garden, and the slow life of Sainte-Luce. Updated by the family.</p>
+    </div>
+    {% assign english_posts = site.posts | where_exp: "post", "post.lang != 'fr'" %}
+    {% if english_posts.size == 0 %}{% assign english_posts = site.posts %}{% endif %}
+    {% for post in english_posts limit: 3 %}
+    <article class="entry">
+      <div class="entry-meta">
+        {% assign post_num = english_posts.size | minus: forloop.index0 %}
+        <span class="entry-num">{% include roman.html number=post_num %}</span>
+        <span class="entry-date">{{ post.date | date: "%A, %B %-d %Y" }}</span>
+        <span class="entry-tag">{{ post.tag }}</span>
+      </div>
+      <div class="entry-body">
+        <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+        <p>{{ post.summary | truncate: 160 }}</p>
+      </div>
+      <div class="entry-img">
+        {% if post.image %}<img src="{{ '/public/images/' | append: post.image | relative_url }}" alt="{{ post.image_alt | default: post.title }}" loading="lazy" />{% endif %}
+      </div>
+    </article>
+    {% endfor %}
+    <div class="journal-foot"><a href="{{ '/journal/' | relative_url }}">See all entries →</a></div>
+  </section>
+</div>
