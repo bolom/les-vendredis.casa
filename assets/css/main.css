@@ -695,7 +695,18 @@ h1 em { font-style: italic; font-weight: 400; color: var(--accent); }
 }
 .foot-left { justify-self: start; }
 .foot-right { justify-self: end; }
-.foot-pet { display: inline-flex; align-items: center; vertical-align: middle; color: var(--gold); }
+.foot-pet-logo {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 40px;
+}
+.foot-pet-logo img {
+  height: 64px;
+  width: auto;
+  opacity: .55;
+  transition: opacity .3s;
+}
+.foot-pet-logo img:hover { opacity: .85; }
 
 /* ── responsive ── */
 @media (max-width: 900px) {
