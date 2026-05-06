@@ -1,22 +1,22 @@
 {% assign current_lang = 'en' %}
-{% if page.url contains '/fr/' %}
-{% assign current_lang = 'fr' %}
+{% if page.lang == 'fr' or page.url contains '/fr/' %}
+  {% assign current_lang = 'fr' %}
 {% endif %}
-{% assign home_label = 'Home' %}
-{% assign journal_label = 'Journal' %}
 {% assign home_url = '/' | relative_url %}
 {% assign journal_url = '/journal/' | relative_url %}
 {% if current_lang == 'fr' %}
-{% assign home_label = 'Accueil' %}
-{% assign journal_label = 'Journal' %}
-{% assign home_url = '/fr/' | relative_url %}
-{% assign journal_url = '/fr/journal/' | relative_url %}
+  {% assign home_url = '/fr/' | relative_url %}
+  {% assign journal_url = '/fr/journal/' | relative_url %}
 {% endif %}
+
 {% assign lang_en_url = '/' | relative_url %}
 {% assign lang_fr_url = '/fr/' | relative_url %}
-{% if page.url == '/journal/' or page.url == '/fr/journal/' %}
-{% assign lang_en_url = '/journal/' | relative_url %}
-{% assign lang_fr_url = '/fr/journal/' | relative_url %}
+{% if page.url == '/journal/' %}
+  {% assign lang_en_url = '/journal/' | relative_url %}
+  {% assign lang_fr_url = '/fr/journal/' | relative_url %}
+{% elsif page.url == '/fr/journal/' %}
+  {% assign lang_en_url = '/journal/' | relative_url %}
+  {% assign lang_fr_url = '/fr/journal/' | relative_url %}
 {% elsif page.translation_key %}
   {% for post in site.posts %}
     {% if post.translation_key == page.translation_key and post.lang != 'fr' %}
@@ -29,17 +29,26 @@
     {% endif %}
   {% endfor %}
 {% endif %}
-<header class="site-header">
-  <nav class="site-nav">
-    <a href="{{ home_url }}" class="site-title">Les Vendredis</a>
-    <ul>
-      <li><a href="{{ home_url }}">{{ home_label }}</a></li>
-      <li><a href="{{ journal_url }}">{{ journal_label }}</a></li>
-      <li><a href="https://wa.me/33666535289" target="_blank" rel="noopener">WhatsApp</a></li>
-    </ul>
-    <div class="language-toggle" aria-label="Language switcher">
-      <a class="lang-btn{% if current_lang == 'fr' %} active{% endif %}" data-lang="fr" href="{{ lang_fr_url }}">FR</a>
-      <a class="lang-btn{% if current_lang != 'fr' %} active{% endif %}" data-lang="en" href="{{ lang_en_url }}">EN</a>
-    </div>
-  </nav>
-</header>
+
+{% assign is_journal = false %}
+{% if page.url == '/journal/' or page.url == '/fr/journal/' %}
+  {% assign is_journal = true %}
+{% endif %}
+
+<div class="wrap">
+  <header class="top-bar">
+    <span class="top-left">Sainte-Luce · Martinique</span>
+    <a href="{{ home_url }}" class="mark">
+      <span class="ornament"></span>Les Vendredis<span class="ornament"></span>
+    </a>
+    <nav class="top-right">
+      <a href="{{ journal_url }}"{% if is_journal %} class="active"{% endif %}>Journal</a>
+      <a href="https://www.airbnb.fr/rooms/1651467419646453001?guests=1&adults=1&s=67&unique_share_id=7645a1e3-af18-41ba-ae70-2d47cedc28dd" target="_blank" rel="noopener">Réserver</a>
+      <a href="https://wa.me/33666535289" target="_blank" rel="noopener">WhatsApp</a>
+      <span class="lang-toggle">
+        <a href="{{ lang_fr_url }}"{% if current_lang == 'fr' %} class="active"{% endif %}>FR</a>
+        <a href="{{ lang_en_url }}"{% if current_lang != 'fr' %} class="active"{% endif %}>EN</a>
+      </span>
+    </nav>
+  </header>
+</div>
