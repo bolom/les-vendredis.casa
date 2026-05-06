@@ -4,7 +4,7 @@ title: "The Human Element: Women Building Paradise"
 summary: "There's a particular kind of joy that comes from standing high on scaffolding, covered in the dust of the day's work, and declaring victory. The double thumbs-up in this photograph isn't performative—it's genuine satisfaction. It's the moment when effort becomes visible, when sweat becomes structure."
 tag: "Journal"
 date: "2026-02-02"
-image: "IMG_0940.jpg"
+image: "coucher-soleil-palmiers-construction-les-vendredis.jpg"
 image_alt: "Woman on wooden scaffolding giving double thumbs-up, wearing safety harness"
 lang: "en"
 ---

@@ -4,7 +4,7 @@ title: "Breaking Ground: Landscape Preparation and the Traveler's Palm"
 summary: "Before construction truly begins, the site must be understood and prepared. Not cleared and stripped bare (which would be destructive), but surveyed, marked, and staged for the work to come."
 tag: "Journal"
 date: "2026-02-19"
-image: "IMG_3290.jpg"
+image: "interieur-cabane-aframe-vue-jardin-les-vendredis.jpg"
 image_alt: "Tropical slope with Traveler's Palm focal point and yellow survey line, overcast sky"
 lang: "en"
 ---

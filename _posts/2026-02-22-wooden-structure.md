@@ -4,7 +4,7 @@ title: "Timber Framing: The Skeleton Phase"
 summary: "This frame is tall. Rising from a construction site strewn with materials and equipment, the wooden skeleton reaches upward with purpose. The frame isn't wide—it's a lean vertical structure, perhaps designed as a tower or narrow multi-story space."
 tag: "Journal"
 date: "2026-02-22"
-image: "IMG_4688.JPG"
+image: "terrain-avant-construction-les-vendredis-sainte-luce.jpg"
 image_alt: "Vertical wooden frame structure with multiple levels and surrounding construction materials in tropical setting"
 lang: "en"
 ---

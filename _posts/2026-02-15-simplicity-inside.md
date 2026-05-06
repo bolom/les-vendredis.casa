@@ -4,7 +4,7 @@ title: "Simple Living: The Interior Promise"
 summary: "There's a particular power in a photograph that shows the interior of a structure you're building, still unfinished, already inhabited. Two people lying on air mattresses, looking out at tropical landscape through the triangular opening of an A-frame. No furniture. No finishes. Just raw wood, tropical air, and view."
 tag: "Journal"
 date: "2026-02-15"
-image: "IMG_1251.jpg"
+image: "construction-bardage-bois-cabane-aframe-martinique.jpg"
 image_alt: "Interior of A-frame structure with two people on inflatable mattresses, tropical view framing"
 lang: "en"
 ---

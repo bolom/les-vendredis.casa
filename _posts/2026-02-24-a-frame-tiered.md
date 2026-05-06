@@ -4,7 +4,7 @@ title: "Progress Report: The Roof Systems in Transition"
 summary: "This photograph captures a specific moment in a building's development: the shingling is partially complete, upper sections remain unshingled, materials are staged for the next phase. It's neither beginning nor end, but active progress through middle phases."
 tag: "Journal"
 date: "2026-02-24"
-image: "IMG_7953.jpg"
+image: "ossature-bois-aframe-construction-martinique.jpg"
 image_alt: "A-frame with lower shingled section and upper battened section separated by tarps, pallet of materials"
 lang: "en"
 ---

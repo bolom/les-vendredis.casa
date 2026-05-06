@@ -4,7 +4,7 @@ title: "Tropical Homesteading: The Labor Behind the Paradise"
 summary: "Paradise doesn't emerge spontaneously from land. It requires infrastructure—water systems, soil preparation, planting plans executed with precision. The work of creating the landscape is less visible, less dramatic, and absolutely essential."
 tag: "Journal"
 date: "2026-02-14"
-image: "IMG_1251.jpg"
+image: "construction-bardage-bois-cabane-aframe-martinique.jpg"
 image_alt: "Worker in outdoor shelter area with exposed soil, irrigation setup, tropical plants"
 lang: "en"
 ---

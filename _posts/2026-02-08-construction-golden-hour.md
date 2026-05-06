@@ -4,7 +4,7 @@ title: "Building in Harmony: Craftsmanship Meets Nature"
 summary: "There's a particular light that happens in late tropical afternoon, maybe two hours before sunset, when the sun angles through palm fronds and turns construction debris into something luminous. It's the kind of light that photographers seek and builders barely notice—too busy finishing the day's work."
 tag: "Journal"
 date: "2026-02-08"
-image: "IMG_6303.jpg"
+image: "terrain-defriche-avant-construction-les-vendredis.jpg"
 image_alt: "Construction site with wooden shingles and palm trees during golden hour sunset"
 lang: "en"
 ---

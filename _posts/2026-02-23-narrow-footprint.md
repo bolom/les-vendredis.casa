@@ -4,7 +4,7 @@ title: "Vertical Living: Building Upward in Tropical Mountain Space"
 summary: "Mountain properties often have limited flat space. The option is to sprawl horizontally (consuming more landscape, creating larger footprint) or to build vertically (maximizing volume within minimal footprint)."
 tag: "Journal"
 date: "2026-02-23"
-image: "IMG_0938.jpg"
+image: "charpente-aframe-debut-montage-sainte-luce.jpg"
 image_alt: "Tall narrow wooden structure with multiple levels and construction materials surrounding"
 lang: "en"
 ---

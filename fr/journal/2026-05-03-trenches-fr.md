@@ -4,7 +4,7 @@ title: "Creuser les tranchées pour l'eau chaude."
 summary: "Ce dimanche, nous avons commencé à creuser les tranchées pour amener l'eau chaude à la cuisine et au A-frame."
 tag: "Build log"
 date: 2026-05-03
-image: "IMG_3038.jpg"
+image: "tranchees-eau-chaude-jardin-les-vendredis.jpg"
 image_alt: "Creuser les tranchées"
 lang: "fr"
 translation_key: "trenches"

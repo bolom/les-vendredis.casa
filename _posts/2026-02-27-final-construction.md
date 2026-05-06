@@ -4,7 +4,7 @@ title: "The Building Realized: Final Phases and Completion Approach"
 summary: "This photograph documents what appears to be a late phase of construction: the A-frame structure is substantially complete, shingling is extensive, the basic form is finalized and visibly strong against landscape."
 tag: "Journal"
 date: "2026-02-27"
-image: "IMG_3936.jpg"
+image: "charpente-aframe-construction-sainte-luce-martinique.jpg"
 image_alt: "A-frame structure with substantial shingled roof against tropical landscape and blue sky"
 lang: "en"
 ---

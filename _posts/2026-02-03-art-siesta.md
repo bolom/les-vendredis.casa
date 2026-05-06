@@ -4,7 +4,7 @@ title: "The Art of the Siesta: Designing Spaces for Rest"
 summary: "In a world obsessed with productivity, the siesta is a radical act. Not the kind of rest that recharges you for more work—the kind that exists for its own sake. The kind where lying in a hammock suspended between ancient trees, watching a tropical valley breathe beneath you, isn't a luxury: it's essential."
 tag: "Journal"
 date: "2026-02-03"
-image: "IMG_0396.jpg"
+image: "hamac-jardin-tropical-les-vendredis-martinique.jpg"
 image_alt: "Cream canvas hammock suspended between trees, framing tropical valley"
 lang: "en"
 ---

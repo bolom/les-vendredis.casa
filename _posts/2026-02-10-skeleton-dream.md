@@ -4,7 +4,7 @@ title: "The Skeleton of Dreams: Witnessing Structural Becoming"
 summary: "Architecture exists in phases. There's the dream phase—sketches, concepts, possibilities. There's the completed phase—interior furnished, systems operational, the building doing its job. And between these exists the construction phase, the most honest phase, where intention meets reality and decisions can still redirect outcomes."
 tag: "Journal"
 date: "2026-02-10"
-image: "IMG_1355.jpg"
+image: "cabane-aframe-facade-bois-construction-martinique.jpg"
 image_alt: "A-frame skeleton with new and weathered wood shingles in various stages of installation"
 lang: "en"
 ---

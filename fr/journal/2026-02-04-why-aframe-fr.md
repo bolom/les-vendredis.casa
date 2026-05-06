@@ -4,7 +4,7 @@ title: "Pourquoi l'A-frame ? La géométrie parfaite pour vivre sous les tropiqu
 summary: "L'A-frame est trompeuse dans sa simplicité. Quatre pièces de bois convergeant vers un sommet, et déjà vous avez créé un abri. Ajoutez des supports horizontaux et vous avez une structure capable de franchir un espace considérable. Ajoutez l'imperméabilisation et vous avez une maison."
 tag: "Journal"
 date: "2026-02-04"
-image: "IMG_STRUCTURE.jpg"
+image: "ossature-bois-aframe-au-sol-avant-levage.jpg"
 image_alt: "Squelette en bois de la structure A-frame en construction sous le ciel tropical"
 lang: "fr"
 translation_key: "why-aframe"

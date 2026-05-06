@@ -4,7 +4,7 @@ title: "Hand-Built in the Tropics: The Realities of DIY Construction"
 summary: "There's an iconic composition in construction photography: the solitary figure, dwarfed by the structure being built, emphasizing the ambition of the project. This image plays with that icon, but honestly. Not a hero pose. A working pose."
 tag: "Journal"
 date: "2026-02-09"
-image: "IMG_4621.JPG"
+image: "terrain-debut-chantier-les-vendredis-martinique.jpg"
 image_alt: "Man standing on high timber frame structure wearing white head covering, reaching toward apex"
 lang: "en"
 ---

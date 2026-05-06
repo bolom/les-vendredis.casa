@@ -4,7 +4,7 @@ title: "The Craft of Shingling: Detail in Every Row"
 summary: "The first time you run your hand across properly installed wooden shingles, you understand something that specifications can't convey: this is craft. Not mass production. Not factory uniformity. Shingles from a storm-damaged tree speak differently than shingles from old-growth timber. Each one is an individual piece of material, shaped by grain and growth rings, placed with intention."
 tag: "Journal"
 date: "2026-02-05"
-image: "IMG_1355.jpg"
+image: "cabane-aframe-facade-bois-construction-martinique.jpg"
 image_alt: "Wooden shingles in varying stages of weathering on steep A-frame roof"
 lang: "en"
 ---

@@ -4,7 +4,7 @@ title: "DIY Tropical Architecture: Building the Signature Look"
 summary: "A location's character isn't created by the main structures—the buildings people sleep in, the rooms they gather in. It's created by the in-between spaces: the shelters that partially enclose, the walls that divide spaces without fully separating them, the small architectural decisions that accumulate into a coherent aesthetic."
 tag: "Journal"
 date: "2026-02-13"
-image: "IMG_3343.jpg"
+image: "bardage-bois-facade-annexe-jardin-les-vendredis.jpg"
 image_alt: "Wooden shingle-clad partition wall under corrugated metal roof with string lights"
 lang: "en"
 ---

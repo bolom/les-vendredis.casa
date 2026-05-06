@@ -4,7 +4,7 @@ title: "Botanical Contrast: Composing the Wild Garden"
 summary: "Garden design at its most sophisticated isn't about individual plants. It's about composition—how plants of different textures, colors, and forms interact to create visual interest. This photograph captures that composition in a single, detailed frame."
 tag: "Journal"
 date: "2026-02-16"
-image: "IMG_0390.jpg"
+image: "jardin-tropical-anthurium-les-vendredis-martinique.jpg"
 image_alt: "Close-up of white Peace Lily with red foliage plants in tropical garden setting"
 lang: "en"
 ---

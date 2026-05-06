@@ -4,7 +4,7 @@ title: "Working at Heights: Safety, Competence, and Respect for Risk"
 summary: "Safety equipment is unglamorous. A harness, a hard hat or cap, gloves, appropriate footwear—these are the visual indicators that someone respects the risk they're taking. They're also indicators of professionalism: a trained person who has worked at heights before and understands the hazards."
 tag: "Journal"
 date: "2026-02-11"
-image: "IMG_0943.jpg"
+image: "travaux-hauteur-charpente-aframe-martinique.jpg"
 image_alt: "Person wearing safety harness and pink cap standing on wooden scaffolding high on building exterior"
 lang: "en"
 ---

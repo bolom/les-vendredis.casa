@@ -4,7 +4,7 @@ title: "A New Perspective: Building a Space for the Future"
 summary: "This photograph breaks the normal composition rules. It's shot from below, looking upward, framing two people (an adult and child) against sky and foliage. It's a vertiginous angle that makes the structure feel monumental, the people feel small but present."
 tag: "Journal"
 date: "2026-02-21"
-image: "IMG_0397.jpg"
+image: "vue-jardin-collines-les-vendredis-sainte-luce.jpg"
 image_alt: "Extreme low-angle shot from beneath wooden slats, two people visible from waist down peering over edge"
 lang: "en"
 ---

@@ -4,7 +4,7 @@ title: "The Reality of Development: Construction Materials and Resourcefulness"
 summary: "There's a particular aesthetic that emerges from resourcefulness—from using what's available, from salvaging and repurposing rather than importing new. This photograph captures that aesthetic: not beautiful in conventional terms, but beautiful in its honesty about how building actually happens in remote locations."
 tag: "Journal"
 date: "2026-02-20"
-image: "IMG_4688.JPG"
+image: "terrain-avant-construction-les-vendredis-sainte-luce.jpg"
 image_alt: "Woman walking through construction site filled with salvaged materials, barrels, cables, tilees"
 lang: "en"
 ---

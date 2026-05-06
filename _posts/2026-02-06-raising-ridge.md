@@ -4,7 +4,7 @@ title: "Raising the Ridge: The Frame Takes Shape"
 summary: "There's a particular magic in the moment when a building frame stands alone, before walls, before infill, before the thousand details that transform frame into enclosed space. At this moment, the building exists as pure geometry, pure intention."
 tag: "Journal"
 date: "2026-02-06"
-image: "IMG_0938.jpg"
+image: "charpente-aframe-debut-montage-sainte-luce.jpg"
 image_alt: "A-frame wooden frame skeleton standing in tropical environment with blue sky"
 lang: "en"
 ---

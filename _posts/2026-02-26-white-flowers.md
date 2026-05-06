@@ -4,7 +4,7 @@ title: "Tropical Flora: White Blooms in Dense Foliage"
 summary: "In intense tropical sunlight, white flowers function as visual anchors. They're high-contrast against dark foliage, visible from distance, and they command attention."
 tag: "Journal"
 date: "2026-02-26"
-image: "IMG_3594.jpg"
+image: "tranchees-amenagement-jardin-les-vendredis-martinique.jpg"
 image_alt: "Peace Lily white flower with red foliage plants, tropical garden, natural daylight"
 lang: "en"
 ---

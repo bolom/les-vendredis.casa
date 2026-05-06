@@ -4,7 +4,7 @@ title: "Les manguiers sont chargés à nouveau."
 summary: "Les premières mangues de la saison sont tombées cette semaine."
 tag: "Le jardin"
 date: 2026-04-12
-image: "IMG_0390.jpg"
+image: "jardin-tropical-anthurium-les-vendredis-martinique.jpg"
 image_alt: "Jardin à Sainte-Luce, Martinique"
 lang: "fr"
 translation_key: "mangoes"

@@ -4,7 +4,7 @@ title: "DIY Scaffolding: Engineering Makeshift at Height"
 summary: "There's a particular moment in construction when you realize that the scaffolding surrounding a building is more impressive engineering than the building itself. Every project is unique—different wall height, different angles, different access points. Rather than buying generic commercial scaffolding (expensive, often overkill), sophisticated builders construct specific solutions."
 tag: "Journal"
 date: "2026-02-12"
-image: "IMG_0896.jpg"
+image: "construction-cabane-aframe-pose-bardage-martinique.jpg"
 image_alt: "Woman on multi-tiered wooden scaffolding with vapor barrier and wooden shingles visible"
 lang: "en"
 ---
