@@ -43,7 +43,15 @@
     </a>
     <nav class="top-right">
       <a href="{{ journal_url }}"{% if is_journal %} class="active"{% endif %}>Journal</a>
+      {% assign is_home = false %}
+      {% if page.url == '/' or page.url == '/fr/' or page.url == '/index.html' or page.url == '/fr/index.html' %}
+        {% assign is_home = true %}
+      {% endif %}
+      {% if is_home %}
+      <a href="#stay" onclick="document.getElementById('stay').scrollIntoView({behavior:'smooth'});return false;">Réserver</a>
+      {% else %}
       <a href="https://airbnb.fr/h/lesvendredis" target="_blank" rel="noopener">Réserver</a>
+      {% endif %}
       <a href="https://wa.me/33666535289" target="_blank" rel="noopener">WhatsApp</a>
       <span class="lang-toggle">
         <a href="{{ lang_fr_url }}"{% if current_lang == 'fr' %} class="active"{% endif %}>FR</a>
