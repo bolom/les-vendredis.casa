@@ -44,9 +44,10 @@
   <meta name="twitter:title" content="{% if seo_title contains site.title %}{{ seo_title }}{% else %}{{ seo_title }} — {{ site.title }}{% endif %}">
   <meta name="twitter:description" content="{{ seo_description | strip_html | strip_newlines | escape }}">
   {% if og_image != '' %}
-  <meta name="twitter:image" content="{{ '/public/images/' | append: og_image | absolute_url }}">
-  {% endif %}
-  {% if page.url == '/journal/' %}
+   <meta name="twitter:image" content="{{ '/public/images/' | append: og_image | absolute_url }}">
+   {% endif %}
+   {% seo %}
+   {% if page.url == '/journal/' %}
   <link rel="alternate" hreflang="en" href="https://lesvendredis.casa/journal/">
   <link rel="alternate" hreflang="fr" href="https://lesvendredis.casa/fr/journal/">
   <link rel="alternate" hreflang="x-default" href="https://lesvendredis.casa/journal/">

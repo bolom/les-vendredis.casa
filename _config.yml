@@ -2,6 +2,8 @@ title: "Les Vendredis"
 description: "A handmade A-frame cabin and private garden in Sainte-Luce, Martinique."
 url: "https://lesvendredis.casa"
 baseurl: ""
+tagline: "Luxury A-frame cabin with private garden in Martinique"
+locale: en_US
 
 permalink: /journal/:slug/
 
@@ -9,6 +11,8 @@ source: .
 destination: _site
 plugins:
   - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
 
 collections:
   posts:
