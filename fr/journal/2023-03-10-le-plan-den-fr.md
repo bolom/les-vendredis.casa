@@ -12,9 +12,11 @@ translation_key: "plan-den"
 permalink: /fr/journal/plan-den/
 ---
 
-On a passé quelques semaines à regarder des plans de A-frame en ligne avant de trouver Den. Leurs designs étaient propres — une géométrie juste, de bonnes proportions, rien de compliqué inutilement. On a commandé les plans, on les a imprimés, et on les a étalés sur la table de la cuisine.
+On a passé quelques semaines à regarder des plans de A-frame en ligne avant de trouver [Den Outdoors](https://denoutdoors.com). Leur [A-Frame Bunk Cabin](https://denoutdoors.com/products/a-frame-bunk-cabin?variant=31913737912384) s'est imposé — 14 × 14 pieds au sol, 21 pieds jusqu'au faîtage, une façade entière en verre, un mezzanine pour deux, une petite cuisine, des portes françaises. Une géométrie juste, de bonnes proportions, rien de compliqué inutilement. On a commandé le building package, on a imprimé les plans, et on les a étalés sur la table de la cuisine.
 
 Anaïs les a étudiés comme un cahier des charges client. Bolo a ouvert un tableur.
+
+Le plan nous donnait la structure. Le reste, c'était nos choix — l'orientation, les matériaux, comment la cabane allait s'asseoir sur la dalle existante, comment le jardin allait l'envelopper. Le design de Den est pensé pour la forêt. On l'a fait fonctionner pour les Caraïbes.
 
 Le choix du Waba pour le bardage est venu plus tard, mais il s'est imposé naturellement. Le Waba est un bois dur de Guyane — dense, naturellement résistant à la pourriture, et il vieillit très bien sous les tropiques. Le cèdre aurait été le choix facile. Le Waba était le bon choix.
 

@@ -11,9 +11,11 @@ lang: "en"
 translation_key: "plan-den"
 ---
 
-We spent a few weeks looking at A-frame plans online before we found Den. Their designs were clean — proper geometry, good proportions, nothing overcomplicated. We ordered the plans, printed them, and spread them across the kitchen table.
+We spent a few weeks looking at A-frame plans online before we found [Den Outdoors](https://denoutdoors.com). Their [A-Frame Bunk Cabin](https://denoutdoors.com/products/a-frame-bunk-cabin?variant=31913737912384) was the one — 14 × 14 feet at the base, 21 feet to the peak, a full glass front wall, a loft sleeping two, a small kitchen, french doors. Clean geometry, good proportions, nothing overcomplicated. We ordered the building package, printed the plans, and spread them across the kitchen table.
 
 Anaïs studied them like a client brief. Bolo started a spreadsheet.
+
+The plan gave us the structure. Everything else was our call — orientation, materials, how the cabin would sit on the existing slab, how the garden would wrap around it. Den's design is made for the woods. We made it work for the Caribbean.
 
 The decision to go with Waba for the cladding came later, but it made sense from the start. Waba is a Guyanese hardwood — dense, naturally rot-resistant, and it weathers beautifully in the tropics. Cedar shingles would have been the easy choice. Waba was the right one.
 
