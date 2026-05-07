@@ -191,6 +191,12 @@ h1 em { font-style: italic; font-weight: 400; color: var(--accent); }
   color: var(--ink);
   font-weight: 400;
 }
+.cred-pet-logo {
+  display: block;
+  height: 28px;
+  width: auto;
+  margin-top: 2px;
+}
 
 /* ── section heads ── */
 .section-head {

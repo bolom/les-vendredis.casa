@@ -6,13 +6,8 @@
   {% assign seo_title = page.seo_title | default: page.title | default: site.title %}
   {% assign seo_description = page.description | default: page.summary | default: page.excerpt | default: site.description %}
   {% assign canonical_url = page.canonical_url | default: page.url | absolute_url %}
-  {% assign og_image = page.image | default: '' %}
-  {% assign og_locale = 'en_US' %}
   {% assign alternate_en_url = '' %}
   {% assign alternate_fr_url = '' %}
-  {% if page.lang == 'fr' %}
-    {% assign og_locale = 'fr_FR' %}
-  {% endif %}
   {% if page.translation_key %}
     {% for post in site.posts %}
       {% if post.translation_key == page.translation_key and post.lang != 'fr' %}
@@ -31,22 +26,7 @@
   {% if page.noindex %}
   <meta name="robots" content="noindex,follow">
   {% endif %}
-  <meta property="og:type" content="{% if page.layout == 'article' or page.collection == 'posts' %}article{% else %}website{% endif %}">
-  <meta property="og:site_name" content="{{ site.title }}">
-  <meta property="og:locale" content="{{ og_locale }}">
-  <meta property="og:title" content="{% if seo_title contains site.title %}{{ seo_title }}{% else %}{{ seo_title }} — {{ site.title }}{% endif %}">
-  <meta property="og:description" content="{{ seo_description | strip_html | strip_newlines | escape }}">
-  <meta property="og:url" content="{{ canonical_url }}">
-  {% if og_image != '' %}
-  <meta property="og:image" content="{{ '/public/images/' | append: og_image | absolute_url }}">
-  {% endif %}
-  <meta name="twitter:card" content="{% if og_image != '' %}summary_large_image{% else %}summary{% endif %}">
-  <meta name="twitter:title" content="{% if seo_title contains site.title %}{{ seo_title }}{% else %}{{ seo_title }} — {{ site.title }}{% endif %}">
-  <meta name="twitter:description" content="{{ seo_description | strip_html | strip_newlines | escape }}">
-  {% if og_image != '' %}
-   <meta name="twitter:image" content="{{ '/public/images/' | append: og_image | absolute_url }}">
-   {% endif %}
-   {% seo %}
+  {% seo %}
    {% if page.url == '/journal/' %}
   <link rel="alternate" hreflang="en" href="https://lesvendredis.casa/journal/">
   <link rel="alternate" hreflang="fr" href="https://lesvendredis.casa/fr/journal/">
@@ -61,6 +41,7 @@
   <link rel="alternate" hreflang="x-default" href="{{ alternate_en_url }}">
   {% endif %}
   <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+  {% if page.url == '/' or page.url == '/fr/' %}{% include schema.html %}{% endif %}
 </head>
 <body>
   {% include header.html %}

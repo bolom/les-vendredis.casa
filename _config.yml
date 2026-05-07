@@ -4,6 +4,7 @@ url: "https://lesvendredis.casa"
 baseurl: ""
 tagline: "Luxury A-frame cabin with private garden in Martinique"
 locale: en_US
+image: /public/images/cabane-aframe-jardin-fleurs-rouges-les-vendredis.jpg
 
 permalink: /journal/:slug/
 
