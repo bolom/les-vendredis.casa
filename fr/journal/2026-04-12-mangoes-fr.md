@@ -1,16 +1,21 @@
 ---
 layout: article
 title: "Les manguiers sont chargés à nouveau."
-summary: "Les premières mangues de la saison sont tombées cette semaine."
+seo_title: "Saison des mangues à Sainte-Luce Martinique — Le jardin des Vendredis"
+summary: "Les premières mangues de la saison sont tombées cette semaine. On a laissé une caisse au portail."
 tag: "Le jardin"
 date: 2026-04-12
-image: "jardin-tropical-anthurium-les-vendredis-martinique.jpg"
-image_alt: "Jardin à Sainte-Luce, Martinique"
+image: "mangues-jardin-cabane-aframe-les-vendredis.jpg"
+image_alt: "Mangues vertes sur l'arbre, cabane A-frame visible dans le jardin en fond, Les Vendredis"
 lang: "fr"
 translation_key: "mangoes"
 permalink: /fr/journal/mangoes/
 ---
 
-Le jardin est luxuriant après deux semaines de pluie - le bougainvillier près du sentier s'ouvre.
+Les Julie sont tombées en premier — c'est toujours comme ça. Petites, sucrées, celles que les voisins attendent. On a rempli une caisse et on l'a laissée au portail. Elle était vide le lendemain matin.
 
-Nous avons laissé une caisse à la porte pour les voisins. Certains sont revenus avec des bananes.
+Le grand manguier au fond du jardin prend encore deux ou trois semaines. Celles-là, on les mange debout, le jus qui coule dans le bras, sans se battre pour une assiette. Léon va voir tous les matins depuis une semaine.
+
+Le jardin produit sans qu'on lui demande grand-chose. Anaïs l'a planifié comme ça — des arbres fruitiers calés l'un après l'autre dans la saison, pour qu'il y ait toujours quelque chose qui arrive. Après les mangues, ce seront les papayes, puis le fruit de la passion qui grimpe sur la clôture de la terrasse.
+
+Les hôtes qui arrivent en avril ou mai mangent dans les arbres. On laisse un panier dans la cabane, on dit de se servir. Personne n'a jamais refusé.
