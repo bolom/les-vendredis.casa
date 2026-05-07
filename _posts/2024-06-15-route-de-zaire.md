@@ -5,7 +5,7 @@ seo_title: "Route de Zaïre Sainte-Luce Martinique — Quiet Rural Life at Les V
 summary: "Route de Zaïre is the kind of place where everyone knows everyone, dogs sleep in the road, and nobody locks their gate. That's the neighbourhood. We love it."
 tag: "The place"
 date: 2024-06-15
-image: "panorama-domaine-cabane-aframe-les-vendredis-martinique.jpg"
+image: "cabane-aframe-ouverte-jardin-tropical-sainte-luce.jpg"
 image_alt: "Panoramic view of Les Vendredis domain with A-frame cabin, hills and tropical garden"
 lang: "en"
 translation_key: "route-de-zaire"

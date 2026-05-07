@@ -5,7 +5,7 @@ seo_title: "Roches Gravées Sainte-Luce Martinique — Amerindian Petroglyphs Ne
 summary: "Twenty minutes on foot from the cabin, there are 14 Amerindian faces carved into volcanic rock. They've been there for over a thousand years. It's worth the walk."
 tag: "The place"
 date: 2024-07-20
-image: "flamboyant-palmiers-collines-jardin-les-vendredis.jpg"
+image: "panorama-domaine-cabane-aframe-les-vendredis-martinique.jpg"
 image_alt: "Flamboyant tree in bloom with palm trees and Martinique hills behind, garden of Les Vendredis"
 lang: "en"
 translation_key: "roches-gravees"
