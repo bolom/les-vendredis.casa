@@ -12,7 +12,7 @@ translation_key: "jardin-anais"
 permalink: /fr/journal/jardin-anais/
 ---
 
-Le terrain était nu quand on l'a acheté. Un talus de terre rouge, quelques arbres sauvages, des plantes envahissantes qui avaient pris les bords. Pas grand-chose à travailler.
+Le terrain était nu quand Anaïs l'a hérité. Un talus de terre rouge, quelques arbres sauvages, des plantes envahissantes qui avaient pris les bords. Pas grand-chose à travailler.
 
 Anaïs est ingénieure paysagiste — son travail est visible sur [anais.earth](https://anais.earth) — et elle a abordé le jardin comme elle aborde les projets clients : analyse du site d'abord, palette végétale ensuite, rien qui s'ajoute sans raison.
 
@@ -22,4 +22,4 @@ Les plantations ont été pensées pour produire : mangue, goyave, papaye, banan
 
 Trois ans après, le jardin a l'air d'être là depuis dix ans. C'est l'objectif — pas un jardin aménagé qui se lit comme dessiné, mais un endroit qui semble inévitable.
 
-Samsam a son coin à lui. On le lui laisse.
+Samsam a son coin à elle. On le lui laisse.

@@ -19,6 +19,6 @@ That afternoon we decided: we were going to build something on top of it.
 
 Not a pergola. Not a shelter. Something real — a cabin you could actually sleep in, with walls and a roof and a proper floor. We'd figure out the details later.
 
-The slab was already there. The land was ours. Léon was running between the trees. Samsam was asleep in the shade. It felt obvious in the way good decisions often do — not like a revelation, but like something you'd always known and just hadn't said out loud yet.
+The slab was already there. The land was ours. Léon was running between the trees. She was asleep in the shade. It felt obvious in the way good decisions often do — not like a revelation, but like something you'd always known and just hadn't said out loud yet.
 
 We started looking at plans that same evening.

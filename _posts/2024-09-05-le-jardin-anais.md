@@ -11,7 +11,7 @@ lang: "en"
 translation_key: "jardin-anais"
 ---
 
-The land was bare when we bought it. A slope of red soil, a few wild trees, some invasive species that had taken over the edges. Not much to work with.
+The land was bare when Anaïs inherited it. A slope of red soil, a few wild trees, some invasive species that had taken over the edges. Not much to work with.
 
 Anaïs is a landscape architect — you can see her practice at [anais.earth](https://anais.earth) — and she treated the garden the way she treats client projects: site analysis first, plant palette second, nothing added without a reason.
 
@@ -21,4 +21,4 @@ The planting was designed to produce: mango, guava, papaya, banana, passion frui
 
 Three years on, the garden looks like it's been there for ten. That's the goal — not a landscaped garden that reads as designed, but a place that feels inevitable.
 
-Samsam has his corner of it. We let him keep it.
+Samsam has her corner of it. We let her keep it.

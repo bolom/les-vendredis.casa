@@ -15,7 +15,7 @@ The Roches Gravées are one of those places that doesn't get the attention it de
 
 They were classified as a historical monument in 1996. Before that, most people in the area just knew they were there, had always been there, and didn't make much of a fuss about it.
 
-We go often. Léon has a favourite face — the one that looks like it's surprised. Samsam has learned to stay on the path.
+We go often. Léon has a favourite face — the one that looks like it's surprised. She has learned to stay on the path.
 
 The walk from Les Vendredis takes about twenty minutes on foot, through the hills. The Forêt de Montravail is just beyond — old mahogany trees, serious shade, the kind of forest that feels like it's been there longer than everything around it. If you're up early and the morning is cool, it's the best walk you can do in the south of Martinique.
 

@@ -16,7 +16,7 @@ Les Roches Gravées sont un de ces endroits qui ne reçoivent pas l'attention qu
 
 Classées monument historique en 1996. Avant ça, la plupart des gens du coin savaient juste qu'elles étaient là, qu'elles avaient toujours été là, et n'en faisaient pas tout un plat.
 
-On y va souvent. Léon a un visage préféré — celui qui a l'air surpris. Samsam a appris à rester sur le sentier.
+On y va souvent. Léon a un visage préféré — celui qui a l'air surpris. Elle a appris à rester sur le sentier.
 
 Le chemin depuis Les Vendredis prend une vingtaine de minutes à pied, dans les hauteurs. La Forêt de Montravail est juste derrière — de vieux acajous, une ombre sérieuse, le genre de forêt qui donne l'impression d'être là depuis plus longtemps que tout ce qui l'entoure. Si vous partez tôt et qu'il fait encore frais, c'est la meilleure balade qu'on connaisse dans le sud de la Martinique.
 

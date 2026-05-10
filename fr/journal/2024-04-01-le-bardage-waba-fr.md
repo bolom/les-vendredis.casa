@@ -18,7 +18,7 @@ On a pris du Waba à la place — un bois dur de Guyane, dense et huileux, le ge
 
 Les bardeaux sont arrivés bruts et ont dû être triés à la main — Anaïs a passé un après-midi entier à les calibrer et les classer avant qu'on commence la pose. Chaque rang se chevauche sur le tiers du rang inférieur. On travaille de bas en haut, sans se presser, parce qu'une erreur trois rangs plus bas signifie tout déposer.
 
-On a posé la majeure partie du bardage nous-mêmes, section par section, sur plusieurs week-ends. Léon supervisait surtout depuis le bas. Samsam dormait à l'ombre des palmiers.
+On a posé la majeure partie du bardage nous-mêmes, section par section, sur plusieurs week-ends. Léon supervisait surtout depuis le bas. Elle dormait à l'ombre des palmiers.
 
 La cabane a deux ans maintenant. Le Waba a pris un gris argenté naturel, lisse et serré. Il ne prend pas l'eau. Il ne gonfle pas. Dans dix ans il sera exactement pareil, juste un peu plus patiné.
 
