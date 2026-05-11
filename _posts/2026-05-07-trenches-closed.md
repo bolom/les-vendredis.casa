@@ -1,0 +1,28 @@
+---
+layout: article
+title: "Trenches closed, and Catherine turns 65."
+seo_title: "Closing the Trenches and Catherine's 65th — Les Vendredis Build Log"
+summary: "One of those weekends where the work finishes itself and the friends show up. The trench line is gone, and Catherine got her lunch under the gable."
+tag: "Build log"
+date: 2026-05-07
+image: "tranchees-fermees-mur-pierres-les-vendredis.jpg"
+image_alt: "The trench line along the stone wall, finished — Les Vendredis garden, Sainte-Luce"
+lang: "en"
+translation_key: "trenches-closed"
+---
+
+Friday morning. Backfill the trenches we'd cut for the hot water pipe — soil, conduit sleeve, coconut fibre packed in for drainage. The fibre was my idea. The garden looks like a garden again.
+
+![Closing the trenches by hand in the red earth]({{ '/public/images/anais-fermeture-tranchees-jardin-les-vendredis.jpg' | relative_url }})
+
+![Coconut fibre packed in for drainage]({{ '/public/images/fibre-coco-drainage-tranchee-les-vendredis.jpg' | relative_url }})
+
+Saturday was Catherine's 65th. We've known her since before Léon was born. A BBQ in the A-frame, everyone pitched in — what we'd brought back from the Schoelcher compost, three bowls of guavas and mangoes picked that morning, the table dragged out under the gable.
+
+![The harvest — guavas and mangoes from the Schoelcher compost]({{ '/public/images/recolte-goyaves-mangues-compost-les-vendredis.jpg' | relative_url }})
+
+![Anaïs and Léon at the fruit platter]({{ '/public/images/anais-leon-petit-dejeuner-fruits-les-vendredis.jpg' | relative_url }})
+
+I left mid-afternoon for a flag football match with the Iguanes. Got back at dusk. People were still there.
+
+One more weekend, one more thing closed.
