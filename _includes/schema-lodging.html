@@ -1,0 +1,51 @@
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LodgingBusiness",
+  "name": "Les Vendredis",
+  "description": {{ page.description | jsonify }},
+  "url": {{ page.canonical_url | default: page.url | absolute_url | jsonify }},
+  "image": "https://lesvendredis.casa/public/images/cabane-aframe-jardin-fleurs-rouges-les-vendredis.jpg",
+  "telephone": "+33666535289",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Route de Zaire",
+    "addressLocality": "Sainte-Luce",
+    "addressRegion": "Martinique",
+    "postalCode": "97228",
+    "addressCountry": "FR"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 14.4696,
+    "longitude": -60.9204
+  },
+  "amenityFeature": [
+    { "@type": "LocationFeatureSpecification", "name": "Private garden", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Pets allowed", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Outdoor shower", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Hot water", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Equipped kitchen", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Parking on site", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Wifi", "value": false },
+    { "@type": "LocationFeatureSpecification", "name": "Television", "value": false },
+    { "@type": "LocationFeatureSpecification", "name": "Air conditioning", "value": false },
+    { "@type": "LocationFeatureSpecification", "name": "Swimming pool", "value": false }
+  ],
+  "petsAllowed": true,
+  "numberOfRooms": 1,
+  "floorSize": {
+    "@type": "QuantitativeValue",
+    "value": 18,
+    "unitCode": "MTK"
+  },
+  "occupancy": {
+    "@type": "QuantitativeValue",
+    "minValue": 1,
+    "maxValue": 3
+  },
+  "sameAs": [
+    "https://airbnb.fr/h/lesvendredis"
+  ]
+}
+</script>

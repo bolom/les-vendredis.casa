@@ -46,6 +46,7 @@
   {% endif %}
   <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
   {% if page.url == '/' or page.url == '/fr/' %}{% include schema.html %}{% endif %}
+  {% if page.schema == 'lodging' %}{% include schema-lodging.html %}{% endif %}
 </head>
 <body>
   {% include header.html %}
