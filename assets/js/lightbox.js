@@ -5,6 +5,7 @@ const GALLERY = [
   { src: "public/images/panorama-domaine-cabane-aframe-les-vendredis-martinique.jpg", title: "The Domain",         desc: "A wide view of the full estate — cabin, covered terrace, palms, and the Martinique hills." },
   { src: "public/images/vue-interieure-cabane-aframe-jardin-rochers-martinique.jpg", title: "From Inside",         desc: "The open front of the cabin framing the garden, the stone wall, and the red chair beyond." },
   { src: "public/images/interieur-cabane-aframe-vue-jardin-les-vendredis.jpg",      title: "Inside Looking Out",   desc: "Lying in the loft, looking through the triangular window into the palms and hills." },
+  { src: "public/images/fenetre-triangulaire-cabane-aframe-les-vendredis.jpg",     title: "The Window",           desc: "The triangular gable window — built by hand, in pieces, fitted on a Sunday." },
   { src: "public/images/cabane-aframe-rochers-fleurs-jardin-les-vendredis.jpg",     title: "Cabin & Rocks",        desc: "The A-frame beside the volcanic rock wall — a signature feature of the garden." },
   { src: "public/images/cabane-aframe-jardin-fleurs-rouges-les-vendredis.jpg",      title: "The A-Frame",          desc: "The cabin seen through tropical foliage — red flowers, Waba shingles, blue sky." },
   { src: "public/images/cabane-aframe-ouverte-jardin-tropical-sainte-luce.jpg",     title: "Open to the Garden",   desc: "The finished A-frame, front open, framed by trees and the Martinique hillside." },
