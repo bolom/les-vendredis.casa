@@ -15,19 +15,19 @@ Les Roches Gravées de Montravail sont à vingt minutes de marche de la cabane. 
 
 ## Ce qu'on voit
 
-Quatorze visages humains sont gravés dans la roche andésitique, sur un bloc incliné posé au milieu de la forêt. Les traits sont simples — des ovales, des yeux creusés, des bouches à peine esquissées. Certains visages sont tournés vers le ciel, d'autres regardent la pente. Les archéologues les datent entre 500 et 1500 après J.-C. Personne ne sait exactement ce qu'ils représentent : ancêtres, divinités, gardiens du lieu. C'est cette incertitude qui rend l'endroit fort.
+Quatorze visages humains sont gravés sur cinq blocs d'andésite répartis sur une surface de 18 mètres par 8, au milieu de la forêt. Les traits sont simples — des ovales, des yeux creusés, des bouches à peine esquissées. Ils ont été obtenus par piquetage et bouchardage de la roche. Les céramiques retrouvées lors des fouilles de 2007 datent l'occupation du site entre 350 et 700 après J.-C., à l'époque du Saladoïde Cédrosan. Personne ne sait exactement ce que ces visages représentent : ancêtres, divinités, gardiens du lieu. C'est cette incertitude qui rend l'endroit fort.
 
 ## Y aller depuis la cabane
 
-En sortant des Vendredis, on prend la route de Zaire vers le bas sur 50 mètres, puis le chemin forestier qui monte à droite après le grand manguier. La trace est bien marquée — les randonneurs locaux l'entretiennent, et le site est fléché depuis la route principale. Comptez vingt minutes à pied, un peu plus si vous vous arrêtez pour écouter les pics de Guadeloupe tambouriner dans les troncs.
+En sortant des Vendredis, on descend la route de Zaire sur 50 mètres, puis on prend le chemin forestier qui monte à droite après le grand manguier. La trace est bien marquée — les randonneurs locaux l'entretiennent, et le site est fléché depuis la route principale. Comptez vingt minutes à pied, un peu plus si vous vous arrêtez pour écouter les carouges siffler dans les manguiers.
 
 La dernière section traverse une zone de fougères arborescentes. L'andésite affleure par endroits — on marche littéralement sur la même roche que les visages. Le site lui-même est protégé par une clôture basse et un panneau explicatif de la Collectivité Territoriale.
 
 ## Pourquoi c'est important
 
-La Martinique compte trois sites d'art rupestre amérindien : les Roches Gravées de Montravail à Sainte-Luce, la Roche Écrite à Saint-Pierre, et la Grotte du Père Labat au Marigot. Montravail est le plus accessible, et paradoxalement le moins visité. La plupart des voyageurs passent leur séjour sans savoir que ces visages existent.
+La Martinique compte plusieurs sites d'art rupestre amérindien — notamment les Roches gravées du Galion à La Trinité, inscrites Monument Historique en 2020, et un site récemment documenté à Châteaubœuf. Montravail reste le plus accessible, et paradoxalement le moins visité. La plupart des voyageurs passent leur séjour sans savoir que ces visages existent.
 
-Les Arawaks, puis les Kalinagos, ont habité ces mornes bien avant la colonisation. La roche gravée fait partie d'un ensemble archéologique plus large : des tessons de poterie, des outils en coquillage, et des traces d'habitat ont été retrouvés dans un rayon de 500 mètres. Le site est classé Monument Historique depuis 1970.
+Les Saladoïdes, premiers Amérindiens céramistes des Petites Antilles, ont occupé ces hauteurs bien avant l'arrivée des Kalinagos puis la colonisation européenne. Le site présente des liens iconographiques avec les Roches gravées du Galion. Acquis par la collectivité en 2009, il est inscrit aux Monuments Historiques depuis le 7 novembre 1996.
 
 ## Ce qu'il faut savoir
 

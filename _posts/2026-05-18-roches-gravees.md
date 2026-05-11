@@ -15,19 +15,19 @@ The Roches Gravées de Montravail are twenty minutes on foot from the cabin. You
 
 ## What you see
 
-Fourteen human faces are carved into andesite rock, on a tilted slab set in the middle of the forest. The lines are simple — ovals, hollowed eyes, barely drawn mouths. Some faces look up at the sky, others gaze down the slope. Archaeologists date them between 500 and 1500 CE. Nobody knows exactly what they represent: ancestors, deities, guardians of the place. That uncertainty is what makes the site powerful.
+Fourteen human faces are carved across five andesite blocks spread over an 18 by 8 metre area, in the middle of the forest. The lines are simple — ovals, hollowed eyes, barely drawn mouths. They were made by pecking and hammering the rock. Pottery shards found during the 2007 excavations date the site's occupation between 350 and 700 CE, in the Cedrosan Saladoid period. Nobody knows exactly what these faces represent: ancestors, deities, guardians of the place. That uncertainty is what makes the site powerful.
 
 ## Getting there from the cabin
 
-Leaving Les Vendredis, take the Route de Zaire downhill for 50 metres, then the forest path that climbs to the right after the big mango tree. The trail is well marked — local hikers maintain it, and the site is signposted from the main road. Allow twenty minutes on foot, a little more if you stop to listen to Guadeloupe woodpeckers drumming on the trunks.
+Leaving Les Vendredis, head down Route de Zaire for 50 metres, then take the forest path that climbs to the right after the big mango tree. The trail is well marked — local hikers maintain it, and the site is signposted from the main road. Allow twenty minutes on foot, a little more if you stop to listen to Martinique orioles whistling in the mango trees.
 
 The last section crosses a zone of tree ferns. Andesite outcrops in places — you're literally walking on the same rock as the faces. The site itself is protected by a low fence and an information panel from the Collectivité Territoriale.
 
 ## Why it matters
 
-Martinique has three known Amerindian rock art sites: the Roches Gravées de Montravail in Sainte-Luce, the Roche Écrite in Saint-Pierre, and the Grotte du Père Labat in Le Marigot. Montravail is the most accessible — and, paradoxically, the least visited. Most travellers spend their stay without knowing these faces exist.
+Martinique has several Amerindian rock art sites — notably the Roches gravées du Galion in La Trinité, listed as a Historical Monument in 2020, and a recently documented site at Châteaubœuf. Montravail remains the most accessible and, paradoxically, the least visited. Most travellers spend their stay without knowing these faces exist.
 
-The Arawaks, then the Kalinagos, lived in these hills long before colonisation. The engraved rock is part of a wider archaeological complex: pottery shards, shell tools, and traces of settlement have been found within a 500-metre radius. The site has been a classified Historical Monument since 1970.
+The Saladoids, the first ceramic Amerindians of the Lesser Antilles, occupied these hills long before the arrival of the Kalinagos and European colonisation. The site shows iconographic links with the Roches gravées du Galion. Acquired by the local authority in 2009, it has been listed as a Historical Monument since 7 November 1996.
 
 ## What to know
 

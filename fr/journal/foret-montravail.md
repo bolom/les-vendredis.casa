@@ -15,17 +15,17 @@ La cabane n'est pas dans une clairière. Elle est dans la forêt. La forêt de M
 
 ## Ce qu'on entend
 
-Le chant du coq, évidemment. Dimdim commence vers cinq heures. Mais avant lui, il y a les oiseaux : le pic de Guadeloupe qui tambourine, le merle de Sainte-Lucie qui siffle en boucle, les colibris falle-vert qui bourdonnent autour des bougainvilliers. La nuit, les grenouilles arboricoles prennent le relais. On entend aussi le vent dans les bambous — un bruit de fond qui ne s'arrête jamais.
+Le chant du coq, évidemment. Dimdim commence vers cinq heures. Mais avant lui, il y a les oiseaux : le carouge qui siffle dans les manguiers, le sucrier à ventre jaune qui s'invite partout, les colibris falle-vert qui bourdonnent autour des bougainvilliers. La nuit, les grenouilles arboricoles prennent le relais. On entend aussi le vent dans les bambous — un bruit de fond qui ne s'arrête jamais.
 
 ## Ce qu'on voit
 
 La forêt de Montravail est mixte. Des grands arbres — fromagers, acajous, gommiers — mais aussi des fruitiers échappés : manguiers, goyaviers, avocatiers. Les fougères arborescentes colonisent les pentes les plus humides. Les lianes pendent partout, certaines épaisses comme un bras. La lumière arrive en taches, jamais directe.
 
-En saison des pluies, le sol dégage une odeur de terre mouillée et de feuilles en décomposition. Des champignons orange fluo poussent sur les troncs tombés. Les morphos bleus traversent les trouées de lumière — un flash, puis plus rien.
+En saison des pluies, le sol dégage une odeur de terre mouillée et de feuilles en décomposition. Des champignons orange fluo poussent sur les troncs tombés. Les papillons traversent les trouées de lumière — un flash, puis plus rien.
 
 ## Les traces
 
-Ce n'est pas une forêt vide. Les traces d'animaux sont partout si on regarde : des grattages de manicou dans les feuilles mortes, des crottes de chauve-souris sous les rochers, et parfois, tôt le matin, des empreintes de raton laveur près du bassin. Les chasseurs locaux connaissent bien cette forêt — on croise leurs chiens créoles de temps en temps, et Samsam leur répond.
+Ce n'est pas une forêt vide. Les traces d'animaux sont partout si on regarde : des grattages de manicou dans les feuilles mortes, des crottes de chauve-souris sous les rochers, et parfois, tôt le matin, des passages de mangouste près du bassin. Les chasseurs locaux connaissent bien cette forêt — on croise leurs chiens créoles de temps en temps, et Samsam leur répond.
 
 ## Ce qu'il faut savoir
 
