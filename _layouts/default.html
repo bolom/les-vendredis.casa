@@ -31,6 +31,9 @@
   <meta name="robots" content="noindex,follow">
   {% endif %}
   {% seo %}
+  {% if page.locale %}
+  <meta property="og:locale" content="{{ page.locale }}">
+  {% endif %}
    {% if page.url == '/journal/' %}
   <link rel="alternate" hreflang="en" href="https://lesvendredis.casa/journal/">
   <link rel="alternate" hreflang="fr" href="https://lesvendredis.casa/fr/journal/">
