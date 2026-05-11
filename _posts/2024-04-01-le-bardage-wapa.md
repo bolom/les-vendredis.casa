@@ -8,12 +8,12 @@ date: 2024-04-01
 image: "construction-bardage-bois-cabane-aframe-martinique.jpg"
 image_alt: "Laying Wapa hardwood shingles on the A-frame by hand, Sainte-Luce, Martinique"
 lang: "en"
-translation_key: "bardage-waba"
+translation_key: "bardage-wapa"
 ---
 
-Cedar is the classic choice for A-frame shingles. It's light, it splits cleanly, it smells good on site. Most of the plans we'd seen online assumed you'd use cedar.
+The cabin is clad in Wapa — a hardwood from French Guiana, dense and oily, the kind of wood that doesn't need to be treated because it already knows how to handle rain.
 
-We went with Wapa instead — a hardwood from French Guiana, dense and oily, the kind of wood that doesn't need to be treated because it already knows how to handle rain. In the Caribbean climate, cedar performs. Wapa lasts.
+Most A-frame plans online assume you'll use cedar: light, easy to split, smells good on site. Cedar performs in the Caribbean. Wapa lasts.
 
 The shingles arrived rough-cut and had to be sorted by hand — Anaïs spent a full afternoon sizing and grading them before we started laying. Each row overlaps the one below by a third. You work from the bottom up, and you don't rush it, because a mistake three rows down means pulling everything back off.
 

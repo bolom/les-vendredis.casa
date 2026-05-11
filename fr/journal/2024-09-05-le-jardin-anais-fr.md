@@ -18,7 +18,7 @@ Anaïs est ingénieure paysagiste — son travail est visible sur [anais.earth](
 
 Les rochers volcaniques étaient déjà là, enfouis sous la terre. On les a dégagés et utilisés pour construire les murs de soutènement — les longues lignes de pierre qui étagent le talus et empêchent tout de partir dans la pluie. Ça a pris des semaines. Les pierres sont lourdes. Les murs sont solides.
 
-Les plantations ont été pensées pour produire : mangue, goyave, papaye, banane, fruit de la passion — des fruits que les voisins reconnaissent, des fruits qui remplissent le jardin du bon désordre au bon moment de l'année. Entre les plants productifs, la couleur : anthurium, flamboyant, heliconia, bougainvillée. Anaïs a planté des choses qui fleurissent en séquence pour qu'il y ait toujours quelque chose d'ouvert.
+Les plantations ont été pensées pour produire : mangue, goyave, papaye, fruit de la passion — et des bananes en trois variétés : la jaune, la frécinette, la cancanbou. Des fruits que les voisins reconnaissent, des fruits qui remplissent le jardin du bon désordre au bon moment de l'année. Entre les plants productifs, la couleur : anthurium, flamboyant, heliconia, bougainvillée. Anaïs a planté des choses qui fleurissent en séquence pour qu'il y ait toujours quelque chose d'ouvert.
 
 Trois ans après, le jardin a l'air d'être là depuis dix ans. C'est l'objectif — pas un jardin aménagé qui se lit comme dessiné, mais un endroit qui semble inévitable.
 

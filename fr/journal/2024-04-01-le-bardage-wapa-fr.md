@@ -8,13 +8,13 @@ date: 2024-04-01
 image: "construction-bardage-bois-cabane-aframe-martinique.jpg"
 image_alt: "Pose du bardage en Wapa sur la cabane A-frame à la main, Sainte-Luce, Martinique"
 lang: "fr"
-translation_key: "bardage-waba"
-permalink: /fr/journal/bardage-waba/
+translation_key: "bardage-wapa"
+permalink: /fr/journal/bardage-wapa/
 ---
 
-Le cèdre, c'est le choix classique pour les bardeaux de A-frame. Il est léger, il se fend bien, il sent bon sur le chantier. La plupart des plans qu'on avait vus en ligne partaient du principe qu'on utiliserait du cèdre.
+La cabane est bardée en Wapa — un bois dur de Guyane, dense et huileux, le genre de bois qui n'a pas besoin d'être traité parce qu'il sait déjà gérer la pluie.
 
-On a pris du Wapa à la place — un bois dur de Guyane, dense et huileux, le genre de bois qui n'a pas besoin d'être traité parce qu'il sait déjà gérer la pluie. Sous le climat caribéen, le cèdre tient. Le Wapa dure.
+La plupart des plans de A-frame en ligne partent du principe qu'on utilisera du cèdre : léger, facile à fendre, ça sent bon sur le chantier. Le cèdre tient sous le climat caribéen. Le Wapa dure.
 
 Les bardeaux sont arrivés bruts et ont dû être triés à la main — Anaïs a passé un après-midi entier à les calibrer et les classer avant qu'on commence la pose. Chaque rang se chevauche sur le tiers du rang inférieur. On travaille de bas en haut, sans se presser, parce qu'une erreur trois rangs plus bas signifie tout déposer.
 
