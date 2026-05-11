@@ -22,6 +22,6 @@ Le choix du Wapa pour le bardage est venu plus tard, mais il s'est imposé natur
 
 On n'a pas pris de maître d'œuvre. Anaïs a géré le chantier. Sa formation d'ingénieure paysagiste lui donnait une lecture des matériaux, du drainage, de l'orientation — la cabane devait s'inscrire *dans* le terrain, pas juste être posée dessus. La terrasse est orientée vers les collines. La façade s'ouvre pour capter les alizés du sud. Le jardin enveloppe l'ensemble.
 
-Ça a pris deux ans. On a tout construit nous-mêmes pour l'essentiel, avec de l'aide du quartier quand les grosses pièces demandaient plus que deux paires de mains.
+Ça a pris deux ans. On a tout construit nous-mêmes pour l'essentiel, avec l'aide d'amis quand les grosses pièces demandaient plus que deux paires de mains.
 
 On ne regrette pas d'avoir pris notre temps.

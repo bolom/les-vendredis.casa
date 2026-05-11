@@ -21,6 +21,6 @@ The decision to go with Wapa for the cladding came later, but it made sense from
 
 We didn't hire a general contractor. Anaïs managed the site. Her training as a landscape architect meant she understood materials, drainage, orientation — the cabin had to sit *with* the land, not on top of it. The terrace faces the hills. The front opens to catch the breeze from the south. The garden wraps around it.
 
-It took two years. We built most of it ourselves, with help from a few people from the neighbourhood when the big pieces needed more than two pairs of hands.
+It took two years. We built most of it ourselves, with help from friends when the big pieces needed more than two pairs of hands.
 
 We have no regrets about doing it the slow way.
