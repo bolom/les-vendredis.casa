@@ -265,6 +265,15 @@ h1 em { font-style: italic; font-weight: 400; color: var(--accent); }
   letter-spacing: -.01em;
   margin-bottom: 18px;
 }
+.entry-body h3 a {
+  color: var(--ink);
+  background-image: linear-gradient(var(--ink), var(--ink));
+  background-size: 0% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size .3s ease;
+}
+.entry-body h3 a:hover { background-size: 100% 1px; }
 .entry-body h3 em { font-style: italic; color: var(--accent); }
 .entry-body p {
   font-family: var(--serif);
@@ -275,10 +284,13 @@ h1 em { font-style: italic; font-weight: 400; color: var(--accent); }
 }
 .entry-body p + p { margin-top: 12px; }
 .entry-img {
+  display: block;
   aspect-ratio: 4/3;
   overflow: hidden;
   box-shadow: 0 20px 40px -25px rgba(31,22,17,.3);
 }
+.entry-img img { transition: transform .5s ease; }
+.entry-img:hover img { transform: scale(1.03); }
 .entry-img img { width: 100%; height: 100%; object-fit: cover; }
 .journal-foot {
   padding: 48px 0 0;
