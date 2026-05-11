@@ -2,6 +2,7 @@ coverage/
 .DS_Store
 *.log
 .claude/
+.superpowers/
 # Jekyll build output and dependencies
 _site/
 .bundle/

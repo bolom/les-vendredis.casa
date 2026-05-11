@@ -1,0 +1,28 @@
+<section class="newsletter" id="newsletter">
+  <div class="wrap newsletter-inner">
+    <div class="nl-text">
+      <div class="eyebrow">Newsletter</div>
+      {% if include.lang == 'fr' %}
+      <h2>Le journal <em>dans votre boîte.</em></h2>
+      <p class="nl-sub">Une photo, deux lignes sur le jardin, les travaux, la vie lente à Sainte-Luce. Pas plus d'une fois par mois. Pas de pub.</p>
+      {% else %}
+      <h2>The journal <em>in your inbox.</em></h2>
+      <p class="nl-sub">One photo, two lines about the garden, the build, the slow life in Sainte-Luce. No more than once a month. No spam.</p>
+      {% endif %}
+    </div>
+    <form action="https://buttondown.com/api/emails/embed-subscribe/lesvendredis" method="post" class="nl-form" target="_blank">
+      <input type="email" name="email" id="bd-email"
+             placeholder="{% if include.lang == 'fr' %}votre@email.com{% else %}your@email.com{% endif %}"
+             required class="nl-input" />
+      <button type="submit" class="nl-btn">
+        {% if include.lang == 'fr' %}S'inscrire{% else %}Subscribe{% endif %}
+        <span class="arrow">→</span>
+      </button>
+    </form>
+    <p class="nl-footnote">
+      <a href="https://buttondown.com/refer/lesvendredis" target="_blank" rel="noopener">
+        {% if include.lang == 'fr' %}Propulsé par Buttondown{% else %}Powered by Buttondown{% endif %}
+      </a>
+    </p>
+  </div>
+</section>
