@@ -45,7 +45,8 @@
       "WebFetch(domain:lemagdesanimaux.ouest-france.fr)",
       "WebFetch(domain:fr.wikipedia.org)",
       "WebFetch(domain:sainte-luce.fr)",
-      "Bash(git *)"
+      "Bash(git *)",
+      "Bash(grep -nB1 -A4 \"^a {\" /Users/bolo/Documents/Code/lobo.studio/les-vendredis.casa/assets/css/main.css)"
     ]
   }
 }
