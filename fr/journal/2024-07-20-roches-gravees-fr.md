@@ -18,6 +18,8 @@ Classées monument historique en 1996. Avant ça, la plupart des gens du coin sa
 
 On y va souvent. Léon a un visage préféré — celui qui a l'air surpris. Elle a appris à rester sur le sentier.
 
-Le chemin depuis Les Vendredis prend une vingtaine de minutes à pied, dans les hauteurs. La Forêt de Montravail est juste derrière — de vieux acajous, une ombre sérieuse, le genre de forêt qui donne l'impression d'être là depuis plus longtemps que tout ce qui l'entoure. Si vous partez tôt et qu'il fait encore frais, c'est la meilleure balade qu'on connaisse dans le sud de la Martinique.
+Le chemin depuis Les Vendredis prend une vingtaine de minutes à pied, dans les hauteurs. Le départ se fait depuis l'EFREM, vers la Forêt de Montravail — de vieux acajous, une ombre sérieuse, le genre de forêt qui donne l'impression d'être là depuis plus longtemps que tout ce qui l'entoure. Si vous partez tôt et qu'il fait encore frais, c'est la meilleure balade qu'on connaisse dans le sud de la Martinique.
+
+En voiture — environ huit minutes — on rejoint aussi le sentier littoral qui relie le quartier de Trois-Rivières jusqu'au bout. Quantité d'autres petites randonnées très agréables depuis là.
 
 La plupart de nos hôtes ne connaissent pas les Roches Gravées avant d'arriver. La plupart y vont deux fois avant de repartir.

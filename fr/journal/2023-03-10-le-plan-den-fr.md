@@ -18,7 +18,7 @@ Anaïs les a étudiés comme un cahier des charges client. Bolo a ouvert un tabl
 
 Le plan nous donnait la structure. Le reste, c'était nos choix — l'orientation, les matériaux, comment la cabane allait s'asseoir sur la dalle existante, comment le jardin allait l'envelopper. Le design de Den est pensé pour la forêt. On l'a fait fonctionner pour les Caraïbes.
 
-Le choix du Waba pour le bardage est venu plus tard, mais il s'est imposé naturellement. Le Waba est un bois dur de Guyane — dense, naturellement résistant à la pourriture, et il vieillit très bien sous les tropiques. Le cèdre aurait été le choix facile. Le Waba était le bon choix.
+Le choix du Wapa pour le bardage est venu plus tard, mais il s'est imposé naturellement. Le Wapa est un bois dur de Guyane — dense, naturellement résistant à la pourriture, et il vieillit très bien sous les tropiques. Le cèdre aurait été le choix facile. Le Wapa était le bon choix.
 
 On n'a pas pris de maître d'œuvre. Anaïs a géré le chantier. Sa formation d'ingénieure paysagiste lui donnait une lecture des matériaux, du drainage, de l'orientation — la cabane devait s'inscrire *dans* le terrain, pas juste être posée dessus. La terrasse est orientée vers les collines. La façade s'ouvre pour capter les alizés du sud. Le jardin enveloppe l'ensemble.
 

@@ -20,4 +20,8 @@ On a tourné en rond pendant des semaines. On a envisagé des alternatives — d
 
 On l'a finalement construite nous-mêmes. Le cadre a été assemblé en sections — la seule façon de le transporter sur le terrain sans un camion assez grand pour une pièce triangulaire entière. On l'a assemblée dans la voiture, transportée en morceaux, et posée un dimanche pendant que Léon passait les vis depuis le bas.
 
-Ça a pris une journée entière. Elle s'ajuste parfaitement. Quand la lumière la traverse à six heures du matin, on comprend pourquoi on n'a pas transigé.
+Le poids, c'était le défi : les essentes de Wapa sont lourdes, et la fenêtre devait être soudée pour encaisser la masse. Un vérin la referme aujourd'hui comme un sabot de bateau. Ça a pris une journée entière. Elle ferme parfaitement. Quand la lumière la traverse à six heures du matin, on comprend pourquoi on n'a pas transigé.
+
+C'est la partie du chantier dont on est le plus fiers.
+
+Avant ça, il y avait eu les fondations — coulées en pleine saison cyclonique. Une bâche sur le béton frais, arrachée par la première tempête. De l'eau dans les coffrages. Le béton qui peine à sécher sous la pluie. On s'en est sortis. Les fondations, c'est ça : on ne voit pas les cicatrices, juste la dalle.

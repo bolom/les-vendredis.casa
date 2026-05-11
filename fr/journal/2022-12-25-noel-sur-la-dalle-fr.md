@@ -20,6 +20,6 @@ Cet après-midi-là, on a décidé : on allait construire quelque chose dessus.
 
 Pas une pergola. Pas un simple abri. Quelque chose de vrai — une cabane dans laquelle on pourrait vraiment dormir, avec des murs, un toit, un plancher. On réglerait les détails plus tard.
 
-La dalle était déjà là. Le terrain était à nous. Léon courait entre les arbres. Elle dormait à l'ombre. C'était évident de la façon dont les bonnes décisions le sont souvent — pas comme une révélation, mais comme quelque chose qu'on avait toujours su sans le dire à voix haute.
+La dalle était déjà là. Le terrain était à nous. Léon avait cinq ans et courait entre les arbres. Samsam dormait à l'ombre. C'était évident de la façon dont les bonnes décisions le sont souvent — pas comme une révélation, mais comme quelque chose qu'on avait toujours su sans le dire à voix haute.
 
-On a commencé à chercher des plans le soir même.
+On a commencé à chercher des plans le soir même. Le chantier a duré deux ans — les fondations en moins d'un mois, la charpente et le gros œuvre en quatre mois, la toiture le plus long. Des amis ont donné de leur temps et de leur énergie. Un artisan charpentier nous a transmis des techniques qu'on n'avait pas. Les arbres, Bolo les a plantés de ses mains — avec une amitié dont il ne trouve pas les mots tant elle a compté.

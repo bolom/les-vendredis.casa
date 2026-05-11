@@ -17,7 +17,7 @@ Anaïs studied them like a client brief. Bolo started a spreadsheet.
 
 The plan gave us the structure. Everything else was our call — orientation, materials, how the cabin would sit on the existing slab, how the garden would wrap around it. Den's design is made for the woods. We made it work for the Caribbean.
 
-The decision to go with Waba for the cladding came later, but it made sense from the start. Waba is a Guyanese hardwood — dense, naturally rot-resistant, and it weathers beautifully in the tropics. Cedar shingles would have been the easy choice. Waba was the right one.
+The decision to go with Wapa for the cladding came later, but it made sense from the start. Wapa is a Guyanese hardwood — dense, naturally rot-resistant, and it weathers beautifully in the tropics. Cedar shingles would have been the easy choice. Wapa was the right one.
 
 We didn't hire a general contractor. Anaïs managed the site. Her training as a landscape architect meant she understood materials, drainage, orientation — the cabin had to sit *with* the land, not on top of it. The terrace faces the hills. The front opens to catch the breeze from the south. The garden wraps around it.
 

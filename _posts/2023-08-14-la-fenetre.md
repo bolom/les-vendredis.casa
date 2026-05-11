@@ -19,4 +19,8 @@ We went back and forth for weeks. We looked at alternatives — fixed glazing, l
 
 In the end, we built it ourselves. The frame came together in sections — the only way to transport it up to the site without a truck big enough to take a full triangular piece. We assembled it in the car, drove it up in parts, and fitted it on a Sunday with Léon handing us screws from below.
 
-It took a full day. It fits perfectly. When the light hits it at six in the morning, you understand why we didn't compromise.
+The weight was the engineering challenge: Wapa shingles are heavy, and the window had to be welded to carry the load. In the end, a hydraulic actuator closes it flush — like a boat hatch. It took a full day. It fits perfectly. When the light hits it at six in the morning, you understand why we didn't compromise.
+
+It's the part of the build we're most proud of.
+
+Before that, there were the foundations — which we poured through the cyclone season. A tarp over the fresh concrete, ripped off by the first storm. Water pooling in the forms. The concrete curing slowly in the rain. We got through it. That's what the foundations look like: you don't see the scars, only the slab.
