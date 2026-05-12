@@ -326,6 +326,22 @@ h1 em { font-style: italic; font-weight: 400; color: var(--accent); }
   border-top: 1px solid var(--rule);
 }
 .domain-area:first-child { border-top: none; padding-top: 0; }
+.domain-area:first-child {
+  grid-template-columns: 1fr;
+  gap: 28px;
+}
+.domain-area:first-child .domain-area-copy {
+  position: static;
+  display: grid;
+  grid-template-columns: minmax(120px, .32fr) 1fr;
+  gap: 24px 44px;
+  align-items: end;
+  max-width: 920px;
+}
+.domain-area:first-child .domain-area-num { grid-row: span 2; margin-bottom: 6px; }
+.domain-area:first-child .domain-area-copy h3 { margin-bottom: 0; }
+.domain-area:first-child .domain-area-copy p { max-width: 54ch; }
+.domain-area:first-child .domain-area-gallery { grid-template-columns: repeat(3, 1fr); }
 .domain-area-copy {
   position: sticky;
   top: 28px;
@@ -370,6 +386,11 @@ h1 em { font-style: italic; font-weight: 400; color: var(--accent); }
   grid-column: span 2;
   grid-row: span 2;
   aspect-ratio: 4/5;
+}
+.gallery-item.panorama {
+  grid-column: 1 / -1;
+  grid-row: auto;
+  aspect-ratio: 3.16 / 1;
 }
 .gallery-item img {
   width: 100%; height: 100%;
@@ -824,6 +845,8 @@ h1 em { font-style: italic; font-weight: 400; color: var(--accent); }
   .entry-meta { flex-direction: row; gap: 14px; align-items: baseline; flex-wrap: wrap; }
   .entry-num { font-size: 24px; }
   .domain-area { grid-template-columns: 1fr; gap: 24px; padding: 44px 0; }
+  .domain-area:first-child .domain-area-copy { grid-template-columns: 1fr; gap: 12px; }
+  .domain-area:first-child .domain-area-num { grid-row: auto; }
   .domain-area-copy { position: static; }
   .domain-area-copy p { max-width: 56ch; }
   .domain-area-gallery { grid-template-columns: repeat(2, 1fr); }
@@ -841,5 +864,6 @@ h1 em { font-style: italic; font-weight: 400; color: var(--accent); }
 @media (max-width: 480px) {
   .domain-area-gallery { grid-template-columns: 1fr; }
   .gallery-item.feature { grid-column: auto; grid-row: auto; }
+  .gallery-item.panorama { aspect-ratio: 16 / 9; }
   .creds { grid-template-columns: 1fr; }
 }
