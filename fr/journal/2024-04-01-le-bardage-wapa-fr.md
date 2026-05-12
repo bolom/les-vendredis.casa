@@ -1,8 +1,9 @@
 ---
 layout: article
 title: "Pourquoi on a choisi le Wapa."
-seo_title: "Bardage Wapa bois de Guyane A-frame Martinique — Les Vendredis"
+seo_title: "Bardage Wapa pour une cabane A-frame — Les Vendredis"
 summary: "Tout le monde s'attendait à ce qu'on utilise du cèdre. On a choisi le Wapa — un bois dur de Guyane qui grise naturellement sous les tropiques et dure des décennies sans traitement."
+description: "Pourquoi on a bardé la cabane A-frame des Vendredis en Wapa — un bois dur de Guyane qui grise naturellement sous les tropiques, sans traitement."
 tag: "Build log"
 date: 2024-04-01
 image: "construction-bardage-bois-cabane-aframe-martinique.jpg"

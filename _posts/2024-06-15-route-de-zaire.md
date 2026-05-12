@@ -1,8 +1,9 @@
 ---
 layout: article
 title: "The neighbourhood."
-seo_title: "Route de Zaïre Sainte-Luce Martinique — Quiet Rural Life at Les Vendredis"
+seo_title: "Route de Zaïre, Sainte-Luce — Les Vendredis"
 summary: "Route de Zaïre is the kind of place where everyone knows everyone, dogs sleep in the road, and nobody locks their gate. That's the neighbourhood. We love it."
+description: "Route de Zaïre in Sainte-Luce — the neighbourhood around Les Vendredis. Everyone knows everyone, nobody locks their gate, dogs sleep in the road."
 tag: "The place"
 date: 2024-06-15
 image: "cabane-aframe-ouverte-jardin-tropical-sainte-luce.jpg"

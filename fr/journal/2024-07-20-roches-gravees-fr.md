@@ -1,8 +1,9 @@
 ---
 layout: article
 title: "Les Roches Gravées."
-seo_title: "Roches Gravées Sainte-Luce Martinique — Pétroglyphes amérindiens près des Vendredis"
+seo_title: "Roches Gravées Sainte-Luce — Pétroglyphes près des Vendredis"
 summary: "À vingt minutes à pied de la cabane, 14 visages amérindiens sont gravés dans la roche volcanique depuis plus de mille ans. Ça vaut le déplacement."
+description: "Les Roches Gravées de Montravail — 14 pétroglyphes amérindiens dans la roche volcanique, à vingt minutes à pied de la cabane à Sainte-Luce, Martinique."
 tag: "Le lieu"
 date: 2024-07-20
 image: "flamboyant-palmiers-collines-jardin-les-vendredis.jpg"

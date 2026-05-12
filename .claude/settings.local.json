@@ -46,7 +46,12 @@
       "WebFetch(domain:fr.wikipedia.org)",
       "WebFetch(domain:sainte-luce.fr)",
       "Bash(git *)",
-      "Bash(grep -nB1 -A4 \"^a {\" /Users/bolo/Documents/Code/lobo.studio/les-vendredis.casa/assets/css/main.css)"
+      "Bash(grep -nB1 -A4 \"^a {\" /Users/bolo/Documents/Code/lobo.studio/les-vendredis.casa/assets/css/main.css)",
+      "WebFetch(domain:ctbf-guyane.fr)",
+      "Bash(sips -g pixelWidth -g pixelHeight /Users/bolo/Desktop/IMG_0848.heic)",
+      "Bash(sips *)",
+      "Bash(grep -E '\\\\.\\(html|astro|js|ts|json|md\\)$')",
+      "Bash([ -f \"/Users/bolo/Documents/Code/lobo.studio/les-vendredis.casa/public/images/$img\" ])"
     ]
   }
 }

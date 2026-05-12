@@ -1,8 +1,9 @@
 ---
 layout: article
 title: "Tranchées fermées, et les 65 ans de Catherine."
-seo_title: "Fermeture des tranchées et anniversaire de Catherine — Les Vendredis"
+seo_title: "Tranchées fermées, Catherine fête ses 65 ans — Les Vendredis"
 summary: "Un de ces week-ends où les travaux se terminent tout seuls et les amis débarquent. Le tracé de la tranchée a disparu, et Catherine a eu son déjeuner sous le pignon."
+description: "Les tranchées du jardin des Vendredis sont fermées, les tuyaux enterrés. Un week-end où les travaux se finissent et Catherine fête ses 65 ans sous le pignon."
 tag: "Build log"
 date: 2026-05-07
 image: "tranchees-fermees-mur-pierres-les-vendredis.jpg"

@@ -1,8 +1,9 @@
 ---
 layout: article
 title: "Why we chose Wapa for the cladding."
-seo_title: "Wapa Guyanese Hardwood Cladding A-Frame Martinique — Les Vendredis"
+seo_title: "Wapa Hardwood Cladding for an A-Frame — Les Vendredis"
 summary: "Everyone expected us to use cedar. We used Wapa — a Guyanese hardwood that weathers silver-grey in the tropics and lasts decades without treatment."
+description: "Why we clad the Les Vendredis A-frame in Wapa, a Guyanese hardwood that silvers naturally in the tropics and needs no treatment. Not cedar — Wapa."
 tag: "Build log"
 date: 2024-04-01
 image: "construction-bardage-bois-cabane-aframe-martinique.jpg"

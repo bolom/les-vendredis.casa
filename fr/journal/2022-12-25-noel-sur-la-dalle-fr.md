@@ -1,8 +1,9 @@
 ---
 layout: article
 title: "Noël sur la dalle."
-seo_title: "Construction de la cabane Les Vendredis en Martinique — Les débuts"
+seo_title: "Construire une cabane A-frame en Martinique — Les Vendredis"
 summary: "Tout a commencé par un déjeuner de Noël sur une dalle de béton vide. À la fin de la journée, on savait qu'on allait la couvrir."
+description: "Comment Les Vendredis a commencé — un déjeuner de Noël sur une dalle nue à Sainte-Luce, Martinique, et la décision de construire une cabane A-frame."
 tag: "Build log"
 date: 2022-12-25
 image: "terrain-debut-chantier-les-vendredis-martinique.jpg"

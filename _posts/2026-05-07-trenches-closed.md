@@ -1,8 +1,9 @@
 ---
 layout: article
 title: "Trenches closed, and Catherine turns 65."
-seo_title: "Closing the Trenches and Catherine's 65th — Les Vendredis Build Log"
+seo_title: "Trenches Closed, Catherine Turns 65 — Les Vendredis"
 summary: "One of those weekends where the work finishes itself and the friends show up. The trench line is gone, and Catherine got her lunch under the gable."
+description: "The garden trenches at Les Vendredis are closed, the pipes buried. One of those weekends where the work gets done and Catherine turns 65 under the gable."
 tag: "Build log"
 date: 2026-05-07
 image: "tranchees-fermees-mur-pierres-les-vendredis.jpg"

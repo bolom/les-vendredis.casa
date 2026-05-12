@@ -3,6 +3,7 @@ layout: article
 title: "We bought a plan from a company called Den."
 seo_title: "Den A-Frame Cabin Plan — Building in Martinique"
 summary: "Anaïs is a landscape architect. Bolo builds software. Between us, we had no business building a cabin. We bought a plan anyway."
+description: "We had no business building a cabin. We bought an A-frame plan from Den anyway, and started figuring out how to build it in Martinique."
 tag: "Build log"
 date: 2023-03-10
 image: "ossature-bois-aframe-construction-martinique.jpg"

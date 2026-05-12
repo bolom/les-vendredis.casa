@@ -1,8 +1,9 @@
 ---
 layout: article
 title: "Les manguiers sont chargés à nouveau."
-seo_title: "Saison des mangues à Sainte-Luce Martinique — Le jardin des Vendredis"
+seo_title: "Saison des mangues à Sainte-Luce — Les Vendredis"
 summary: "Les premières mangues de la saison sont tombées cette semaine. On a laissé une caisse au portail."
+description: "La saison des mangues est revenue aux Vendredis à Sainte-Luce. Les arbres sont chargés, les premières sont tombées. Une caisse au portail pour qui passe."
 tag: "Le jardin"
 date: 2026-04-12
 image: "mangues-jardin-cabane-aframe-les-vendredis.jpg"

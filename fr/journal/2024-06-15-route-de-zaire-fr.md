@@ -1,8 +1,9 @@
 ---
 layout: article
 title: "Le quartier."
-seo_title: "Route de Zaïre Sainte-Luce Martinique — Vie rurale et calme aux Vendredis"
+seo_title: "Route de Zaïre, Sainte-Luce — Les Vendredis"
 summary: "La route de Zaïre, c'est le genre d'endroit où tout le monde se connaît, les coqs chantent dès quatre heures du matin, et personne ne ferme son portail à clé. C'est notre quartier. On l'aime."
+description: "La route de Zaïre à Sainte-Luce — le quartier des Vendredis. Tout le monde se connaît, personne ne ferme son portail, les coqs chantent à quatre heures."
 tag: "Le lieu"
 date: 2024-06-15
 image: "panorama-domaine-cabane-aframe-les-vendredis-martinique.jpg"

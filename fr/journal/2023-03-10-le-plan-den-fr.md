@@ -3,6 +3,7 @@ layout: article
 title: "On a acheté un plan chez Den."
 seo_title: "Plan cabane A-frame Den — Construction en Martinique"
 summary: "Anaïs est ingénieure paysagiste. Bolo est informaticien. Entre nous deux, on n'avait aucune raison de construire une cabane. On a quand même acheté un plan."
+description: "On n'avait aucune raison de construire une cabane. On a quand même acheté un plan A-frame chez Den, et on a commencé à comprendre comment faire ça en Martinique."
 tag: "Build log"
 date: 2023-03-10
 image: "ossature-bois-aframe-construction-martinique.jpg"
