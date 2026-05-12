@@ -626,6 +626,20 @@ h1 em { font-style: italic; font-weight: 400; color: var(--accent); }
   line-height: 1.55;
   font-style: italic;
 }
+.booking-facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 18px;
+  margin-top: 28px;
+  padding-top: 22px;
+  border-top: 1px solid rgba(248,241,228,.16);
+}
+.booking-facts span {
+  font-size: 11px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: rgba(248,241,228,.58);
+}
 .b-ctas {
   display: flex;
   flex-direction: column;
@@ -643,15 +657,26 @@ h1 em { font-style: italic; font-weight: 400; color: var(--accent); }
 }
 .b-btn:hover { padding-left: 14px; padding-right: 14px; color: var(--accent); }
 .b-label {
+  display: block;
   font-family: var(--serif);
   font-style: italic;
-  font-size: 32px;
+  font-size: clamp(26px, 3vw, 36px);
   font-weight: 400;
   color: var(--cream);
   transition: color .35s;
 }
 .b-btn:hover .b-label { color: var(--accent); }
+.b-note {
+  display: block;
+  max-width: 32ch;
+  margin-top: 6px;
+  font-size: 13px;
+  line-height: 1.45;
+  color: rgba(248,241,228,.55);
+}
 .b-meta {
+  flex-shrink: 0;
+  margin-left: 24px;
   font-size: 10px;
   letter-spacing: .32em;
   text-transform: uppercase;
