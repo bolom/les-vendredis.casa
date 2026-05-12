@@ -1,41 +1,82 @@
 <div class="wrap" id="gallery">
   <section class="gallery-section">
     <div class="section-head">
-      <h2>The <em>place.</em></h2>
-      <p class="sub">The cabin, the garden, and how it all began.</p>
+      <h2>{% if page.lang == 'fr' %}Le <em>domaine.</em>{% else %}The <em>domain.</em>{% endif %}</h2>
+      <p class="sub">{% if page.lang == 'fr' %}Un tour des espaces qui composent Les Vendredis : le terrain, la cabane, le jardin, la vie dehors et ce qu'on a construit à la main.{% else %}A tour through the spaces that make Les Vendredis: the land, the cabin, the garden, outdoor living, and what we built by hand.{% endif %}</p>
     </div>
-    <div class="gallery-grid">
-      <div class="gallery-group">
-        <h3 class="gallery-group-title">{% if page.lang == 'fr' %}Cabane{% else %}Cabin{% endif %}</h3>
-        <div class="gallery-item" onclick="openLightbox(0)"><img src="{{ '/public/images/vue-interieure-cabane-aframe-jardin-rochers-martinique.jpg' | relative_url }}" alt="Vue depuis l'intérieur de la cabane A-frame sur le jardin et les rochers, Martinique" loading="lazy" /><div class="gallery-caption"><span>From Inside</span></div></div>
-        <div class="gallery-item" onclick="openLightbox(1)"><img src="{{ '/public/images/interieur-cabane-aframe-vue-jardin-les-vendredis.jpg' | relative_url }}" alt="Vue depuis l'intérieur de la cabane A-frame sur le jardin tropical, Les Vendredis" loading="lazy" /><div class="gallery-caption"><span>Inside Looking Out</span></div></div>
-        <div class="gallery-item" onclick="openLightbox(2)"><img src="{{ '/public/images/fenetre-triangulaire-cabane-aframe-les-vendredis.jpg' | relative_url }}" alt="Fenêtre triangulaire de la cabane A-frame, Les Vendredis" loading="lazy" /><div class="gallery-caption"><span>The Window</span></div></div>
-        <div class="gallery-item" onclick="openLightbox(3)"><img src="{{ '/public/images/cabane-aframe-rochers-fleurs-jardin-les-vendredis.jpg' | relative_url }}" alt="Cabane A-frame et rochers volcaniques dans le jardin des Vendredis, Sainte-Luce" loading="lazy" /><div class="gallery-caption"><span>Cabin & Rocks</span></div></div>
-        <div class="gallery-item" onclick="openLightbox(4)"><img src="{{ '/public/images/cabane-aframe-jardin-fleurs-rouges-les-vendredis.jpg' | relative_url }}" alt="Cabane A-frame vue depuis le jardin tropical, fleurs rouges au premier plan, Les Vendredis" loading="lazy" /><div class="gallery-caption"><span>The A-Frame</span></div></div>
-        <div class="gallery-item" onclick="openLightbox(5)"><img src="{{ '/public/images/cabane-aframe-ouverte-jardin-tropical-sainte-luce.jpg' | relative_url }}" alt="Cabane A-frame ouverte sur le jardin tropical, Sainte-Luce, Martinique" loading="lazy" /><div class="gallery-caption"><span>Open to the Garden</span></div></div>
-      </div>
-      <div class="gallery-group">
-        <h3 class="gallery-group-title">{% if page.lang == 'fr' %}Jardin{% else %}Garden{% endif %}</h3>
-        <div class="gallery-item" onclick="openLightbox(6)"><img src="{{ '/public/images/mangues-jardin-cabane-aframe-les-vendredis.jpg' | relative_url }}" alt="Mangues vertes en gros plan avec la cabane A-frame en fond, Les Vendredis" loading="lazy" /><div class="gallery-caption"><span>Mango Season</span></div></div>
-        <div class="gallery-item" onclick="openLightbox(7)"><img src="{{ '/public/images/goyavier-jardin-les-vendredis-sainte-luce.jpg' | relative_url }}" alt="Goyavier dans le jardin tropical des Vendredis, Sainte-Luce, Martinique" loading="lazy" /><div class="gallery-caption"><span>The Guava Tree</span></div></div>
-        <div class="gallery-item" onclick="openLightbox(8)"><img src="{{ '/public/images/flamboyant-palmiers-collines-jardin-les-vendredis.jpg' | relative_url }}" alt="Flamboyant rouge et palmiers avec vue sur les collines, jardin Les Vendredis" loading="lazy" /><div class="gallery-caption"><span>The Flamboyant</span></div></div>
-      </div>
-      <div class="gallery-group">
-        <h3 class="gallery-group-title">{% if page.lang == 'fr' %}Domaine{% else %}Land{% endif %}</h3>
-        <div class="gallery-item" onclick="openLightbox(9)"><img src="{{ '/public/images/panorama-domaine-cabane-aframe-les-vendredis-martinique.jpg' | relative_url }}" alt="Vue panoramique du domaine des Vendredis avec la cabane A-frame, Martinique" loading="lazy" /><div class="gallery-caption"><span>The Domain</span></div></div>
-        <div class="gallery-item" onclick="openLightbox(10)"><img src="{{ '/public/images/coucher-soleil-palmiers-construction-les-vendredis.jpg' | relative_url }}" alt="Coucher de soleil sur les palmiers pendant la construction des Vendredis" loading="lazy" /><div class="gallery-caption"><span>Sunset on Site</span></div></div>
-        <div class="gallery-item" onclick="openLightbox(11)"><img src="{{ '/public/images/terrain-defriche-avant-construction-les-vendredis.jpg' | relative_url }}" alt="Terrain défriché avant la construction de la cabane des Vendredis, Martinique" loading="lazy" /><div class="gallery-caption"><span>Clearing the Ground</span></div></div>
-        <div class="gallery-item" onclick="openLightbox(12)"><img src="{{ '/public/images/terrain-avant-construction-les-vendredis-sainte-luce.jpg' | relative_url }}" alt="Terrain avant le début de la construction des Vendredis, Sainte-Luce" loading="lazy" /><div class="gallery-caption"><span>The Land</span></div></div>
-        <div class="gallery-item" onclick="openLightbox(13)"><img src="{{ '/public/images/terrain-debut-chantier-les-vendredis-martinique.jpg' | relative_url }}" alt="Début du chantier des Vendredis, terrain avant construction, Martinique" loading="lazy" /><div class="gallery-caption"><span>Day One</span></div></div>
-      </div>
-      <div class="gallery-group">
-        <h3 class="gallery-group-title">{% if page.lang == 'fr' %}Construction{% else %}Making{% endif %}</h3>
-        <div class="gallery-item" onclick="openLightbox(14)"><img src="{{ '/public/images/construction-bardage-bois-cabane-aframe-martinique.jpg' | relative_url }}" alt="Construction du bardage en bois de la cabane A-frame, Martinique" loading="lazy" /><div class="gallery-caption"><span>The Cladding</span></div></div>
-        <div class="gallery-item" onclick="openLightbox(15)"><img src="{{ '/public/images/pose-bardage-facade-cabane-aframe-sainte-luce.jpg' | relative_url }}" alt="Travaux de pose du bardage en façade de la cabane A-frame, Sainte-Luce" loading="lazy" /><div class="gallery-caption"><span>Facade Work</span></div></div>
-        <div class="gallery-item" onclick="openLightbox(16)"><img src="{{ '/public/images/construction-cabane-aframe-pose-bardage-martinique.jpg' | relative_url }}" alt="Pose du bardage en bois sur la cabane A-frame, Sainte-Luce, Martinique" loading="lazy" /><div class="gallery-caption"><span>Building by Hand</span></div></div>
-        <div class="gallery-item" onclick="openLightbox(17)"><img src="{{ '/public/images/construction-charpente-aframe-enfant-martinique.jpg' | relative_url }}" alt="Enfant sur la charpente A-frame en construction, Les Vendredis, Martinique" loading="lazy" /><div class="gallery-caption"><span>Family Build</span></div></div>
-        <div class="gallery-item" onclick="openLightbox(18)"><img src="{{ '/public/images/ossature-bois-aframe-construction-martinique.jpg' | relative_url }}" alt="Ossature bois de la charpente A-frame en cours de montage, Martinique" loading="lazy" /><div class="gallery-caption"><span>The Structure</span></div></div>
-      </div>
+
+    <div class="domain-tour">
+      <section class="domain-area">
+        <div class="domain-area-copy">
+          <span class="domain-area-num">01</span>
+          <h3>{% if page.lang == 'fr' %}Le domaine{% else %}The Domain{% endif %}</h3>
+          <p>{% if page.lang == 'fr' %}Avant la cabane, il y a le terrain : les hauteurs de Sainte-Luce, les palmiers, les collines et cette impression d'être seul dans un morceau de Martinique.{% else %}Before the cabin, there is the land: the hills of Sainte-Luce, palms, ridgelines, and the feeling of having a private piece of Martinique to yourself.{% endif %}</p>
+        </div>
+        <div class="domain-area-gallery">
+          <div class="gallery-item feature" onclick="openLightbox(0)"><img src="{{ '/public/images/panorama-domaine-cabane-aframe-les-vendredis-martinique.jpg' | relative_url }}" alt="Vue panoramique du domaine des Vendredis avec la cabane A-frame, Martinique" loading="lazy" /><div class="gallery-caption"><span>{% if page.lang == 'fr' %}Le domaine{% else %}The Domain{% endif %}</span></div></div>
+          <div class="gallery-item" onclick="openLightbox(1)"><img src="{{ '/public/images/vue-jardin-collines-les-vendredis-sainte-luce.jpg' | relative_url }}" alt="Vue sur le jardin et les collines depuis Les Vendredis, Sainte-Luce" loading="lazy" /><div class="gallery-caption"><span>{% if page.lang == 'fr' %}Les hauteurs{% else %}The Hills{% endif %}</span></div></div>
+          <div class="gallery-item" onclick="openLightbox(2)"><img src="{{ '/public/images/coucher-soleil-palmiers-construction-les-vendredis.jpg' | relative_url }}" alt="Coucher de soleil sur les palmiers pendant la construction des Vendredis" loading="lazy" /><div class="gallery-caption"><span>{% if page.lang == 'fr' %}Fin de journée{% else %}Evening Light{% endif %}</span></div></div>
+        </div>
+      </section>
+
+      <section class="domain-area">
+        <div class="domain-area-copy">
+          <span class="domain-area-num">02</span>
+          <h3>{% if page.lang == 'fr' %}La cabane{% else %}The Cabin{% endif %}</h3>
+          <p>{% if page.lang == 'fr' %}La A-frame est une pièce du domaine : ouverte sur le jardin, haute sous le pignon, simple dans ses usages et très proche du dehors.{% else %}The A-frame is one part of the domain: open to the garden, tall under the gable, simple in its use, and always close to the outside.{% endif %}</p>
+        </div>
+        <div class="domain-area-gallery">
+          <div class="gallery-item feature" onclick="openLightbox(3)"><img src="{{ '/public/images/cabane-aframe-ouverte-jardin-tropical-sainte-luce.jpg' | relative_url }}" alt="Cabane A-frame ouverte sur le jardin tropical, Sainte-Luce, Martinique" loading="lazy" /><div class="gallery-caption"><span>{% if page.lang == 'fr' %}Ouverte au jardin{% else %}Open to the Garden{% endif %}</span></div></div>
+          <div class="gallery-item" onclick="openLightbox(4)"><img src="{{ '/public/images/cabane-aframe-jardin-fleurs-rouges-les-vendredis.jpg' | relative_url }}" alt="Cabane A-frame vue depuis le jardin tropical, fleurs rouges au premier plan, Les Vendredis" loading="lazy" /><div class="gallery-caption"><span>{% if page.lang == 'fr' %}La A-frame{% else %}The A-Frame{% endif %}</span></div></div>
+          <div class="gallery-item" onclick="openLightbox(5)"><img src="{{ '/public/images/vue-interieure-cabane-aframe-jardin-rochers-martinique.jpg' | relative_url }}" alt="Vue depuis l'intérieur de la cabane A-frame sur le jardin et les rochers, Martinique" loading="lazy" /><div class="gallery-caption"><span>{% if page.lang == 'fr' %}Depuis l'intérieur{% else %}From Inside{% endif %}</span></div></div>
+          <div class="gallery-item" onclick="openLightbox(6)"><img src="{{ '/public/images/fenetre-triangulaire-cabane-aframe-les-vendredis.jpg' | relative_url }}" alt="Fenêtre triangulaire de la cabane A-frame, Les Vendredis" loading="lazy" /><div class="gallery-caption"><span>{% if page.lang == 'fr' %}La fenêtre{% else %}The Window{% endif %}</span></div></div>
+        </div>
+      </section>
+
+      <section class="domain-area">
+        <div class="domain-area-copy">
+          <span class="domain-area-num">03</span>
+          <h3>{% if page.lang == 'fr' %}Le jardin tropical{% else %}The Tropical Garden{% endif %}</h3>
+          <p>{% if page.lang == 'fr' %}Le jardin est l'espace privé le plus précieux : manguiers, goyaviers, flamboyant, rochers volcaniques et plantes qui ferment doucement le monde autour de vous.{% else %}The garden is the private luxury here: mango, guava, flamboyant, volcanic rocks, and planting that quietly closes the world around you.{% endif %}</p>
+        </div>
+        <div class="domain-area-gallery">
+          <div class="gallery-item feature" onclick="openLightbox(7)"><img src="{{ '/public/images/jardin-tropical-anthurium-les-vendredis-martinique.jpg' | relative_url }}" alt="Anthurium dans le jardin tropical des Vendredis, Martinique" loading="lazy" /><div class="gallery-caption"><span>{% if page.lang == 'fr' %}Jardin tropical{% else %}Tropical Garden{% endif %}</span></div></div>
+          <div class="gallery-item" onclick="openLightbox(8)"><img src="{{ '/public/images/mangues-jardin-cabane-aframe-les-vendredis.jpg' | relative_url }}" alt="Mangues vertes en gros plan avec la cabane A-frame en fond, Les Vendredis" loading="lazy" /><div class="gallery-caption"><span>{% if page.lang == 'fr' %}Saison des mangues{% else %}Mango Season{% endif %}</span></div></div>
+          <div class="gallery-item" onclick="openLightbox(9)"><img src="{{ '/public/images/goyavier-jardin-les-vendredis-sainte-luce.jpg' | relative_url }}" alt="Goyavier dans le jardin tropical des Vendredis, Sainte-Luce, Martinique" loading="lazy" /><div class="gallery-caption"><span>{% if page.lang == 'fr' %}Le goyavier{% else %}The Guava Tree{% endif %}</span></div></div>
+          <div class="gallery-item" onclick="openLightbox(10)"><img src="{{ '/public/images/flamboyant-palmiers-collines-jardin-les-vendredis.jpg' | relative_url }}" alt="Flamboyant rouge et palmiers avec vue sur les collines, jardin Les Vendredis" loading="lazy" /><div class="gallery-caption"><span>{% if page.lang == 'fr' %}Le flamboyant{% else %}The Flamboyant{% endif %}</span></div></div>
+          <div class="gallery-item" onclick="openLightbox(11)"><img src="{{ '/public/images/cabane-aframe-rochers-fleurs-jardin-les-vendredis.jpg' | relative_url }}" alt="Cabane A-frame et rochers volcaniques dans le jardin des Vendredis, Sainte-Luce" loading="lazy" /><div class="gallery-caption"><span>{% if page.lang == 'fr' %}Rochers et fleurs{% else %}Rocks & Flowers{% endif %}</span></div></div>
+        </div>
+      </section>
+
+      <section class="domain-area">
+        <div class="domain-area-copy">
+          <span class="domain-area-num">04</span>
+          <h3>{% if page.lang == 'fr' %}La vie dehors{% else %}Outdoor Living{% endif %}</h3>
+          <p>{% if page.lang == 'fr' %}Les Vendredis se vit dehors : hamac, petit déjeuner dans les fruits, animaux dans le jardin, cuisine ouverte et journées qui passent lentement.{% else %}Les Vendredis is lived outside: hammock time, breakfast with fruit, pets in the garden, an open kitchen, and days that move slowly.{% endif %}</p>
+        </div>
+        <div class="domain-area-gallery">
+          <div class="gallery-item feature" onclick="openLightbox(12)"><img src="{{ '/public/images/hamac-jardin-tropical-les-vendredis-martinique.jpg' | relative_url }}" alt="Hamac dans le jardin tropical des Vendredis, Martinique" loading="lazy" /><div class="gallery-caption"><span>{% if page.lang == 'fr' %}Le hamac{% else %}The Hammock{% endif %}</span></div></div>
+          <div class="gallery-item" onclick="openLightbox(13)"><img src="{{ '/public/images/anais-leon-petit-dejeuner-fruits-les-vendredis.jpg' | relative_url }}" alt="Petit déjeuner avec fruits du jardin aux Vendredis" loading="lazy" /><div class="gallery-caption"><span>{% if page.lang == 'fr' %}Petit déjeuner{% else %}Breakfast Outside{% endif %}</span></div></div>
+          <div class="gallery-item" onclick="openLightbox(14)"><img src="{{ '/public/images/jardin-plantes-tropicales-les-vendredis-sainte-luce.jpg' | relative_url }}" alt="Plantes tropicales dans le jardin des Vendredis, Sainte-Luce" loading="lazy" /><div class="gallery-caption"><span>{% if page.lang == 'fr' %}Allées plantées{% else %}Planted Paths{% endif %}</span></div></div>
+          <div class="gallery-item" onclick="openLightbox(15)"><img src="{{ '/public/images/samsam-dimdim-cohabitation-jardin-les-vendredis.jpg' | relative_url }}" alt="Samsam et Dimdim dans le jardin des Vendredis" loading="lazy" /><div class="gallery-caption"><span>{% if page.lang == 'fr' %}Animaux bienvenus{% else %}Pets Welcome{% endif %}</span></div></div>
+        </div>
+      </section>
+
+      <section class="domain-area">
+        <div class="domain-area-copy">
+          <span class="domain-area-num">05</span>
+          <h3>{% if page.lang == 'fr' %}La fabrication{% else %}The Making{% endif %}</h3>
+          <p>{% if page.lang == 'fr' %}Le luxe ici vient aussi du temps passé : couper, lever, barder, recommencer, et construire un lieu qui porte la main de ceux qui l'ont fait.{% else %}The luxury here also comes from time: cutting, lifting, cladding, starting again, and building a place that still carries the hand that made it.{% endif %}</p>
+        </div>
+        <div class="domain-area-gallery">
+          <div class="gallery-item feature" onclick="openLightbox(16)"><img src="{{ '/public/images/construction-bardage-bois-cabane-aframe-martinique.jpg' | relative_url }}" alt="Construction du bardage en bois de la cabane A-frame, Martinique" loading="lazy" /><div class="gallery-caption"><span>{% if page.lang == 'fr' %}Le bardage{% else %}The Cladding{% endif %}</span></div></div>
+          <div class="gallery-item" onclick="openLightbox(17)"><img src="{{ '/public/images/pose-bardage-facade-cabane-aframe-sainte-luce.jpg' | relative_url }}" alt="Travaux de pose du bardage en façade de la cabane A-frame, Sainte-Luce" loading="lazy" /><div class="gallery-caption"><span>{% if page.lang == 'fr' %}Façade{% else %}Facade Work{% endif %}</span></div></div>
+          <div class="gallery-item" onclick="openLightbox(18)"><img src="{{ '/public/images/construction-cabane-aframe-pose-bardage-martinique.jpg' | relative_url }}" alt="Pose du bardage en bois sur la cabane A-frame, Sainte-Luce, Martinique" loading="lazy" /><div class="gallery-caption"><span>{% if page.lang == 'fr' %}À la main{% else %}Building by Hand{% endif %}</span></div></div>
+          <div class="gallery-item" onclick="openLightbox(19)"><img src="{{ '/public/images/construction-charpente-aframe-enfant-martinique.jpg' | relative_url }}" alt="Enfant sur la charpente A-frame en construction, Les Vendredis, Martinique" loading="lazy" /><div class="gallery-caption"><span>{% if page.lang == 'fr' %}Chantier famille{% else %}Family Build{% endif %}</span></div></div>
+          <div class="gallery-item" onclick="openLightbox(20)"><img src="{{ '/public/images/ossature-bois-aframe-construction-martinique.jpg' | relative_url }}" alt="Ossature bois de la charpente A-frame en cours de montage, Martinique" loading="lazy" /><div class="gallery-caption"><span>{% if page.lang == 'fr' %}La structure{% else %}The Structure{% endif %}</span></div></div>
+          <div class="gallery-item" onclick="openLightbox(21)"><img src="{{ '/public/images/terrain-debut-chantier-les-vendredis-martinique.jpg' | relative_url }}" alt="Début du chantier des Vendredis, terrain avant construction, Martinique" loading="lazy" /><div class="gallery-caption"><span>{% if page.lang == 'fr' %}Le premier jour{% else %}Day One{% endif %}</span></div></div>
+        </div>
+      </section>
     </div>
   </section>
 </div>
