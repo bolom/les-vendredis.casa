@@ -35,28 +35,30 @@
   {% assign is_journal = true %}
 {% endif %}
 
-<div class="wrap">
-  <header class="top-bar">
-    <span class="top-left">Sainte-Luce · Martinique</span>
-    <a href="{{ home_url }}" class="mark">
-      <span class="ornament"></span>Les Vendredis<span class="ornament"></span>
-    </a>
-    <nav class="top-right">
-      <a href="{{ journal_url }}"{% if is_journal %} class="active"{% endif %}>Journal</a>
-      {% assign is_home = false %}
-      {% if page.url == '/' or page.url == '/fr/' or page.url == '/index.html' or page.url == '/fr/index.html' %}
-        {% assign is_home = true %}
-      {% endif %}
-      {% if is_home %}
-      <a href="#stay" onclick="document.getElementById('stay').scrollIntoView({behavior:'smooth'});return false;">Réserver</a>
-      {% else %}
-      <a href="https://airbnb.fr/h/lesvendredis" target="_blank" rel="noopener">Réserver</a>
-      {% endif %}
-      <a href="https://wa.me/33666535289" target="_blank" rel="noopener">WhatsApp</a>
-      <span class="lang-toggle">
-        <a href="{{ lang_fr_url }}"{% if current_lang == 'fr' %} class="active"{% endif %}>FR</a>
-        <a href="{{ lang_en_url }}"{% if current_lang != 'fr' %} class="active"{% endif %}>EN</a>
-      </span>
-    </nav>
-  </header>
-</div>
+<header class="top-bar-wrap" id="top-bar">
+  <div class="wrap">
+    <div class="top-bar">
+      <span class="top-left">Sainte-Luce · Martinique</span>
+      <a href="{{ home_url }}" class="mark">
+        <span class="ornament"></span>Les Vendredis<span class="ornament"></span>
+      </a>
+      <nav class="top-right">
+        <a href="{{ journal_url }}"{% if is_journal %} class="active"{% endif %}>Journal</a>
+        {% assign is_home = false %}
+        {% if page.url == '/' or page.url == '/fr/' or page.url == '/index.html' or page.url == '/fr/index.html' %}
+          {% assign is_home = true %}
+        {% endif %}
+        {% if is_home %}
+        <a class="mobile-show" href="#stay" onclick="document.getElementById('stay').scrollIntoView({behavior:'smooth'});return false;">Réserver</a>
+        {% else %}
+        <a class="mobile-show" href="https://airbnb.fr/h/lesvendredis" target="_blank" rel="noopener">Réserver</a>
+        {% endif %}
+        <a class="mobile-show" href="https://wa.me/33666535289" target="_blank" rel="noopener">WhatsApp</a>
+        <span class="lang-toggle">
+          <a href="{{ lang_fr_url }}"{% if current_lang == 'fr' %} class="active"{% endif %}>FR</a>
+          <a href="{{ lang_en_url }}"{% if current_lang != 'fr' %} class="active"{% endif %}>EN</a>
+        </span>
+      </nav>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,35 @@
+{% assign is_fr = false %}
+{% if page.lang == 'fr' %}{% assign is_fr = true %}{% endif %}
+<div class="wrap">
+  <section class="stay-details" aria-labelledby="stay-details-title">
+    <div class="section-head">
+      <h2 id="stay-details-title">{% if is_fr %}Le <em>séjour.</em>{% else %}The <em>stay.</em>{% endif %}</h2>
+      <p class="sub">{% if is_fr %}Ce qu'on trouve sur place et ce qu'il y a autour — pour vous aider à vous projeter avant d'arriver.{% else %}What you'll find on site and what's around — so you can picture the stay before arriving.{% endif %}</p>
+    </div>
+    <div class="stay-cols">
+      <div class="stay-col">
+        <h3 class="stay-col-title">{% if is_fr %}Sur place{% else %}On site{% endif %}</h3>
+        <ul class="stay-list">
+          <li>{% if is_fr %}Cabane A-frame, 2 adultes &amp; 1 enfant{% else %}A-frame cabin, sleeps 2 adults &amp; 1 child{% endif %}</li>
+          <li>{% if is_fr %}Préau couvert, ouvert sur le jardin{% else %}Covered <em>préau</em>, open to the garden{% endif %}</li>
+          <li>{% if is_fr %}Cuisine équipée{% else %}Equipped kitchen{% endif %}</li>
+          <li>{% if is_fr %}Douche solaire extérieure{% else %}Outdoor solar shower{% endif %}</li>
+          <li>{% if is_fr %}Jardin tropical privatif{% else %}Private tropical garden{% endif %}</li>
+          <li>{% if is_fr %}Hamacs &amp; coins d'ombre{% else %}Hammocks &amp; shaded corners{% endif %}</li>
+          <li>{% if is_fr %}Draps et serviettes fournis{% else %}Bed linen and towels provided{% endif %}</li>
+          <li>{% if is_fr %}Animaux bienvenus{% else %}Pets welcome{% endif %}</li>
+        </ul>
+      </div>
+      <div class="stay-col">
+        <h3 class="stay-col-title">{% if is_fr %}Tout autour{% else %}All around{% endif %}</h3>
+        <p class="stay-prelude">{% if is_fr %}On est dans la forêt sèche du sud, pas sur la plage. Les Vendredis touchent les Roches Gravées et la forêt de Montravail — vous êtes plongé dans le vert, à quelques minutes en voiture des criques.{% else %}We're in the dry forest of the south, not on the beach. Les Vendredis sits right against the Roches Gravées and the Montravail forest — you're immersed in green, a few minutes by car from the coves.{% endif %}</p>
+        <ul class="stay-distances">
+          <li><span class="d-label">{% if is_fr %}Roches Gravées de Montravail{% else %}Roches Gravées de Montravail{% endif %}</span><span class="d-value">{% if is_fr %}à pied{% else %}walking distance{% endif %}</span></li>
+          <li><span class="d-label">{% if is_fr %}Forêt de Montravail{% else %}Montravail forest{% endif %}</span><span class="d-value">{% if is_fr %}à pied{% else %}walking distance{% endif %}</span></li>
+          <li><span class="d-label">{% if is_fr %}Bourg de Sainte-Luce{% else %}Sainte-Luce village{% endif %}</span><span class="d-value">{% if is_fr %}en voiture{% else %}by car{% endif %}</span></li>
+          <li><span class="d-label">{% if is_fr %}Aéroport Aimé Césaire{% else %}Aimé Césaire airport{% endif %}</span><span class="d-value">{% if is_fr %}en voiture{% else %}by car{% endif %}</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</div>

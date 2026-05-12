@@ -47,6 +47,9 @@
   <link rel="alternate" hreflang="fr" href="{{ alternate_fr_url }}">
   <link rel="alternate" hreflang="x-default" href="{{ alternate_en_url }}">
   {% endif %}
+  <link rel="icon" type="image/svg+xml" href="{{ '/public/favicon.svg' | relative_url }}">
+  <link rel="apple-touch-icon" href="{{ '/public/favicon.svg' | relative_url }}">
+  <meta name="theme-color" content="#F8F1E4">
   <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
   {% if page.url == '/' or page.url == '/fr/' %}{% include schema.html %}{% endif %}
   {% if page.schema == 'lodging' %}{% include schema-lodging.html %}{% include schema-faq-landing.html %}{% endif %}
@@ -61,6 +64,7 @@
   
   {% include footer.html %}
   
+  <script src="{{ '/assets/js/topbar.js' | relative_url }}"></script>
   <script src="{{ '/assets/js/lang-toggle.js' | relative_url }}"></script>
   {% for script in page.scripts %}
   <script src="{{ '/assets/js/' | append: script | append: '.js' | relative_url }}"></script>
