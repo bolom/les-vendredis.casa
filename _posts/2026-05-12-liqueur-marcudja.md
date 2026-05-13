@@ -2,7 +2,7 @@
 layout: article
 title: "May is generous."
 seo_title: "May at Les Vendredis — Liqueur, Breadfruit, and Catherine's BBQ"
-summary: "Three breadfruits on the ground. Anaïs's liqueurs still waiting in their bottles. Catherine's old BBQ, finally back in shape. May gives things."
+summary: "Three breadfruits picked by Anaïs. Her liqueurs still waiting in their bottles. Catherine's old BBQ, finally back in shape. May gives things."
 description: "May at Les Vendredis: breadfruit dropping from the tree, homemade marcudja liqueur, and a gifted BBQ restored to use."
 tag: "The garden"
 date: 2026-05-12

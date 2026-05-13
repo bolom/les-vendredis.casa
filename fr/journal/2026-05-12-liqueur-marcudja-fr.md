@@ -2,7 +2,7 @@
 layout: article
 title: "Mai est généreux."
 seo_title: "Mai aux Vendredis — Liqueur, Fruit à pain, le BBQ de Catherine"
-summary: "Trois fruits à pain au sol. Les liqueurs d'Anaïs qui attendent dans leurs bouteilles. Le vieux BBQ de Catherine, enfin remis en état. Mai donne."
+summary: "Trois fruits à pain cueillis par Anaïs. Les liqueurs d'Anaïs qui attendent dans leurs bouteilles. Le vieux BBQ de Catherine, enfin remis en état. Mai donne."
 description: "Mai aux Vendredis : fruits à pain tombés de l'arbre, liqueur de marcudja en infusion, et un BBQ offert par Catherine remis en service."
 tag: "Le jardin"
 date: 2026-05-12
