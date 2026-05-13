@@ -13,7 +13,7 @@ translation_key: "jardin-anais"
 permalink: /fr/journal/jardin-anais/
 ---
 
-Le terrain était nu quand Anaïs l'a hérité. Un talus de terre rouge, quelques arbres sauvages, des plantes envahissantes qui avaient pris les bords. Pas grand-chose à travailler.
+Le terrain était nu quand Anaïs a commencé à le travailler. Un talus de terre rouge, quelques arbres sauvages, des plantes envahissantes qui avaient pris les bords. Pas grand-chose à travailler.
 
 Anaïs est ingénieure paysagiste — son travail est visible sur [anais.earth](https://anais.earth) — et elle a abordé le jardin comme elle aborde les projets clients : analyse du site d'abord, palette végétale ensuite, rien qui s'ajoute sans raison.
 

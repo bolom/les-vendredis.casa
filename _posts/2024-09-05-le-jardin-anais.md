@@ -12,7 +12,7 @@ lang: "en"
 translation_key: "jardin-anais"
 ---
 
-The land was bare when Anaïs inherited it. A slope of red soil, a few wild trees, some invasive species that had taken over the edges. Not much to work with.
+The land was bare when Anaïs started working on it. A slope of red soil, a few wild trees, some invasive species that had taken over the edges. Not much to work with.
 
 Anaïs is a landscape architect — you can see her practice at [anais.earth](https://anais.earth) — and she treated the garden the way she treats client projects: site analysis first, plant palette second, nothing added without a reason.
 
