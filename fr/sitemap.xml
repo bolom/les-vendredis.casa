@@ -22,6 +22,12 @@ layout: null
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>{{ "/fr/hebergement-atypique-animal-accepte-martinique/" | absolute_url }}</loc>
+    <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>{{ "/fr/roches-gravees-sainte-luce/" | absolute_url }}</loc>
     <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
     <changefreq>monthly</changefreq>
