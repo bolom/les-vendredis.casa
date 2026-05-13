@@ -51,7 +51,14 @@
   <link rel="apple-touch-icon" href="{{ '/public/favicon.svg' | relative_url }}">
   <meta name="theme-color" content="#F8F1E4">
   <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
-  {% if page.image %}{% assign hero_webp = page.image | replace: '.jpg', '.webp' | replace: '.jpeg', '.webp' %}<link rel="preload" as="image" href="{{ '/public/images/' | append: hero_webp | relative_url }}" type="image/webp" fetchpriority="high">{% endif %}
+  {% if page.image %}
+    {% assign hero_webp = page.image | replace: '.jpg', '.webp' | replace: '.jpeg', '.webp' %}
+    {% assign hero_preload = hero_webp %}
+    {% unless hero_preload contains '/public/images/' %}
+      {% assign hero_preload = '/public/images/' | append: hero_preload %}
+    {% endunless %}
+  <link rel="preload" as="image" href="{{ hero_preload | relative_url }}" type="image/webp" fetchpriority="high">
+  {% endif %}
   {% if page.url == '/' or page.url == '/fr/' %}{% include schema.html %}{% endif %}
   {% if page.schema == 'lodging' %}{% include schema-lodging.html %}{% include schema-faq-landing.html %}{% endif %}
   {% if page.schema == 'tourist-attraction' %}{% include schema-tourist-attraction.html %}{% endif %}
