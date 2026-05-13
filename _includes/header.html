@@ -48,11 +48,9 @@
         {% if page.url == '/' or page.url == '/fr/' or page.url == '/index.html' or page.url == '/fr/index.html' %}
           {% assign is_home = true %}
         {% endif %}
-        {% if is_home %}
-        <a class="mobile-show reserve-link" href="#stay" onclick="document.getElementById('stay').scrollIntoView({behavior:'smooth'});return false;">{% if current_lang == 'fr' %}Réserver{% else %}Book{% endif %}</a>
-        {% else %}
+        {% unless is_home %}
         <a class="mobile-show reserve-link" href="https://airbnb.fr/h/lesvendredis" target="_blank" rel="noopener">{% if current_lang == 'fr' %}Réserver{% else %}Book{% endif %}</a>
-        {% endif %}
+        {% endunless %}
         <a class="mobile-show contact-link" href="https://wa.me/33666535289" target="_blank" rel="noopener">WhatsApp</a>
         <span class="lang-toggle">
           <a href="{{ lang_fr_url }}"{% if current_lang == 'fr' %} class="active"{% endif %}>FR</a>

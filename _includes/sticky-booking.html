@@ -1,0 +1,16 @@
+{% assign current_lang = 'en' %}
+{% if page.lang == 'fr' or page.url contains '/fr/' %}
+  {% assign current_lang = 'fr' %}
+{% endif %}
+
+{% assign is_home = false %}
+{% if page.url == '/' or page.url == '/fr/' or page.url == '/index.html' or page.url == '/fr/index.html' %}
+  {% assign is_home = true %}
+{% endif %}
+
+{% if is_home %}
+<div class="sticky-booking" aria-label="{% if current_lang == 'fr' %}Réservation{% else %}Booking{% endif %}">
+  <span class="sticky-booking-text">{% if current_lang == 'fr' %}Séjourner aux Vendredis{% else %}Stay at Les Vendredis{% endif %}</span>
+  <a class="sticky-booking-btn" href="https://airbnb.fr/h/lesvendredis" target="_blank" rel="noopener">{% if current_lang == 'fr' %}Réserver{% else %}Book{% endif %}</a>
+</div>
+{% endif %}
