@@ -19,7 +19,7 @@
         <p>{{ post.summary | truncate: 160 }}</p>
       </div>
       <a class="entry-img" href="{{ post.url | relative_url }}" aria-label="{{ post.title }}">
-        {% if post.image %}<img src="{{ '/public/images/' | append: post.image | relative_url }}" alt="{{ post.image_alt | default: post.title }}" loading="lazy" />{% endif %}
+        {% if post.image %}{% assign post_img = post.image | replace: '.jpg', '.webp' | replace: '.jpeg', '.webp' %}<img src="{{ '/public/images/' | append: post_img | relative_url }}" alt="{{ post.image_alt | default: post.title }}" loading="lazy" />{% endif %}
       </a>
     </article>
     {% endfor %}
