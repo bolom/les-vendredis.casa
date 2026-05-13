@@ -7,7 +7,7 @@ description: "Le jardin de 600m² des Vendredis — conçu par Anaïs, ingénieu
 tag: "Le jardin"
 date: 2024-09-05
 image: "cabane-aframe-rochers-fleurs-jardin-les-vendredis.jpg"
-image_alt: "Cabane A-frame et rochers volcaniques dans le jardin des Vendredis, Sainte-Luce"
+image_alt: "A-frame et rochers volcaniques dans le jardin des Vendredis, Sainte-Luce"
 lang: "fr"
 translation_key: "jardin-anais"
 permalink: /fr/journal/jardin-anais/

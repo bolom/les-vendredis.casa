@@ -7,7 +7,7 @@ description: "Route de Zaïre in Sainte-Luce — the neighbourhood around Les Ve
 tag: "The place"
 date: 2024-06-15
 image: "cabane-aframe-ouverte-jardin-tropical-sainte-luce.jpg"
-image_alt: "Panoramic view of Les Vendredis domain with A-frame cabin, hills and tropical garden"
+image_alt: "Panoramic view of Les Vendredis domain with A-frame, hills and tropical garden"
 lang: "en"
 translation_key: "route-de-zaire"
 ---

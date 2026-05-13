@@ -7,7 +7,7 @@ description: "The 600m² garden at Les Vendredis — designed by Anaïs, a lands
 tag: "The garden"
 date: 2024-09-05
 image: "cabane-aframe-rochers-fleurs-jardin-les-vendredis.jpg"
-image_alt: "A-frame cabin beside volcanic rocks and tropical planting, garden of Les Vendredis, Sainte-Luce"
+image_alt: "A-frame beside volcanic rocks and tropical planting, garden of Les Vendredis, Sainte-Luce"
 lang: "en"
 translation_key: "jardin-anais"
 ---

@@ -2,8 +2,8 @@
 layout: article
 title: "The Roches Gravées."
 seo_title: "Roches Gravées Sainte-Luce — Petroglyphs Near Les Vendredis"
-summary: "Twenty minutes on foot from the cabin, there are 14 Amerindian faces carved into volcanic rock. They've been there for over a thousand years. It's worth the walk."
-description: "The Roches Gravées de Montravail — 14 Amerindian petroglyphs carved in volcanic rock, twenty minutes on foot from the cabin in Sainte-Luce, Martinique."
+summary: "Twenty minutes on foot from the A-frame, there are 14 Amerindian faces carved into volcanic rock. They've been there for over a thousand years. It's worth the walk."
+description: "The Roches Gravées de Montravail — 14 Amerindian petroglyphs carved in volcanic rock, twenty minutes on foot from the A-frame in Sainte-Luce, Martinique."
 tag: "The place"
 date: 2024-07-20
 image: "panorama-domaine-cabane-aframe-les-vendredis-martinique.jpg"

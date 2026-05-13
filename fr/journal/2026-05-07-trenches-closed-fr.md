@@ -19,7 +19,7 @@ Vendredi matin. On rebouche les tranchées qu'on avait creusées pour la conduit
 
 ![Fibre de coco tassée pour le drainage]({{ '/public/images/fibre-coco-drainage-tranchee-les-vendredis.jpg' | relative_url }})
 
-Samedi, c'était les 65 ans de Catherine. On la connaît depuis avant la naissance de Léon. Un BBQ dans le A-frame, chacun a ramené quelque chose — ce qu'on avait ramené du compost de Schoelcher, trois bols de goyaves et de mangues cueillis le matin même, la table tirée sous le pignon.
+Samedi, c'était les 65 ans de Catherine. On la connaît depuis avant la naissance de Léon. Un BBQ dans l'A-frame, chacun a ramené quelque chose — ce qu'on avait ramené du compost de Schoelcher, trois bols de goyaves et de mangues cueillis le matin même, la table tirée sous le pignon.
 
 ![La récolte — goyaves et mangues du compost de Schoelcher]({{ '/public/images/recolte-goyaves-mangues-compost-les-vendredis.jpg' | relative_url }})
 

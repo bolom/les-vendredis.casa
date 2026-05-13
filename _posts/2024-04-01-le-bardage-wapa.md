@@ -12,7 +12,7 @@ lang: "en"
 translation_key: "bardage-wapa"
 ---
 
-The cabin is clad in Wapa — a hardwood from French Guiana, dense and oily, the kind of wood that doesn't need to be treated because it already knows how to handle rain.
+The A-frame is clad in Wapa — a hardwood from French Guiana, dense and oily, the kind of wood that doesn't need to be treated because it already knows how to handle rain.
 
 Most A-frame plans online assume you'll use cedar: light, easy to split, smells good on site. Cedar performs in the Caribbean. Wapa lasts.
 
@@ -20,6 +20,6 @@ The shingles arrived rough-cut and had to be sorted by hand — Anaïs spent a f
 
 We laid most of the cladding ourselves, section by section, over several weeks of weekends. Léon mostly supervised from the ground. She slept in the shade of the palms.
 
-The cabin is two years old now. The Wapa has turned a natural silver-grey, smooth and tight. It doesn't leak. It doesn't swell. In ten years it'll look exactly the same, just a bit more worn-in.
+The A-frame is two years old now. The Wapa has turned a natural silver-grey, smooth and tight. It doesn't leak. It doesn't swell. In ten years it'll look exactly the same, just a bit more worn-in.
 
 That was the point.

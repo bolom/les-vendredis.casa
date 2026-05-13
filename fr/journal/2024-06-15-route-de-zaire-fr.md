@@ -7,7 +7,7 @@ description: "La route de Zaïre à Sainte-Luce — le quartier des Vendredis. T
 tag: "Le lieu"
 date: 2024-06-15
 image: "panorama-domaine-cabane-aframe-les-vendredis-martinique.jpg"
-image_alt: "Vue panoramique du domaine des Vendredis avec la cabane A-frame, collines et jardin tropical"
+image_alt: "Vue panoramique du domaine des Vendredis avec l'A-frame, collines et jardin tropical"
 lang: "fr"
 translation_key: "route-de-zaire"
 permalink: /fr/journal/route-de-zaire/

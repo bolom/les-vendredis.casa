@@ -7,7 +7,7 @@ description: "La saison des mangues est revenue aux Vendredis à Sainte-Luce. Le
 tag: "Le jardin"
 date: 2026-04-12
 image: "mangues-jardin-cabane-aframe-les-vendredis.jpg"
-image_alt: "Mangues vertes sur l'arbre, cabane A-frame visible dans le jardin en fond, Les Vendredis"
+image_alt: "Mangues vertes sur l'arbre, A-frame visible dans le jardin en fond, Les Vendredis"
 lang: "fr"
 translation_key: "mangoes"
 permalink: /fr/journal/mangoes/
@@ -19,4 +19,4 @@ Le grand manguier au fond du jardin prend encore deux ou trois semaines. Celles-
 
 Le jardin produit sans qu'on lui demande grand-chose. Anaïs l'a planifié comme ça — des arbres fruitiers calés l'un après l'autre dans la saison, pour qu'il y ait toujours quelque chose qui arrive. Après les mangues, ce seront les papayes, puis le fruit de la passion qui grimpe sur la clôture de la terrasse.
 
-Les hôtes qui arrivent en avril ou mai mangent dans les arbres. On laisse un panier dans la cabane, on dit de se servir. Personne n'a jamais refusé.
+Les hôtes qui arrivent en avril ou mai mangent dans les arbres. On laisse un panier dans l'A-frame, on dit de se servir. Personne n'a jamais refusé.
