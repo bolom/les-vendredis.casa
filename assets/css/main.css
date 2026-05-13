@@ -868,20 +868,18 @@ h1 em { font-style: italic; font-weight: 400; color: var(--accent); }
   font-weight: 400;
 }
 .foot-left { justify-self: start; }
-.foot-right { justify-self: end; }
-.foot-social {
-  display: inline-flex;
+.foot-right {
+  justify-self: end;
+  display: flex;
   align-items: center;
-  gap: 8px;
-  margin-right: 18px;
-  color: var(--ink);
+  gap: 18px;
+}
+.foot-right a {
+  color: var(--muted);
   text-decoration: none;
+  transition: color .2s;
 }
-.foot-social span {
-  font-size: 10px;
-  letter-spacing: .24em;
-  text-transform: uppercase;
-}
+.foot-right a:hover { color: var(--ink); }
 .foot-pet-logo {
   display: flex;
   justify-content: center;
