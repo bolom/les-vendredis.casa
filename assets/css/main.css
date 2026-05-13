@@ -1156,11 +1156,11 @@ h1 em { font-style: italic; font-weight: 400; color: var(--accent); }
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin: 24px 0 18px;
+  margin: 30px 0 24px;
 }
 .hero-sensory span {
   border: 1px solid var(--rule);
-  padding: 8px 10px;
+  padding: 10px 12px;
   font-size: 10px;
   letter-spacing: .18em;
   text-transform: uppercase;
@@ -1211,8 +1211,8 @@ h1 em { font-style: italic; font-weight: 400; color: var(--accent); }
   .top-bar-wrap.scrolled .mark { font-size: 16px; }
   .hero {
     grid-template-columns: 1fr;
-    gap: 28px;
-    padding: 18px 0 56px;
+    gap: 36px;
+    padding: 24px 0 68px;
     align-items: start;
   }
   .hero > .image-frame {
@@ -1224,27 +1224,28 @@ h1 em { font-style: italic; font-weight: 400; color: var(--accent); }
     max-height: none;
   }
   .hero > div:not(.image-frame) { order: 1; }
-  h1 { font-size: clamp(42px, 12.5vw, 58px); margin-bottom: 22px; }
-  .eyebrow { font-size: 10px; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
+  h1 { font-size: clamp(42px, 12.5vw, 58px); margin-bottom: 28px; }
+  .eyebrow { font-size: 10px; gap: 10px; margin-bottom: 26px; flex-wrap: wrap; }
   .eyebrow::before { width: 24px; }
-  .lead { font-size: 18px; line-height: 1.45; margin-bottom: 14px; }
-  .hero-primary-lead { font-size: 20px; }
+  .lead { font-size: 18px; line-height: 1.55; margin-bottom: 16px; }
+  .hero-primary-lead { font-size: 20px; max-width: 29ch; }
   .hero-family-note {
-    padding-top: 18px;
+    padding-top: 24px;
     border-top: 1px solid var(--rule);
+    max-width: 31ch;
   }
   .hero-sensory {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 8px;
-    margin: 22px 0;
+    gap: 10px;
+    margin: 28px 0;
   }
   .hero-sensory span {
     min-height: 40px;
     display: flex;
     align-items: center;
   }
-  .ctas { display: grid; grid-template-columns: 1fr; margin-top: 26px; gap: 10px; }
+  .ctas { display: grid; grid-template-columns: 1fr; margin-top: 34px; gap: 12px; }
   .hero-ctas .btn.subtle { order: -1; }
   .btn {
     width: 100%;
@@ -1254,16 +1255,16 @@ h1 em { font-style: italic; font-weight: 400; color: var(--accent); }
     font-size: 10px;
     letter-spacing: .2em;
   }
-  .creds { grid-template-columns: 1fr 1fr; gap: 18px 16px; padding: 24px 0; }
+  .creds { grid-template-columns: 1fr 1fr; gap: 24px 18px; padding: 32px 0; }
   .cred .v { font-size: 16px; line-height: 1.2; }
-  .journal { padding: 72px 0 36px; }
-  .section-head { grid-template-columns: 1fr; gap: 14px; margin-bottom: 40px; }
+  .journal { padding: 88px 0 44px; }
+  .section-head { grid-template-columns: 1fr; gap: 18px; margin-bottom: 48px; }
   .section-head h2 { font-size: clamp(38px, 11vw, 56px); }
   .entry { grid-template-columns: 1fr; gap: 18px; padding: 36px 0; }
   .entry-meta { flex-direction: row; gap: 14px; align-items: baseline; flex-wrap: wrap; }
   .entry-num { font-size: 24px; }
-  .domain-area { grid-template-columns: 1fr; gap: 24px; padding: 44px 0; }
-  .domain-area:first-child .domain-area-copy { grid-template-columns: 1fr; gap: 12px; }
+  .domain-area { grid-template-columns: 1fr; gap: 30px; padding: 56px 0; }
+  .domain-area:first-child .domain-area-copy { grid-template-columns: 1fr; gap: 16px; }
   .domain-area:first-child .domain-area-num { grid-row: auto; }
   .domain-area-copy { position: static; }
   .domain-area-copy p { max-width: 56ch; }
