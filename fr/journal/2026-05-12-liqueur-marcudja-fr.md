@@ -3,7 +3,7 @@ layout: article
 title: "Mai est généreux."
 seo_title: "Mai aux Vendredis — Liqueur, Fruit à pain, le BBQ de Catherine"
 summary: "Trois fruits à pain cueillis par Anaïs. Les liqueurs d'Anaïs qui attendent dans leurs bouteilles. Le vieux BBQ de Catherine, enfin remis en état. Mai donne."
-description: "Mai aux Vendredis : fruits à pain tombés de l'arbre, liqueur de marcudja en infusion, et un BBQ offert par Catherine remis en service."
+description: "Mai aux Vendredis : fruits à pain cueillis sur l'arbre, liqueur de marcudja en infusion, et un BBQ offert par Catherine remis en service."
 tag: "Le jardin"
 date: 2026-05-12
 image: "80029101603__07ED242C-7230-4228-B2E4-AB83718400B7.webp"
@@ -13,17 +13,17 @@ translation_key: "may_harvest"
 permalink: /fr/journal/liqueur-marcudja/
 ---
 
-Trois fruits à pain. Anaïs les a cueillis hier — vert vif, peau bosselée, chacun de la taille d'une tête d'enfant. Le latex blanc encore collant sur la tige.
+Trois fruits à pain. Anaïs les a cueillis hier — vert vif, peau en petites écailles, chacun de la taille d'une tête d'enfant. Le latex blanc encore collant sur la tige.
 
-Le fruit à pain (*Artocarpus altilis*) ne se garde pas. Alors il se mange vite — bouilli avec sel et beurre, ou rôti entier dans les braises. L'arbre continuera à en donner encore un mois.
+Le fruit à pain (*Artocarpus altilis*) ne se garde pas longtemps, trois ou quatre jours environ après la cueillette. Alors il se mange vite — bouilli avec sel et beurre, ou rôti entier dans les braises. Anaïs en parle dans [ce reel](https://www.instagram.com/reels/Cv-DMZuuvMi/), pendant que Samara prépare en direct des gnocchi et des dombrés de fruit à pain. L'arbre continuera à en donner encore un mois.
 
-![Trois fruits à pain sur le béton, le jardin en fond]({{ '/public/images/80031588110__4378D4D7-81C6-4001-82C9-AB8861EAAD01.webp' | relative_url }})
+![Trois fruits à pain cueillis sur le béton, le jardin en fond]({{ '/public/images/80031588110__4378D4D7-81C6-4001-82C9-AB8861EAAD01.webp' | relative_url }})
 
 ---
 
-Anaïs a commencé les liqueurs il y a quelques semaines. Deux bouteilles sur l'étagère. Une **[Saint James Royal Blanc](https://rhum-saintjames.com/)** avec des graines de marcudja — déjà ambrée là où l'acidité a cédé sa couleur. L'autre, **[Clément](https://www.rhum-clement.com/)**, claire et patiente, avec du **marcudja** et de la **pomme liane** en suspension. La pomme liane (*Passiflora laurifolia*) c'est sa cousine — plus douce, plus florale, moins acide.
+Anaïs a commencé les liqueurs le 10 mai. Deux bouteilles sur l'étagère. Une **[Saint James Royal Blanc](https://rhum-saintjames.com/)** avec des graines de marcudja (*Passiflora edulis*) — déjà ambrée là où l'acidité a cédé sa couleur. L'autre, **[Clément](https://www.rhum-clement.com/)**, claire et patiente, avec de la **pomme liane** en suspension. La pomme liane (*Passiflora laurifolia*) c'est sa cousine — plus douce, plus florale, moins acide.
 
-Elle a écrit **10 mai 2026** sur l'étiquette. C'est quand elles sortent de l'étagère.
+Elle a écrit **10 mai 2026** sur l'étiquette. C'est la date de mise en infusion.
 
 ![Bouteille Clément en infusion sur l'étagère]({{ '/public/images/80029108775__FFA43E1E-8799-484A-9285-F52C439C4A3E.webp' | relative_url }})
 
@@ -37,7 +37,7 @@ Catherine nous a donné son vieux BBQ. Il avait pris la pluie trop longtemps —
 
 ![L'intérieur du BBQ, propre et repeint]({{ '/public/images/80031238621__393D1747-3803-463A-ADD1-41A569562229.webp' | relative_url }})
 
-Catherine, on la connaît depuis avant la naissance de Léon. C'est ce genre de BBQ.
+On connaît Catherine depuis avant la naissance de Léon. Alors quand elle nous donne un BBQ, il vient avec un peu d'histoire.
 
 ---
 
