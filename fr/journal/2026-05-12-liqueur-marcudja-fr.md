@@ -3,13 +3,14 @@ layout: article
 title: "Mai est généreux."
 seo_title: "Mai aux Vendredis — Liqueur, Fruit à pain, le BBQ de Catherine"
 summary: "Trois fruits à pain au sol. Les liqueurs d'Anaïs qui attendent dans leurs bouteilles. Le vieux BBQ de Catherine, enfin remis en état. Mai donne."
-description: "Mai aux Vendredis : fruits à pain tombés du l'arbre, liqueur de marcudja en infusion, et un BBQ offert par Catherine remis en service."
+description: "Mai aux Vendredis : fruits à pain tombés de l'arbre, liqueur de marcudja en infusion, et un BBQ offert par Catherine remis en service."
 tag: "Le jardin"
 date: 2026-05-12
 image: "80029101603__07ED242C-7230-4228-B2E4-AB83718400B7.webp"
 image_alt: "Saint James et Clément en infusion sur l'étagère, Les Vendredis"
 lang: "fr"
 translation_key: "may_harvest"
+permalink: /fr/journal/liqueur-marcudja/
 ---
 
 Trois fruits à pain. Anaïs les a cueillis hier — vert vif, peau bosselée, chacun de la taille d'une tête d'enfant. Le latex blanc encore collant sur la tige.
