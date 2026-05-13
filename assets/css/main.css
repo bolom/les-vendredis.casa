@@ -869,6 +869,19 @@ h1 em { font-style: italic; font-weight: 400; color: var(--accent); }
 }
 .foot-left { justify-self: start; }
 .foot-right { justify-self: end; }
+.foot-social {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-right: 18px;
+  color: var(--ink);
+  text-decoration: none;
+}
+.foot-social span {
+  font-size: 10px;
+  letter-spacing: .24em;
+  text-transform: uppercase;
+}
 .foot-pet-logo {
   display: flex;
   justify-content: center;
