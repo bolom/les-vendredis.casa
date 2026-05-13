@@ -3,15 +3,28 @@ layout: page
 title: "La forêt de Montravail"
 seo_title: "Forêt de Montravail Sainte-Luce — Nature autour de la cabane | Les Vendredis"
 description: "La cabane Les Vendredis est posée dans la forêt de Montravail, à Sainte-Luce. Ce qu'on entend, ce qu'on voit, et pourquoi cette forêt n'est pas juste un décor."
+image: /public/images/flamboyant-palmiers-collines-jardin-les-vendredis.jpg
 lang: fr
 locale: fr_FR
 canonical_url: https://lesvendredis.casa/fr/foret-montravail/
 permalink: /fr/foret-montravail/
 translation_key: foret-montravail
+schema: tourist-attraction
+attraction_name: "Forêt de Montravail"
+attraction_image: /public/images/flamboyant-palmiers-collines-jardin-les-vendredis.jpg
+attraction_geo:
+  lat: 14.4736
+  lng: -60.9180
+attraction_isAccessibleForFree: true
 ---
 
 <div class="wrap">
   <section class="hero">
+    <div class="image-frame">
+      <img src="{{ '/public/images/flamboyant-palmiers-collines-jardin-les-vendredis.jpg' | relative_url }}" alt="Flamboyant, palmiers et collines dans la forêt de Montravail" />
+      <span class="image-num">No. 01</span>
+      <span class="image-cap">Flamboyant, palmiers, les collines de Montravail</span>
+    </div>
     <div>
       <div class="eyebrow">Le lieu · Sainte-Luce, Martinique</div>
       <h1>La forêt de <em>Montravail.</em></h1>
@@ -19,7 +32,7 @@ translation_key: foret-montravail
       <p class="lead">Voici ce qu'on entend, ce qu'on voit, et pourquoi cette forêt n'est pas juste un décor.</p>
       <div class="ctas">
         <a class="btn primary" href="https://airbnb.fr/h/lesvendredis" target="_blank" rel="noopener">Réserver la cabane <span class="arrow">→</span></a>
-        <a class="btn" href="/fr/roches-gravees-sainte-luce/">Les Roches Gravées <span class="arrow">→</span></a>
+        <a class="btn" href="{{ '/fr/roches-gravees-sainte-luce/' | relative_url }}">Les Roches Gravées <span class="arrow">→</span></a>
       </div>
     </div>
   </section>
@@ -91,6 +104,6 @@ translation_key: foret-montravail
   </section>
 </div>
 
-{% include journal-preview-fr.html %}
+{% include around-sisters.html %}
 
 {% include booking-fr.html %}

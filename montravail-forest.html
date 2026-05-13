@@ -3,23 +3,36 @@ layout: page
 title: "The Montravail forest"
 seo_title: "Montravail Forest Sainte-Luce — Nature around the cabin | Les Vendredis"
 description: "Les Vendredis cabin sits inside Montravail forest, in Sainte-Luce, Martinique. What you hear, what you see, and why this forest isn't just the backdrop."
+image: /public/images/flamboyant-palmiers-collines-jardin-les-vendredis.jpg
 lang: en
 locale: en_US
 canonical_url: https://lesvendredis.casa/montravail-forest/
 permalink: /montravail-forest/
 translation_key: foret-montravail
+schema: tourist-attraction
+attraction_name: "Montravail forest"
+attraction_image: /public/images/flamboyant-palmiers-collines-jardin-les-vendredis.jpg
+attraction_geo:
+  lat: 14.4736
+  lng: -60.9180
+attraction_isAccessibleForFree: true
 ---
 
 <div class="wrap">
   <section class="hero">
+    <div class="image-frame">
+      <img src="{{ '/public/images/flamboyant-palmiers-collines-jardin-les-vendredis.jpg' | relative_url }}" alt="Flamboyant tree, palms and hills overlooking Montravail forest" />
+      <span class="image-num">No. 01</span>
+      <span class="image-cap">Flamboyant, palms, the hills of Montravail</span>
+    </div>
     <div>
       <div class="eyebrow">The place · Sainte-Luce, Martinique</div>
       <h1>The Montravail <em>forest.</em></h1>
       <p class="lead">The cabin isn't in a clearing. It's in the forest.</p>
       <p class="lead">Here's what you hear, what you see, and why this forest isn't just the backdrop.</p>
       <div class="ctas">
-        <a class="btn primary" href="https://airbnb.com/h/lesvendredis" target="_blank" rel="noopener">Book the cabin <span class="arrow">→</span></a>
-        <a class="btn" href="/roches-gravees-sainte-luce/">The Roches Gravées <span class="arrow">→</span></a>
+        <a class="btn primary" href="https://airbnb.fr/h/lesvendredis" target="_blank" rel="noopener">Book the cabin <span class="arrow">→</span></a>
+        <a class="btn" href="{{ '/roches-gravees-sainte-luce/' | relative_url }}">The Roches Gravées <span class="arrow">→</span></a>
       </div>
     </div>
   </section>
@@ -91,6 +104,6 @@ translation_key: foret-montravail
   </section>
 </div>
 
-{% include journal-preview.html %}
+{% include around-sisters.html %}
 
 {% include booking.html %}

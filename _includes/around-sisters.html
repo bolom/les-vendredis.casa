@@ -1,0 +1,67 @@
+{% assign is_fr = false %}
+{% if page.lang == 'fr' %}{% assign is_fr = true %}{% endif %}
+{% assign current = page.translation_key %}
+
+{% capture roches_fr %}/fr/roches-gravees-sainte-luce/{% endcapture %}
+{% capture roches_en %}/roches-gravees-sainte-luce/{% endcapture %}
+{% capture montravail_fr %}/fr/foret-montravail/{% endcapture %}
+{% capture montravail_en %}/montravail-forest/{% endcapture %}
+{% capture trails_fr %}/fr/trails-sainte-luce/{% endcapture %}
+{% capture trails_en %}/trails-sainte-luce/{% endcapture %}
+{% capture cabin_fr %}/fr/hebergement-atypique-martinique/{% endcapture %}
+{% capture cabin_en %}/unique-stay-martinique/{% endcapture %}
+
+<div class="wrap">
+  <section class="nearby-section" aria-labelledby="around-sisters-title">
+    <div class="section-head">
+      <h2 id="around-sisters-title">{% if is_fr %}Tout <em>autour.</em>{% else %}All <em>around.</em>{% endif %}</h2>
+      <p class="sub">{% if is_fr %}Les autres pages utiles pour préparer le séjour.{% else %}The other pages worth reading before a stay.{% endif %}</p>
+    </div>
+    <div class="nearby-grid">
+      {% unless current == 'roches-gravees-sainte-luce' %}
+      <a class="nearby-card" href="{% if is_fr %}{{ roches_fr | relative_url }}{% else %}{{ roches_en | relative_url }}{% endif %}">
+        <div class="nearby-img"><img src="{{ '/public/images/cabane-aframe-rochers-fleurs-jardin-les-vendredis.jpg' | relative_url }}" alt="{% if is_fr %}Roches volcaniques au domaine{% else %}Volcanic rocks at the place{% endif %}" loading="lazy" /></div>
+        <div class="nearby-body">
+          <span class="nearby-num">I</span>
+          <h3>{% if is_fr %}Les Roches Gravées{% else %}The Roches Gravées{% endif %}</h3>
+          <p>{% if is_fr %}14 visages amérindiens sculptés dans l'andésite.{% else %}14 Amerindian faces carved into andesite.{% endif %}</p>
+          <span class="nearby-link">{% if is_fr %}Lire →{% else %}Read →{% endif %}</span>
+        </div>
+      </a>
+      {% endunless %}
+      {% unless current == 'foret-montravail' %}
+      <a class="nearby-card" href="{% if is_fr %}{{ montravail_fr | relative_url }}{% else %}{{ montravail_en | relative_url }}{% endif %}">
+        <div class="nearby-img"><img src="{{ '/public/images/flamboyant-palmiers-collines-jardin-les-vendredis.jpg' | relative_url }}" alt="{% if is_fr %}Vue sur la forêt de Montravail{% else %}View of Montravail forest{% endif %}" loading="lazy" /></div>
+        <div class="nearby-body">
+          <span class="nearby-num">II</span>
+          <h3>{% if is_fr %}La forêt de Montravail{% else %}Montravail forest{% endif %}</h3>
+          <p>{% if is_fr %}Le grand voisin du lieu — 75 hectares à pied.{% else %}The place's great neighbour — 75 hectares on foot.{% endif %}</p>
+          <span class="nearby-link">{% if is_fr %}Lire →{% else %}Read →{% endif %}</span>
+        </div>
+      </a>
+      {% endunless %}
+      {% unless current == 'trails-sainte-luce' %}
+      <a class="nearby-card" href="{% if is_fr %}{{ trails_fr | relative_url }}{% else %}{{ trails_en | relative_url }}{% endif %}">
+        <div class="nearby-img"><img src="{{ '/public/images/coucher-soleil-palmiers-construction-les-vendredis.jpg' | relative_url }}" alt="{% if is_fr %}Sentiers autour de Sainte-Luce{% else %}Trails around Sainte-Luce{% endif %}" loading="lazy" /></div>
+        <div class="nearby-body">
+          <span class="nearby-num">III</span>
+          <h3>{% if is_fr %}Sentiers & trails{% else %}Trails &amp; hiking{% endif %}</h3>
+          <p>{% if is_fr %}Itinéraires depuis le pas de la porte.{% else %}Routes that start at the doorstep.{% endif %}</p>
+          <span class="nearby-link">{% if is_fr %}Lire →{% else %}Read →{% endif %}</span>
+        </div>
+      </a>
+      {% endunless %}
+      {% unless current == 'hebergement-atypique' %}
+      <a class="nearby-card" href="{% if is_fr %}{{ cabin_fr | relative_url }}{% else %}{{ cabin_en | relative_url }}{% endif %}">
+        <div class="nearby-img"><img src="{{ '/public/images/cabane-aframe-jardin-fleurs-rouges-les-vendredis.jpg' | relative_url }}" alt="{% if is_fr %}La cabane A-frame{% else %}The A-frame cabin{% endif %}" loading="lazy" /></div>
+        <div class="nearby-body">
+          <span class="nearby-num">IV</span>
+          <h3>{% if is_fr %}La cabane{% else %}The cabin{% endif %}</h3>
+          <p>{% if is_fr %}Le détail de la A-frame et de ce qu'on y trouve.{% else %}The A-frame in detail, and what you'll find.{% endif %}</p>
+          <span class="nearby-link">{% if is_fr %}Lire →{% else %}Read →{% endif %}</span>
+        </div>
+      </a>
+      {% endunless %}
+    </div>
+  </section>
+</div>

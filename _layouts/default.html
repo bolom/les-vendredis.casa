@@ -53,6 +53,7 @@
   <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
   {% if page.url == '/' or page.url == '/fr/' %}{% include schema.html %}{% endif %}
   {% if page.schema == 'lodging' %}{% include schema-lodging.html %}{% include schema-faq-landing.html %}{% endif %}
+  {% if page.schema == 'tourist-attraction' %}{% include schema-tourist-attraction.html %}{% endif %}
   {% include google-analytics.html %}
 </head>
 <body>

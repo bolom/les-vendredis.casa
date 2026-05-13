@@ -1027,6 +1027,48 @@ h1 em { font-style: italic; font-weight: 400; color: var(--accent); }
   max-width: 50ch;
 }
 
+/* ── from-journal callout ── */
+.from-journal {
+  margin: 64px 0 24px;
+  padding: 36px clamp(28px, 4vw, 56px);
+  background: var(--cream-soft);
+  border-left: 2px solid var(--gold);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.from-journal-kicker {
+  font-size: 10.5px;
+  letter-spacing: .32em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 500;
+}
+.from-journal-title {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(24px, 2.4vw, 34px);
+  line-height: 1.15;
+  color: var(--ink);
+  display: inline-flex;
+  align-items: baseline;
+  gap: 14px;
+  transition: color .25s;
+}
+.from-journal-title:hover { color: var(--accent); }
+.from-journal-arrow { color: var(--gold); transition: transform .35s; }
+.from-journal-title:hover .from-journal-arrow { transform: translateX(6px); }
+.from-journal-summary {
+  font-family: var(--serif);
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  max-width: 68ch;
+}
+@media (max-width: 900px) {
+  .from-journal { margin: 48px 0 16px; padding: 28px 24px; }
+}
+
 /* ── nearby section (around Les Vendredis) ── */
 .nearby-section {
   padding: 96px 0 40px;

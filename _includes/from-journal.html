@@ -1,0 +1,33 @@
+{% comment %}
+Usage:
+{% include from-journal.html
+   slug="2024-07-20-roches-gravees"
+   title_en="The Roches Gravées"
+   title_fr="Les Roches Gravées"
+   summary_en="..."
+   summary_fr="..."
+%}
+{% endcomment %}
+{% assign is_fr = false %}
+{% if page.lang == 'fr' %}{% assign is_fr = true %}{% endif %}
+{% if is_fr %}
+  {% capture target_url %}/fr/journal/{{ include.slug }}-fr/{% endcapture %}
+  {% assign target_title = include.title_fr %}
+  {% assign target_summary = include.summary_fr %}
+  {% assign kicker = 'Dans le journal' %}
+{% else %}
+  {% capture target_url %}/journal/{{ include.slug }}/{% endcapture %}
+  {% assign target_title = include.title_en %}
+  {% assign target_summary = include.summary_en %}
+  {% assign kicker = 'From the journal' %}
+{% endif %}
+<div class="wrap">
+  <aside class="from-journal" aria-label="{{ kicker }}">
+    <span class="from-journal-kicker">{{ kicker }}</span>
+    <a class="from-journal-title" href="{{ target_url | relative_url }}">
+      <span>{{ target_title }}</span>
+      <span class="from-journal-arrow">→</span>
+    </a>
+    <p class="from-journal-summary">{{ target_summary | truncate: 180 }}</p>
+  </aside>
+</div>

@@ -1,0 +1,22 @@
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TouristAttraction",
+  "name": {{ page.attraction_name | jsonify }},
+  "description": {{ page.description | jsonify }},
+  "url": {{ page.canonical_url | default: page.url | absolute_url | jsonify }},
+  {% if page.attraction_image %}"image": {{ page.attraction_image | absolute_url | jsonify }},{% endif %}
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Sainte-Luce",
+    "addressRegion": "Martinique",
+    "addressCountry": "FR"
+  }{% if page.attraction_geo %},
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": {{ page.attraction_geo.lat }},
+    "longitude": {{ page.attraction_geo.lng }}
+  }{% endif %}{% if page.attraction_isAccessibleForFree != nil %},
+  "isAccessibleForFree": {{ page.attraction_isAccessibleForFree }}{% endif %}
+}
+</script>

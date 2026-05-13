@@ -3,15 +3,28 @@ layout: page
 title: "Roches Gravées de Montravail"
 seo_title: "Roches Gravées de Montravail Sainte-Luce — Pétroglyphes amérindiens | Les Vendredis"
 description: "À vingt minutes à pied de la cabane, quatorze visages amérindiens sont gravés dans la roche depuis plus de mille ans. Site libre d'accès, inscrit aux Monuments Historiques."
+image: /public/images/cabane-aframe-rochers-fleurs-jardin-les-vendredis.jpg
 lang: fr
 locale: fr_FR
 canonical_url: https://lesvendredis.casa/fr/roches-gravees-sainte-luce/
 permalink: /fr/roches-gravees-sainte-luce/
 translation_key: roches-gravees-sainte-luce
+schema: tourist-attraction
+attraction_name: "Roches Gravées de Montravail"
+attraction_image: /public/images/cabane-aframe-rochers-fleurs-jardin-les-vendredis.jpg
+attraction_geo:
+  lat: 14.4736
+  lng: -60.9180
+attraction_isAccessibleForFree: true
 ---
 
 <div class="wrap">
   <section class="hero">
+    <div class="image-frame">
+      <img src="{{ '/public/images/cabane-aframe-rochers-fleurs-jardin-les-vendredis.jpg' | relative_url }}" alt="Rochers d'andésite dans le jardin, à proximité des Roches Gravées de Montravail" />
+      <span class="image-num">No. 01</span>
+      <span class="image-cap">L'andésite, la roche qui porte les visages</span>
+    </div>
     <div>
       <div class="eyebrow">Le lieu · Sainte-Luce, Martinique</div>
       <h1>Roches Gravées de <em>Montravail.</em></h1>
@@ -19,7 +32,7 @@ translation_key: roches-gravees-sainte-luce
       <p class="lead">Ils sont là depuis plus de mille ans.</p>
       <div class="ctas">
         <a class="btn primary" href="https://airbnb.fr/h/lesvendredis" target="_blank" rel="noopener">Réserver la cabane <span class="arrow">→</span></a>
-        <a class="btn" href="/fr/trails-sainte-luce/">Trails et randos <span class="arrow">→</span></a>
+        <a class="btn" href="{{ '/fr/trails-sainte-luce/' | relative_url }}">Trails et randos <span class="arrow">→</span></a>
       </div>
     </div>
   </section>
@@ -91,6 +104,14 @@ translation_key: roches-gravees-sainte-luce
   </section>
 </div>
 
-{% include journal-preview-fr.html %}
+{% include from-journal.html
+   slug="2024-07-20-roches-gravees"
+   title_en="The Roches Gravées"
+   title_fr="Les Roches Gravées"
+   summary_en="Twenty minutes on foot from the cabin, there are 14 Amerindian faces carved into volcanic rock. They've been there for over a thousand years. It's worth the walk."
+   summary_fr="À vingt minutes à pied de la cabane, 14 visages amérindiens sont gravés dans la roche volcanique depuis plus de mille ans. Ça vaut le déplacement."
+%}
+
+{% include around-sisters.html %}
 
 {% include booking-fr.html %}
