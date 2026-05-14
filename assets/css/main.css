@@ -1132,38 +1132,38 @@ h1 em { font-style: italic; font-weight: 400; color: var(--accent); }
 .sticky-booking { display: none; }
 
 .before-come {
-  padding: 60px 0 40px;
+  padding: 44px 0 28px;
   border-top: 1px solid var(--rule);
 }
 .before-come-kicker {
-  font-size: 9.5px;
-  letter-spacing: .32em;
+  font-size: 9px;
+  letter-spacing: .34em;
   text-transform: uppercase;
   color: var(--muted);
-  margin-bottom: 14px;
+  margin-bottom: 12px;
 }
 .before-come-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0 48px;
+  gap: 0 40px;
 }
 .before-come-item {
-  padding: 16px 0;
-  border-bottom: 1px solid var(--rule);
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(31,22,17,.08);
 }
 .before-come-key {
   display: block;
-  margin-bottom: 6px;
-  font-size: 9px;
-  letter-spacing: .3em;
+  margin-bottom: 4px;
+  font-size: 8.5px;
+  letter-spacing: .34em;
   text-transform: uppercase;
   color: var(--gold);
   font-weight: 500;
 }
 .before-come-value {
   font-family: var(--serif);
-  font-size: 16px;
-  line-height: 1.45;
+  font-size: 15px;
+  line-height: 1.4;
   color: var(--ink-soft);
 }
 
@@ -1254,14 +1254,14 @@ h1 em { font-style: italic; font-weight: 400; color: var(--accent); }
     padding-bottom: 22px;
   }
   .before-come {
-    padding: 48px 0 36px;
+    padding: 32px 0 24px;
   }
   .before-come-grid {
     grid-template-columns: 1fr;
     gap: 0;
   }
   .before-come-item {
-    padding: 14px 0;
+    padding: 10px 0;
   }
   .b-meta { margin-left: 0; letter-spacing: .18em; }
   .availability-head { padding-top: 42px; }
@@ -1327,7 +1327,7 @@ h1 em { font-style: italic; font-weight: 400; color: var(--accent); }
   .gallery-item.panorama { aspect-ratio: 16 / 9; }
   .nearby-grid { grid-template-columns: 1fr; }
   .before-come {
-    padding-top: 40px;
+    padding-top: 28px;
   }
   .sticky-booking {
     left: 10px;
