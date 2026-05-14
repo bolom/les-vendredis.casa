@@ -9,6 +9,7 @@ date: 2023-03-10
 image: "ossature-bois-aframe-construction-martinique.jpg"
 image_alt: "Ossature bois de la charpente A-frame en cours de montage, Sainte-Luce, Martinique"
 lang: "fr"
+locale: fr_FR
 translation_key: "plan-den"
 permalink: /fr/journal/plan-den/
 ---

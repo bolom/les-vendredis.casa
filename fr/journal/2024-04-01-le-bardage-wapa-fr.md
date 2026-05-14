@@ -9,6 +9,7 @@ date: 2024-04-01
 image: "construction-bardage-bois-cabane-aframe-martinique.jpg"
 image_alt: "Pose du bardage en Wapa sur l'A-frame à la main, Sainte-Luce, Martinique"
 lang: "fr"
+locale: fr_FR
 translation_key: "bardage-wapa"
 permalink: /fr/journal/bardage-wapa/
 ---

@@ -9,6 +9,7 @@ date: 2022-12-25
 image: "terrain-debut-chantier-les-vendredis-martinique.jpg"
 image_alt: "Le terrain des Vendredis avant la construction, Sainte-Luce, Martinique"
 lang: "fr"
+locale: fr_FR
 translation_key: "noel-dalle"
 permalink: /fr/journal/noel-dalle/
 ---

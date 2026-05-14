@@ -9,6 +9,7 @@ date: 2024-07-20
 image: "flamboyant-palmiers-collines-jardin-les-vendredis.jpg"
 image_alt: "Flamboyant en fleurs rouges, palmiers et collines de Martinique, jardin des Vendredis"
 lang: "fr"
+locale: fr_FR
 translation_key: "roches-gravees"
 permalink: /fr/journal/roches-gravees/
 ---

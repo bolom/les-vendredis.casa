@@ -9,6 +9,7 @@ date: 2026-04-12
 image: "mangues-jardin-cabane-aframe-les-vendredis.jpg"
 image_alt: "Mangues vertes sur l'arbre, A-frame visible dans le jardin en fond, Les Vendredis"
 lang: "fr"
+locale: fr_FR
 translation_key: "mangoes"
 permalink: /fr/journal/mangoes/
 ---

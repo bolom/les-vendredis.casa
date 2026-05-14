@@ -9,6 +9,7 @@ date: 2024-09-05
 image: "cabane-aframe-rochers-fleurs-jardin-les-vendredis.jpg"
 image_alt: "A-frame et rochers volcaniques dans le jardin des Vendredis, Sainte-Luce"
 lang: "fr"
+locale: fr_FR
 translation_key: "jardin-anais"
 permalink: /fr/journal/jardin-anais/
 ---

@@ -9,6 +9,7 @@ date: 2026-05-07
 image: "tranchees-fermees-mur-pierres-les-vendredis.jpg"
 image_alt: "Le tracé de la tranchée le long du mur en pierres, terminé — jardin des Vendredis, Sainte-Luce"
 lang: "fr"
+locale: fr_FR
 translation_key: "trenches-closed"
 permalink: /fr/journal/tranchees-fermees/
 ---

@@ -9,6 +9,7 @@ date: 2026-05-12
 image: "80029101603__07ED242C-7230-4228-B2E4-AB83718400B7.webp"
 image_alt: "Saint James et Clément en infusion sur l'étagère, Les Vendredis"
 lang: "fr"
+locale: fr_FR
 translation_key: "may_harvest"
 permalink: /fr/journal/liqueur-marcudja/
 ---
