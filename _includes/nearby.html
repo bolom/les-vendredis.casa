@@ -2,9 +2,8 @@
 {% if page.lang == 'fr' %}{% assign is_fr = true %}{% endif %}
 <div class="wrap">
   <section class="nearby-section" aria-labelledby="nearby-title">
-    <div class="section-head">
-      <h2 id="nearby-title">{% if is_fr %}Autour <em>des Vendredis.</em>{% else %}Around <em>Les Vendredis.</em>{% endif %}</h2>
-      <p class="sub">{% if is_fr %}Lieux, sentiers et pages qui prolongent le séjour.{% else %}Places, trails, and pages that extend the stay.{% endif %}</p>
+    <div class="section-head section-head-min">
+      <h2 id="nearby-title">{% if is_fr %}Tout près <em>des Vendredis.</em>{% else %}Nearby <em>Les Vendredis.</em>{% endif %}</h2>
     </div>
     <div class="nearby-grid">
       <a class="nearby-card" href="{% if is_fr %}{{ '/fr/roches-gravees-sainte-luce/' | relative_url }}{% else %}{{ '/roches-gravees-sainte-luce/' | relative_url }}{% endif %}">
@@ -13,7 +12,7 @@
           <span class="nearby-num">I</span>
           <h3>{% if is_fr %}Les Roches Gravées{% else %}The Roches Gravées{% endif %}</h3>
           <p>{% if is_fr %}14 visages amérindiens sculptés dans l'andésite, à quelques pas du domaine.{% else %}14 Amerindian faces carved into andesite, a few steps from the place.{% endif %}</p>
-          <span class="nearby-link">{% if is_fr %}Lire →{% else %}Read →{% endif %}</span>
+          <span class="nearby-link">{% if is_fr %}Voir →{% else %}See →{% endif %}</span>
         </div>
       </a>
       <a class="nearby-card" href="{% if is_fr %}{{ '/fr/foret-montravail/' | relative_url }}{% else %}{{ '/montravail-forest/' | relative_url }}{% endif %}">
@@ -22,7 +21,7 @@
           <span class="nearby-num">II</span>
           <h3>{% if is_fr %}La forêt de Montravail{% else %}Montravail forest{% endif %}</h3>
           <p>{% if is_fr %}Forêt sèche du sud, sentiers ombragés, palmiers et silence — le grand voisin du lieu.{% else %}The dry forest of the south, shaded trails, palms and silence — the place's great neighbour.{% endif %}</p>
-          <span class="nearby-link">{% if is_fr %}Lire →{% else %}Read →{% endif %}</span>
+          <span class="nearby-link">{% if is_fr %}Voir →{% else %}See →{% endif %}</span>
         </div>
       </a>
       <a class="nearby-card" href="{% if is_fr %}{{ '/fr/trails-sainte-luce/' | relative_url }}{% else %}{{ '/trails-sainte-luce/' | relative_url }}{% endif %}">
@@ -31,7 +30,7 @@
           <span class="nearby-num">III</span>
           <h3>{% if is_fr %}Sentiers & trails{% else %}Trails &amp; hiking{% endif %}</h3>
           <p>{% if is_fr %}Itinéraires courts et plus longs autour de Sainte-Luce, de la côte aux hauteurs.{% else %}Short and longer routes around Sainte-Luce, from the coast up into the hills.{% endif %}</p>
-          <span class="nearby-link">{% if is_fr %}Lire →{% else %}Read →{% endif %}</span>
+          <span class="nearby-link">{% if is_fr %}Voir →{% else %}See →{% endif %}</span>
         </div>
       </a>
       <a class="nearby-card" href="{% if is_fr %}{{ '/fr/hebergement-atypique-martinique/' | relative_url }}{% else %}{{ '/unique-stay-martinique/' | relative_url }}{% endif %}">
@@ -40,7 +39,7 @@
           <span class="nearby-num">IV</span>
           <h3>{% if is_fr %}L'A-frame{% else %}The A-frame{% endif %}</h3>
           <p>{% if is_fr %}Le détail de l'A-frame : construction, dimensions, esprit, ce qu'on y trouve.{% else %}The A-frame in detail: build, dimensions, feel, and what you'll find inside.{% endif %}</p>
-          <span class="nearby-link">{% if is_fr %}Lire →{% else %}Read →{% endif %}</span>
+          <span class="nearby-link">{% if is_fr %}Voir →{% else %}See →{% endif %}</span>
         </div>
       </a>
     </div>
