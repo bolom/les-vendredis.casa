@@ -3,8 +3,8 @@
 <div class="wrap">
   <section class="nearby-section" aria-labelledby="nearby-title">
     <div class="section-head">
-      <h2 id="nearby-title">{% if is_fr %}Autour des <em>Vendredis.</em>{% else %}Around <em>Les Vendredis.</em>{% endif %}</h2>
-      <p class="sub">{% if is_fr %}Les lieux, les sentiers et les pages qui complètent le séjour — à lire avant de venir, ou à garder pour sur place.{% else %}The places, trails, and pages that complete a stay — to read before coming, or to keep for once you're here.{% endif %}</p>
+      <h2 id="nearby-title">{% if is_fr %}Autour <em>des Vendredis.</em>{% else %}Around <em>Les Vendredis.</em>{% endif %}</h2>
+      <p class="sub">{% if is_fr %}Les lieux, les sentiers et les pages qui prolongent le séjour.{% else %}Places, trails, and pages that extend the stay.{% endif %}</p>
     </div>
     <div class="nearby-grid">
       <a class="nearby-card" href="{% if is_fr %}{{ '/fr/roches-gravees-sainte-luce/' | relative_url }}{% else %}{{ '/roches-gravees-sainte-luce/' | relative_url }}{% endif %}">

@@ -1,0 +1,33 @@
+{% assign is_fr = false %}
+{% if page.lang == 'fr' %}{% assign is_fr = true %}{% endif %}
+<div class="wrap">
+  <section class="before-come" aria-labelledby="before-come-label">
+    <p class="before-come-kicker" id="before-come-label">{% if is_fr %}Avant de venir{% else %}Before you come{% endif %}</p>
+    <div class="before-come-grid">
+      <div class="before-come-item">
+        <span class="before-come-key">{% if is_fr %}Dort{% else %}Sleeps{% endif %}</span>
+        <span class="before-come-value">{% if is_fr %}2 adultes et 1 enfant{% else %}2 adults and 1 child{% endif %}</span>
+      </div>
+      <div class="before-come-item">
+        <span class="before-come-key">{% if is_fr %}Lieu{% else %}Where{% endif %}</span>
+        <span class="before-come-value">{% if is_fr %}Hauteurs de Sainte-Luce, route de Zaire{% else %}Sainte-Luce hills, Route de Zaire{% endif %}</span>
+      </div>
+      <div class="before-come-item">
+        <span class="before-come-key">{% if is_fr %}Voiture{% else %}Car{% endif %}</span>
+        <span class="before-come-value">{% if is_fr %}Oui, elle est nécessaire{% else %}Yes, you will need one{% endif %}</span>
+      </div>
+      <div class="before-come-item">
+        <span class="before-come-key">{% if is_fr %}Air{% else %}Air{% endif %}</span>
+        <span class="before-come-value">{% if is_fr %}Pas de climatisation, seulement les alizés et le jardin ouvert{% else %}No AC, just trade winds and an open garden{% endif %}</span>
+      </div>
+      <div class="before-come-item">
+        <span class="before-come-key">{% if is_fr %}Animaux{% else %}Pets{% endif %}</span>
+        <span class="before-come-value">{% if is_fr %}Bienvenus{% else %}Welcome{% endif %}</span>
+      </div>
+      <div class="before-come-item">
+        <span class="before-come-key">{% if is_fr %}Réservation{% else %}Booking{% endif %}</span>
+        <span class="before-come-value">{% if is_fr %}Airbnb d'abord, WhatsApp pour poser une question{% else %}Airbnb first, WhatsApp for questions{% endif %}</span>
+      </div>
+    </div>
+  </section>
+</div>

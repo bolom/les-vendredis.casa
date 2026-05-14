@@ -206,37 +206,6 @@ h1 em { font-style: italic; font-weight: 400; color: var(--accent); }
 .btn.primary { background: var(--ink); color: var(--cream); }
 .btn.primary:hover { background: var(--accent); border-color: var(--accent); }
 
-/* ── credentials strip ── */
-.creds {
-  padding: 32px 0;
-  border-top: 1px solid var(--rule);
-  border-bottom: 1px solid var(--rule);
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 32px;
-}
-.cred { display: flex; flex-direction: column; gap: 6px; }
-.cred .k {
-  font-size: 9.5px;
-  letter-spacing: .32em;
-  text-transform: uppercase;
-  color: var(--muted);
-  font-weight: 500;
-}
-.cred .v {
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: 18px;
-  color: var(--ink);
-  font-weight: 400;
-}
-.cred-pet-logo {
-  display: block;
-  height: 28px;
-  width: auto;
-  margin-top: 2px;
-}
-
 /* ── section heads ── */
 .section-head {
   display: grid;
@@ -1152,21 +1121,6 @@ h1 em { font-style: italic; font-weight: 400; color: var(--accent); }
   font-weight: 500;
 }
 
-.hero-sensory {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin: 30px 0 24px;
-}
-.hero-sensory span {
-  border: 1px solid var(--rule);
-  padding: 10px 12px;
-  font-size: 10px;
-  letter-spacing: .18em;
-  text-transform: uppercase;
-  color: var(--ink-soft);
-  background: rgba(248,241,228,.48);
-}
 .btn.subtle {
   border-color: var(--rule);
   color: var(--ink-soft);
@@ -1176,6 +1130,42 @@ h1 em { font-style: italic; font-weight: 400; color: var(--accent); }
 .b-btn-secondary .b-note,
 .b-btn-secondary .b-meta { color: rgba(248,241,228,.45); }
 .sticky-booking { display: none; }
+
+.before-come {
+  padding: 72px 0 56px;
+  border-top: 1px solid var(--rule);
+}
+.before-come-kicker {
+  font-size: 10px;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 18px;
+}
+.before-come-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0 32px;
+}
+.before-come-item {
+  padding: 18px 0;
+  border-top: 1px solid var(--rule);
+}
+.before-come-key {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 10px;
+  letter-spacing: .26em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 500;
+}
+.before-come-value {
+  font-family: var(--serif);
+  font-size: 17px;
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
 
 /* ── responsive ── */
 @media (max-width: 900px) {
@@ -1211,8 +1201,8 @@ h1 em { font-style: italic; font-weight: 400; color: var(--accent); }
   .top-bar-wrap.scrolled .mark { font-size: 16px; }
   .hero {
     grid-template-columns: 1fr;
-    gap: 36px;
-    padding: 24px 0 40px;
+    gap: 28px;
+    padding: 24px 0 44px;
     align-items: start;
   }
   .hero > .image-frame {
@@ -1228,24 +1218,13 @@ h1 em { font-style: italic; font-weight: 400; color: var(--accent); }
   .eyebrow { font-size: 10px; gap: 10px; margin-bottom: 26px; flex-wrap: wrap; }
   .eyebrow::before { width: 24px; }
   .lead { font-size: 18px; line-height: 1.55; margin-bottom: 16px; }
-  .hero-primary-lead { font-size: 20px; max-width: 29ch; }
+  .hero-primary-lead { font-size: 20px; max-width: 30ch; }
   .hero-family-note {
-    padding-top: 24px;
+    padding-top: 18px;
     border-top: 1px solid var(--rule);
-    max-width: 31ch;
+    max-width: 32ch;
   }
-  .hero-sensory {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    margin: 28px 0;
-  }
-  .hero-sensory span {
-    min-height: 40px;
-    display: flex;
-    align-items: center;
-  }
-  .ctas { display: grid; grid-template-columns: 1fr; margin-top: 34px; gap: 12px; }
+  .ctas { display: grid; grid-template-columns: 1fr; margin-top: 28px; gap: 12px; }
   .hero-ctas .btn.subtle { order: -1; }
   .btn {
     width: 100%;
@@ -1274,6 +1253,16 @@ h1 em { font-style: italic; font-weight: 400; color: var(--accent); }
     padding-top: 22px;
     padding-bottom: 22px;
   }
+  .before-come {
+    padding: 56px 0 40px;
+  }
+  .before-come-grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .before-come-item {
+    padding: 16px 0;
+  }
   .b-meta { margin-left: 0; letter-spacing: .18em; }
   .availability-head { padding-top: 42px; }
   .faq-section { padding: 72px 0; }
@@ -1290,10 +1279,6 @@ h1 em { font-style: italic; font-weight: 400; color: var(--accent); }
   .hosts-section { padding: 72px 0; }
   .hosts-grid { grid-template-columns: 1fr; gap: 36px; }
   .hosts-img { aspect-ratio: 4/5; max-height: 60vh; }
-  .stay-details { padding: 72px 0; }
-  .stay-cols { grid-template-columns: 1fr; gap: 48px; }
-  .stay-list { grid-template-columns: 1fr; gap: 12px; }
-  .creds { display: none; }
   .sticky-booking {
     position: fixed;
     left: 12px;
@@ -1341,6 +1326,9 @@ h1 em { font-style: italic; font-weight: 400; color: var(--accent); }
   .gallery-item.feature { grid-column: auto; grid-row: auto; }
   .gallery-item.panorama { aspect-ratio: 16 / 9; }
   .nearby-grid { grid-template-columns: 1fr; }
+  .before-come {
+    padding-top: 48px;
+  }
   .sticky-booking {
     left: 10px;
     right: 10px;
