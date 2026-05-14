@@ -416,6 +416,10 @@ h1 em { font-style: italic; font-weight: 400; color: var(--accent); }
   grid-row: auto;
   aspect-ratio: 3.16 / 1;
 }
+.gallery-item.wide {
+  grid-column: 1 / -1;
+  aspect-ratio: 16 / 9;
+}
 .gallery-item img {
   width: 100%; height: 100%;
   object-fit: cover;
@@ -1279,7 +1283,8 @@ h1 em { font-style: italic; font-weight: 400; color: var(--accent); }
   .domain-area:nth-of-type(2) .domain-area-gallery > :nth-child(n+4) { display: none; }
   .domain-area:nth-of-type(3) .domain-area-gallery > :nth-child(n+3) { display: none; }
   .domain-area:nth-of-type(4) .domain-area-gallery > :nth-child(n+2) { display: none; }
-  .domain-area:nth-of-type(5) .domain-area-gallery > :nth-child(n+4) { display: none; }
+  .domain-area:nth-of-type(5) .domain-area-gallery > :nth-child(n+3) { display: none; }
+  .domain-area:nth-of-type(6) .domain-area-gallery > :nth-child(n+4) { display: none; }
   .booking { padding: 60px 0; }
   .booking-sub {
     font-size: 16px;
