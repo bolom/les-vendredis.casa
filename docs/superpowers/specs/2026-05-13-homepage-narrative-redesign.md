@@ -44,9 +44,9 @@ It should feel more like a sequence of images, observations, and fragments that 
 
 The build logs and journal entries are the proof of authorship. They are the strongest signal on the site and should remain central. The homepage should support that authority, not compete with it.
 
-### 3. Practical facts only once
+### 3. Practical facts introduced once, then echoed only through context
 
-Facts are not the problem. Repetition is. The homepage still needs grounding, but details like capacity, pets, and location should be stated once, in the most useful place, then left alone.
+Facts are not the problem. Repetition is. The homepage still needs grounding, but details like capacity, pets, and location should be introduced once, in the most useful place, then echoed only through context rather than restated.
 
 ### 4. Quiet reassurance near the end
 
@@ -81,7 +81,7 @@ They should not feel like a formal gallery with a sales objective.
 
 ### Late grounding
 
-Add a small `Good to know` block near the end of the homepage. It should contain 4 to 6 short factual anchors, each one or two lines at most. No accordion. No FAQ title. No support tone.
+Add a small, quiet `Before you come` block near the end of the homepage. It should contain 4 to 6 short factual anchors, each one or two lines at most. No accordion. No FAQ title. No support tone.
 
 Suggested anchors:
 
@@ -106,6 +106,7 @@ Close with a quiet invitation to stay. Booking should be visible, but secondary 
 - Reduce repeated explanatory text between sections.
 - Keep booking present, but make it quieter than the narrative.
 - Keep layout roughness and asymmetry where it supports the lived-in feeling.
+- Do not add new poetic copy to compensate for removed modules. Remove first, then only write where the sequence needs orientation.
 
 ---
 
