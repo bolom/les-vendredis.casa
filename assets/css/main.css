@@ -1151,16 +1151,8 @@ h1 em { font-style: italic; font-weight: 400; color: var(--accent); }
   padding: 12px 0;
   border-bottom: 1px solid rgba(31,22,17,.08);
 }
-.before-come-key {
-  display: block;
-  margin-bottom: 4px;
-  font-size: 8.5px;
-  letter-spacing: .34em;
-  text-transform: uppercase;
-  color: var(--gold);
-  font-weight: 500;
-}
-.before-come-value {
+.before-come-note {
+  margin: 0;
   font-family: var(--serif);
   font-size: 15px;
   line-height: 1.4;
