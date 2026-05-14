@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
 
+Sitemap: https://lesvendredis.casa/sitemap_index.xml
 Sitemap: https://lesvendredis.casa/sitemap.xml
 Sitemap: https://lesvendredis.casa/fr/sitemap.xml
