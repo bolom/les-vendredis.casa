@@ -2,8 +2,8 @@
 {% if page.lang == 'fr' %}{% assign is_fr = true %}{% endif %}
 <div class="wrap">
   <section class="nearby-section" aria-labelledby="nearby-title">
-    <div class="section-head section-head-min">
-      <h2 id="nearby-title">{% if is_fr %}Tout près <em>des Vendredis.</em>{% else %}Nearby <em>Les Vendredis.</em>{% endif %}</h2>
+    <div class="section-head section-head-min section-head-note" id="nearby-title">
+      <p class="nearby-kicker">{% if is_fr %}Tout près{% else %}Close by{% endif %}</p>
     </div>
     <div class="nearby-grid">
       <a class="nearby-card" href="{% if is_fr %}{{ '/fr/roches-gravees-sainte-luce/' | relative_url }}{% else %}{{ '/roches-gravees-sainte-luce/' | relative_url }}{% endif %}">

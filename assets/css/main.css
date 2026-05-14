@@ -236,6 +236,16 @@ h1 em { font-style: italic; font-weight: 400; color: var(--accent); }
   margin-bottom: 40px;
 }
 .section-head-min .sub { display: none; }
+.section-head-note {
+  margin-bottom: 26px;
+}
+.nearby-kicker {
+  font-size: 9.5px;
+  letter-spacing: .34em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 500;
+}
 
 /* ── journal ── */
 .journal { padding: 120px 0 60px; }
