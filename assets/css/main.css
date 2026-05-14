@@ -1132,38 +1132,38 @@ h1 em { font-style: italic; font-weight: 400; color: var(--accent); }
 .sticky-booking { display: none; }
 
 .before-come {
-  padding: 72px 0 56px;
+  padding: 60px 0 40px;
   border-top: 1px solid var(--rule);
 }
 .before-come-kicker {
-  font-size: 10px;
-  letter-spacing: .28em;
+  font-size: 9.5px;
+  letter-spacing: .32em;
   text-transform: uppercase;
   color: var(--muted);
-  margin-bottom: 18px;
+  margin-bottom: 14px;
 }
 .before-come-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0 32px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 48px;
 }
 .before-come-item {
-  padding: 18px 0;
-  border-top: 1px solid var(--rule);
+  padding: 16px 0;
+  border-bottom: 1px solid var(--rule);
 }
 .before-come-key {
   display: block;
-  margin-bottom: 8px;
-  font-size: 10px;
-  letter-spacing: .26em;
+  margin-bottom: 6px;
+  font-size: 9px;
+  letter-spacing: .3em;
   text-transform: uppercase;
   color: var(--gold);
   font-weight: 500;
 }
 .before-come-value {
   font-family: var(--serif);
-  font-size: 17px;
-  line-height: 1.5;
+  font-size: 16px;
+  line-height: 1.45;
   color: var(--ink-soft);
 }
 
@@ -1201,8 +1201,8 @@ h1 em { font-style: italic; font-weight: 400; color: var(--accent); }
   .top-bar-wrap.scrolled .mark { font-size: 16px; }
   .hero {
     grid-template-columns: 1fr;
-    gap: 28px;
-    padding: 24px 0 44px;
+    gap: 22px;
+    padding: 24px 0 34px;
     align-items: start;
   }
   .hero > .image-frame {
@@ -1220,11 +1220,11 @@ h1 em { font-style: italic; font-weight: 400; color: var(--accent); }
   .lead { font-size: 18px; line-height: 1.55; margin-bottom: 16px; }
   .hero-primary-lead { font-size: 20px; max-width: 30ch; }
   .hero-family-note {
-    padding-top: 18px;
+    padding-top: 16px;
     border-top: 1px solid var(--rule);
     max-width: 32ch;
   }
-  .ctas { display: grid; grid-template-columns: 1fr; margin-top: 28px; gap: 12px; }
+  .ctas { display: grid; grid-template-columns: 1fr; margin-top: 24px; gap: 12px; }
   .hero-ctas .btn.subtle { order: -1; }
   .btn {
     width: 100%;
@@ -1235,18 +1235,18 @@ h1 em { font-style: italic; font-weight: 400; color: var(--accent); }
     letter-spacing: .2em;
   }
   .journal { padding: 56px 0 44px; }
-  .section-head { grid-template-columns: 1fr; gap: 18px; margin-bottom: 32px; }
+  .section-head { grid-template-columns: 1fr; gap: 18px; margin-bottom: 28px; }
   .section-head h2 { font-size: clamp(38px, 11vw, 56px); }
   .entry { grid-template-columns: 1fr; gap: 18px; padding: 28px 0; }
   .entry-meta { flex-direction: row; gap: 14px; align-items: baseline; flex-wrap: wrap; }
   .entry-num { font-size: 24px; }
-  .domain-area { grid-template-columns: 1fr; gap: 30px; padding: 48px 0; }
+  .domain-area { grid-template-columns: 1fr; gap: 28px; padding: 42px 0; }
   .domain-area:first-child .domain-area-copy { grid-template-columns: 1fr; gap: 16px; }
   .domain-area:first-child .domain-area-num { grid-row: auto; }
   .domain-area-copy { position: static; }
   .domain-area-copy p { max-width: 56ch; }
   .domain-area-gallery { grid-template-columns: repeat(2, 1fr); }
-  .booking { padding: 80px 0; }
+  .booking { padding: 72px 0; }
   .booking-inner { grid-template-columns: 1fr; gap: 36px; }
   .b-btn { align-items: flex-start; gap: 16px; }
   .b-btn-secondary {
@@ -1254,14 +1254,14 @@ h1 em { font-style: italic; font-weight: 400; color: var(--accent); }
     padding-bottom: 22px;
   }
   .before-come {
-    padding: 56px 0 40px;
+    padding: 48px 0 36px;
   }
   .before-come-grid {
     grid-template-columns: 1fr;
     gap: 0;
   }
   .before-come-item {
-    padding: 16px 0;
+    padding: 14px 0;
   }
   .b-meta { margin-left: 0; letter-spacing: .18em; }
   .availability-head { padding-top: 42px; }
@@ -1276,7 +1276,7 @@ h1 em { font-style: italic; font-weight: 400; color: var(--accent); }
   .foot-nav { justify-content: center; gap: 16px 20px; }
   .nearby-section { padding: 72px 0 24px; }
   .nearby-grid { grid-template-columns: repeat(2, 1fr); gap: 18px; }
-  .hosts-section { padding: 72px 0; }
+  .hosts-section { padding: 64px 0; }
   .hosts-grid { grid-template-columns: 1fr; gap: 36px; }
   .hosts-img { aspect-ratio: 4/5; max-height: 60vh; }
   .sticky-booking {
@@ -1327,7 +1327,7 @@ h1 em { font-style: italic; font-weight: 400; color: var(--accent); }
   .gallery-item.panorama { aspect-ratio: 16 / 9; }
   .nearby-grid { grid-template-columns: 1fr; }
   .before-come {
-    padding-top: 48px;
+    padding-top: 40px;
   }
   .sticky-booking {
     left: 10px;
