@@ -14,8 +14,8 @@
 <div class="wrap">
   <section class="nearby-section" aria-labelledby="around-sisters-title">
     <div class="section-head">
-      <h2 id="around-sisters-title">{% if is_fr %}Tout <em>autour.</em>{% else %}All <em>around.</em>{% endif %}</h2>
-      <p class="sub">{% if is_fr %}Les autres pages utiles pour préparer le séjour.{% else %}The other pages worth reading before a stay.{% endif %}</p>
+      <h2 id="around-sisters-title">{% if is_fr %}Près d'ici.{% else %}Nearby.{% endif %}</h2>
+      <p class="sub">{% if is_fr %}Trois pages utiles avant de venir.{% else %}A few useful pages before you come.{% endif %}</p>
     </div>
     <div class="nearby-grid">
       {% unless current == 'roches-gravees-sainte-luce' %}
@@ -25,7 +25,6 @@
           <span class="nearby-num">I</span>
           <h3>{% if is_fr %}Les Roches Gravées{% else %}The Roches Gravées{% endif %}</h3>
           <p>{% if is_fr %}14 visages amérindiens sculptés dans l'andésite.{% else %}14 Amerindian faces carved into andesite.{% endif %}</p>
-          <span class="nearby-link">{% if is_fr %}Lire →{% else %}Read →{% endif %}</span>
         </div>
       </a>
       {% endunless %}
@@ -36,7 +35,6 @@
           <span class="nearby-num">II</span>
           <h3>{% if is_fr %}La forêt de Montravail{% else %}Montravail forest{% endif %}</h3>
           <p>{% if is_fr %}Le grand voisin du lieu — 75 hectares à pied.{% else %}The place's great neighbour — 75 hectares on foot.{% endif %}</p>
-          <span class="nearby-link">{% if is_fr %}Lire →{% else %}Read →{% endif %}</span>
         </div>
       </a>
       {% endunless %}
@@ -47,7 +45,6 @@
           <span class="nearby-num">III</span>
           <h3>{% if is_fr %}Sentiers & trails{% else %}Trails &amp; hiking{% endif %}</h3>
           <p>{% if is_fr %}Itinéraires depuis le pas de la porte.{% else %}Routes that start at the doorstep.{% endif %}</p>
-          <span class="nearby-link">{% if is_fr %}Lire →{% else %}Read →{% endif %}</span>
         </div>
       </a>
       {% endunless %}
@@ -58,7 +55,6 @@
           <span class="nearby-num">IV</span>
           <h3>{% if is_fr %}L'A-frame{% else %}The A-frame{% endif %}</h3>
           <p>{% if is_fr %}Le détail de l'A-frame et de ce qu'on y trouve.{% else %}The A-frame in detail, and what you'll find.{% endif %}</p>
-          <span class="nearby-link">{% if is_fr %}Lire →{% else %}Read →{% endif %}</span>
         </div>
       </a>
       {% endunless %}
