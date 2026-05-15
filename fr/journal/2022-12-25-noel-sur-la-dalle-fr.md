@@ -1,6 +1,6 @@
 ---
 layout: article
-title: "Construire une A-frame en Martinique — Les Vendredis"
+title: "Construire une A-frame en Martinique"
 summary: "Tout a commencé par un déjeuner de Noël sur une dalle de béton vide. À la fin de la journée, on savait qu'on allait la couvrir."
 description: "Comment Les Vendredis a commencé — un déjeuner de Noël sur une dalle nue à Sainte-Luce, Martinique, et la décision de construire une A-frame."
 tag: "Build log"

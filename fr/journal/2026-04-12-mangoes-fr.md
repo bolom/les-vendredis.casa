@@ -1,6 +1,6 @@
 ---
 layout: article
-title: "Saison des mangues à Sainte-Luce — Les Vendredis"
+title: "Saison des mangues à Sainte-Luce"
 summary: "Les premières mangues de la saison sont tombées cette semaine. On a laissé une caisse au portail."
 description: "La saison des mangues est revenue aux Vendredis à Sainte-Luce. Les arbres sont chargés, les premières sont tombées. Une caisse au portail pour qui passe."
 tag: "Le jardin"

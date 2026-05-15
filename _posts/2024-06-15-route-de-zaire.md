@@ -1,6 +1,6 @@
 ---
 layout: article
-title: "Route de Zaïre, Sainte-Luce — Les Vendredis"
+title: "Route de Zaïre, Sainte-Luce"
 summary: "Route de Zaïre is the kind of place where everyone knows everyone, dogs sleep in the road, and nobody locks their gate. That's the neighbourhood. We love it."
 description: "Route de Zaïre in Sainte-Luce — the neighbourhood around Les Vendredis. Everyone knows everyone, nobody locks their gate, dogs sleep in the road."
 tag: "The place"

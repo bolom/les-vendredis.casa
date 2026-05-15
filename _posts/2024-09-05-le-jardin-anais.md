@@ -1,6 +1,6 @@
 ---
 layout: article
-title: "Tropical Garden in Sainte-Luce, Martinique — Les Vendredis"
+title: "Tropical Garden in Sainte-Luce, Martinique"
 summary: "Anaïs is a landscape architect. The garden at Les Vendredis is her project — planted from scratch, designed to produce all year and look like it was always there."
 description: "The 600m² garden at Les Vendredis — designed by Anaïs, a landscape architect, planted from scratch to produce year-round in Sainte-Luce, Martinique."
 tag: "The garden"

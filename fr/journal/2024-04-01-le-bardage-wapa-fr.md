@@ -1,6 +1,6 @@
 ---
 layout: article
-title: "Bardage Wapa pour une A-frame — Les Vendredis"
+title: "Bardage Wapa pour une A-frame"
 summary: "Tout le monde s'attendait à ce qu'on utilise du cèdre. On a choisi le Wapa — un bois dur de Guyane qui grise naturellement sous les tropiques et dure des décennies sans traitement."
 description: "Pourquoi on a bardé l'A-frame des Vendredis en Wapa — un bois dur de Guyane qui grise naturellement sous les tropiques, sans traitement."
 tag: "Build log"
