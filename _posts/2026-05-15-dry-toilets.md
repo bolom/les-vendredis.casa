@@ -54,7 +54,9 @@ Now the dry toilet is part of the place.
 
 We get the sawdust for free from a furniture maker in Schoelcher. In March, we brought back the equivalent of two big bags. Two months later, we still have plenty. Local, simple, free, and useful.
 
-The toilet compost is kept separate from the kitchen compost. It stays far from the house and is used only for ornamental plants and flowers, never for anything we eat. The kitchen compost has its own cycle for the garden.
+The toilet compost is kept separate from the kitchen compost. When the bucket is full, its contents go into a dedicated compost pit. We cover it again with dry matter, compact it, and let time do the rest. It stays far from the house and is used only for ornamental plants and flowers, never for anything we eat. The kitchen compost has its own cycle for the garden.
+
+![Dedicated compost pit for dry toilet waste at Les Vendredis]({{ '/public/images/toilettes-seches-trou-dejections-compost-les-vendredis.webp' | relative_url }})
 
 That rule is not negotiable.
 

@@ -56,7 +56,9 @@ Aujourd'hui, les toilettes sèches font partie du lieu.
 
 La sciure, on la récupère gratuitement chez un fabricant de meubles à Schœlcher. En mars, on a rapporté l'équivalent de deux big bags. Deux mois plus tard, il nous en reste encore beaucoup. Local, simple, gratuit, utile.
 
-Le compost des toilettes reste séparé du compost de cuisine. Il est placé loin de la maison et sert uniquement aux plantes ornementales et aux fleurs, jamais à ce qu'on mange. Le compost de cuisine suit son propre circuit pour le jardin.
+Le compost des toilettes reste séparé du compost de cuisine. Quand le seau est plein, on met son contenu dans un trou de compost dédié. On recouvre encore avec de la matière sèche, on tasse, et on laisse le temps faire le reste. Il est placé loin de la maison et sert uniquement aux plantes ornementales et aux fleurs, jamais à ce qu'on mange. Le compost de cuisine suit son propre circuit pour le jardin.
+
+![Trou de compost dédié aux déjections des toilettes sèches aux Vendredis]({{ '/public/images/toilettes-seches-trou-dejections-compost-les-vendredis.webp' | relative_url }})
 
 Cette règle n'est pas négociable.
 
