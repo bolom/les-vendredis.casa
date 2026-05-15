@@ -1,7 +1,6 @@
 ---
 layout: article
-title: "Christmas on the slab."
-seo_title: "Building an A-Frame in Martinique — Les Vendredis"
+title: "Building an A-Frame in Martinique — Les Vendredis"
 summary: "It started with a Christmas lunch on an empty concrete slab. By the end of the day, we knew we were going to cover it."
 description: "How building Les Vendredis started — a Christmas lunch on a bare concrete slab in Sainte-Luce, Martinique, and the decision to build an A-frame."
 tag: "Build log"

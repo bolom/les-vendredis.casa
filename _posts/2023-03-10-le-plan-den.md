@@ -1,7 +1,6 @@
 ---
 layout: article
-title: "We bought a plan from a company called Den."
-seo_title: "Den A-Frame A-frame Plan — Building in Martinique"
+title: "Den A-Frame A-frame Plan — Building in Martinique"
 summary: "Anaïs is a landscape architect. Bolo builds software. Between us, we had no business building an A-frame. We bought a plan anyway."
 description: "We had no business building an A-frame. We bought an A-frame plan from Den anyway, and started figuring out how to build it in Martinique."
 tag: "Build log"

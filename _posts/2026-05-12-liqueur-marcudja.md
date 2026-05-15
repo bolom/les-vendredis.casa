@@ -1,7 +1,6 @@
 ---
 layout: article
-title: "May is generous."
-seo_title: "May at Les Vendredis — Liqueur, Breadfruit, and Catherine's BBQ"
+title: "May at Les Vendredis — Liqueur, Breadfruit, and Catherine's BBQ"
 summary: "Anaïs picked three breadfruits, started two liqueurs, and restored the old BBQ Catherine gave us. May gives things. You take care of what you receive."
 description: "May at Les Vendredis: breadfruit from the garden, marcudja and pomme liane liqueurs in infusion, and Catherine's gifted BBQ restored to use."
 tag: "The garden"

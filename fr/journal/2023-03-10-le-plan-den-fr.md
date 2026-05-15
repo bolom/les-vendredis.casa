@@ -1,7 +1,6 @@
 ---
 layout: article
-title: "On a acheté un plan chez Den."
-seo_title: "Plan A-frame Den — Construction en Martinique"
+title: "Plan A-frame Den — Construction en Martinique"
 summary: "Anaïs est ingénieure paysagiste. Bolo est informaticien. Entre nous deux, on n'avait aucune raison de construire une A-frame. On a quand même acheté un plan."
 description: "On n'avait aucune raison de construire une A-frame. On a quand même acheté un plan A-frame chez Den, et on a commencé à comprendre comment faire ça en Martinique."
 tag: "Build log"

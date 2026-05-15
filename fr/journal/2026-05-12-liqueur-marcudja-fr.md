@@ -1,7 +1,6 @@
 ---
 layout: article
-title: "Mai est généreux."
-seo_title: "Mai aux Vendredis — Liqueur, Fruit à pain, le BBQ de Catherine"
+title: "Mai aux Vendredis — Liqueur, Fruit à pain, le BBQ de Catherine"
 summary: "Anaïs a cueilli trois fruits à pain, mis deux liqueurs à infuser et remis en état le vieux BBQ donné par Catherine. Mai donne. On prend soin de ce qu'on reçoit."
 description: "Mai aux Vendredis : fruits à pain cueillis au jardin, liqueurs de marcudja et de pomme liane en infusion, et BBQ offert par Catherine remis en service."
 tag: "Le jardin"

@@ -1,7 +1,6 @@
 ---
 layout: article
-title: "C'est Anaïs qui a dessiné le jardin."
-seo_title: "Jardin tropical à Sainte-Luce, Martinique — Les Vendredis"
+title: "Jardin tropical à Sainte-Luce, Martinique — Les Vendredis"
 summary: "Anaïs est ingénieure paysagiste. Le jardin des Vendredis est son projet — planté de zéro, conçu pour produire toute l'année et avoir l'air d'avoir toujours été là."
 description: "Le jardin de 600m² des Vendredis — conçu par Anaïs, ingénieure paysagiste, planté de zéro pour produire toute l'année à Sainte-Luce, Martinique."
 tag: "Le jardin"

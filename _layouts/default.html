@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  {% assign seo_title = page.seo_title | default: page.title | default: site.title %}
   {% assign seo_description = page.description | default: page.summary | default: page.excerpt | default: site.description %}
   {% assign canonical_url = page.canonical_url | default: page.url | absolute_url %}
   {% assign alternate_en_url = '' %}
@@ -24,7 +23,6 @@
       {% endif %}
     {% endfor %}
   {% endif %}
-  <title>{% if seo_title contains site.title %}{{ seo_title }}{% else %}{{ seo_title }} — {{ site.title }}{% endif %}</title>
   <meta name="description" content="{{ seo_description | strip_html | strip_newlines | escape }}">
   <link rel="canonical" href="{{ canonical_url }}">
   {% if page.noindex %}
@@ -50,6 +48,7 @@
   <link rel="icon" type="image/svg+xml" href="{{ '/public/favicon.svg' | relative_url }}">
   <link rel="apple-touch-icon" href="{{ '/public/favicon.svg' | relative_url }}">
   <meta name="theme-color" content="#F8F1E4">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
   <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
   {% if page.image %}
     {% assign hero_webp = page.image | replace: '.jpg', '.webp' | replace: '.jpeg', '.webp' %}

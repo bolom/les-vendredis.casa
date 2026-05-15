@@ -1,7 +1,6 @@
 ---
 layout: article
-title: "Les Roches Gravées."
-seo_title: "Roches Gravées Sainte-Luce — Pétroglyphes près des Vendredis"
+title: "Roches Gravées Sainte-Luce — Pétroglyphes près des Vendredis"
 summary: "À vingt minutes à pied de l'A-frame, 14 visages amérindiens sont gravés dans la roche volcanique depuis plus de mille ans. Ça vaut le déplacement."
 description: "Les Roches Gravées de Montravail — 14 pétroglyphes amérindiens dans la roche volcanique, à vingt minutes à pied de l'A-frame à Sainte-Luce, Martinique."
 tag: "Le lieu"
