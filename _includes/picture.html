@@ -1,10 +1,10 @@
 {%- comment -%}
 Usage:
-  {% include picture.html src="/public/images/foo.jpg" alt="..." class="..." loading="lazy" fetchpriority="high" %}
+  {% include picture.html src="/public/images/foo.webp" alt="..." class="..." loading="lazy" fetchpriority="high" %}
 Renders a <picture> with WebP source + JPG fallback. Assumes a sibling .webp file exists.
 {%- endcomment -%}
 {%- assign jpg = include.src -%}
-{%- assign webp = jpg | replace: '.jpg', '.webp' | replace: '.jpeg', '.webp' -%}
+{%- assign webp = jpg | replace: '.webp', '.webp' | replace: '.jpeg', '.webp' -%}
 <picture>
   <source srcset="{{ webp | relative_url }}" type="image/webp">
   <img src="{{ jpg | relative_url }}" alt="{{ include.alt }}"{% if include.class %} class="{{ include.class }}"{% endif %}{% if include.loading %} loading="{{ include.loading }}"{% endif %}{% if include.fetchpriority %} fetchpriority="{{ include.fetchpriority }}"{% endif %}{% if include.width %} width="{{ include.width }}"{% endif %}{% if include.height %} height="{{ include.height }}"{% endif %}>
