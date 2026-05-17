@@ -35,6 +35,36 @@
   {% assign is_journal = true %}
 {% endif %}
 
+{% if current_lang == 'fr' %}
+  {% assign menu_label_journal = 'Journal' %}
+  {% assign menu_label_stay = 'Séjour' %}
+  {% assign menu_label_around = 'Autour' %}
+  {% assign menu_label_roches = 'Roches Gravées' %}
+  {% assign menu_label_montravail = 'Forêt Montravail' %}
+  {% assign menu_label_trails = 'Randonnées' %}
+  {% assign menu_label_book = 'Réserver' %}
+  {% assign menu_label_contact = 'WhatsApp' %}
+  {% assign menu_around_url = '/fr/roches-gravees-sainte-luce/' %}
+  {% assign menu_stay_url = '/fr/hebergement-atypique-martinique/' %}
+  {% assign menu_roches_url = '/fr/roches-gravees-sainte-luce/' %}
+  {% assign menu_montravail_url = '/fr/foret-montravail/' %}
+  {% assign menu_trails_url = '/fr/trails-sainte-luce/' %}
+{% else %}
+  {% assign menu_label_journal = 'Journal' %}
+  {% assign menu_label_stay = 'The A-frame' %}
+  {% assign menu_label_around = 'Around' %}
+  {% assign menu_label_roches = 'Roches Gravées' %}
+  {% assign menu_label_montravail = 'Montravail Forest' %}
+  {% assign menu_label_trails = 'Trails' %}
+  {% assign menu_label_book = 'Book' %}
+  {% assign menu_label_contact = 'WhatsApp' %}
+  {% assign menu_around_url = '/roches-gravees-sainte-luce/' %}
+  {% assign menu_stay_url = '/unique-stay-martinique/' %}
+  {% assign menu_roches_url = '/roches-gravees-sainte-luce/' %}
+  {% assign menu_montravail_url = '/montravail-forest/' %}
+  {% assign menu_trails_url = '/trails-sainte-luce/' %}
+{% endif %}
+
 <header class="top-bar-wrap" id="top-bar">
   <div class="wrap">
     <div class="top-bar">
@@ -44,19 +74,57 @@
       </a>
       <nav class="top-right">
         <a href="{{ journal_url }}"{% if is_journal %} class="active"{% endif %}>Journal</a>
+        <a href="{{ menu_stay_url }}" class="desktop-only">{{ menu_label_stay }}</a>
+        <a href="{{ menu_around_url }}" class="desktop-only">{{ menu_label_around }}</a>
         {% assign is_home = false %}
         {% if page.url == '/' or page.url == '/fr/' or page.url == '/index.html' or page.url == '/fr/index.html' %}
           {% assign is_home = true %}
         {% endif %}
         {% unless is_home %}
-        <a class="mobile-show reserve-link" href="https://airbnb.fr/h/lesvendredis" target="_blank" rel="noopener">{% if current_lang == 'fr' %}Réserver{% else %}Book{% endif %}</a>
+        <a class="mobile-show reserve-link" href="https://airbnb.fr/h/lesvendredis" target="_blank" rel="noopener">{{ menu_label_book }}</a>
         {% endunless %}
         <a class="mobile-show contact-link" href="https://wa.me/33666535289" target="_blank" rel="noopener">WhatsApp</a>
         <span class="lang-toggle">
           <a href="{{ lang_fr_url }}"{% if current_lang == 'fr' %} class="active"{% endif %}>FR</a>
           <a href="{{ lang_en_url }}"{% if current_lang != 'fr' %} class="active"{% endif %}>EN</a>
         </span>
+        <button class="menu-toggle" aria-label="{% if current_lang == 'fr' %}Menu{% else %}Menu{% endif %}" onclick="toggleMenu()">
+          <span></span><span></span><span></span>
+        </button>
       </nav>
     </div>
   </div>
+
+  <!-- Mobile slide-out menu -->
+  <nav class="mobile-nav" id="mobile-nav" aria-hidden="true">
+    <div class="mobile-nav-inner">
+      <a href="{{ home_url }}" class="mobile-nav-brand">Les Vendredis</a>
+      <div class="mobile-nav-links">
+        <a href="{{ journal_url }}"{% if is_journal %} class="active"{% endif %}>{{ menu_label_journal }}</a>
+        <a href="{{ menu_stay_url }}">{{ menu_label_stay }}</a>
+        <span class="mobile-nav-sub-label">{{ menu_label_around }}</span>
+        <a href="{{ menu_roches_url }}" class="mobile-nav-sub">{{ menu_label_roches }}</a>
+        <a href="{{ menu_montravail_url }}" class="mobile-nav-sub">{{ menu_label_montravail }}</a>
+        <a href="{{ menu_trails_url }}" class="mobile-nav-sub">{{ menu_label_trails }}</a>
+        <div class="mobile-nav-divider"></div>
+        <a href="https://airbnb.fr/h/lesvendredis" target="_blank" rel="noopener" class="mobile-nav-book">{{ menu_label_book }} →</a>
+        <a href="https://wa.me/33666535289" target="_blank" rel="noopener">{{ menu_label_contact }}</a>
+      </div>
+      <div class="mobile-nav-lang">
+        <a href="{{ lang_fr_url }}"{% if current_lang == 'fr' %} class="active"{% endif %}>FR</a>
+        <a href="{{ lang_en_url }}"{% if current_lang != 'fr' %} class="active"{% endif %}>EN</a>
+      </div>
+    </div>
+  </nav>
+  <div class="mobile-nav-overlay" id="mobile-nav-overlay" onclick="toggleMenu()" aria-hidden="true"></div>
 </header>
+
+<script>
+function toggleMenu() {
+  var bar = document.getElementById('top-bar');
+  var isOpen = bar.classList.toggle('menu-open');
+  document.body.classList.toggle('nav-open', isOpen);
+  document.querySelector('.menu-toggle').setAttribute('aria-expanded', isOpen);
+  document.getElementById('mobile-nav').setAttribute('aria-hidden', !isOpen);
+}
+</script>
