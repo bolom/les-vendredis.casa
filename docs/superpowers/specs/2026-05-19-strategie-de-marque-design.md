@@ -2,7 +2,7 @@
 
 **Date :** 2026-05-19
 **Auteur :** Bolo (brainstorm avec Claude)
-**Statut :** validé — v2 (raffinée le 2026-05-19 après relecture)
+**Statut :** validé — v3 (raffinée le 2026-05-19 : usage LLM, prix direct vs plateformes, bloc confiance "Venir dormir", nuance coulisses)
 
 ---
 
@@ -131,6 +131,10 @@ Site FR/EN. Articles FR/EN. Newsletter **séparée par langue** (deux listes : F
 
 Pas une version anglaise touristique et une version française intime. **Les deux langues portent la même vérité et la même voix.** Si un article ne fonctionne pas dans une des deux langues, on retravaille — on ne baisse pas la barre pour l'autre.
 
+Chaque article et chaque carte postale existent en français et en anglais. L'abonné choisit une langue. Il reçoit uniquement cette langue. Les deux versions gardent le même ton et le même niveau d'intimité.
+
+> Le bilingue ne crée pas deux marques. Il crée deux portes d'entrée vers le même monde.
+
 ---
 
 ## 8. Produit central : la carte postale du vendredi
@@ -161,9 +165,22 @@ Pas une version anglaise touristique et une version française intime. **Les deu
 **On ne raconte pas :**
 - La Martinique-tourisme (plages à découvrir, restos, sentiers généralistes) — sauf si c'est rattaché à la vie du domaine ou de la famille
 - Les recettes et savoir-faire en mode contenu utilitaire pur
-- Les coulisses business / build in public
 
 C'est volontairement resserré. Mieux vaut deux axes tenus fort que six axes mous.
+
+**Nuance sur l'argent et les coulisses :**
+
+On ne fait pas de *build in public* technique ou entrepreneurial. Pas de reporting business mensuel, pas de stratégie startup, pas d'optimisation de conversion étalée, pas de coulisses techniques du site.
+
+Mais **l'argent, les limites matérielles, les arbitrages, les prix, les travaux et les choix économiques peuvent être racontés quand ils touchent à la vie réelle du lieu.**
+
+Exemples autorisés :
+- pourquoi on loue
+- pourquoi 80 €/nuit
+- pourquoi on ne peut pas tout réparer tout de suite
+- pourquoi les toilettes sèches
+- pourquoi on garde certains prix doux pour les proches
+- pourquoi le direct aide le lieu à vivre
 
 ---
 
@@ -173,7 +190,29 @@ C'est volontairement resserré. Mieux vaut deux axes tenus fort que six axes mou
 - **1 carte postale / vendredi** par email (FR + EN, listes séparées)
 - Souvent l'article = la carte postale développée. Parfois la carte postale renvoie vers un article plus ancien ou complémentaire.
 
-C'est ambitieux. On l'assume. Si Bolo lâche pendant un mois, la marque s'éteint — c'est le coût du modèle marque-personne.
+Ce rythme est tenable parce que le process est rodé :
+
+1. Bolo donne la trame
+2. Bolo choisit les photos
+3. Un LLM aide à rédiger/réécrire dans son style
+4. Bolo valide
+5. ~30 minutes par texte
+
+**Usage d'un LLM — règle d'or :**
+
+> LLM comme secrétaire éditorial, pas comme auteur.
+
+Le LLM peut être Claude, Codex, DeepSeek ou un futur agent dédié. Ce n'est pas l'auteur. **Bolo reste la source, le regard, la matière, la validation finale et la voix.**
+
+Règles strictes pour le LLM :
+- ne jamais inventer
+- ne jamais lisser vers le marketing
+- ne jamais rendre le texte plus joli que vrai
+- ne jamais ajouter une émotion ou une scène que Bolo n'a pas donnée
+- respecter les règles éthiques Léon / Anaïs / invités (§5)
+- garder le même ton en FR et en EN
+
+Si Bolo lâche pendant un mois, la marque s'éteint — c'est le coût du modèle marque-personne. Le LLM accélère la production, il ne remplace pas la présence.
 
 ---
 
@@ -187,13 +226,35 @@ C'est ambitieux. On l'assume. Si Bolo lâche pendant un mois, la marque s'étein
 
 | Tarif | Public | Logique |
 |---|---|---|
-| **80 €/nuit** | Tarif public affiché | Atteint 800 €/mois avec 10 nuits |
+| **80 €/nuit** | Prix direct site (référence) | Atteint 800 €/mois avec 10 nuits |
+| **~80 € ou un peu plus** | Prix plateformes (Airbnb, Booking) | Absorbe frais plateformes et promotions automatiques |
 | **50–60 €/nuit** | Tarif doux, privé | Pour amis, premiers lecteurs, gens choisis. Pas affiché publiquement. |
 | ~~40 €/nuit~~ | À ne plus afficher publiquement | À 40 €, il faut 20 nuits/mois — trop fragile, et signal de marque incorrect |
+
+**Note :** Airbnb et Booking peuvent appliquer automatiquement des promotions. Le prix réellement visible sur les plateformes peut donc varier. Le **prix direct** (site / écrire à Bolo) reste la référence, et a souvent l'avantage prix en plus de l'avantage relation.
 
 **Diagnostic :** le problème actuel n'est pas que le prix est trop haut. Le problème est que **personne ne connaît encore Les Vendredis**. Un prix bas ne crée pas la demande tout seul — il dévalorise la marque et complique l'atteinte de l'objectif économique.
 
 **Séjour minimum recommandé :** 2 nuits (à confirmer).
+
+### Pourquoi privilégier le direct
+
+**Pour les invités :**
+- contact humain avec Bolo
+- meilleure compréhension du lieu avant de réserver
+- tarif plus juste ou plus doux selon les cas
+- possibilité de poser des questions
+- impression d'entrer dans le monde, pas juste de réserver une nuit
+
+**Pour Les Vendredis :**
+- moins de frais plateformes
+- relation directe
+- meilleur filtre avant réservation
+- possibilité de proposer un tarif privé
+- début de communauté
+- récupération propre des emails si consentement newsletter
+
+> Le direct n'est pas seulement un canal moins cher. C'est le canal le plus cohérent avec la marque : on écrit à Bolo, on vérifie que le lieu correspond, puis on vient dormir.
 
 ---
 
@@ -207,6 +268,9 @@ C'est ambitieux. On l'assume. Si Bolo lâche pendant un mois, la marque s'étein
 2. **CTA secondaire : Airbnb / Booking** — pour qui préfère réserver via plateforme
 
 La relation directe a deux vertus : elle filtre naturellement (on parle avant de venir), et elle permet le tarif doux privé pour les gens choisis.
+
+**Formulation publique à utiliser sur le site :**
+> Vous pouvez réserver via Airbnb ou Booking si vous préférez. Mais le plus simple, c'est de m'écrire.
 
 **Moyen terme :** construire une réservation directe simple (voir §14). Pas besoin d'un gros moteur au départ.
 
@@ -233,10 +297,30 @@ Page courte, humaine, pas commerciale. En substance :
 
 **Contenu de la page :**
 - Texte court dans cet esprit (FR et EN)
-- Prix public : à partir de **80 €/nuit**
+- Prix direct à partir de **80 €/nuit**
 - Séjour minimum : 2 nuits
 - Bouton principal : **Écrire à Bolo**
 - Liens secondaires : Airbnb, Booking
+- Bloc confiance (ci-dessous)
+
+**Phrase à intégrer :**
+> Le prix direct commence à 80 €/nuit. Les plateformes appliquent parfois leurs propres frais ou promotions. Si vous avez lu le journal et que vous pensez que le lieu vous correspond, le plus simple est de m'écrire.
+
+### Bloc confiance : "Ce qu'il faut savoir avant de venir"
+
+Objectif : **rassurer sans devenir commercial.**
+
+- C'est notre maison familiale, pas un hôtel
+- Accueil humain : quand c'est possible, vous nous rencontrez. Pas d'arrivée autonome froide.
+- Samsam, notre chienne créole, est présente selon les périodes
+- Dimdim, le coq, fait partie du paysage sonore
+- La maison est simple, vivante, imparfaite
+- Le jardin, les bruits, la chaleur, les insectes font partie du lieu
+- Prix direct à partir de 80 €/nuit
+- Séjour minimum : 2 nuits
+- Photos vraies, pas décorées pour vendre
+- Avis Airbnb/Booking visibles quand ils existent
+- Contact direct possible avant réservation
 
 ### Newsletter
 
@@ -297,9 +381,10 @@ Par ordre de priorité :
 | Rythme hebdo difficile à tenir | Format carte postale courte autorisé (photo + 2 lignes) |
 | Le site n'attire pas assez de réservations pour atteindre 800 €/mois | CTA "Écrire à Bolo" visible, page "Venir dormir" claire, Airbnb/Booking maintenus |
 | Marque repose sur Bolo seule → fragilité | Anaïs peut écrire occasionnellement, mais sans devenir co-voix régulière |
-| Tentation de revenir au mode "location" pendant les périodes creuses | Ce doc sert de boussole : on ne re-pousse pas les CTA Airbnb en hero, on ne baisse pas le prix public sous 80 € |
+| Tentation de revenir au mode "location" pendant les périodes creuses | Ce doc sert de boussole : on ne re-pousse pas les CTA Airbnb en hero. Ne pas revenir au réflexe du prix bas public : les ajustements se font par offres privées, périodes limitées ou prix doux lecteurs, sans dévaloriser le prix de référence. |
 | Texte trahit Anaïs / Léon / un invité | Règles d'éthique d'écriture (§5) à appliquer systématiquement |
 | Version EN devient touristique pour "vendre" | Principe "same world, same voice" — relecture croisée |
+| Le LLM lisse la voix ou ajoute du faux | Bolo fournit la trame, les faits et les photos ; Bolo valide ; le LLM sert de secrétaire éditorial, pas d'auteur (§10) |
 
 ---
 
@@ -312,6 +397,7 @@ Ce document fixe la stratégie. Il ne fixe **pas** :
 - Le choix de plateforme newsletter — décision technique séparée (critère : gestion FR/EN + export propre)
 - Le calendrier éditorial concret — à construire avec Bolo
 - La mise en place technique de la réservation directe MVP — chantier séparé
+- **L'agent éditorial Les Vendredis** — à moyen terme, créer un agent utilisable avec Claude, Codex, DeepSeek ou autre, pour transformer les notes de Bolo en article FR/EN, carte postale FR/EN, titre, extrait, métadonnées, et vérification des règles éditoriales. Pas un chantier immédiat.
 
 Le prochain livrable sera un **plan d'implémentation** qui traduit cette stratégie en chantiers concrets sur le site et l'écosystème.
 
