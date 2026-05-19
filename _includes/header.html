@@ -80,9 +80,6 @@
         {% if page.url == '/' or page.url == '/fr/' or page.url == '/index.html' or page.url == '/fr/index.html' %}
           {% assign is_home = true %}
         {% endif %}
-        {% unless is_home %}
-        <a class="mobile-show reserve-link" href="mailto:hello@lesvendredis.casa">{% if current_lang == 'fr' %}Écrire à Bolo{% else %}Write to Bolo{% endif %}</a>
-        {% endunless %}
         <span class="lang-toggle">
           <a href="{{ lang_fr_url }}"{% if current_lang == 'fr' %} class="active"{% endif %}>FR</a>
           <a href="{{ lang_en_url }}"{% if current_lang != 'fr' %} class="active"{% endif %}>EN</a>
@@ -111,7 +108,6 @@
         <a href="{{ '/unique-stay-pet-friendly-martinique/' | relative_url }}" class="mobile-nav-sub">Pet Friendly</a>
         {% endif %}
         <div class="mobile-nav-divider"></div>
-        <a href="mailto:hello@lesvendredis.casa" class="mobile-nav-book">{% if current_lang == 'fr' %}Écrire à Bolo{% else %}Write to Bolo{% endif %} →</a>
       </div>
       <div class="mobile-nav-lang">
         <a href="{{ lang_fr_url }}"{% if current_lang == 'fr' %} class="active"{% endif %}>FR</a>
