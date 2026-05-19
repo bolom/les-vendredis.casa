@@ -81,7 +81,7 @@
           {% assign is_home = true %}
         {% endif %}
         {% unless is_home %}
-        <a class="mobile-show reserve-link" href="https://airbnb.fr/h/lesvendredis" target="_blank" rel="noopener">{{ menu_label_book }}</a>
+        <a class="mobile-show reserve-link" href="mailto:hello@lesvendredis.casa">{% if current_lang == 'fr' %}Écrire à Bolo{% else %}Write to Bolo{% endif %}</a>
         {% endunless %}
         <a class="mobile-show contact-link" href="https://wa.me/33666535289" target="_blank" rel="noopener">WhatsApp</a>
         <span class="lang-toggle">
@@ -112,7 +112,7 @@
         <a href="{{ '/unique-stay-pet-friendly-martinique/' | relative_url }}" class="mobile-nav-sub">Pet Friendly</a>
         {% endif %}
         <div class="mobile-nav-divider"></div>
-        <a href="https://airbnb.fr/h/lesvendredis" target="_blank" rel="noopener" class="mobile-nav-book">{{ menu_label_book }} →</a>
+        <a href="mailto:hello@lesvendredis.casa" class="mobile-nav-book">{% if current_lang == 'fr' %}Écrire à Bolo{% else %}Write to Bolo{% endif %} →</a>
         <a href="https://wa.me/33666535289" target="_blank" rel="noopener">{{ menu_label_contact }}</a>
       </div>
       <div class="mobile-nav-lang">
