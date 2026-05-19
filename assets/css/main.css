@@ -542,6 +542,20 @@ h1 em { font-style: italic; font-weight: 400; color: var(--accent); }
   max-width: 42ch;
 }
 
+/* ── come-stay direct block ── */
+.come-stay-direct {
+  padding: 64px 0 80px;
+  border-top: 1px solid var(--rule);
+  max-width: 56ch;
+}
+.come-stay-direct p {
+  font-family: var(--serif);
+  font-size: clamp(18px, 1.4vw, 22px);
+  line-height: 1.55;
+  color: var(--ink-soft);
+  margin-bottom: 32px;
+}
+
 /* ── availability calendar ── */
 .cal-dow {
   font-size: 9px;
