@@ -2,7 +2,7 @@
 
 **Date :** 2026-05-19
 **Auteur :** Bolo (brainstorm avec Claude)
-**Statut :** validé — v3 (raffinée le 2026-05-19 : usage LLM, prix direct vs plateformes, bloc confiance "Venir dormir", nuance coulisses)
+**Statut :** validé — v3.1 (micro-corrections 2026-05-19 : Anaïs personnage et non co-voix, dédramatisation rythme, accueil humain explicite, règle photos)
 
 ---
 
@@ -118,6 +118,10 @@ Pas le rêve Instagram. Pas la location de charme fake.
 
 Le ton reste simple, concret, sec quand il faut, jamais lyrique, jamais marketing. La vérité réelle est plus forte que n'importe quel storytelling.
 
+**Règle photos :**
+
+> Les photos doivent être vraies : lumière réelle, objets réels, pas de mise en scène excessive. Elles peuvent être belles, mais elles ne doivent pas transformer le lieu en décor.
+
 ---
 
 ## 7. Langues
@@ -212,7 +216,7 @@ Règles strictes pour le LLM :
 - respecter les règles éthiques Léon / Anaïs / invités (§5)
 - garder le même ton en FR et en EN
 
-Si Bolo lâche pendant un mois, la marque s'éteint — c'est le coût du modèle marque-personne. Le LLM accélère la production, il ne remplace pas la présence.
+Si Bolo disparaît trop longtemps, le rituel s'affaiblit. Le format court existe pour éviter ça : même une photo et deux lignes maintiennent le fil. Le LLM accélère la production, il ne remplace pas la présence.
 
 ---
 
@@ -311,7 +315,7 @@ Page courte, humaine, pas commerciale. En substance :
 Objectif : **rassurer sans devenir commercial.**
 
 - C'est notre maison familiale, pas un hôtel
-- Accueil humain : quand c'est possible, vous nous rencontrez. Pas d'arrivée autonome froide.
+- Accueil humain : pas d'arrivée autonome froide. Quand la maison est libre, on accueille les gens nous-mêmes ou on organise un vrai contact humain.
 - Samsam, notre chienne créole, est présente selon les périodes
 - Dimdim, le coq, fait partie du paysage sonore
 - La maison est simple, vivante, imparfaite
@@ -380,7 +384,7 @@ Par ordre de priorité :
 |---|---|
 | Rythme hebdo difficile à tenir | Format carte postale courte autorisé (photo + 2 lignes) |
 | Le site n'attire pas assez de réservations pour atteindre 800 €/mois | CTA "Écrire à Bolo" visible, page "Venir dormir" claire, Airbnb/Booking maintenus |
-| Marque repose sur Bolo seule → fragilité | Anaïs peut écrire occasionnellement, mais sans devenir co-voix régulière |
+| Marque repose sur Bolo seule → fragilité | Le format court protège le rythme : même une photo + deux lignes signées Bolo maintiennent le fil. Anaïs reste un personnage du monde, pas une co-voix éditoriale régulière. |
 | Tentation de revenir au mode "location" pendant les périodes creuses | Ce doc sert de boussole : on ne re-pousse pas les CTA Airbnb en hero. Ne pas revenir au réflexe du prix bas public : les ajustements se font par offres privées, périodes limitées ou prix doux lecteurs, sans dévaloriser le prix de référence. |
 | Texte trahit Anaïs / Léon / un invité | Règles d'éthique d'écriture (§5) à appliquer systématiquement |
 | Version EN devient touristique pour "vendre" | Principe "same world, same voice" — relecture croisée |
