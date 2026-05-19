@@ -1,0 +1,30 @@
+{% assign nl_lang = page.lang | default: 'en' %}
+{% if nl_lang == 'fr' %}
+  {% assign nl_label = "Une lettre, de temps en temps." %}
+  {% assign nl_sub = "Ce qui pousse, ce qu'on construit, ce qui change." %}
+  {% assign nl_placeholder = "votre@email.com" %}
+  {% assign nl_button = "S'inscrire" %}
+{% else %}
+  {% assign nl_label = "A letter, now and then." %}
+  {% assign nl_sub = "What grows, what we build, what changes." %}
+  {% assign nl_placeholder = "your@email.com" %}
+  {% assign nl_button = "Subscribe" %}
+{% endif %}
+
+<section class="newsletter-section">
+  <div class="wrap">
+    <div class="newsletter-inner">
+      <div class="newsletter-text">
+        <p class="newsletter-label">{{ nl_label }}</p>
+        <p class="newsletter-sub">{{ nl_sub }}</p>
+      </div>
+      <form class="newsletter-form" action="https://buttondown.com/api/emails/embed-subscribe/lesvendredis" method="post">
+        <div class="newsletter-row">
+          <input type="email" name="email" placeholder="{{ nl_placeholder }}" required aria-label="{{ nl_placeholder }}" />
+          <button type="submit">{{ nl_button }}</button>
+        </div>
+        <input type="hidden" name="tag" value="{{ nl_lang }}" />
+      </form>
+    </div>
+  </div>
+</section>
