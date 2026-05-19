@@ -1,28 +1,65 @@
-<div class="wrap">
-  <section class="journal" id="journal">
-    <div class="section-head">
-      <h2>The <em>journal.</em></h2>
-      <p class="sub">Notes from the build, the garden, and the slow life of Sainte-Luce. Updated by the family.</p>
+{% assign current_lang = 'en' %}
+{% if page.lang == 'fr' or page.url contains '/fr/' %}
+  {% assign current_lang = 'fr' %}
+{% endif %}
+
+{% if current_lang == 'fr' %}
+  {% assign posts_filtered = site.posts | where: "lang", "fr" %}
+  {% if posts_filtered.size == 0 %}{% assign posts_filtered = site.posts %}{% endif %}
+  {% assign label_journal = "Journal" %}
+  {% assign label_all = "Tous les articles →" %}
+  {% assign journal_url = '/fr/journal/' | relative_url %}
+{% else %}
+  {% assign posts_filtered = site.posts | where_exp: "post", "post.lang != 'fr'" %}
+  {% if posts_filtered.size == 0 %}{% assign posts_filtered = site.posts %}{% endif %}
+  {% assign label_journal = "Journal" %}
+  {% assign label_all = "All entries →" %}
+  {% assign journal_url = '/journal/' | relative_url %}
+{% endif %}
+
+{% assign featured = posts_filtered[0] %}
+{% assign secondary = posts_filtered | slice: 1, 2 %}
+
+<section class="home-journal">
+  <div class="wrap">
+
+    <div class="home-journal-header">
+      <span class="home-journal-label">{{ label_journal }}</span>
     </div>
-    {% assign english_posts = site.posts | where_exp: "post", "post.lang != 'fr'" %}
-    {% if english_posts.size == 0 %}{% assign english_posts = site.posts %}{% endif %}
-    {% for post in english_posts limit: 3 %}
-    <article class="entry">
-      <div class="entry-meta">
-        {% assign post_num = english_posts.size | minus: forloop.index0 %}
-        <span class="entry-num">{% include roman.html number=post_num %}</span>
-        <span class="entry-date">{{ post.date | date: "%A, %B %-d %Y" }}</span>
-        <span class="entry-tag">{{ post.tag }}</span>
+
+    {% if featured %}
+    <a class="home-journal-featured" href="{{ featured.url | relative_url }}">
+      {% if featured.image %}
+      <div class="home-journal-featured-img">
+        {% assign img_src = featured.image | replace: '.jpg', '.webp' | replace: '.jpeg', '.webp' %}
+        <img src="{{ '/public/images/' | append: img_src | relative_url }}" alt="{{ featured.image_alt | default: featured.title }}" loading="eager" />
       </div>
-      <div class="entry-body">
-        <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
-        <p>{{ post.summary | truncate: 160 }}</p>
+      {% endif %}
+      <div class="home-journal-featured-body">
+        <span class="home-journal-date">{{ featured.date | date: "%-d %B %Y" }}</span>
+        <h2 class="home-journal-title">{{ featured.title }}</h2>
+        <p class="home-journal-summary">{{ featured.summary | default: featured.excerpt | truncate: 180 }}</p>
+        <span class="home-journal-read">Lire →</span>
       </div>
-      <a class="entry-img" href="{{ post.url | relative_url }}" aria-label="{{ post.title }}">
-        {% if post.image %}{% assign post_img = post.image | replace: '.jpg', '.webp' | replace: '.jpeg', '.webp' %}<img src="{{ '/public/images/' | append: post_img | relative_url }}" alt="{{ post.image_alt | default: post.title }}" loading="lazy" />{% endif %}
-      </a>
-    </article>
-    {% endfor %}
-    <div class="journal-foot"><a href="{{ '/journal/' | relative_url }}">See all entries →</a></div>
-  </section>
-</div>
+    </a>
+    {% endif %}
+
+    {% if secondary.size > 0 %}
+    <ul class="home-journal-secondary">
+      {% for post in secondary %}
+      <li>
+        <a href="{{ post.url | relative_url }}">
+          <span class="home-journal-secondary-date">{{ post.date | date: "%-d %b %Y" }}</span>
+          <span class="home-journal-secondary-title">{{ post.title }}</span>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+
+    <div class="home-journal-foot">
+      <a href="{{ journal_url }}">{{ label_all }}</a>
+    </div>
+
+  </div>
+</section>

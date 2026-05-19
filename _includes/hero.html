@@ -1,19 +1,12 @@
 <div class="wrap">
-  <section class="hero">
-    <div class="image-frame">
-      {% include picture.html src="/public/images/cabane-aframe-jardin-fleurs-rouges-les-vendredis.webp" alt="A-frame seen through the tropical garden, Sainte-Luce, Martinique" fetchpriority="high" width="1200" height="1600" %}
-      <span class="image-num">No. 01</span>
-      <span class="image-cap">The A-frame through the garden</span>
+  <header class="hero-minimal">
+    <div class="hero-minimal-text">
+      <p class="hero-minimal-eyebrow">Sainte-Luce, Martinique</p>
+      <h1 class="hero-minimal-h1">A family place,<br>open <em>when we&rsquo;re away.</em></h1>
+      <p class="hero-minimal-sub">We build, garden, and live here. When we're not around, we open it to people who love simple, lived-in places. <a href="{{ '/come-stay/' | relative_url }}">More about the place →</a></p>
     </div>
-    <div>
-      <div class="eyebrow">Family domain</div>
-      <h1>A lived-in domain<br>in <em>Martinique.</em></h1>
-      <p class="lead hero-primary-lead">An A-frame, a covered <em>préau</em>, a fruit garden, and a life that opens toward the outside.</p>
-      <p class="lead hero-family-note">Les Vendredis is our family place, open when we're away — for guests who love simple, personal, un-standardised places.</p>
-      <div class="ctas hero-ctas">
-        <a class="btn primary" href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#104;&#101;&#108;&#108;&#111;&#64;&#108;&#101;&#115;&#118;&#101;&#110;&#100;&#114;&#101;&#100;&#105;&#115;&#46;&#99;&#97;&#115;&#97;">Write to Bolo <span class="arrow">→</span></a>
-        <a class="btn subtle" href="https://airbnb.fr/h/lesvendredis" target="_blank" rel="noopener">Airbnb <span class="arrow">→</span></a>
-      </div>
+    <div class="hero-minimal-photo">
+      {% include picture.html src="/public/images/cabane-aframe-jardin-fleurs-rouges-les-vendredis.webp" alt="The A-frame through the tropical garden, Sainte-Luce, Martinique" fetchpriority="high" width="1200" height="1600" %}
     </div>
-  </section>
+  </header>
 </div>

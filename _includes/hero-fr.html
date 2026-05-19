@@ -1,19 +1,12 @@
 <div class="wrap">
-  <section class="hero">
-    <div class="image-frame">
-      {% include picture.html src="/public/images/cabane-aframe-jardin-fleurs-rouges-les-vendredis.webp" alt="A-frame vue depuis le jardin tropical, Sainte-Luce, Martinique" fetchpriority="high" width="1200" height="1600" %}
-      <span class="image-num">No. 01</span>
-      <span class="image-cap">L'A-frame depuis le jardin</span>
+  <header class="hero-minimal">
+    <div class="hero-minimal-text">
+      <p class="hero-minimal-eyebrow">Sainte-Luce, Martinique</p>
+      <h1 class="hero-minimal-h1">Un lieu de famille,<br>ouvert <em>quand on n&rsquo;y est pas.</em></h1>
+      <p class="hero-minimal-sub">On y construit, jardine, vit. Quand on n'est pas là, on l'ouvre à des gens qui aiment les endroits simples et vivants. <a href="{{ '/fr/venir-dormir/' | relative_url }}">En savoir plus →</a></p>
     </div>
-    <div>
-      <div class="eyebrow">Domaine familial</div>
-      <h1>Un domaine vivant<br>en <em>Martinique.</em></h1>
-      <p class="lead hero-primary-lead">Une A-frame, un préau, un jardin fruitier et une vie qui s'ouvre vers l'extérieur.</p>
-      <p class="lead hero-family-note">Les Vendredis est notre lieu de famille, ouvert quand nous n'y sommes pas — pour ceux qui aiment les endroits simples, personnels et non standardisés.</p>
-      <div class="ctas hero-ctas">
-        <a class="btn primary" href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#104;&#101;&#108;&#108;&#111;&#64;&#108;&#101;&#115;&#118;&#101;&#110;&#100;&#114;&#101;&#100;&#105;&#115;&#46;&#99;&#97;&#115;&#97;">Écrire à Bolo <span class="arrow">→</span></a>
-        <a class="btn subtle" href="https://airbnb.fr/h/lesvendredis" target="_blank" rel="noopener">Airbnb <span class="arrow">→</span></a>
-      </div>
+    <div class="hero-minimal-photo">
+      {% include picture.html src="/public/images/cabane-aframe-jardin-fleurs-rouges-les-vendredis.webp" alt="L'A-frame depuis le jardin tropical, Sainte-Luce, Martinique" fetchpriority="high" width="1200" height="1600" %}
     </div>
-  </section>
+  </header>
 </div>
