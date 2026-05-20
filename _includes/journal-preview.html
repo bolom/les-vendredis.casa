@@ -38,8 +38,8 @@
       <div class="home-journal-featured-body">
         <span class="home-journal-date">{{ featured.date | date: "%-d %B %Y" }}</span>
         <h2 class="home-journal-title">{{ featured.title }}</h2>
-        <p class="home-journal-summary">{{ featured.summary | default: featured.excerpt | truncate: 180 }}</p>
-        <span class="home-journal-read">Lire →</span>
+        {% if featured.summary %}<p class="home-journal-summary">{{ featured.summary }}</p>{% endif %}
+        <span class="home-journal-read">{% if page.lang == 'fr' %}Lire →{% else %}Read →{% endif %}</span>
       </div>
     </a>
     {% endif %}

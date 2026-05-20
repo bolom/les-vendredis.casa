@@ -122,17 +122,17 @@ section[id], [id="reserver"], [id="stay"], [id="journal"], [id="gallery"] { scro
 
 /* ── hero minimal (home) ── */
 .hero-minimal {
-  padding: clamp(48px, 8vw, 110px) 0 clamp(48px, 7vw, 80px);
+  padding: clamp(40px, 6vw, 80px) 0 clamp(40px, 5vw, 64px);
   border-bottom: 1px solid var(--rule);
   display: grid;
-  grid-template-columns: 1fr 340px;
+  grid-template-columns: 1fr 300px;
   gap: clamp(40px, 6vw, 80px);
   align-items: center;
 }
 .hero-minimal-text {
   display: flex;
   flex-direction: column;
-  gap: clamp(16px, 2.5vw, 28px);
+  gap: clamp(14px, 2vw, 24px);
 }
 .hero-minimal-eyebrow {
   font-size: 11px;
@@ -145,8 +145,8 @@ section[id], [id="reserver"], [id="stay"], [id="journal"], [id="gallery"] { scro
 .hero-minimal-h1 {
   font-family: var(--serif);
   font-weight: 300;
-  font-size: clamp(36px, 5vw, 72px);
-  line-height: 1.05;
+  font-size: clamp(28px, 3.6vw, 52px);
+  line-height: 1.1;
   letter-spacing: -.02em;
   color: var(--ink);
   margin: 0;
@@ -159,19 +159,41 @@ section[id], [id="reserver"], [id="stay"], [id="journal"], [id="gallery"] { scro
 .hero-minimal-sub {
   font-family: var(--serif);
   font-weight: 300;
-  font-size: clamp(15px, 1.2vw, 18px);
-  line-height: 1.65;
+  font-size: clamp(15px, 1.1vw, 17px);
+  line-height: 1.6;
   color: var(--ink-soft);
   margin: 0;
-  max-width: 52ch;
+  max-width: 48ch;
 }
-.hero-minimal-sub a {
-  color: var(--ink);
+.hero-minimal-ctas {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  margin-top: 4px;
+  flex-wrap: wrap;
+}
+.hero-cta-primary {
+  font-family: var(--sans);
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--cream);
+  background: var(--ink);
+  padding: 13px 22px;
+  transition: background .25s;
+}
+.hero-cta-primary:hover { background: var(--accent); }
+.hero-cta-secondary {
+  font-family: var(--serif);
+  font-size: clamp(14px, 1vw, 16px);
+  font-weight: 300;
+  color: var(--ink-soft);
   border-bottom: 1px solid var(--rule);
-  white-space: nowrap;
+  padding-bottom: 1px;
   transition: color .2s, border-color .2s;
 }
-.hero-minimal-sub a:hover { color: var(--accent); border-color: var(--accent); }
+.hero-cta-secondary:hover { color: var(--accent); border-color: var(--accent); }
 .hero-minimal-photo {
   aspect-ratio: 3/4;
   overflow: hidden;
@@ -253,9 +275,9 @@ section[id], [id="reserver"], [id="stay"], [id="journal"], [id="gallery"] { scro
 .home-journal-title {
   font-family: var(--serif);
   font-weight: 300;
-  font-size: clamp(26px, 3vw, 44px);
-  line-height: 1.1;
-  letter-spacing: -.015em;
+  font-size: clamp(30px, 4vw, 56px);
+  line-height: 1.05;
+  letter-spacing: -.02em;
   color: var(--ink);
   margin: 0;
   transition: color .2s;
@@ -1105,104 +1127,63 @@ h1 em { font-style: italic; font-weight: 400; color: var(--accent); }
   padding-bottom: 6px;
   font-weight: 500;
 }
-/* ── booking strip ── */
-.booking {
-  background: var(--ink);
-  color: var(--cream);
-  padding: 120px 0;
-  position: relative;
-  overflow: hidden;
+/* ── come stay (home booking) ── */
+.come-stay {
+  border-top: 1px solid var(--rule);
+  padding: clamp(56px, 8vw, 96px) 0;
 }
-.booking::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse 70% 80% at 75% 30%, rgba(184,95,56,.15) 0%, transparent 65%);
+.come-stay-inner {
+  max-width: 680px;
 }
-.booking-inner {
-  position: relative;
-  z-index: 1;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  align-items: center;
-}
-.booking .eyebrow { color: var(--gold); }
-.booking .eyebrow::before { background: var(--gold); }
-.booking h2 {
-  font-family: var(--serif);
-  font-weight: 300;
-  font-size: clamp(40px, 5vw, 64px);
-  line-height: 1.05;
-  letter-spacing: -.01em;
-  color: var(--cream);
-}
-.booking h2 em { font-style: italic; color: var(--accent); }
-.booking-sub {
-  font-family: var(--serif);
-  font-size: 19px;
-  color: rgba(248,241,228,.7);
-  margin-top: 18px;
-  max-width: 42ch;
-  line-height: 1.55;
-  font-style: italic;
-}
-.booking-facts {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px 18px;
-  margin-top: 28px;
-  padding-top: 22px;
-  border-top: 1px solid rgba(248,241,228,.16);
-}
-.booking-facts span {
-  font-size: 11px;
-  letter-spacing: .16em;
-  text-transform: uppercase;
-  color: rgba(248,241,228,.58);
-}
-.b-ctas {
+.come-stay-text {
   display: flex;
   flex-direction: column;
-  gap: 0;
-  border-top: 1px solid rgba(248,241,228,.16);
+  gap: clamp(16px, 2vw, 24px);
 }
-.b-btn {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 28px 0;
-  border-bottom: 1px solid rgba(248,241,228,.16);
-  color: var(--cream);
-  transition: all .35s ease;
+.come-stay-h2 {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(36px, 4.5vw, 60px);
+  line-height: 1.05;
+  letter-spacing: -.02em;
+  color: var(--ink);
+  margin: 0;
 }
-.b-btn:hover { padding-left: 14px; padding-right: 14px; color: var(--accent); }
-.b-label {
-  display: block;
+.come-stay-lead {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(16px, 1.3vw, 19px);
+  line-height: 1.65;
+  color: var(--ink-soft);
+  margin: 0;
+  max-width: 52ch;
+}
+.come-stay-email {
+  display: inline-block;
   font-family: var(--serif);
   font-style: italic;
-  font-size: clamp(26px, 3vw, 36px);
-  font-weight: 400;
-  color: var(--cream);
-  transition: color .35s;
+  font-size: clamp(22px, 2.4vw, 34px);
+  font-weight: 300;
+  color: var(--ink);
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 3px;
+  transition: color .2s, border-color .2s;
+  align-self: flex-start;
 }
-.b-btn:hover .b-label { color: var(--accent); }
-.b-note {
-  display: block;
-  max-width: 32ch;
-  margin-top: 6px;
+.come-stay-email:hover { color: var(--accent); border-color: var(--accent); }
+.come-stay-alt {
+  font-family: var(--serif);
   font-size: 13px;
-  line-height: 1.45;
-  color: rgba(248,241,228,.55);
+  color: var(--muted);
+  margin: 0;
+  line-height: 1.5;
 }
-.b-meta {
-  flex-shrink: 0;
-  margin-left: 24px;
-  font-size: 10px;
-  letter-spacing: .32em;
-  text-transform: uppercase;
-  color: rgba(248,241,228,.55);
+.come-stay-alt a {
+  color: var(--muted);
+  border-bottom: 1px solid var(--rule);
+  transition: color .2s;
 }
+.come-stay-alt a:hover { color: var(--ink); }
 
 /* ── article page ── */
 .article-page {
