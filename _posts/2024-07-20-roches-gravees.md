@@ -5,7 +5,7 @@ summary: "Twenty minutes on foot from the A-frame, there are 14 Amerindian faces
 description: "The Roches Gravées de Montravail — 14 Amerindian petroglyphs carved in volcanic rock, twenty minutes on foot from the A-frame in Sainte-Luce, Martinique."
 tag: "The place"
 date: 2024-07-20
-image: "panorama-domaine-cabane-aframe-les-vendredis-martinique.jpg"
+image: "/public/images/panorama-domaine-cabane-aframe-les-vendredis-martinique.jpg"
 image_alt: "Flamboyant tree in bloom with palm trees and Martinique hills behind, garden of Les Vendredis"
 lang: "en"
 translation_key: "roches-gravees"

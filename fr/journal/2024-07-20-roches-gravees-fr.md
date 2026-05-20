@@ -5,7 +5,7 @@ summary: "À vingt minutes à pied de l'A-frame, 14 visages amérindiens sont gr
 description: "Les Roches Gravées de Montravail — 14 pétroglyphes amérindiens dans la roche volcanique, à vingt minutes à pied de l'A-frame à Sainte-Luce, Martinique."
 tag: "Le lieu"
 date: 2024-07-20
-image: "flamboyant-palmiers-collines-jardin-les-vendredis.jpg"
+image: "/public/images/flamboyant-palmiers-collines-jardin-les-vendredis.jpg"
 image_alt: "Flamboyant en fleurs rouges, palmiers et collines de Martinique, jardin des Vendredis"
 lang: "fr"
 locale: fr_FR

@@ -5,7 +5,7 @@ summary: "Un de ces week-ends où les travaux se terminent tout seuls et les ami
 description: "Les tranchées du jardin des Vendredis sont fermées, les tuyaux enterrés. Un week-end où les travaux se finissent et Catherine fête ses 65 ans sous le pignon."
 tag: "Build log"
 date: 2026-05-07
-image: "tranchees-fermees-mur-pierres-les-vendredis.webp"
+image: "/public/images/tranchees-fermees-mur-pierres-les-vendredis.webp"
 image_alt: "Le tracé de la tranchée le long du mur en pierres, terminé — jardin des Vendredis, Sainte-Luce"
 lang: "fr"
 locale: fr_FR

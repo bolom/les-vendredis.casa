@@ -48,7 +48,7 @@ layout: default
 
   {% if page.image %}
   <figure class="article-hero">
-    <img src="{{ '/public/images/' | append: page.image | relative_url }}"
+    <img src="{{ page.image | relative_url }}"
          alt="{{ page.image_alt | default: page.title }}"
          loading="eager">
     {% if page.entry_num %}
@@ -77,7 +77,7 @@ layout: default
       "mainEntityOfPage": { "@type": "WebPage", "@id": "{{ canonical_url }}" },
       "headline": {{ page.title | jsonify }},
       "description": {{ article_description | jsonify }},
-      {% if page.image %}"image": {{ '/public/images/' | append: page.image | absolute_url | jsonify }},{% endif %}
+      {% if page.image %}"image": {{ page.image | absolute_url | jsonify }},{% endif %}
       "datePublished": "{{ page.date | date_to_xmlschema }}",
       "dateModified": "{{ page.last_modified | default: page.date | date_to_xmlschema }}",
       "inLanguage": "{{ page_lang }}",

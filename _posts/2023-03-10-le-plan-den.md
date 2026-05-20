@@ -5,7 +5,7 @@ summary: "Anaïs is a landscape architect. Bolo builds software. Between us, we 
 description: "We had no business building an A-frame. We bought an A-frame plan from Den anyway, and started figuring out how to build it in Martinique."
 tag: "Build log"
 date: 2023-03-10
-image: "ossature-bois-aframe-construction-martinique.jpg"
+image: "/public/images/ossature-bois-aframe-construction-martinique.jpg"
 image_alt: "A-frame wooden skeleton under construction, Sainte-Luce, Martinique"
 lang: "en"
 translation_key: "plan-den"

@@ -5,7 +5,7 @@ summary: "La route de Zaïre, c'est le genre d'endroit où tout le monde se conn
 description: "La route de Zaïre à Sainte-Luce — le quartier des Vendredis. Tout le monde se connaît, personne ne ferme son portail, les coqs chantent à quatre heures."
 tag: "Le lieu"
 date: 2024-06-15
-image: "panorama-domaine-cabane-aframe-les-vendredis-martinique.jpg"
+image: "/public/images/panorama-domaine-cabane-aframe-les-vendredis-martinique.jpg"
 image_alt: "Vue panoramique du domaine des Vendredis avec l'A-frame, collines et jardin tropical"
 lang: "fr"
 locale: fr_FR

@@ -5,7 +5,7 @@ summary: "Anaïs a cueilli trois fruits à pain, mis deux liqueurs à infuser et
 description: "Mai aux Vendredis : fruits à pain cueillis au jardin, liqueurs de marcudja et de pomme liane en infusion, et BBQ offert par Catherine remis en service."
 tag: "Le jardin"
 date: 2026-05-12
-image: "80029101603__07ED242C-7230-4228-B2E4-AB83718400B7.webp"
+image: "/public/images/80029101603__07ED242C-7230-4228-B2E4-AB83718400B7.webp"
 image_alt: "Saint James et Clément en infusion sur l'étagère, Les Vendredis"
 lang: "fr"
 locale: fr_FR

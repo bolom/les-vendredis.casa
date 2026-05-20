@@ -5,7 +5,7 @@ summary: "Anaïs picked three breadfruits, started two liqueurs, and restored th
 description: "May at Les Vendredis: breadfruit from the garden, marcudja and pomme liane liqueurs in infusion, and Catherine's gifted BBQ restored to use."
 tag: "The garden"
 date: 2026-05-12
-image: "80029101603__07ED242C-7230-4228-B2E4-AB83718400B7.webp"
+image: "/public/images/80029101603__07ED242C-7230-4228-B2E4-AB83718400B7.webp"
 image_alt: "Saint James and Clément bottles infusing on the shelf, Les Vendredis"
 lang: "en"
 translation_key: "may_harvest"

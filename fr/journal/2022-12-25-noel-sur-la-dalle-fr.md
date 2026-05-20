@@ -5,7 +5,7 @@ summary: "Tout a commencé par un déjeuner de Noël sur une dalle de béton vid
 description: "Comment Les Vendredis a commencé — un déjeuner de Noël sur une dalle nue à Sainte-Luce, Martinique, et la décision de construire une A-frame."
 tag: "Build log"
 date: 2022-12-25
-image: "terrain-debut-chantier-les-vendredis-martinique.jpg"
+image: "/public/images/terrain-debut-chantier-les-vendredis-martinique.jpg"
 image_alt: "Le terrain des Vendredis avant la construction, Sainte-Luce, Martinique"
 lang: "fr"
 locale: fr_FR

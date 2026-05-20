@@ -6,7 +6,7 @@ summary: "At first, it was not an ecological statement. We needed a toilet, we d
 description: "Why Les Vendredis chose dry toilets for the A-frame in Martinique: a simple, low-water, local solution using sawdust from a furniture maker in Schoelcher."
 tag: "Build log"
 date: 2026-05-15
-image: "toilette-seche-assise.webp"
+image: "/public/images/toilette-seche-assise.webp"
 image_alt: "Wooden seat and box structure of the dry toilet at Les Vendredis"
 lang: "en"
 translation_key: "dry-toilets"

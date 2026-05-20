@@ -5,7 +5,7 @@ summary: "Anaïs est ingénieure paysagiste. Bolo est informaticien. Entre nous 
 description: "On n'avait aucune raison de construire une A-frame. On a quand même acheté un plan A-frame chez Den, et on a commencé à comprendre comment faire ça en Martinique."
 tag: "Build log"
 date: 2023-03-10
-image: "ossature-bois-aframe-construction-martinique.jpg"
+image: "/public/images/ossature-bois-aframe-construction-martinique.jpg"
 image_alt: "Ossature bois de la charpente A-frame en cours de montage, Sainte-Luce, Martinique"
 lang: "fr"
 locale: fr_FR

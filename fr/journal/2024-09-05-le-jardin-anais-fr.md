@@ -5,7 +5,7 @@ summary: "Anaïs est ingénieure paysagiste. Le jardin des Vendredis est son pro
 description: "Le jardin de 600m² des Vendredis — conçu par Anaïs, ingénieure paysagiste, planté de zéro pour produire toute l'année à Sainte-Luce, Martinique."
 tag: "Le jardin"
 date: 2024-09-05
-image: "cabane-aframe-rochers-fleurs-jardin-les-vendredis.jpg"
+image: "/public/images/cabane-aframe-rochers-fleurs-jardin-les-vendredis.jpg"
 image_alt: "A-frame et rochers volcaniques dans le jardin des Vendredis, Sainte-Luce"
 lang: "fr"
 locale: fr_FR

@@ -5,7 +5,7 @@ summary: "Anaïs is a landscape architect. The garden at Les Vendredis is her pr
 description: "The 600m² garden at Les Vendredis — designed by Anaïs, a landscape architect, planted from scratch to produce year-round in Sainte-Luce, Martinique."
 tag: "The garden"
 date: 2024-09-05
-image: "cabane-aframe-rochers-fleurs-jardin-les-vendredis.jpg"
+image: "/public/images/cabane-aframe-rochers-fleurs-jardin-les-vendredis.jpg"
 image_alt: "A-frame beside volcanic rocks and tropical planting, garden of Les Vendredis, Sainte-Luce"
 lang: "en"
 translation_key: "jardin-anais"

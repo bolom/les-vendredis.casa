@@ -6,7 +6,7 @@ summary: "Au début, ce n'était pas une grande décision écologique. On avait 
 description: "Pourquoi Les Vendredis ont choisi les toilettes sèches pour l'A-frame en Martinique : une solution simple, sobre en eau, avec de la sciure récupérée localement."
 tag: "Build log"
 date: 2026-05-15
-image: "toilette-seche-assise.webp"
+image: "/public/images/toilette-seche-assise.webp"
 image_alt: "Assise en bois des toilettes sèches aux Vendredis"
 lang: "fr"
 locale: fr_FR

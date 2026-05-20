@@ -5,7 +5,7 @@ summary: "One of those weekends where the work finishes itself and the friends s
 description: "The garden trenches at Les Vendredis are closed, the pipes buried. One of those weekends where the work gets done and Catherine turns 65 under the gable."
 tag: "Build log"
 date: 2026-05-07
-image: "tranchees-fermees-mur-pierres-les-vendredis.webp"
+image: "/public/images/tranchees-fermees-mur-pierres-les-vendredis.webp"
 image_alt: "The trench line along the stone wall, finished — Les Vendredis garden, Sainte-Luce"
 lang: "en"
 translation_key: "trenches-closed"
