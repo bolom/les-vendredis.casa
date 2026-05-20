@@ -9,6 +9,7 @@ image: "/public/images/projecteur-pyjama-party-les-vendredis.jpg"
 image_alt: "The projector set up for the cinema evening in the A-frame, Les Vendredis"
 lang: "en"
 translation_key: "lego-movie"
+published: false
 permalink: /journal/lego-movie/
 ---
 
