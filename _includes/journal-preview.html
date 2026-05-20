@@ -32,7 +32,7 @@
       {% if featured.image %}
       <div class="home-journal-featured-img">
         {% assign img_src = featured.image | replace: '.jpg', '.webp' | replace: '.jpeg', '.webp' %}
-        <img src="{{ '/public/images/' | append: img_src | relative_url }}" alt="{{ featured.image_alt | default: featured.title }}" loading="eager" />
+        <img src="{{ img_src | relative_url }}" alt="{{ featured.image_alt | default: featured.title }}" loading="eager" />
       </div>
       {% endif %}
       <div class="home-journal-featured-body">
