@@ -11,7 +11,7 @@ Usage:
 {% assign is_fr = false %}
 {% if page.lang == 'fr' %}{% assign is_fr = true %}{% endif %}
 {% if is_fr %}
-  {% capture target_url %}/fr/journal/{{ include.slug }}-fr/{% endcapture %}
+  {% capture target_url %}/fr/journal/{{ include.slug }}/{% endcapture %}
   {% assign target_title = include.title_fr %}
   {% assign target_summary = include.summary_fr %}
   {% assign kicker = 'Dans le journal' %}

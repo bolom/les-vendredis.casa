@@ -29,7 +29,7 @@ translation_key: journal
           <a href="{{ post.url | relative_url }}" class="read-more">Read more →</a>
         </div>
         <div class="entry-img">
-          {% if post.image %}<img src="{{ post.image | relative_url }}" alt="{{ post.image_alt }}" loading="lazy" />{% endif %}
+          {% if post.image %}{% assign post_img = post.image | replace: '.jpg', '.webp' | replace: '.jpeg', '.webp' %}<img src="{{ post_img | relative_url }}" alt="{{ post.image_alt }}" loading="lazy" />{% endif %}
         </div>
       </article>
       {% endfor %}

@@ -5,7 +5,7 @@ summary: "Route de Zaïre is the kind of place where everyone knows everyone, do
 description: "Route de Zaïre in Sainte-Luce — the neighbourhood around Les Vendredis. Everyone knows everyone, nobody locks their gate, dogs sleep in the road."
 tag: "The place"
 date: 2024-06-15
-image: "/public/images/cabane-aframe-ouverte-jardin-tropical-sainte-luce.jpg"
+image: "/public/images/cabane-aframe-ouverte-jardin-tropical-sainte-luce.webp"
 image_alt: "Panoramic view of Les Vendredis domain with A-frame, hills and tropical garden"
 lang: "en"
 translation_key: "route-de-zaire"

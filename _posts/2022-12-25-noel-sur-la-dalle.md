@@ -5,7 +5,7 @@ summary: "It started with a Christmas lunch on an empty concrete slab. By the en
 description: "How building Les Vendredis started — a Christmas lunch on a bare concrete slab in Sainte-Luce, Martinique, and the decision to build an A-frame."
 tag: "Build log"
 date: 2022-12-25
-image: "/public/images/terrain-debut-chantier-les-vendredis-martinique.jpg"
+image: "/public/images/terrain-debut-chantier-les-vendredis-martinique.webp"
 image_alt: "The land at Les Vendredis before construction, Sainte-Luce, Martinique"
 lang: "en"
 translation_key: "noel-dalle"

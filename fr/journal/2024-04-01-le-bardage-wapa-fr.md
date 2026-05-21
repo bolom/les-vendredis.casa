@@ -5,7 +5,7 @@ summary: "Tout le monde s'attendait à ce qu'on utilise du cèdre. On a choisi l
 description: "Pourquoi on a bardé l'A-frame des Vendredis en Wapa — un bois dur de Guyane qui grise naturellement sous les tropiques, sans traitement."
 tag: "Build log"
 date: 2024-04-01
-image: "/public/images/construction-bardage-bois-cabane-aframe-martinique.jpg"
+image: "/public/images/construction-bardage-bois-cabane-aframe-martinique.webp"
 image_alt: "Pose du bardage en Wapa sur l'A-frame à la main, Sainte-Luce, Martinique"
 lang: "fr"
 locale: fr_FR

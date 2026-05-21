@@ -5,7 +5,7 @@ summary: "Les premières mangues de la saison sont tombées cette semaine. On a 
 description: "La saison des mangues est revenue aux Vendredis à Sainte-Luce. Les arbres sont chargés, les premières sont tombées. Une caisse au portail pour qui passe."
 tag: "Le jardin"
 date: 2026-04-12
-image: "/public/images/mangues-jardin-cabane-aframe-les-vendredis.jpg"
+image: "/public/images/mangues-jardin-cabane-aframe-les-vendredis.webp"
 image_alt: "Mangues vertes sur l'arbre, A-frame visible dans le jardin en fond, Les Vendredis"
 lang: "fr"
 locale: fr_FR

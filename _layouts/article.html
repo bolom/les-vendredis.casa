@@ -47,8 +47,9 @@ layout: default
   </header>
 
   {% if page.image %}
+  {% assign article_img = page.image | replace: '.jpg', '.webp' | replace: '.jpeg', '.webp' %}
   <figure class="article-hero">
-    <img src="{{ page.image | relative_url }}"
+    <img src="{{ article_img | relative_url }}"
          alt="{{ page.image_alt | default: page.title }}"
          loading="eager">
     {% if page.entry_num %}
@@ -77,7 +78,7 @@ layout: default
       "mainEntityOfPage": { "@type": "WebPage", "@id": "{{ canonical_url }}" },
       "headline": {{ page.title | jsonify }},
       "description": {{ article_description | jsonify }},
-      {% if page.image %}"image": {{ page.image | absolute_url | jsonify }},{% endif %}
+      {% if page.image %}"image": {{ article_img | absolute_url | jsonify }},{% endif %}
       "datePublished": "{{ page.date | date_to_xmlschema }}",
       "dateModified": "{{ page.last_modified | default: page.date | date_to_xmlschema }}",
       "inLanguage": "{{ page_lang }}",
