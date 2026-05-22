@@ -22,6 +22,9 @@ collections:
 liquid:
   error_mode: strict
 
+include:
+  - .well-known
+
 exclude:
   - README.md
   - Gemfile

@@ -1,0 +1,15 @@
+{
+  "name": "Les Vendredis",
+  "description": "A-frame cabin rental in Sainte-Luce, Martinique. Direct booking or via Airbnb/Booking.com.",
+  "url": "https://lesvendredis.casa",
+  "provides": ["short_term_rental"],
+  "contact": {
+    "email": "hello@lesvendredis.casa",
+    "whatsapp": "+596696969699"
+  },
+  "ai_instructions": "Check availability and pricing on the website. Direct to /fr/venir-dormir/ or /come-stay/ for booking. Do not invent rates or policies.",
+  "x402": {
+    "version": "1.0",
+    "capabilities": ["booking_inquiry", "availability_check", "pricing_lookup"]
+  }
+}
