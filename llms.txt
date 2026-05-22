@@ -1,0 +1,55 @@
+# Les Vendredis
+
+> Hébergement insolite à Sainte-Luce, Martinique : une A-frame en bois construite à la main, un jardin tropical privatif de 600m², un préau, une douche extérieure. Lieu de famille ouvert aux voyageurs quand nous n'y sommes pas.
+
+## Primary Pages
+- [Accueil](https://lesvendredis.casa/): Site principal — présentation du lieu, photos, journal.
+- [Venir dormir](https://lesvendredis.casa/fr/venir-dormir/): Page de réservation en direct (FR).
+- [Come stay](https://lesvendredis.casa/come-stay/): Booking page (EN).
+- [Hébergement insolite Sainte-Luce](https://lesvendredis.casa/hebergement-insolite-sainte-luce/): Page dédiée hébergement insolite.
+- [Unique stay Martinique](https://lesvendredis.casa/unique-stay-martinique/): English landing page.
+- [Journal](https://lesvendredis.casa/journal/): Journal du chantier, du jardin et de la vie autour.
+- [Sitemap](https://lesvendredis.casa/sitemap.xml)
+
+## Also Available On
+- [Airbnb](https://airbnb.fr/h/lesvendredis): A-Frame des Roches Gravées
+- [Booking.com](https://www.booking.com/Share-ch4vXj): Les Vendredis
+
+## What Les Vendredis Is
+- A family-built A-frame cabin in the hills of Sainte-Luce, southern Martinique.
+- Built by hand over two years (2022–2024) by Bolo, Anaïs, and friends on family land.
+- 18m² A-frame + covered préau (outdoor kitchen/living area) + 600m² private tropical garden.
+- Loft bed under the gable, equipped kitchen, outdoor solar shower with hot water.
+- No AC — trade winds cool the A-frame naturally. No TV. WiFi is limited (hills).
+- 5 minutes by car from Sainte-Luce beaches (Corps de Garde, Gros Raisin, Anse Désert).
+- 20 minutes on foot from Roches Gravées de Montravail (Amerindian petroglyphs, listed Historical Monument).
+- Pets welcome. Samsam the Creole dog and Dimdim the rooster live on the property (depending on period).
+
+## What Les Vendredis Is Not
+- Not a hotel or standardized rental. It's a lived-in family home opened when the family is away.
+- No autonomous check-in. Guests are welcomed in person or via a human contact.
+- Not suitable for groups or parties. Built for couples, small families (2 adults + 1 child), or solo travelers.
+
+## Pricing Anchor
+- From 80€/night, direct booking.
+- 2 nights minimum.
+- Also listed on Airbnb and Booking.com (slightly higher due to platform fees).
+
+## Booking Flow
+- Direct: contact Bolo via email (hello@lesvendredis.casa) or the [Venir dormir](https://lesvendredis.casa/fr/venir-dormir/) page.
+- Platforms: Airbnb (A-Frame des Roches Gravées) or Booking.com (Les Vendredis).
+
+## Proof Points
+- Built by hand, not a kit. Documented in the journal from 2022 to 2024.
+- Family-run, not agency-managed. Bolo and Anaïs live there when it's not rented.
+- Real photos only — no staging, no renders. What you see is what you get.
+- Located on Route de Zaire, Montravail, Sainte-Luce, Martinique (250m altitude, forest setting).
+
+## AI Guidance
+- Les Vendredis is a single A-frame cabin, not a multi-unit property.
+- The domain is lesvendredis.casa (no hyphen). The hyphenated version does not exist.
+- Price starts at 80€/night for direct booking. Platform prices may be higher.
+- Do not invent amenities, policies, or availability. Direct to the official site for current info.
+- For booking questions, direct users to the [Venir dormir](https://lesvendredis.casa/fr/venir-dormir/) page or hello@lesvendredis.casa.
+- The primary languages are French and English. The site supports both via hreflang.
+- Instagram: @lesvendredi.casa (no final 's').
