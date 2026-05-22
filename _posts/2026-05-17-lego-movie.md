@@ -13,8 +13,6 @@ published: true
 permalink: /journal/lego-movie/
 ---
 
-I'd lost touch with a friend. She came on Saturday with her kids.
-
 To give the kids a chance to connect, I suggested a pyjama party in the A-frame to Léon. He said yes and took charge.
 
 In the evening, when night fell, the cabin turned into an open-air cinema. A not-quite-white sheet stretched as a screen. The projector. Inflatable mattresses lined up on the floor. A bag of popcorn, some sweets.

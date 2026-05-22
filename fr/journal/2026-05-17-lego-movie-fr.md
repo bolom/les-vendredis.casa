@@ -14,8 +14,6 @@ published: true
 permalink: /fr/journal/lego-movie/
 ---
 
-J'avais perdu de vue une amie. Elle est venue samedi avec ses enfants.
-
 Pour que ça prenne entre les gamins, j'ai proposé à Léon une pyjama party dans l'A-frame. Il a dit oui et il a pris les choses en main.
 
 Le soir, quand la nuit est tombée, la cabane s'est transformée en cinéma en plein air. Un drap pas tout à fait blanc tendu en écran. Le projecteur. Des matelas gonflables alignés sur le plancher. Un sachet de pop-corn, des bonbons.
