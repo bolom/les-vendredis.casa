@@ -5,12 +5,12 @@ summary: "J'avais perdu de vue une amie. Elle est venue samedi avec ses enfants.
 description: "Une pyjama party dans l'A-frame des Vendredis — bar à bonbons, ticket d'entrée, Lego Movie sur projecteur et matelas gonflables sous les étoiles."
 tag: "La vie ici"
 date: 2026-05-17
-image: "/public/images/projecteur-pyjama-party-les-vendredis.jpg"
-image_alt: "Le projecteur installé pour la soirée cinéma dans l'A-frame, Les Vendredis"
+image: "/public/images/pyjama-party-lego-movie-les-vendredis.webp"
+image_alt: "Enfants en pyjama devant Lego Movie dans l'A-frame des Vendredis, bar à bonbons devant eux"
 lang: "fr"
 locale: fr_FR
 translation_key: "lego-movie"
-published: false
+published: true
 permalink: /fr/journal/lego-movie/
 ---
 
