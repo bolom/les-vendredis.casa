@@ -5,11 +5,11 @@ summary: "I'd lost touch with a friend. She came on Saturday with her kids. Léo
 description: "A pyjama party in the A-frame at Les Vendredis — a candy bar, an entrance ticket, Lego Movie on the projector, and inflatable mattresses under the stars."
 tag: "Life here"
 date: 2026-05-17
-image: "/public/images/projecteur-pyjama-party-les-vendredis.jpg"
-image_alt: "The projector set up for the cinema evening in the A-frame, Les Vendredis"
+image: "/public/images/pyjama-party-lego-movie-les-vendredis.webp"
+image_alt: "Kids in pyjamas watching Lego Movie in the A-frame at Les Vendredis, candy bar in front of them"
 lang: "en"
 translation_key: "lego-movie"
-published: false
+published: true
 permalink: /journal/lego-movie/
 ---
 
