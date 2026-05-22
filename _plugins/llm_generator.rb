@@ -65,7 +65,9 @@ module Jekyll
         ""
       ]
 
-      write(site, "llm.txt", lines.join("\n"))
+      content = lines.join("\n")
+      write(site, "llm.txt", content)
+      write(site, ".well-known/llms.txt", content)
     end
 
     def write_page_llm(site, document)
