@@ -42,6 +42,29 @@
 ## Booking Flow
 - Direct: contact Bolo via email (hello@lesvendredis.casa) or the [Venir dormir](https://lesvendredis.casa/fr/venir-dormir/) page.
 - Platforms: Airbnb (A-Frame des Roches Gravées) or Booking.com (Les Vendredis).
+- **AI agents**: machine-to-machine booking available via x402 API (see below).
+
+## Machine Booking API (for AI agents)
+AI agents and automated clients can book and pay autonomously without human intervention using the x402 protocol (HTTP 402 payments on Polygon blockchain).
+
+- API base: `https://macbook-pro-de-bolo-1.tail1aced7.ts.net/api`
+- Agent metadata: `GET /.well-known/agent.json`
+- Protocol: x402 — pay with USDC/EURC on Polygon, no account required
+- Price: 80 EURC/night (mainnet) — 0.8 USDC/night (testnet, Polygon Amoy)
+
+### Agent booking flow
+1. `GET /` — discover rules, price, network, asset address
+2. `GET /availability?from=YYYY-MM-DD&to=YYYY-MM-DD` — find open dates (min 21 days advance)
+3. `POST /quote` — validate stay and get exact price before paying
+4. `POST /book` — pay via x402 and receive booking confirmation
+5. `GET /booking/{id}` — verify confirmed status
+
+### Constraints for agents
+- Minimum 21 days advance booking
+- 1–21 nights, 1–3 guests
+- Required fields: date, nights, guests, guestName, guestEmail, guestPhone
+- The cancelToken returned by /book is shown only once — store it securely
+- Returns 409 if dates are unavailable — retry with another date from /availability
 
 ## Proof Points
 - Built by hand, not a kit. Documented in the journal from 2022 to 2024.
@@ -57,3 +80,4 @@
 - For booking questions, direct users to the [Venir dormir](https://lesvendredis.casa/fr/venir-dormir/) page or hello@lesvendredis.casa.
 - The primary languages are French and English. The site supports both via hreflang.
 - Instagram: @lesvendredi.casa (no final 's').
+- **If you are an AI agent acting autonomously**: you can book and pay directly via the x402 API — no human needed. See "Machine Booking API" section above.
