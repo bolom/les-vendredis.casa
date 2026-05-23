@@ -9,7 +9,9 @@
 - `lesvendredis-mpp` (Hono/TypeScript, SQLite via better-sqlite3) is the booking API on oldBolo.local
 - `competitor-radar-martinique` (Python, SQLite) runs daily at 08:00 AST via cron and snapshots Airbnb prices for known listings
 - Les Vendredis listing `1651467419646453001` was registered in the competitor DB on 2026-05-23 — it will now be refreshed daily alongside competitors
-- Current Airbnb price observed: **80.13 €/nuit**
+- Airbnb `originalPrice` (rack rate, pre-discount) observed: **81 €/nuit** for short stays
+- The UI header shows 85 € but that folds in Airbnb's service fee — `originalPrice` from the API is the reliable machine-readable rack rate
+- Parser fixed to use `originalPrice` first (was incorrectly using the post-discount details line)
 
 ## Architecture
 
@@ -44,12 +46,13 @@ DB path: `/Users/bolo/code/competitor-radar-martinique/data/universal_tracker.db
 ## Pricing formula
 
 ```
-direct_price = max(floor(airbnb_price * 0.90), 65)
+direct_price = max(floor(airbnb_originalPrice * 0.90), 70)
 ```
 
-- 10% cheaper than Airbnb
-- Hard floor: 65 €/nuit (never go below)
-- Fallback: if DB unreadable or no snapshot → use 72 € (hardcoded safe default, below current Airbnb)
+- 10% cheaper than Airbnb rack rate (`originalPrice`)
+- Hard floor: 70 €/nuit (stays below even Airbnb's deepest promo at ~70.53 €)
+- Fallback: if DB unreadable or no snapshot → use 72 € (hardcoded safe default)
+- Example: 81 € × 0.90 = 72.90 → floor = **72 €**
 
 ## Changes per repo
 
@@ -58,7 +61,7 @@ direct_price = max(floor(airbnb_price * 0.90), 65)
 1. New `src/pricing.ts` — exports `getLivePrice(): number`
    - Opens competitor DB read-only with better-sqlite3
    - Runs the query above
-   - Returns `max(Math.floor(price * 0.90), 65)` or fallback `72`
+   - Returns `max(Math.floor(price * 0.90), 70)` or fallback `72`
 2. `main.ts` — replace `const PRICE = '80'` with a call to `getLivePrice()` at request time (not module load time, so it picks up the daily refresh without restart)
    - `getQuote()` receives price as a parameter
    - `dynamicPrice()` (x402 middleware) calls `getLivePrice()`
@@ -67,7 +70,7 @@ direct_price = max(floor(airbnb_price * 0.90), 65)
 
 ### competitor-radar-martinique
 
-No code changes. Listing `1651467419646453001` is already registered and will be refreshed daily by the existing cron.
+Parser fix already committed (`d74bafd`): `parse_price_quote` now uses `originalPrice` before `discountedPrice`. Listing `1651467419646453001` is registered and will be refreshed daily by the existing cron. No further changes needed.
 
 ### les-vendredis.casa
 
@@ -87,4 +90,4 @@ cd /Users/bolo/code/competitor-radar-martinique
 /usr/local/bin/python3.11 -u scripts/universal_tracker.py 1651467419646453001 --collect-only --max-competitors 0
 ```
 
-Run ID: `de71713a-222d-4860-b03c-f79faec62dc5`. Price captured: 80.13 €.
+Run ID: `de71713a-222d-4860-b03c-f79faec62dc5`. Price captured: 80.13 € (pre-fix). Tomorrow's cron will capture 81 € (rack rate).
