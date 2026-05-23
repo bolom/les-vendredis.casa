@@ -11,6 +11,13 @@ Allow: /
 User-agent: ChatGPT-User
 Allow: /
 
+# Perplexity
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
 Sitemap: https://lesvendredis.casa/sitemap_index.xml
 Sitemap: https://lesvendredis.casa/sitemap.xml
 Sitemap: https://lesvendredis.casa/fr/sitemap.xml

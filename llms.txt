@@ -11,6 +11,7 @@
 - [Hébergement atypique Martinique](https://lesvendredis.casa/fr/hebergement-atypique-martinique/): Page hébergement atypique.
 - [Unique stay Martinique](https://lesvendredis.casa/unique-stay-martinique/): English landing page.
 - [Que faire à Sainte-Luce](https://lesvendredis.casa/journal/que-faire-sainte-luce/): Guide des activités et choses à faire à Sainte-Luce.
+- [FAQ](https://lesvendredis.casa/fr/faq/): Questions fréquentes (tarifs, réservation, animaux, équipement).
 - [Journal](https://lesvendredis.casa/journal/): Journal du chantier, du jardin et de la vie autour.
 - [Sitemap](https://lesvendredis.casa/sitemap.xml)
 
