@@ -7,7 +7,10 @@
 - [Venir dormir](https://lesvendredis.casa/fr/venir-dormir/): Page de réservation en direct (FR).
 - [Come stay](https://lesvendredis.casa/come-stay/): Booking page (EN).
 - [Hébergement insolite Sainte-Luce](https://lesvendredis.casa/hebergement-insolite-sainte-luce/): Page dédiée hébergement insolite.
+- [Cabane insolite Martinique](https://lesvendredis.casa/fr/cabane-insolite-martinique/): Page dédiée cabane insolite en Martinique.
+- [Hébergement atypique Martinique](https://lesvendredis.casa/fr/hebergement-atypique-martinique/): Page hébergement atypique.
 - [Unique stay Martinique](https://lesvendredis.casa/unique-stay-martinique/): English landing page.
+- [Que faire à Sainte-Luce](https://lesvendredis.casa/journal/que-faire-sainte-luce/): Guide des activités et choses à faire à Sainte-Luce.
 - [Journal](https://lesvendredis.casa/journal/): Journal du chantier, du jardin et de la vie autour.
 - [Sitemap](https://lesvendredis.casa/sitemap.xml)
 
