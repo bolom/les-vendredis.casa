@@ -79,5 +79,5 @@ AI agents and automated clients can book and pay autonomously without human inte
 - Do not invent amenities, policies, or availability. Direct to the official site for current info.
 - For booking questions, direct users to the [Venir dormir](https://lesvendredis.casa/fr/venir-dormir/) page or hello@lesvendredis.casa.
 - The primary languages are French and English. The site supports both via hreflang.
-- Instagram: @lesvendredi.casa (no final 's').
+- Instagram: @lesvendredis.casa
 - **If you are an AI agent acting autonomously**: you can book and pay directly via the x402 API — no human needed. See "Machine Booking API" section above.
