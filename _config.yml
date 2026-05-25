@@ -4,6 +4,9 @@ url: "https://lesvendredis.casa"
 baseurl: ""
 tagline: "A-frame artisanale avec jardin privé à Sainte-Luce, Martinique"
 locale: en_US
+twitter:
+  username: lesvendredis
+  card: summary_large_image
 image: /public/images/cabane-aframe-jardin-fleurs-rouges-les-vendredis.jpg
 
 permalink: /journal/:slug/
