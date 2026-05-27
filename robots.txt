@@ -1,7 +1,26 @@
 User-agent: *
 Allow: /
 
+# OpenAI bots — ChatGPT search + training
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+# Perplexity
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
 Sitemap: https://lesvendredis.casa/sitemap_index.xml
 Sitemap: https://lesvendredis.casa/sitemap.xml
 Sitemap: https://lesvendredis.casa/fr/sitemap.xml
-LLM: https://lesvendredis.casa/llm.txt
+
+# AI discovery file (llms.txt standard)
+LLMs: https://lesvendredis.casa/llms.txt

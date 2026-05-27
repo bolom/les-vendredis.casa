@@ -22,7 +22,7 @@ layout: null
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>{{ "/hebergement-insolite-sainte-luce/" | absolute_url }}</loc>
+    <loc>{{ "/fr/venir-dormir/" | absolute_url }}</loc>
     <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
@@ -51,11 +51,31 @@ layout: null
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-  {% assign french_posts = site.pages | where_exp: "post", "post.lang == 'fr' and post.layout == 'article'" | sort: "date" | reverse %}
-  {% for post in french_posts %}
   <url>
-    <loc>{{ post.url | absolute_url }}</loc>
-    <lastmod>{{ post.date | date_to_xmlschema }}</lastmod>
+    <loc>{{ "/fr/cabane-insolite-martinique/" | absolute_url }}</loc>
+    <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>{{ "/fr/logement-insolite-martinique/" | absolute_url }}</loc>
+    <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>{{ "/fr/faq/" | absolute_url }}</loc>
+    <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  {% assign french_pages = site.pages | where_exp: "p", "p.lang == 'fr' and p.layout == 'article'" | sort: "date" | reverse %}
+  {% assign french_posts = site.posts | where_exp: "p", "p.lang == 'fr'" | sort: "date" | reverse %}
+  {% assign french_articles = french_pages | concat: french_posts | sort: "date" | reverse %}
+  {% for article in french_articles %}
+  <url>
+    <loc>{{ article.url | absolute_url }}</loc>
+    <lastmod>{{ article.date | date_to_xmlschema }}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
