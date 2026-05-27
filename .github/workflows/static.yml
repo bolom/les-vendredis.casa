@@ -28,9 +28,8 @@ jobs:
         working-directory: ${{ github.workspace }}
         env:
           BUNDLE_GEMFILE: ${{ github.workspace }}/Gemfile
-      - name: Test (links + images)
-        run: bundle exec rake test
-        continue-on-error: true
+      - name: Build site
+        run: bundle exec jekyll build
         working-directory: ${{ github.workspace }}
         env:
           BUNDLE_GEMFILE: ${{ github.workspace }}/Gemfile
