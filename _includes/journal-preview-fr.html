@@ -4,7 +4,8 @@
       <h2>Le <em>journal.</em></h2>
       <p class="sub">Notes du chantier, du jardin et de la vie lente à Sainte-Luce. Mis à jour par la famille.</p>
     </div>
-    {% assign french_posts = site.pages | where_exp: "post", "post.lang == 'fr' and post.layout == 'article'" | sort: "date" | reverse %}
+    {% assign all_articles = site.posts | concat: site.pages %}
+    {% assign french_posts = all_articles | where_exp: "post", "post.lang == 'fr' and post.layout == 'article'" | sort: "date" | reverse %}
     {% for post in french_posts limit: 3 %}
     <article class="entry">
       <div class="entry-meta">
