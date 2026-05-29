@@ -1640,6 +1640,44 @@ h1 em { font-style: italic; font-weight: 400; color: var(--accent); }
   color: var(--ink-soft);
 }
 
+/* ── UNESCO biosphere banner ── */
+.unesco-section {
+  padding: 44px 0 28px;
+  border-top: 1px solid var(--rule);
+}
+.unesco-kicker {
+  font-size: 9px;
+  letter-spacing: .34em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 14px;
+}
+.unesco-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  max-width: 680px;
+}
+.unesco-body p {
+  margin: 0 0 10px;
+  font-family: var(--serif);
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+}
+.unesco-body p:last-child { margin-bottom: 0; }
+.unesco-source {
+  font-size: 13px !important;
+}
+.unesco-source a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(184,95,56,.25);
+  transition: border-color .25s ease;
+}
+.unesco-source a:hover {
+  border-color: var(--accent);
+}
+
 /* ── responsive ── */
 @media (max-width: 900px) {
   body:has(.sticky-booking) {
@@ -1747,6 +1785,7 @@ h1 em { font-style: italic; font-weight: 400; color: var(--accent); }
   .foot-right { justify-content: center; flex-wrap: wrap; }
   .nearby-section { padding: 72px 0 24px; }
   .nearby-grid { grid-template-columns: repeat(2, 1fr); gap: 18px; }
+  .unesco-section { padding: 32px 0 24px; }
   .hosts-section { padding: 64px 0; }
   .hosts-grid { grid-template-columns: 1fr; gap: 36px; }
   .hosts-img { aspect-ratio: 4/5; max-height: 60vh; }
@@ -1800,6 +1839,7 @@ h1 em { font-style: italic; font-weight: 400; color: var(--accent); }
   .before-come {
     padding-top: 28px;
   }
+  .unesco-section { padding-top: 28px; }
   .sticky-booking {
     left: 10px;
     right: 10px;
@@ -1873,6 +1913,7 @@ h1 em { font-style: italic; font-weight: 400; color: var(--accent); }
     border-bottom: none;
   }
   .before-come-note { font-size: 14px; line-height: 1.45; }
+  .unesco-section { padding: 24px 0 18px; }
   .sticky-booking {
     left: 8px;
     right: 8px;

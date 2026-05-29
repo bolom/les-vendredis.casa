@@ -1,0 +1,20 @@
+{% assign is_fr = false %}
+{% if page.lang == 'fr' %}{% assign is_fr = true %}{% endif %}
+<div class="wrap">
+  <section class="unesco-section" aria-labelledby="unesco-label">
+    <p class="unesco-kicker" id="unesco-label">{% if is_fr %}Réserve de Biosphère UNESCO{% else %}UNESCO Biosphere Reserve{% endif %}</p>
+    <div class="unesco-grid">
+      <div class="unesco-body">
+        {% if is_fr %}
+        <p>Toute la Martinique est classée <strong>Réserve de Biosphère par l'UNESCO</strong> depuis 2021 — un des 784 territoires reconnus dans le monde pour leur biodiversité exceptionnelle et leur engagement en faveur d'un développement durable.</p>
+        <p>Les Vendredis s'inscrit dans cette démarche : jardin tropical, forêt sèche de Montravail, sentiers et rivières à proximité, construction artisanale intégrée au paysage.</p>
+        <p class="unesco-source"><a href="https://www.unesco.org/en/mab/martinique" target="_blank" rel="noopener">Fiche officielle Martinique sur le site de l'UNESCO →</a></p>
+        {% else %}
+        <p>The entire island of Martinique is a <strong>UNESCO Biosphere Reserve</strong> since 2021 — one of 784 sites worldwide recognised for exceptional biodiversity and commitment to sustainable development.</p>
+        <p>Les Vendredis is part of this story: a tropical garden, the Montravail dry forest, trails and rivers nearby, hand-built and integrated into the landscape.</p>
+        <p class="unesco-source"><a href="https://www.unesco.org/en/mab/martinique" target="_blank" rel="noopener">Official Martinique page on the UNESCO website →</a></p>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+</div>
