@@ -9,8 +9,12 @@
   {% assign alternate_fr_url = '' %}
   {% if page.translation_key %}
     {% for post in site.posts %}
-      {% if post.translation_key == page.translation_key and post.lang != 'fr' %}
-        {% assign alternate_en_url = post.url | absolute_url %}
+      {% if post.translation_key == page.translation_key %}
+        {% if post.lang == 'fr' %}
+          {% assign alternate_fr_url = post.url | absolute_url %}
+        {% else %}
+          {% assign alternate_en_url = post.url | absolute_url %}
+        {% endif %}
       {% endif %}
     {% endfor %}
     {% for site_page in site.pages %}
