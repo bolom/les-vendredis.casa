@@ -5,8 +5,8 @@ summary: "We'd been saying it since last year. A friend had a fall on it without
 description: "The new wooden deck on the Les Vendredis A-frame in Martinique: a fast build, fresh timber, first guests, the view onto Diamond Rock, and Easter weekend."
 tag: "Build log"
 date: 2026-05-29
-image: "/public/images/articles/terrasse-bois-outils-cabane-aframe-les-vendredis-06.webp"
-image_alt: "Finished deck, tools still out in front of the cabin"
+image: "/public/images/articles/planches-terrasse-cabane-aframe-chantier-les-vendredis-04.webp"
+image_alt: "New planks laid out during the build"
 lang: "en"
 translation_key: "le-deck-est-fait"
 published: true

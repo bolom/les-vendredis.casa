@@ -5,8 +5,8 @@ summary: "On le disait depuis l'année dernière. Une amie a fait une chute dess
 description: "Le nouveau deck en bois de la cabane A-frame Les Vendredis : chantier express, bois frais, premiers guests, vue sur le Rocher du Diamant et weekend de Pâques."
 tag: "Build log"
 date: 2026-05-29
-image: "/public/images/articles/terrasse-bois-outils-cabane-aframe-les-vendredis-06.webp"
-image_alt: "Deck terminé, outils encore posés devant la cabane A-frame"
+image: "/public/images/articles/planches-terrasse-cabane-aframe-chantier-les-vendredis-04.webp"
+image_alt: "Planches neuves alignées pendant la pose du deck"
 lang: "fr"
 translation_key: "le-deck-est-fait"
 published: true
