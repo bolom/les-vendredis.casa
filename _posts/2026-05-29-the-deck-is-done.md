@@ -53,7 +53,7 @@ They left on Monday and wrote this:
 
 The week kept the same rhythm.
 
-Thursday: planting, harvesting maracudja and breadfruit. A BBQ where everyone brought something.
+Thursday: planting, harvesting maracudja and breadfruit. A quiet lunch, just us.
 
 ![Passion fruit freshly harvested on the ground]({{ '/public/images/articles/maracudja-recolte-01.webp' | relative_url }})
 

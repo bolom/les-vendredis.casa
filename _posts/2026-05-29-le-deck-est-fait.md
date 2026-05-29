@@ -53,7 +53,7 @@ Ils sont repartis le lundi en laissant ça :
 
 La semaine a continué dans le même élan.
 
-Jeudi : plantations, récolte de maracudja et de fruits à pain. Un BBQ où chacun a ramené quelque chose.
+Jeudi : plantations, récolte de maracudja et de fruits à pain. Un déjeuner tranquille, juste nous.
 
 ![Maracudja fraîchement récolté sur le sol]({{ '/public/images/articles/maracudja-recolte-01.webp' | relative_url }})
 
