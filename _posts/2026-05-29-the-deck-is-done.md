@@ -43,7 +43,7 @@ Not perfect. Built by hand, on time, solid. With the smell of fresh wood that ch
 
 ![Laying the deck with greenery and the sea behind]({{ '/public/images/articles/pose-terrasse-bois-vue-mer-les-vendredis-05.webp' | relative_url }})
 
-The next day at 3pm, our first guests arrived. Deck still pale, still some construction dust in the corners. Just in time for the Easter weekend.
+The next day at 3pm, our first guests arrived. Deck still pale, still some construction dust in the corners. Just in time for the long weekend.
 
 ![Finished deck, tools still out in front of the cabin]({{ '/public/images/articles/terrasse-bois-outils-cabane-aframe-les-vendredis-06.webp' | relative_url }})
 

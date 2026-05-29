@@ -43,7 +43,7 @@ Pas parfait. Fait à la main, à temps, solide. Avec l'odeur de bois frais qui c
 
 ![Pose du deck avec la végétation et la mer en arrière-plan]({{ '/public/images/articles/pose-terrasse-bois-vue-mer-les-vendredis-05.webp' | relative_url }})
 
-Le lendemain à 15h, les premiers guests arrivaient. Deck encore clair, encore de la poussière de chantier dans les coins. Juste à temps pour le weekend de Pâques.
+Le lendemain à 15h, les premiers guests arrivaient. Deck encore clair, encore de la poussière de chantier dans les coins. Juste à temps pour le long weekend.
 
 ![Deck terminé, outils encore posés devant la cabane]({{ '/public/images/articles/terrasse-bois-outils-cabane-aframe-les-vendredis-06.webp' | relative_url }})
 
