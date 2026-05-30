@@ -91,15 +91,11 @@
       const year  = d.getFullYear();
       const month = d.getMonth();
 
-      const legend   = lang === 'fr' ? '• jours libres' : '• available days';
-      const noteText = lang === 'fr'
-        ? 'Synchronisé avec les réservations directes, Airbnb et Booking.'
-        : 'Synced with direct bookings, Airbnb, and Booking.';
+      const legend = lang === 'fr' ? '• jours libres' : '• available days';
 
       container.innerHTML = `
         ${renderMonth(year, month, availMap, lang, offset, maxOffset)}
-        <p class="cal-legend">${legend}</p>
-        <p class="cal-note">${noteText}</p>`;
+        <p class="cal-legend">${legend}</p>`;
 
       container.querySelectorAll('.cal-arrow').forEach(btn => {
         btn.addEventListener('click', () => {
