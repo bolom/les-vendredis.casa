@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: 'en' }}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="{{ page.description | strip_html | strip_newlines | escape }}">
+  <link rel="canonical" href="{{ page.canonical_url | default: page.url | absolute_url }}">
+  <link rel="icon" type="image/svg+xml" href="{{ '/public/favicon.svg' | relative_url }}">
+  <link rel="apple-touch-icon" href="{{ '/public/favicon.svg' | relative_url }}">
+  <meta name="theme-color" content="#FDF6E3">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/nous.css' | relative_url }}">
+  {% include google-analytics.html %}
+  {% seo %}
+</head>
+<body class="nous-page">
+  <main>
+    {{ content }}
+  </main>
+  <script src="{{ '/assets/js/topbar.js' | relative_url }}"></script>
+</body>
+</html>
