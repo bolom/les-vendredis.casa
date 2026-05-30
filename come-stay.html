@@ -11,6 +11,7 @@ translation_key: come-stay
 noindex: true
 scripts:
   - email-protect
+  - availability
 ---
 
 <article class="manifesto">
@@ -79,6 +80,8 @@ scripts:
         <p><a href="https://wa.me/33666535289?text=Hi%20!%20I%27d%20love%20to%20come%20to%20Les%20Vendredis%20%E2%80%94%20could%20we%20chat%20about%20a%20stay%20?" target="_blank" rel="noopener">WhatsApp →</a></p>
       </div>
       <div class="manifesto-close-right">
+        <div id="availability-cal" class="availability-cal" data-availability-url="https://api.lesvendredis.casa/availability" aria-live="polite"></div>
+        <p class="manifesto-calendar-note">Live availability shown from our merged calendar.</p>
         <ul class="manifesto-facts">
           <li>From 150 €/night, direct.</li>
           <li>One night possible depending on dates. Two nights to really slow down.</li>

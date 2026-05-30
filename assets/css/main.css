@@ -1162,18 +1162,108 @@ h1 em { font-style: italic; font-weight: 400; color: var(--accent); }
   padding-bottom: 6px;
   font-weight: 500;
 }
+.availability-cal {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  border: 1px solid var(--rule);
+  padding: 18px;
+  background: rgba(248, 241, 228, 0.42);
+}
+.cal-note,
+.manifesto-calendar-note {
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--muted);
+  margin: 0;
+}
+.cal-wrap {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+.cal-month {
+  border: 1px solid var(--rule);
+  padding: 12px;
+  background: rgba(255,255,255,.45);
+}
+.cal-month-name {
+  font-family: var(--serif);
+  font-size: 18px;
+  color: var(--ink);
+  margin-bottom: 10px;
+}
+.cal-grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 6px;
+}
+.cal-day {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 34px;
+  font-size: 13px;
+  color: var(--ink);
+  border: 1px solid rgba(34,34,34,.08);
+  background: rgba(255,255,255,.7);
+}
+.cal-empty {
+  border-color: transparent;
+  background: transparent;
+}
+.cal-past {
+  opacity: .35;
+}
+.cal-available {
+  background: rgba(102, 150, 92, .18);
+}
+.cal-booked {
+  background: rgba(184, 95, 74, .18);
+  color: var(--ink-soft);
+}
+.cal-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.cal-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--muted);
+}
+.cal-swatch {
+  width: 12px;
+  height: 12px;
+  border: 1px solid rgba(34,34,34,.08);
+}
+.cal-swatch-avail {
+  background: rgba(102, 150, 92, .18);
+}
+.cal-swatch-booked {
+  background: rgba(184, 95, 74, .18);
+}
 /* ── come stay (home booking) ── */
 .come-stay {
   border-top: 1px solid var(--rule);
   padding: clamp(56px, 8vw, 96px) 0;
 }
 .come-stay-inner {
-  max-width: 680px;
+  max-width: 1120px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(320px, .9fr);
+  gap: clamp(28px, 4vw, 48px);
+  align-items: start;
 }
 .come-stay-text {
   display: flex;
   flex-direction: column;
   gap: clamp(16px, 2vw, 24px);
+}
+.come-stay-calendar {
+  min-width: 0;
 }
 .come-stay-h2 {
   font-family: var(--serif);
@@ -1219,6 +1309,15 @@ h1 em { font-style: italic; font-weight: 400; color: var(--accent); }
   transition: color .2s;
 }
 .come-stay-alt a:hover { color: var(--ink); }
+
+@media (max-width: 960px) {
+  .cal-wrap {
+    grid-template-columns: 1fr;
+  }
+  .come-stay-inner {
+    grid-template-columns: 1fr;
+  }
+}
 
 /* ── article page ── */
 .article-page {
