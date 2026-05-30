@@ -1416,7 +1416,7 @@ h1 em { font-style: italic; font-weight: 400; color: var(--accent); }
 }
 .nous-cast-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   gap: clamp(24px, 3vw, 48px);
 }
 .nous-cast-member {
@@ -1457,6 +1457,17 @@ h1 em { font-style: italic; font-weight: 400; color: var(--accent); }
 .nous-cast-detail a {
   color: var(--ink-soft);
   border-bottom: 1px solid var(--rule);
+}
+.nous-cast-nox-tag {
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: .15em;
+  color: var(--muted);
+  opacity: .6;
+  margin: 8px 0 0;
+}
+.nous-cast-member--nox .nous-cast-num {
+  color: var(--gold);
 }
 /* Divider */
 .nous-divider {
@@ -1629,6 +1640,9 @@ h1 em { font-style: italic; font-weight: 400; color: var(--accent); }
 }
 .nous-footer-cta a:hover { color: var(--accent); border-color: var(--accent); }
 /* Mobile */
+@media (max-width: 1060px) {
+  .nous-cast-grid { grid-template-columns: repeat(3, 1fr); }
+}
 @media (max-width: 860px) {
   .nous-cast-grid { grid-template-columns: repeat(2, 1fr); }
   .nous-cabane-inner { grid-template-columns: 1fr; }
