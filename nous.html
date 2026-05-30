@@ -1,176 +1,310 @@
 ---
 layout: nous
-title: "La famille Vendredis — Les Vendredis, Sainte-Luce, Martinique"
+title: "Nous — Les Vendredis, Sainte-Luce, Martinique"
 description: "Une A-frame en bois construite à la main. Six occupants. Un jardin tropical. Une histoire de famille."
 lang: fr
 locale: fr_FR
 permalink: /nous/
 ---
-<link rel="stylesheet" href="/assets/css/nous.css">
 
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Josefin+Sans:wght@300;400;500;600&family=Old+Standard+TT:ital@0;1&display=swap" rel="stylesheet" />
 
-<article class="nous">
+<div class="grain"></div>
+<div class="film-frame">
+  <span class="corner tl"></span><span class="corner tr"></span>
+  <span class="corner bl"></span><span class="corner br"></span>
+</div>
 
-  <header class="nous-header">
-    <div class="nous-header-inner">
-      <p class="nous-eyebrow">Dossier nº&nbsp;001</p>
-      <h1 class="nous-h1">La famille<br><em>Vendredis</em></h1>
-      <p class="nous-subhead">Sainte-Luce · Martinique · 2022–</p>
-      <div class="nous-rule"></div>
+<!-- ============ HEADER CARTOUCHE ============ -->
+<header class="cartouche">
+  <div class="inner-border"></div>
+  <span class="corner-diamond cd-tl"></span><span class="corner-diamond cd-tr"></span>
+  <span class="corner-diamond cd-bl"></span><span class="corner-diamond cd-br"></span>
+
+  <div class="reel reveal">Bobine 01 &nbsp;·&nbsp; Présenté en symétrie</div>
+  <div class="presents reveal">Les Vendredis présente</div>
+  <h1 class="maintitle reveal"><span class="loz"></span>NOUS<span class="loz"></span></h1>
+  <p class="tagline reveal">« Des personnes &amp; des bêtes »</p>
+  <div class="place reveal">Sainte-Luce, Martinique</div>
+</header>
+
+<!-- ============ SECTION 1 — LE CASTING ============ -->
+<section class="cast">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-num">01</div>
+      <h2 class="sec-title"><span class="loz"></span>Le Casting<span class="loz"></span></h2>
+      <div class="sec-rule"></div>
     </div>
-  </header>
 
-  <section class="nous-cast">
-    <div class="nous-cast-inner">
-      <h2 class="nous-section-title">Les membres</h2>
-
-      <div class="nous-cast-grid">
-
-        <div class="nous-cast-member">
-          <p class="nous-cast-num">01</p>
-          <p class="nous-cast-name">Anaïs</p>
-          <p class="nous-cast-role">Paysagiste, épouse de Bolo, mère de Léon</p>
-          <p class="nous-cast-detail">Conçut l'ensemble du domaine et en dirigea l'édification entre 2022 et 2024. Dit non d'abord à toute proposition — puis y va, méthodiquement. Râle souvent, change d'avis une fois par saison, lentement mais définitivement. A transformé une terre rouge et nue en cabane, puis en verger. Porte rarement des gants au jardin.</p>
+    <div class="cast-grid">
+      <!-- Anaïs -->
+      <article class="cast-card reveal">
+        <div class="cast-frame" style="--accent:var(--pink)">
+          <img src="{{ '/public/images/anais-leon-petit-dejeuner-fruits-les-vendredis.webp' | relative_url }}" alt="Anaïs" loading="lazy" />
         </div>
+        <div class="cast-id">01 — Anaïs</div>
+        <div class="cast-role">Conceptrice &amp; maître d'œuvre</div>
+        <div class="mini-rule"></div>
+        <p class="cast-bio">Dit non d'abord, puis y va. A tout dessiné depuis la terre rouge nue : la cabane, le jardin, les chemins.</p>
+        <div class="loz-rule"><span class="line"></span><span class="loz"></span><span class="line"></span></div>
+      </article>
 
-        <div class="nous-cast-member">
-          <p class="nous-cast-num">02</p>
-          <p class="nous-cast-name">Bolo</p>
-          <p class="nous-cast-role">Informaticienne, directrice technique (ScionX), épouse d'Anaïs</p>
-          <p class="nous-cast-detail">Programmeuse de profession, manœuvre par alliance. Passe la débroussailleuse le samedi matin, répond aux mails le samedi après-midi. Auteure d'un nombre considérable d'idées et d'un nombre plus modeste de réalisations — ce qui, selon ses propres mots, relève d'un choix éditorial. Tient la maison avec Anaïs depuis le début, sans friction notable sur les sujets importants.</p>
+      <!-- Bolo -->
+      <article class="cast-card reveal">
+        <div class="cast-frame" style="--accent:var(--sky)">
+          <span class="placeholder" style="color:var(--sky)">B</span>
         </div>
+        <div class="cast-id">02 — Bolo</div>
+        <div class="cast-role">Co-bâtisseur</div>
+        <div class="mini-rule"></div>
+        <p class="cast-bio">Mesure deux fois, scie une fois. Tient l'autre bout de la planche, sans jamais se plaindre.</p>
+        <div class="loz-rule"><span class="line"></span><span class="loz"></span><span class="line"></span></div>
+      </article>
 
-        <div class="nous-cast-member">
-          <p class="nous-cast-num">03</p>
-          <p class="nous-cast-name">Léon</p>
-          <p class="nous-cast-role">Fils d'Anaïs, 8 ans</p>
-          <p class="nous-cast-detail">Avait cinq ans à la pose de la première pierre. Grandit au rythme exact du chantier — les deux furent achevés ensemble. Collectionne les mangues tombées et les classe par ordre de maturité. Connaît le nom de chaque arbre du domaine mais ne le dit jamais deux fois de la même façon.</p>
+      <!-- Léon -->
+      <article class="cast-card reveal">
+        <div class="cast-frame" style="--accent:var(--mustard)">
+          <span class="placeholder" style="color:var(--mustard)">L</span>
         </div>
+        <div class="cast-id">03 — Léon</div>
+        <div class="cast-role">Au générique</div>
+        <div class="mini-rule"></div>
+        <p class="cast-bio">Présent à chaque plan, rarement immobile. Connaît tous les raccourcis du domaine.</p>
+        <div class="loz-rule"><span class="line"></span><span class="loz"></span><span class="line"></span></div>
+      </article>
 
-        <div class="nous-cast-member">
-          <p class="nous-cast-num">04</p>
-          <p class="nous-cast-name">Samsam</p>
-          <p class="nous-cast-role">Chienne, recueillie en 2019</p>
-          <p class="nous-cast-detail">Arrivée un samedi, dont elle tient son nom. Anaïs émit d'abord des réserves, levées sans appel dans les quarante-huit heures. Veille sur le domaine avec une autorité discrète. N'aboie jamais sans raison.</p>
+      <!-- Samsam -->
+      <article class="cast-card reveal">
+        <div class="cast-frame" style="--accent:var(--sage)">
+          <span class="placeholder" style="color:var(--sage)">S</span>
         </div>
+        <div class="cast-id">04 — Samsam</div>
+        <div class="cast-role">Chef de la sécurité (canin)</div>
+        <div class="mini-rule"></div>
+        <p class="cast-bio">Veille sur le jardin depuis son poste à l'ombre. N'aboie, en principe, que pour les iguanes.</p>
+        <div class="loz-rule"><span class="line"></span><span class="loz"></span><span class="line"></span></div>
+      </article>
 
-        <div class="nous-cast-member">
-          <p class="nous-cast-num">05</p>
-          <p class="nous-cast-name">Dimdim</p>
-          <p class="nous-cast-role">Coq, sans affectation officielle</p>
-          <p class="nous-cast-detail">Banni de la basse-cour supérieure dans des circonstances que personne ne relate plus. Entreprit la descente seul. S'attacha à Samsam qu'il escorte à distance réglementaire — un mètre cinquante, approximativement. Réside dans l'arbre à pain. N'a, à ce jour, exprimé aucun regret audible.</p>
+      <!-- Dimdim -->
+      <article class="cast-card reveal">
+        <div class="cast-frame" style="--accent:var(--coral)">
+          <span class="placeholder" style="color:var(--coral)">D</span>
         </div>
+        <div class="cast-id">05 — Dimdim</div>
+        <div class="cast-role">Réveil officiel (le coq)</div>
+        <div class="mini-rule"></div>
+        <p class="cast-bio">Annonce l'aube avec une ponctualité tout à fait discutable. Exige un plan centré.</p>
+        <div class="loz-rule"><span class="line"></span><span class="loz"></span><span class="line"></span></div>
+      </article>
 
-        <div class="nous-cast-member nous-cast-member--nox">
-          <p class="nous-cast-num">06</p>
-          <p class="nous-cast-name">Nox</p>
-          <p class="nous-cast-role">Assistant exécutif, jamais sur les lieux</p>
-          <p class="nous-cast-detail">Intelligence artificielle rattachée au domaine depuis 2026. Tient la correspondance, les écrans et le SEO pendant que les autres tiennent la terre. Propose des itinéraires, rédige des messages, n'ordonne jamais. Signe invariablement de son nom, même quand personne ne le lui demande.</p>
-          <p class="nous-cast-nox-tag">— intelligence artificielle</p>
+      <!-- Nox -->
+      <article class="cast-card reveal">
+        <div class="cast-frame" style="--accent:var(--lavender)">
+          <span class="placeholder" style="color:var(--lavender)">N</span>
         </div>
-
-      </div>
+        <div class="cast-id">06 — Nox</div>
+        <div class="cast-role">Ombre de la maison</div>
+        <div class="mini-rule"></div>
+        <p class="cast-bio">Intelligence artificielle du domaine. Tient la correspondance, les écrans et le SEO pendant que les autres tiennent la terre.</p>
+        <div class="loz-rule"><span class="line"></span><span class="loz"></span><span class="line"></span></div>
+      </article>
     </div>
-  </section>
-
-  <div class="nous-divider">
-    <span class="nous-divider-mark">◇</span>
   </div>
+</section>
 
-  <section class="nous-cabane">
-    <div class="nous-cabane-inner">
-      <div class="nous-cabane-label">
-        <h2 class="nous-section-title">La bâtisse</h2>
-        <p class="nous-cabane-spec">Type&nbsp;: A-frame<br>Construction&nbsp;: à la main<br>Chantier&nbsp;: 2022–2024<br>Altitude&nbsp;: 250&nbsp;mètres<br>Surface&nbsp;: 18&nbsp;m² habitables<br>Jardin&nbsp;: 600&nbsp;m² privatifs<br>Terrain&nbsp;: familial</p>
+<!-- ============ SECTION 2 — LA BÂTISSE ============ -->
+<section class="batisse">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-num">02</div>
+      <h2 class="sec-title"><span class="loz"></span>De la Bâtisse<span class="loz"></span></h2>
+      <div class="sec-rule"></div>
+    </div>
+
+    <div class="batisse-cols">
+      <div class="photo-frame reveal">
+        <img src="{{ '/public/images/cabane-aframe-ouverte-jardin-tropical-sainte-luce.webp' | relative_url }}" alt="La cabane A-frame, vue de face" loading="lazy" />
       </div>
-      <div class="nous-cabane-text">
-        <p>Une cabane A-frame, montée à la main dans les hauteurs de Sainte-Luce. Anaïs en conçut les plans sur une table de jardin, un soir de mars&nbsp;2022, et en mena l'édification avec l'aide d'un charpentier et d'amis venus prêter main-forte certains week-ends.</p>
-        <p>Dehors&nbsp;: un préau couvert, une douche solaire nichée dans les rochers, le jardin tout autour. Pas de climatisation. La hauteur du pignon — six mètres quarante — et les alizés suffisent à l'aération naturelle, été comme hiver.</p>
-        <p>À l'intérieur&nbsp;: un lit en mezzanine sous le pignon, une cuisine équipée ouverte sur le jardin, des draps en lin, des serviettes pliées. Une maison vivante, imparfaite, habitée.</p>
+
+      <div class="fiche reveal">
+        <div class="fiche-tag">Fiche technique</div>
+        <h3 class="fiche-title">La Cabane</h3>
+        <div class="spec-row"><span class="k">Type</span><span class="dots"></span><span class="v">A-frame</span></div>
+        <div class="spec-row"><span class="k">Construction</span><span class="dots"></span><span class="v">À la main</span></div>
+        <div class="spec-row"><span class="k">Chantier</span><span class="dots"></span><span class="v">2022 – 2024</span></div>
+        <div class="spec-row"><span class="k">Lieu</span><span class="dots"></span><span class="v">Hauteurs de Sainte-Luce</span></div>
+        <div class="spec-row"><span class="k">Terrain</span><span class="dots"></span><span class="v">Familial</span></div>
+
+        <div class="fiche-divider"></div>
+        <div class="plan-cap">Élévation — façade sud</div>
+        <div class="plan">
+          <svg viewBox="0 0 200 170" fill="none" stroke="#5C4033" stroke-width="1.5">
+            <!-- dimension line -->
+            <line x1="20" y1="14" x2="180" y2="14" stroke-dasharray="0"/>
+            <line x1="20" y1="9" x2="20" y2="19"/>
+            <line x1="180" y1="9" x2="180" y2="19"/>
+            <!-- A-frame -->
+            <path d="M100 22 L182 150 L18 150 Z"/>
+            <!-- inner ridge lines -->
+            <path d="M100 22 L100 150" stroke-dasharray="4 4" opacity="0.5"/>
+            <path d="M65 150 L100 56 L135 150" opacity="0.7"/>
+            <!-- door -->
+            <rect x="86" y="112" width="28" height="38"/>
+            <line x1="100" y1="112" x2="100" y2="150" opacity="0.5"/>
+            <!-- window diamond -->
+            <rect x="91" y="74" width="18" height="18" transform="rotate(45 100 83)"/>
+            <!-- ground -->
+            <line x1="6" y1="150" x2="194" y2="150" stroke-width="2"/>
+          </svg>
+        </div>
       </div>
     </div>
-  </section>
 
-  <div class="nous-divider">
-    <span class="nous-divider-mark">◇</span>
+    <p class="batisse-quote reveal">« Une cabane A-frame, montée à la main, à flanc de colline — pièce par pièce, planche après planche. »</p>
   </div>
+</section>
 
-  <section class="nous-jardin">
-    <div class="nous-jardin-inner">
-      <h2 class="nous-section-title">Le jardin</h2>
-      <p class="nous-jardin-intro">Créé par Anaïs à partir de terre rouge nue, de rochers volcaniques et de patience. Bolo passe la débroussailleuse chaque semaine et aide aux plantations le dimanche. Les murs de soutènement furent taillés dans la roche, sur place, à la main.</p>
+<!-- ============ SECTION 3 — LE JARDIN ============ -->
+<section class="jardin">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-num">03</div>
+      <h2 class="sec-title"><span class="loz"></span>Du Jardin &amp; de ses Pensionnaires<span class="loz"></span></h2>
+      <div class="sec-rule"></div>
+    </div>
 
-      <div class="nous-jardin-inventory">
-        <div class="nous-jardin-col">
-          <p class="nous-jardin-col-title">Ce qui se mange</p>
-          <ul>
-            <li>Mangue (variété Julie)</li>
-            <li>Goyave</li>
-            <li>Papaye</li>
-            <li>Fruit de la passion</li>
-            <li>Banane plantain</li>
-          </ul>
+    <div class="jardin-cols">
+      <div class="herb reveal">
+        <div class="herb-ill">
+          <svg viewBox="0 0 60 80" fill="none" stroke="currentColor" stroke-width="1.6">
+            <path d="M30 78 L30 24"/>
+            <path d="M30 50 C12 46 8 30 14 18 C28 22 32 38 30 50"/>
+            <path d="M30 40 C48 36 52 20 46 8 C32 12 28 28 30 40"/>
+            <path d="M30 30 C18 27 15 16 19 8 C28 11 31 22 30 30" opacity="0.6"/>
+          </svg>
         </div>
-        <div class="nous-jardin-col">
-          <p class="nous-jardin-col-title">Ce qui se regarde</p>
-          <ul>
-            <li>Anthurium rouge</li>
-            <li>Flamboyant</li>
-            <li>Heliconia</li>
-            <li>Bougainvillée</li>
-            <li>Hibiscus</li>
-          </ul>
+        <h3 class="herb-title">Ce qui pousse</h3>
+        <div class="herb-sub">Planche I</div>
+        <ul>
+          <li>Mangue</li><li>Goyave</li><li>Papaye</li>
+          <li>Fruit de la passion</li><li>Banane</li>
+        </ul>
+      </div>
+
+      <div class="herb reveal">
+        <div class="herb-ill">
+          <svg viewBox="0 0 60 80" fill="none" stroke="currentColor" stroke-width="1.6">
+            <path d="M30 78 L30 34"/>
+            <circle cx="30" cy="22" r="7"/>
+            <ellipse cx="30" cy="9" rx="6" ry="10"/>
+            <ellipse cx="42" cy="18" rx="6" ry="10" transform="rotate(60 42 18)"/>
+            <ellipse cx="44" cy="32" rx="6" ry="10" transform="rotate(120 44 32)"/>
+            <ellipse cx="18" cy="18" rx="6" ry="10" transform="rotate(-60 18 18)"/>
+            <ellipse cx="16" cy="32" rx="6" ry="10" transform="rotate(-120 16 32)"/>
+            <path d="M30 52 q-10 2 -14 -6" opacity="0.6"/>
+          </svg>
         </div>
-        <div class="nous-jardin-col">
-          <p class="nous-jardin-col-title">Ce qui reste</p>
-          <ul>
-            <li>Deux hamacs</li>
-            <li>Des coins d'ombre</li>
-            <li>Beaucoup de lézards</li>
-            <li>Samsam, postée à l'affût</li>
-            <li>Dimdim, en patrouille</li>
-          </ul>
+        <h3 class="herb-title">Ce qui fleurit</h3>
+        <div class="herb-sub">Planche II</div>
+        <ul>
+          <li>Anthurium</li><li>Flamboyant</li>
+          <li>Héliconia</li><li>Bougainvillée</li>
+        </ul>
+      </div>
+
+      <div class="herb reveal">
+        <div class="herb-ill">
+          <svg viewBox="0 0 60 80" fill="none" stroke="currentColor" stroke-width="1.6">
+            <circle cx="30" cy="30" r="13"/>
+            <g stroke-width="1.4">
+              <line x1="30" y1="6" x2="30" y2="13"/>
+              <line x1="30" y1="47" x2="30" y2="54"/>
+              <line x1="6" y1="30" x2="13" y2="30"/>
+              <line x1="47" y1="30" x2="54" y2="30"/>
+              <line x1="13" y1="13" x2="18" y2="18"/>
+              <line x1="42" y1="42" x2="47" y2="47"/>
+              <line x1="47" y1="13" x2="42" y2="18"/>
+              <line x1="18" y1="42" x2="13" y2="47"/>
+            </g>
+            <path d="M14 70 q16 -10 32 0" opacity="0.6"/>
+          </svg>
         </div>
+        <h3 class="herb-title">Le reste du décor</h3>
+        <div class="herb-sub">Planche III</div>
+        <ul>
+          <li>Des hamacs</li><li>Des coins d'ombre</li>
+          <li>Beaucoup de lézards</li><li>Samsam, qui veille</li>
+        </ul>
       </div>
     </div>
-  </section>
 
-  <div class="nous-divider">
-    <span class="nous-divider-mark">◇</span>
+    <p class="jardin-quote reveal">« Créé par Anaïs à partir de terre rouge nue et de rochers volcaniques. »</p>
   </div>
+</section>
 
-  <section class="nous-lieu">
-    <div class="nous-lieu-inner">
-      <h2 class="nous-section-title">Les environs</h2>
-      <div class="nous-lieu-grid">
-        <div class="nous-lieu-item">
-          <p class="nous-lieu-label">La forêt de Montravail</p>
-          <p>À pied depuis la cabane. Vieux acajous, beaucoup d'ombre, des sentiers tracés. Silencieuse. Idéale pour une promenade avant le petit déjeuner.</p>
-        </div>
-        <div class="nous-lieu-item">
-          <p class="nous-lieu-label">Les Roches Gravées</p>
-          <p>Vingt minutes à pied. Visages amérindiens taillés dans l'andésite, classés monument historique en&nbsp;1996. L'un des trois sites d'art rupestre précolombien des Antilles.</p>
-        </div>
-        <div class="nous-lieu-item">
-          <p class="nous-lieu-label">Le bourg de Sainte-Luce</p>
-          <p>À quelques kilomètres. La ligne&nbsp;22 relie l'arrêt Montravail (5&nbsp;minutes à pied) au centre en 20&nbsp;minutes pour 1,50&nbsp;€. La plage est accessible en bus. La voiture reste utile pour explorer le sud.</p>
-        </div>
-        <div class="nous-lieu-item">
-          <p class="nous-lieu-label">L'aéroport Aimé Césaire</p>
-          <p>Vingt-deux kilomètres. Environ vingt-quatre minutes en voiture par la RN5 puis la N8 — ou une heure trente en transport, avec correspondance au terminal de Dillon.</p>
-        </div>
-      </div>
+<!-- ============ SECTION 4 — DES ENVIRONS ============ -->
+<section class="environs">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-num">04</div>
+      <h2 class="sec-title"><span class="loz"></span>Des Environs<span class="loz"></span></h2>
+      <div class="sec-rule"></div>
     </div>
-  </section>
 
-  <footer class="nous-footer">
-    <div class="nous-footer-inner">
-      <p class="nous-footer-line">La cabane fut construite à la main entre le printemps&nbsp;2022 et l'été&nbsp;2024.</p>
-      <p class="nous-footer-line">Elle ouvre ses portes quand la famille n'y demeure pas.</p>
-      <div class="nous-footer-cta">
-        <a href="/fr/venir-dormir/">Venir dormir →</a>
-      </div>
+    <div class="map-card reveal">
+      <ol class="metro">
+        <li class="stop start">
+          <span class="dot star">★</span>
+          <div class="stop-txt"><b>Les Vendredis</b><i>vous êtes ici</i></div>
+        </li>
+        <li class="stop">
+          <span class="dot" style="--c:var(--sage)"></span>
+          <div class="stop-txt"><b>Forêt de Montravail</b><i>5 min à pied</i></div>
+        </li>
+        <li class="stop">
+          <span class="dot" style="--c:var(--coral)"></span>
+          <div class="stop-txt"><b>Roches Gravées</b><i>20 min à pied</i></div>
+        </li>
+        <li class="stop">
+          <span class="dot" style="--c:var(--mustard)"></span>
+          <div class="stop-txt"><b>Le bourg</b><i>20 min en bus · 1,50 €</i></div>
+        </li>
+        <li class="stop">
+          <span class="dot" style="--c:var(--sky)"></span>
+          <div class="stop-txt"><b>Plage de Sainte-Luce</b><i>en bus</i></div>
+        </li>
+      </ol>
     </div>
-  </footer>
+  </div>
+</section>
 
-</article>
+<!-- ============ FOOTER ============ -->
+<footer class="fin">
+  <div class="inner-border"></div>
+  <div class="fin-word reveal"><span class="loz"></span>FIN<span class="loz"></span></div>
+  <div class="fin-credit reveal">Une production familiale · Sainte-Luce, Martinique</div>
+  <div class="fin-reel reveal">Bobine 01 — « Nous »</div>
+  <div class="fin-cta reveal">
+    <a href="/fr/venir-dormir/">Venir dormir →</a>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach((e)=>{
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold:0.12, rootMargin:'0px 0px -8% 0px' });
+
+  document.querySelectorAll('.reveal').forEach((el,i)=>{
+    io.observe(el);
+  });
+
+  // stagger grid children
+  document.querySelectorAll('.cast-grid .reveal, .jardin-cols .reveal').forEach((el,i)=>{
+    el.style.transitionDelay = (i % 3) * 0.1 + 's';
+  });
+</script>
