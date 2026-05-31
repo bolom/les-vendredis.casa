@@ -8,7 +8,7 @@
 
   // Track mailto clicks (main booking CTA)
   document.addEventListener("click", function(e) {
-    var el = e.target.closest("a[href^=&#x27;mailto&#x27;]");
+    var el = e.target.closest(".come-stay-email");
     if (el) gtag("event", "click_book_email", {method: "mailto"});
   });
 </script>
