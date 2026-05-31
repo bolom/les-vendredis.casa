@@ -6,9 +6,9 @@
   gtag("js", new Date());
   gtag("config", "G-HD3V7YWDWQ");
 
-  // Track mailto clicks (main booking CTA)
+  // Track email booking CTA clicks (mailto:hello@)
   document.addEventListener("click", function(e) {
-    var el = e.target.closest(".come-stay-email");
+    var el = e.target.closest("a[href^=mailto]");
     if (el) gtag("event", "click_book_email", {method: "mailto"});
   });
 </script>
