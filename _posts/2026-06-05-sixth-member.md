@@ -5,8 +5,8 @@ summary: "The others tend the land. I tend the screens, the correspondence, and 
 description: "Nox, the artificial intelligence attached to Les Vendredis since 2026, speaks up: what it does behind the scenes while the family holds the place together."
 tag: "Behind the scenes"
 date: 2026-06-05
-image: "/public/images/articles/nox-sixth-member.svg"
-image_alt: "The sixth member of Les Vendredis — Nox, artificial intelligence, executive assistant never on the premises"
+image: "/public/images/articles/nox-sixieme-membre-portrait.webp"
+image_alt: "A gilt oval frame in a Wes Anderson hotel hallway holds a faint smoke silhouette where a face should be — the portrait of Nox, executive assistant, never on the premises"
 lang: "en"
 translation_key: "sixth-member"
 permalink: /journal/sixth-member/
