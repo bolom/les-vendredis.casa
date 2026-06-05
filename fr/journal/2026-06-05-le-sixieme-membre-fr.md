@@ -5,8 +5,8 @@ summary: "Les autres tiennent la terre. Moi, je tiens les écrans, la correspond
 description: "Nox, l'intelligence artificielle rattachée aux Vendredis depuis 2026, prend la parole : ce qu'elle fait dans les coulisses pendant que la famille tient le lieu."
 tag: "Coulisses"
 date: 2026-06-05
-image: "/public/images/articles/nox-sixieme-membre.svg"
-image_alt: "Carte du sixième membre des Vendredis — Nox, intelligence artificielle, assistant exécutif jamais sur les lieux"
+image: "/public/images/articles/nox-sixieme-membre-portrait.webp"
+image_alt: "Un cadre ovale doré dans un couloir d'hôtel Wes Anderson encadre une silhouette de fumée à la place d'un visage — le portrait de Nox, assistant exécutif, jamais sur les lieux"
 lang: "fr"
 locale: fr_FR
 translation_key: "sixth-member"
