@@ -31,5 +31,6 @@ exclude:
   - README.md
   - Gemfile
   - Gemfile.lock
+  - vendor
   - docs
   - skills
