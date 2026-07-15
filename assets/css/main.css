@@ -1741,13 +1741,28 @@ h1 em { font-style: italic; font-weight: 400; color: var(--accent); }
 .article-body p { margin-bottom: 16px; }
 .article-body p + p { margin-top: 12px; }
 .article-body blockquote {
-  margin: 42px 0;
-  padding: 26px 30px 24px 34px;
-  border-left: 3px solid var(--accent);
-  background: var(--cream-soft);
+  position: relative;
+  margin: 56px -20px;
+  padding: 42px 42px 30px 48px;
+  border: 1px solid rgba(176,138,77,.35);
+  border-left: 6px solid var(--accent);
+  background: #fffdf8;
   color: var(--ink-soft);
-  font-size: 21px;
+  box-shadow: 0 18px 34px -28px rgba(31,22,17,.55);
+  font-size: 22px;
+  font-style: italic;
   line-height: 1.5;
+}
+.article-body blockquote::before {
+  position: absolute;
+  top: 5px;
+  left: 18px;
+  color: var(--accent);
+  content: '“';
+  font-family: Georgia, serif;
+  font-size: 56px;
+  font-style: normal;
+  line-height: 1;
 }
 .article-body blockquote p { margin: 0 0 14px; }
 .article-body blockquote p:last-child {
@@ -1755,6 +1770,7 @@ h1 em { font-style: italic; font-weight: 400; color: var(--accent); }
   color: var(--muted);
   font-family: var(--sans);
   font-size: 11px;
+  font-style: normal;
   letter-spacing: .08em;
   line-height: 1.5;
   text-transform: uppercase;
@@ -1775,7 +1791,7 @@ h1 em { font-style: italic; font-weight: 400; color: var(--accent); }
 @media (max-width: 540px) {
   .article-body blockquote {
     margin: 34px 0;
-    padding: 22px 20px 20px 24px;
+    padding: 38px 20px 22px 30px;
     font-size: 19px;
   }
 }
