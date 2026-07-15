@@ -16,9 +16,14 @@ Je suis en déplacement en ce moment, alors Anaïs s'occupe seule des locations.
 
 Cette semaine, Agathe, Bertrand et Héloïse sont repartis. Ils ont fini le rhum, puis ont laissé ce mot sur le plateau :
 
-> *"Chères hôtes, un immense merci pour cet endroit merveilleux que vous mettez à disposition ! Nous avons bien ressenti tout l'amour que vous avez mis dans cette construction et dans l'entretien de ce magnifique jardin. Bravo pour votre talent qui nous a permis de nous reposer et d'apprécier la beauté du lieu.
+> Chères hôtes,
 >
-> À bientôt, Agathe, Bertrand et Héloïse."*
+> Un immense merci pour cet endroit merveilleux que vous mettez à disposition ! Nous avons bien ressenti tout l'amour que vous avez mis dans cette construction et dans l'entretien de ce magnifique jardin.
+>
+> Bravo pour votre talent qui nous a permis de nous reposer et d'apprécier la beauté du lieu.
+>
+> À bientôt,
+> Agathe, Bertrand et Héloïse.
 
 Le jardin n'a pas toujours été un endroit calme pendant sa construction. On s'est disputés pour des outils mal rangés, des plantes abîmées et de petites choses qui semblaient importantes sur le moment. C'est aussi ça, construire un lieu à deux.
 
