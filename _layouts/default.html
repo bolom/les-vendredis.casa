@@ -53,7 +53,7 @@
   <link rel="apple-touch-icon" href="{{ '/public/favicon.svg' | relative_url }}">
   <meta name="theme-color" content="#F8F1E4">
   <meta name="referrer" content="strict-origin-when-cross-origin">
-  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/main.css?v=20260715-2' | relative_url }}">
   {% if page.image %}
     {% assign hero_webp = page.image | replace: '.jpg', '.webp' | replace: '.jpeg', '.webp' %}
     {% assign hero_preload = hero_webp %}
@@ -88,4 +88,3 @@
   {% endfor %}
 </body>
 </html>
-
