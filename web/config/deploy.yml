@@ -1,0 +1,40 @@
+service: les-vendredis
+image: bolom/les-vendredis
+
+servers:
+  web:
+    - <%= ENV.fetch("KAMAL_INFOMANIAK_HOST", "replace-with-infomaniak-host") %>
+  job:
+    hosts:
+      - <%= ENV.fetch("KAMAL_INFOMANIAK_HOST", "replace-with-infomaniak-host") %>
+    cmd: bin/jobs
+
+proxy:
+  ssl: true
+  host: lesvendredis.casa
+  app_port: 80
+
+registry:
+  username: <%= ENV.fetch("KAMAL_REGISTRY_USER", "bolom") %>
+  password:
+    - KAMAL_REGISTRY_PASSWORD
+
+env:
+  clear:
+    RAILS_ENV: production
+    RAILS_LOG_LEVEL: info
+    APP_HOST: lesvendredis.casa
+    MAIL_FROM: hello@lesvendredis.casa
+  secret:
+    - DATABASE_URL
+    - RAILS_MASTER_KEY
+    - RESEND_API_KEY
+    - SECRET_KEY_BASE
+
+volumes:
+  - "les_vendredis_storage:/rails/storage"
+
+asset_path: /rails/public/assets
+
+builder:
+  arch: amd64

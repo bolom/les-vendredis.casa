@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+echo "== Setup =="
+bin/setup --skip-server
+
+echo "== Ruby style =="
+bin/rubocop
+
+echo "== Gem audit =="
+bin/bundler-audit
+
+echo "== Brakeman =="
+bin/brakeman --quiet --no-pager --exit-on-warn --exit-on-error
+
+echo "== Tests =="
+bin/rails test
+
+echo "== Assets =="
+DATABASE_URL="${DATABASE_URL:-postgres://localhost/les_vendredis_test}" RAILS_ENV=production SECRET_KEY_BASE_DUMMY=1 bin/rails assets:precompile

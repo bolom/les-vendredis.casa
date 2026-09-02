@@ -24,9 +24,10 @@ Build a server-rendered **Rails 8** application on Ruby 3.3+ and PostgreSQL. Use
 | Admin auth | Rails authentication generator or equivalent session-based single-admin auth; no public sign-up |
 | Async work | Active Job + Solid Queue for iCal imports and email delivery |
 | Files | Active Storage for newly uploaded assets; retain legacy public image paths during cutover |
-| Email | Postmark transactional API, configured through protected environment credentials; sender/reply-to remains a product decision before go-live |
-| Hosting | Render web service + Render PostgreSQL + separate worker/cron process; managed backups enabled; object storage selected only when Active Storage requires it |
-| Monitoring | Render health checks plus application error tracking and uptime monitoring, configured during deployment issue #10 |
+| Email | Resend transactional API; sender defaults to `hello@lesvendredis.casa` |
+| Hosting | Infomaniak server managed by Kamal; PostgreSQL backups enabled; object storage selected only when Active Storage requires it |
+| Secrets | 1Password is the source of truth; Kamal injects runtime secrets and no secret values are committed |
+| Monitoring | Kamal/Rails health checks plus application error tracking and uptime monitoring, configured during deployment issue #10 |
 
 No deployment or credential configuration is made by this ADR.
 
@@ -69,7 +70,7 @@ Rules:
 
 ## External calendar handling
 
-Airbnb and Booking iCal feed URLs are credentials. They are stored as protected configuration (for example Render environment credentials or encrypted Rails credentials), not in the database, source tree, logs, issue, PR or test fixtures. Each import records only provider metadata and a non-secret identifier.
+Airbnb and Booking iCal feed URLs are credentials. They are stored in 1Password and injected by Kamal, not in the database, source tree, logs, issue, PR or test fixtures. Each import records only provider metadata and a non-secret identifier.
 
 The import job runs at a conservative periodic interval, validates iCalendar payloads, deduplicates by provider UID plus range fingerprint, and keeps the last known good events if a remote fetch fails. It must never create a direct booking automatically. Manual refresh may be available to the administrator after rate-limit protection.
 
@@ -78,7 +79,7 @@ The import job runs at a conservative periodic interval, validates iCalendar pay
 1. Direct booking begins as a **request**: submission sends acknowledgement/owner emails and remains non-blocking until Bolo confirms it.
 2. The site supports French and English public routes. Locale follows the current URL, not browser-only inference.
 3. The public facts currently stated on the site are the provisional V1 defaults: 2 adults, 1 child, pets welcome; one night only depending on dates; two nights preferred. Final validation rules must be confirmed in issue #13 before enforcement.
-4. Display price is manually editable in admin. The legacy rule “10% below Airbnb, floor EUR70, fallback EUR72” is **not migrated** to V1. It depended on a local competitor database and is retired pending an explicit future pricing decision.
+4. Stay rules and display price are manually editable in admin. No minimum stay is hard-coded in V1. The legacy rule “10% below Airbnb, floor EUR70, fallback EUR72” is **not migrated** to V1. It depended on a local competitor database and is retired pending an explicit future pricing decision.
 5. Legacy x402/EURC payment and associated quote/payment endpoints are **out of scope** for V1. Issue #11 is the only place to decide a payment product later.
 
 ## SEO and compatibility rules
@@ -102,7 +103,7 @@ This removes the personal-machine runtime dependency and makes the direct-bookin
 
 ## Open decisions that block only their named work
 
-- Exact sender/reply-to address and FR/EN email wording: #14.
+- FR/EN email wording: #14.
 - Guest and pet constraints to enforce rather than merely display: #13.
 - Traveller data retention period and privacy wording: #14 before launch.
 - Object-storage provider if media uploads exceed local disk needs: #10.
