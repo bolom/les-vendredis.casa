@@ -10,9 +10,83 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_09_02_182624) do
+ActiveRecord::Schema[8.0].define(version: 2026_09_02_191623) do
   # These are extensions that must be enabled in order to support this database
+  enable_extension "btree_gist"
   enable_extension "pg_catalog.plpgsql"
+
+  create_table "availability_blocks", force: :cascade do |t|
+    t.date "starts_on", null: false
+    t.date "ends_on", null: false
+    t.string "kind", default: "manual_closure", null: false
+    t.string "source", default: "manual", null: false
+    t.string "status", default: "confirmed", null: false
+    t.string "summary"
+    t.text "note"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+
+    t.check_constraint "ends_on > starts_on", name: "availability_blocks_valid_date_range"
+    t.check_constraint "kind::text = ANY (ARRAY['manual_closure'::character varying, 'direct_stay'::character varying]::text[])", name: "availability_blocks_valid_kind"
+    t.check_constraint "source::text = ANY (ARRAY['direct'::character varying, 'manual'::character varying]::text[])", name: "availability_blocks_valid_source"
+    t.check_constraint "status::text = ANY (ARRAY['tentative'::character varying, 'confirmed'::character varying, 'cancelled'::character varying]::text[])", name: "availability_blocks_valid_status"
+    t.exclusion_constraint "daterange(starts_on, ends_on, '[)'::text) WITH &&", where: "(status)::text = ANY ((ARRAY['tentative'::character varying, 'confirmed'::character varying])::text[])", using: :gist, name: "availability_blocks_no_overlap"
+  end
+
+  create_table "booking_inquiries", force: :cascade do |t|
+    t.date "check_in", null: false
+    t.date "check_out", null: false
+    t.integer "adults", default: 2, null: false
+    t.integer "children", default: 0, null: false
+    t.string "guest_name", null: false
+    t.string "email", null: false
+    t.string "phone"
+    t.text "message"
+    t.string "locale", default: "en", null: false
+    t.string "status", default: "new", null: false
+    t.datetime "consent_at"
+    t.datetime "contacted_at"
+    t.datetime "accepted_at"
+    t.datetime "declined_at"
+    t.bigint "availability_block_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["availability_block_id"], name: "index_booking_inquiries_on_availability_block_id"
+    t.check_constraint "adults >= 1", name: "booking_inquiries_adults_positive"
+    t.check_constraint "check_out > check_in", name: "booking_inquiries_valid_date_range"
+    t.check_constraint "children >= 0", name: "booking_inquiries_children_not_negative"
+    t.check_constraint "locale::text = ANY (ARRAY['en'::character varying, 'fr'::character varying]::text[])", name: "booking_inquiries_valid_locale"
+    t.check_constraint "status::text = ANY (ARRAY['new'::character varying, 'contacted'::character varying, 'accepted'::character varying, 'declined'::character varying, 'cancelled'::character varying]::text[])", name: "booking_inquiries_valid_status"
+  end
+
+  create_table "calendar_events", force: :cascade do |t|
+    t.bigint "calendar_import_id", null: false
+    t.string "external_uid", null: false
+    t.date "starts_on", null: false
+    t.date "ends_on", null: false
+    t.string "status", default: "confirmed", null: false
+    t.string "fingerprint", null: false
+    t.datetime "external_updated_at"
+    t.string "summary"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["calendar_import_id", "external_uid"], name: "index_calendar_events_on_calendar_import_id_and_external_uid", unique: true
+    t.index ["calendar_import_id"], name: "index_calendar_events_on_calendar_import_id"
+    t.check_constraint "ends_on > starts_on", name: "calendar_events_valid_date_range"
+    t.check_constraint "status::text = ANY (ARRAY['confirmed'::character varying, 'cancelled'::character varying]::text[])", name: "calendar_events_valid_status"
+  end
+
+  create_table "calendar_imports", force: :cascade do |t|
+    t.string "provider", null: false
+    t.boolean "active", default: true, null: false
+    t.datetime "last_synced_at"
+    t.datetime "last_error_at"
+    t.text "last_error_message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["provider"], name: "index_calendar_imports_on_provider", unique: true
+    t.check_constraint "provider::text = ANY (ARRAY['airbnb'::character varying, 'booking'::character varying]::text[])", name: "calendar_imports_valid_provider"
+  end
 
   create_table "sessions", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -23,6 +97,25 @@ ActiveRecord::Schema[8.0].define(version: 2026_09_02_182624) do
     t.index ["user_id"], name: "index_sessions_on_user_id"
   end
 
+  create_table "stay_rules", force: :cascade do |t|
+    t.integer "minimum_nights"
+    t.integer "maximum_nights"
+    t.integer "maximum_adults", default: 2, null: false
+    t.integer "maximum_children", default: 1, null: false
+    t.boolean "pets_allowed", default: true, null: false
+    t.integer "allowed_check_in_days", array: true
+    t.integer "allowed_check_out_days", array: true
+    t.integer "booking_window_days"
+    t.boolean "active", default: true, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.check_constraint "booking_window_days IS NULL OR booking_window_days >= 1", name: "stay_rules_booking_window_positive"
+    t.check_constraint "maximum_adults >= 1", name: "stay_rules_maximum_adults_positive"
+    t.check_constraint "maximum_children >= 0", name: "stay_rules_maximum_children_not_negative"
+    t.check_constraint "maximum_nights IS NULL OR maximum_nights >= 1", name: "stay_rules_maximum_nights_positive"
+    t.check_constraint "minimum_nights IS NULL OR minimum_nights >= 1", name: "stay_rules_minimum_nights_positive"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email_address", null: false
     t.string "password_digest", null: false
@@ -31,5 +124,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_09_02_182624) do
     t.index ["email_address"], name: "index_users_on_email_address", unique: true
   end
 
+  add_foreign_key "booking_inquiries", "availability_blocks"
+  add_foreign_key "calendar_events", "calendar_imports"
   add_foreign_key "sessions", "users"
 end

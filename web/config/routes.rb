@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root "pages#home"
+  get "availability" => "availability#show"
 
   namespace :admin do
     root "dashboard#show"
