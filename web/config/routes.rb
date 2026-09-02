@@ -1,9 +1,14 @@
 Rails.application.routes.draw do
   root "pages#home"
   get "availability" => "availability#show"
+  resources :booking_inquiries, only: [ :new, :create, :show ], path: "booking-requests"
 
   namespace :admin do
     root "dashboard#show"
+    resources :booking_inquiries, only: [ :index, :show ] do
+      post :accept, on: :member
+      post :decline, on: :member
+    end
     resources :calendar_imports, only: :index do
       post :sync, on: :member
     end

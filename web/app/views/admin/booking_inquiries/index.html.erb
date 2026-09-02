@@ -1,0 +1,22 @@
+<h1>Booking inquiries</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Reference</th>
+      <th>Dates</th>
+      <th>Guest</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @booking_inquiries.each do |booking_inquiry| %>
+      <tr>
+        <td><%= link_to booking_inquiry.public_reference, admin_booking_inquiry_path(booking_inquiry) %></td>
+        <td><%= booking_inquiry.check_in %> - <%= booking_inquiry.check_out %></td>
+        <td><%= booking_inquiry.guest_name %></td>
+        <td><%= booking_inquiry.status %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

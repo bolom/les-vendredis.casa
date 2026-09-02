@@ -1,0 +1,17 @@
+<% if @booking_inquiry.locale == "fr" %>
+Bonjour <%= @booking_inquiry.guest_name %>,
+
+Merci pour votre demande pour Les Vendredis, du <%= @booking_inquiry.check_in %> au <%= @booking_inquiry.check_out %>.
+
+Ce message confirme seulement la bonne réception de votre demande. La réservation n'est pas encore confirmée. Nous vous répondons rapidement.
+
+Référence : <%= @booking_inquiry.public_reference %>
+<% else %>
+Hello <%= @booking_inquiry.guest_name %>,
+
+Thank you for your Les Vendredis request, from <%= @booking_inquiry.check_in %> to <%= @booking_inquiry.check_out %>.
+
+This only confirms that we received your request. Your stay is not confirmed yet. We will reply soon.
+
+Reference: <%= @booking_inquiry.public_reference %>
+<% end %>

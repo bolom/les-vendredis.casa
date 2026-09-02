@@ -1,0 +1,14 @@
+New direct booking request <%= @booking_inquiry.public_reference %>
+
+Dates: <%= @booking_inquiry.check_in %> to <%= @booking_inquiry.check_out %> (<%= @booking_inquiry.nights %> nights)
+Guests: <%= @booking_inquiry.adults %> adults, <%= @booking_inquiry.children %> children
+Name: <%= @booking_inquiry.guest_name %>
+Email: <%= @booking_inquiry.email %>
+Phone: <%= @booking_inquiry.phone.presence || "-" %>
+Locale: <%= @booking_inquiry.locale %>
+
+Message:
+<%= @booking_inquiry.message.presence || "-" %>
+
+Admin:
+<%= admin_booking_inquiry_url(@booking_inquiry) %>
