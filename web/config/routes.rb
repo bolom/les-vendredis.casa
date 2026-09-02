@@ -9,6 +9,10 @@ Rails.application.routes.draw do
       post :accept, on: :member
       post :decline, on: :member
     end
+    resources :availability_blocks, except: :destroy do
+      post :cancel, on: :member
+    end
+    resource :stay_rule, only: [ :edit, :update ]
     resources :calendar_imports, only: :index do
       post :sync, on: :member
     end
