@@ -1,0 +1,7 @@
+proxy:
+  host: staging.lesvendredis.casa
+
+env:
+  clear:
+    RAILS_ENV: staging
+    APP_HOST: staging.lesvendredis.casa

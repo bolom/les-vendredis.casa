@@ -1,0 +1,77 @@
+name: Rails CI
+
+on:
+  pull_request:
+    paths:
+      - "web/**"
+      - ".github/workflows/rails-ci.yml"
+  push:
+    branches: [main]
+    paths:
+      - "web/**"
+      - ".github/workflows/rails-ci.yml"
+
+jobs:
+  rails:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd="pg_isready -U postgres"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
+
+    defaults:
+      run:
+        working-directory: web
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install packages
+        run: sudo apt-get update && sudo apt-get install --no-install-recommends -y libpq-dev libvips
+        working-directory: .
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.3.0
+          bundler-cache: true
+          working-directory: web
+
+      - name: Prepare database
+        env:
+          RAILS_ENV: test
+          DATABASE_URL: postgres://postgres:postgres@localhost:5432/les_vendredis_test
+        run: bin/rails db:test:prepare
+
+      - name: Run tests
+        env:
+          RAILS_ENV: test
+          DATABASE_URL: postgres://postgres:postgres@localhost:5432/les_vendredis_test
+        run: bin/rails test
+
+      - name: Lint Ruby
+        run: bin/rubocop -f github
+
+      - name: Scan Rails security
+        run: bin/brakeman --no-pager
+
+      - name: Audit gems
+        run: bin/bundler-audit
+
+      - name: Compile assets
+        env:
+          RAILS_ENV: production
+          SECRET_KEY_BASE_DUMMY: 1
+          DATABASE_URL: postgres://postgres:postgres@localhost:5432/les_vendredis_test
+        run: bin/rails assets:precompile
