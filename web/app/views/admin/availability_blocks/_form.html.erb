@@ -1,0 +1,22 @@
+<%= form_with model: [:admin, availability_block] do |form| %>
+  <% if availability_block.errors.any? %>
+    <p><%= availability_block.errors.full_messages.to_sentence %></p>
+  <% end %>
+
+  <%= form.label :starts_on %>
+  <%= form.date_field :starts_on, required: true %>
+
+  <%= form.label :ends_on %>
+  <%= form.date_field :ends_on, required: true %>
+
+  <%= form.label :status %>
+  <%= form.select :status, %w[confirmed tentative cancelled] %>
+
+  <%= form.label :summary %>
+  <%= form.text_field :summary %>
+
+  <%= form.label :note %>
+  <%= form.text_area :note %>
+
+  <%= form.submit %>
+<% end %>

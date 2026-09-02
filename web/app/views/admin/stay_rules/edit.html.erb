@@ -1,0 +1,49 @@
+<h1>Stay rules</h1>
+
+<%= form_with model: @stay_rule, url: admin_stay_rule_path do |form| %>
+  <% if @stay_rule.errors.any? %>
+    <p><%= @stay_rule.errors.full_messages.to_sentence %></p>
+  <% end %>
+
+  <%= form.label :minimum_nights %>
+  <%= form.number_field :minimum_nights, min: 1 %>
+
+  <%= form.label :maximum_nights %>
+  <%= form.number_field :maximum_nights, min: 1 %>
+
+  <%= form.label :maximum_adults %>
+  <%= form.number_field :maximum_adults, min: 1 %>
+
+  <%= form.label :maximum_children %>
+  <%= form.number_field :maximum_children, min: 0 %>
+
+  <%= form.label :booking_window_days %>
+  <%= form.number_field :booking_window_days, min: 1 %>
+
+  <label>
+    <%= form.checkbox :pets_allowed %>
+    Pets allowed
+  </label>
+
+  <fieldset>
+    <legend>Arrival days</legend>
+    <% Date::DAYNAMES.each_with_index do |name, index| %>
+      <label>
+        <%= check_box_tag "stay_rule[allowed_check_in_days][]", index, @stay_rule.allowed_check_in_on?(Date.commercial(2026, 1, index.zero? ? 7 : index)) %>
+        <%= name %>
+      </label>
+    <% end %>
+  </fieldset>
+
+  <fieldset>
+    <legend>Departure days</legend>
+    <% Date::DAYNAMES.each_with_index do |name, index| %>
+      <label>
+        <%= check_box_tag "stay_rule[allowed_check_out_days][]", index, @stay_rule.allowed_check_out_on?(Date.commercial(2026, 1, index.zero? ? 7 : index)) %>
+        <%= name %>
+      </label>
+    <% end %>
+  </fieldset>
+
+  <%= form.submit "Save rules" %>
+<% end %>

@@ -1,0 +1,27 @@
+<h1>Availability blocks</h1>
+
+<p><%= link_to "New block", new_admin_availability_block_path %></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Dates</th>
+      <th>Status</th>
+      <th>Summary</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @availability_blocks.each do |availability_block| %>
+      <tr>
+        <td><%= availability_block.starts_on %> - <%= availability_block.ends_on %></td>
+        <td><%= availability_block.status %></td>
+        <td><%= availability_block.summary.presence || "-" %></td>
+        <td>
+          <%= link_to "Edit", edit_admin_availability_block_path(availability_block) %>
+          <%= button_to "Cancel", cancel_admin_availability_block_path(availability_block), method: :post %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

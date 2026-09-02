@@ -1,4 +1,9 @@
 <main>
   <h1>Admin Les Vendredis</h1>
-  <p>Administration foundation for the Rails migration.</p>
+  <nav>
+    <%= link_to "Booking inquiries", admin_booking_inquiries_path %>
+    <%= link_to "Availability blocks", admin_availability_blocks_path %>
+    <%= link_to "Stay rules", edit_admin_stay_rule_path %>
+    <%= link_to "Calendar imports", admin_calendar_imports_path %>
+  </nav>
 </main>
