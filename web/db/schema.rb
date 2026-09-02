@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_09_02_191623) do
+ActiveRecord::Schema[8.0].define(version: 2026_09_02_192345) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "btree_gist"
   enable_extension "pg_catalog.plpgsql"
@@ -84,7 +84,13 @@ ActiveRecord::Schema[8.0].define(version: 2026_09_02_191623) do
     t.text "last_error_message"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "last_status", default: "never_synced", null: false
+    t.integer "last_duration_ms"
+    t.integer "last_event_count"
     t.index ["provider"], name: "index_calendar_imports_on_provider", unique: true
+    t.check_constraint "last_duration_ms IS NULL OR last_duration_ms >= 0", name: "calendar_imports_last_duration_not_negative"
+    t.check_constraint "last_event_count IS NULL OR last_event_count >= 0", name: "calendar_imports_last_event_count_not_negative"
+    t.check_constraint "last_status::text = ANY (ARRAY['never_synced'::character varying, 'success'::character varying, 'failed'::character varying]::text[])", name: "calendar_imports_valid_last_status"
     t.check_constraint "provider::text = ANY (ARRAY['airbnb'::character varying, 'booking'::character varying]::text[])", name: "calendar_imports_valid_provider"
   end
 

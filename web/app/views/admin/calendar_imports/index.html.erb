@@ -1,0 +1,26 @@
+<h1>Calendar imports</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Provider</th>
+      <th>Status</th>
+      <th>Last synced</th>
+      <th>Events</th>
+      <th>Error</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @calendar_imports.each do |calendar_import| %>
+      <tr>
+        <td><%= calendar_import.provider %></td>
+        <td><%= calendar_import.last_status %></td>
+        <td><%= calendar_import.last_synced_at || "Never" %></td>
+        <td><%= calendar_import.last_event_count || "-" %></td>
+        <td><%= calendar_import.last_error_at ? "Failed #{time_ago_in_words(calendar_import.last_error_at)} ago" : "-" %></td>
+        <td><%= button_to "Sync now", sync_admin_calendar_import_path(calendar_import), method: :post %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

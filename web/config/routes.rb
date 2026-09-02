@@ -4,6 +4,9 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root "dashboard#show"
+    resources :calendar_imports, only: :index do
+      post :sync, on: :member
+    end
   end
 
   resource :session
