@@ -1,0 +1,41 @@
+<h1>Request a stay</h1>
+
+<%= form_with model: @booking_inquiry do |form| %>
+  <% if @booking_inquiry.errors.any? %>
+    <p><%= @booking_inquiry.errors.full_messages.to_sentence %></p>
+  <% end %>
+
+  <input type="text" name="company" autocomplete="off" tabindex="-1" hidden>
+  <%= hidden_field_tag :locale, @booking_inquiry.locale %>
+
+  <%= form.label :check_in %>
+  <%= form.date_field :check_in, required: true %>
+
+  <%= form.label :check_out %>
+  <%= form.date_field :check_out, required: true %>
+
+  <%= form.label :adults %>
+  <%= form.number_field :adults, min: 1, value: @booking_inquiry.adults || 2, required: true %>
+
+  <%= form.label :children %>
+  <%= form.number_field :children, min: 0, value: @booking_inquiry.children || 0, required: true %>
+
+  <%= form.label :guest_name, "Name" %>
+  <%= form.text_field :guest_name, required: true %>
+
+  <%= form.label :email %>
+  <%= form.email_field :email, required: true %>
+
+  <%= form.label :phone %>
+  <%= form.telephone_field :phone %>
+
+  <%= form.label :message %>
+  <%= form.text_area :message %>
+
+  <label>
+    <input type="checkbox" required>
+    I agree to be contacted about this booking request.
+  </label>
+
+  <%= form.submit "Send request" %>
+<% end %>

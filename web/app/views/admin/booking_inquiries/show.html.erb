@@ -1,0 +1,10 @@
+<h1><%= @booking_inquiry.public_reference %></h1>
+
+<p><%= @booking_inquiry.check_in %> - <%= @booking_inquiry.check_out %></p>
+<p><%= @booking_inquiry.guest_name %> · <%= @booking_inquiry.email %></p>
+<p><%= @booking_inquiry.phone.presence || "-" %></p>
+<p><%= @booking_inquiry.message.presence || "-" %></p>
+<p>Status: <%= @booking_inquiry.status %></p>
+
+<%= button_to "Accept", accept_admin_booking_inquiry_path(@booking_inquiry), method: :post %>
+<%= button_to "Decline", decline_admin_booking_inquiry_path(@booking_inquiry), method: :post %>
