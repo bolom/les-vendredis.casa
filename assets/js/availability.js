@@ -1,5 +1,5 @@
 (() => {
-  const DEFAULT_API_URL = 'https://api.lesvendredis.casa/availability';
+  const DEFAULT_API_URL = '/availability';
 
   const MONTHS_EN = ['January','February','March','April','May','June','July','August','September','October','November','December'];
   const MONTHS_FR = ['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'];
