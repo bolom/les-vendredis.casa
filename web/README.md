@@ -40,7 +40,7 @@ User.create!(
 ## Environment
 
 Copy `.env.example` only for local development. Production/staging secrets live in
-the 1Password vault `lesvendredi.casa` and are injected by Kamal.
+the 1Password vault `lesvendredis.casa` and are injected by Kamal.
 
 Required production secrets:
 

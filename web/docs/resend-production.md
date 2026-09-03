@@ -1,6 +1,6 @@
 # Resend production checklist
 
-Use `hello@lesvendredis.casa` as sender and reply-to. Keep `RESEND_API_KEY` only in the 1Password vault `lesvendredi.casa` and Kamal secrets.
+Use `hello@lesvendredis.casa` as sender and reply-to. Keep `RESEND_API_KEY` only in the 1Password vault `lesvendredis.casa` and Kamal secrets.
 
 ## Domain
 
@@ -26,7 +26,7 @@ Required environment:
 
 Store `RESEND_API_KEY` in 1Password:
 
-- Vault: `lesvendredi.casa`
+- Vault: `lesvendredis.casa`
 - Item: `production` for production
 - Item: `staging` for staging
 - Field name: `RESEND_API_KEY`
