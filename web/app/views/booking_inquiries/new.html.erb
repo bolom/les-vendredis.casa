@@ -1,6 +1,10 @@
 <h1>Request a stay</h1>
 
-<%= form_with model: @booking_inquiry do |form| %>
+<script>
+  window.LesVendredisAnalytics?.track("start_inquiry", { locale: "<%= j @booking_inquiry.locale %>", source: "booking_form" });
+</script>
+
+<%= form_with model: @booking_inquiry, data: { analytics_event: "submit_inquiry", analytics_source: "booking_form" } do |form| %>
   <% if @booking_inquiry.errors.any? %>
     <p><%= @booking_inquiry.errors.full_messages.to_sentence %></p>
   <% end %>

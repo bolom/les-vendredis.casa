@@ -103,6 +103,7 @@
           const next = offset + dir;
           if (next < 0 || next > maxOffset) return;
           offset = next;
+          window.LesVendredisAnalytics?.track('select_dates', { locale: lang, source: 'availability_calendar' });
           render();
         });
       });
@@ -112,7 +113,11 @@
 
     fetch(`${apiUrl}?from=${toIso(fromDate)}&to=${toIso(toDate)}`)
       .then(r => r.ok ? r.json() : Promise.reject())
-      .then(data => { availMap = buildAvailabilityMap(data.days); render(); })
+      .then(data => {
+        availMap = buildAvailabilityMap(data.days);
+        render();
+        window.LesVendredisAnalytics?.track('view_availability', { locale: lang, status: 'loaded' });
+      })
       .catch(() => { container.innerHTML = ''; });
   }
 
