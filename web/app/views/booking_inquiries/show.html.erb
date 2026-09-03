@@ -2,3 +2,7 @@
 
 <p>Your request reference is <%= @booking_inquiry.public_reference %>.</p>
 <p>This is not a confirmed booking yet. We will reply soon.</p>
+
+<script>
+  window.LesVendredisAnalytics?.track("inquiry_success", { locale: "<%= j @booking_inquiry.locale %>", status: "received", source: "booking_form" });
+</script>

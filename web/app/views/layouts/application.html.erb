@@ -20,6 +20,30 @@
 
     <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    <% if (ga_measurement_id = ENV["GA_MEASUREMENT_ID"]).present? %>
+      <script async src="https://www.googletagmanager.com/gtag/js?id=<%= ga_measurement_id %>" data-lv-ga-script></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = window.gtag || function(){dataLayer.push(arguments);};
+        if (!window.__lesVendredisGaConfigured) {
+          window.__lesVendredisGaConfigured = true;
+          gtag("js", new Date());
+          gtag("config", "<%= ga_measurement_id %>");
+        }
+        window.LesVendredisAnalytics = {
+          track: function(eventName, params) {
+            var allowedEvents = ["start_inquiry", "submit_inquiry", "inquiry_success"];
+            var allowedParams = ["locale", "source", "status"];
+            if (!allowedEvents.includes(eventName) || typeof window.gtag !== "function") return;
+            var clean = {};
+            Object.entries(params || {}).forEach(function(entry) {
+              if (allowedParams.includes(entry[0]) && typeof entry[1] === "string" && entry[1].length <= 80) clean[entry[0]] = entry[1];
+            });
+            window.gtag("event", eventName, clean);
+          }
+        };
+      </script>
+    <% end %>
   </head>
 
   <body>
