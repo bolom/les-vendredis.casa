@@ -1,0 +1,17 @@
+<% if @booking_inquiry.locale == "fr" %>
+Bonjour <%= @booking_inquiry.guest_name %>,
+
+Merci pour votre demande pour Les Vendredis.
+
+Nous ne pouvons malheureusement pas confirmer ce séjour aux dates demandées.
+
+Référence : <%= @booking_inquiry.public_reference %>
+<% else %>
+Hello <%= @booking_inquiry.guest_name %>,
+
+Thank you for your Les Vendredis request.
+
+Unfortunately, we cannot confirm this stay for the requested dates.
+
+Reference: <%= @booking_inquiry.public_reference %>
+<% end %>
