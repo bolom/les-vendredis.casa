@@ -31,6 +31,10 @@ exclude:
   - README.md
   - Gemfile
   - Gemfile.lock
+  - Rakefile
+  - package.json
   - vendor
   - docs
   - skills
+  - scripts
+  - web

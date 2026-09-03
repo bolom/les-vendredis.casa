@@ -38,3 +38,5 @@ asset_path: /rails/public/assets
 
 builder:
   arch: amd64
+  context: ..
+  dockerfile: web/Dockerfile
