@@ -26,6 +26,8 @@ env:
     APP_HOST: lesvendredis.casa
     GA_MEASUREMENT_ID: G-HD3V7YWDWQ
     MAIL_FROM: hello@lesvendredis.casa
+    MAIL_REPLY_TO: hello@lesvendredis.casa
+    BOOKING_OWNER_EMAIL: hello@lesvendredis.casa
   secret:
     - DATABASE_URL
     - RAILS_MASTER_KEY

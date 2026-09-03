@@ -5,7 +5,8 @@
 - Infomaniak app host is provisioned.
 - PostgreSQL is provisioned and backup policy is active.
 - `lesvendredis.casa` and `staging.lesvendredis.casa` DNS are ready.
-- Kamal can read secrets from 1Password without interactive prompts.
+- Kamal can read secrets from the 1Password vault `lesvendredi.casa` without interactive prompts.
+- `KAMAL_1PASSWORD_ACCOUNT` is exported locally with the 1Password account identifier.
 - Resend domain is verified; see `docs/resend-production.md`.
 
 Required Kamal secrets:
@@ -15,6 +16,15 @@ Required Kamal secrets:
 - `RESEND_API_KEY`
 - `SECRET_KEY_BASE`
 - `KAMAL_REGISTRY_PASSWORD`
+
+1Password item layout:
+
+- Vault: `lesvendredi.casa`
+- Item `common`: `KAMAL_REGISTRY_PASSWORD`, `RAILS_MASTER_KEY`
+- Item `production`: `DATABASE_URL`, `RESEND_API_KEY`, `SECRET_KEY_BASE`
+- Item `staging`: `DATABASE_URL`, `RESEND_API_KEY`, `SECRET_KEY_BASE`
+
+The Infomaniak experimental web server is configured in `.kamal/secrets-common` as `KAMAL_INFOMANIAK_HOST=185.143.102.224`.
 
 Optional separate database URLs:
 

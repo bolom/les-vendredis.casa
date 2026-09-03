@@ -16,10 +16,17 @@ for file in "${required_files[@]}"; do
   test -f "$file" || { echo "missing: $file"; exit 1; }
 done
 
-if git ls-files | rg -q '(^|/)(\.env|\.kamal/secrets|.*\.(dump|sql|sqlite3))$'; then
+if git ls-files | rg -q '(^|/)(\.env|.*\.(dump|sql|sqlite3))$'; then
   echo "tracked secret/data artifact found"
   exit 1
 fi
+
+for file in $(git ls-files 'web/.kamal/secrets*'); do
+  if rg -q '^(DATABASE_URL|RAILS_MASTER_KEY|RESEND_API_KEY|SECRET_KEY_BASE|KAMAL_REGISTRY_PASSWORD)=[^$]' "$file"; then
+    echo "raw secret value found in $file"
+    exit 1
+  fi
+done
 
 PATH="$HOME/.rbenv/shims:$PATH" bundle exec jekyll build --quiet
 

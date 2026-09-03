@@ -1,6 +1,6 @@
 # Resend production checklist
 
-Use `hello@lesvendredis.casa` as sender and reply-to. Keep `RESEND_API_KEY` only in 1Password/Kamal secrets.
+Use `hello@lesvendredis.casa` as sender and reply-to. Keep `RESEND_API_KEY` only in the 1Password vault `lesvendredi.casa` and Kamal secrets.
 
 ## Domain
 
@@ -23,6 +23,13 @@ Required environment:
 - `MAIL_REPLY_TO=hello@lesvendredis.casa`
 - `BOOKING_OWNER_EMAIL=hello@lesvendredis.casa`
 - `RESEND_API_KEY` as a Kamal secret
+
+Store `RESEND_API_KEY` in 1Password:
+
+- Vault: `lesvendredi.casa`
+- Item: `production` for production
+- Item: `staging` for staging
+- Field name: `RESEND_API_KEY`
 
 Staging smoke test, after deploy:
 
