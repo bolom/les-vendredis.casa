@@ -9,14 +9,18 @@ module Admin
     end
 
     def accept
-      BookingInquiry.find(params[:id]).accept!
+      inquiry = BookingInquiry.find(params[:id])
+      inquiry.accept!
+      BookingInquiryMailer.with(booking_inquiry: inquiry).guest_acceptance.deliver_later
       redirect_to admin_booking_inquiries_path, notice: "Booking accepted."
     rescue ActiveRecord::RecordInvalid
       redirect_to admin_booking_inquiry_path(params[:id]), alert: "Dates are no longer available."
     end
 
     def decline
-      BookingInquiry.find(params[:id]).decline!
+      inquiry = BookingInquiry.find(params[:id])
+      inquiry.decline!
+      BookingInquiryMailer.with(booking_inquiry: inquiry).guest_decline.deliver_later
       redirect_to admin_booking_inquiries_path, notice: "Booking declined."
     end
   end

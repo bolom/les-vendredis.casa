@@ -50,6 +50,9 @@ Required production secrets:
 - `SECRET_KEY_BASE`
 - `KAMAL_REGISTRY_PASSWORD`
 
+Resend production setup and smoke-test steps are documented in
+[`docs/resend-production.md`](docs/resend-production.md).
+
 ## Checks
 
 ```bash

@@ -2,6 +2,8 @@ require "test_helper"
 
 module Admin
   class BookingInquiriesControllerTest < ActionDispatch::IntegrationTest
+    include ActiveJob::TestHelper
+
     test "admin can see inquiries" do
       sign_in_as users(:one)
       inquiry = create_inquiry
@@ -16,7 +18,9 @@ module Admin
       sign_in_as users(:one)
       inquiry = create_inquiry
 
-      post accept_admin_booking_inquiry_path(inquiry)
+      assert_enqueued_emails 1 do
+        post accept_admin_booking_inquiry_path(inquiry)
+      end
 
       assert_redirected_to admin_booking_inquiries_path
       inquiry.reload
@@ -47,7 +51,9 @@ module Admin
       inquiry = create_inquiry
 
       assert_no_difference -> { AvailabilityBlock.count } do
-        post decline_admin_booking_inquiry_path(inquiry)
+        assert_enqueued_emails 1 do
+          post decline_admin_booking_inquiry_path(inquiry)
+        end
       end
 
       assert_equal "declined", inquiry.reload.status

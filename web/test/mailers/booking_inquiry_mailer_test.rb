@@ -15,7 +15,26 @@ class BookingInquiryMailerTest < ActionMailer::TestCase
     mail = BookingInquiryMailer.with(booking_inquiry: inquiry).guest_acknowledgement
 
     assert_equal [ "guest@example.com" ], mail.to
+    assert_equal [ "hello@lesvendredis.casa" ], mail.reply_to
     assert_match "not confirmed yet", mail.body.encoded
+  end
+
+  test "guest acceptance confirms the stay" do
+    inquiry = create_inquiry
+    mail = BookingInquiryMailer.with(booking_inquiry: inquiry).guest_acceptance
+
+    assert_equal [ "guest@example.com" ], mail.to
+    assert_match "confirmed", mail.subject
+    assert_match "is confirmed", mail.body.encoded
+  end
+
+  test "guest decline does not expose admin details" do
+    inquiry = create_inquiry
+    mail = BookingInquiryMailer.with(booking_inquiry: inquiry).guest_decline
+
+    assert_equal [ "guest@example.com" ], mail.to
+    assert_no_match "Admin", mail.body.encoded
+    assert_no_match "http", mail.body.encoded
   end
 
   private

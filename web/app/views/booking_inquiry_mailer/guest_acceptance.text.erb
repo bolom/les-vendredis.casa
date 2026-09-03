@@ -1,0 +1,17 @@
+<% if @booking_inquiry.locale == "fr" %>
+Bonjour <%= @booking_inquiry.guest_name %>,
+
+Votre séjour aux Vendredis est confirmé du <%= @booking_inquiry.check_in %> au <%= @booking_inquiry.check_out %>.
+
+Nous revenons vers vous avec les derniers détails pratiques.
+
+Référence : <%= @booking_inquiry.public_reference %>
+<% else %>
+Hello <%= @booking_inquiry.guest_name %>,
+
+Your stay at Les Vendredis is confirmed from <%= @booking_inquiry.check_in %> to <%= @booking_inquiry.check_out %>.
+
+We will follow up with the final practical details.
+
+Reference: <%= @booking_inquiry.public_reference %>
+<% end %>
