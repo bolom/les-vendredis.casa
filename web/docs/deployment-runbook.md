@@ -26,6 +26,15 @@ Required Kamal secrets:
 
 The Infomaniak experimental web server is configured in `.kamal/secrets-common` as `KAMAL_INFOMANIAK_HOST=185.143.102.224`.
 
+Create the vault/items skeleton:
+
+```bash
+cd web
+bin/setup-1password-kamal
+```
+
+The script creates empty fields only. Paste real secret values inside 1Password, not in the shell or repository.
+
 Optional separate database URLs:
 
 - `CACHE_DATABASE_URL`
