@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+cd "$(dirname "$0")/../.."
+
+required_files=(
+  "web/config/deploy.yml"
+  "web/Dockerfile"
+  ".dockerignore"
+  "_config.yml"
+  "sitemap.xml"
+  "robots.txt"
+)
+
+for file in "${required_files[@]}"; do
+  test -f "$file" || { echo "missing: $file"; exit 1; }
+done
+
+if git ls-files | rg -q '(^|/)(\.env|\.kamal/secrets|.*\.(dump|sql|sqlite3))$'; then
+  echo "tracked secret/data artifact found"
+  exit 1
+fi
+
+PATH="$HOME/.rbenv/shims:$PATH" bundle exec jekyll build --quiet
+
+(
+  cd web
+  PATH="$HOME/.rbenv/shims:$PATH" bin/ci
+)
+
+echo "deploy preflight passed"
