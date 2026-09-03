@@ -2,6 +2,13 @@ coverage/
 .DS_Store
 *.log
 .env
+.env.*
+!.env.example
+.kamal/secrets*
+*.dump
+*.sql
+*.sqlite3
+credentials/*.key
 __pycache__/
 *.pyc
 .claude/
