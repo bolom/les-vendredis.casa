@@ -27,6 +27,5 @@ module CalendarImports
     private
 
     attr_reader :syncer, :output
-
   end
 end
