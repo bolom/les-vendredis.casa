@@ -15,7 +15,7 @@ module CalendarImports
         syncer.call(calendar_import).call
         output.puts "#{calendar_import.provider}: synced"
       rescue StandardError => error
-        failures << "#{calendar_import.provider}: #{error.class}: #{error.message}"
+        failures << "#{calendar_import.provider}: #{error.class}"
         output.puts "#{calendar_import.provider}: failed"
       end
 
