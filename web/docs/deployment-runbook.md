@@ -12,6 +12,8 @@
 Required Kamal secrets:
 
 - `DATABASE_URL`
+- `AIRBNB_ICAL_URL`
+- `BOOKING_ICAL_URL`
 - `RAILS_MASTER_KEY`
 - `RESEND_API_KEY`
 - `SECRET_KEY_BASE`
@@ -21,8 +23,8 @@ Required Kamal secrets:
 
 - Vault: `lesvendredis.casa`
 - Item `common`: `KAMAL_REGISTRY_PASSWORD`, `RAILS_MASTER_KEY`
-- Item `production`: `DATABASE_URL`, `RESEND_API_KEY`, `SECRET_KEY_BASE`
-- Item `staging`: `DATABASE_URL`, `RESEND_API_KEY`, `SECRET_KEY_BASE`
+- Item `production`: `DATABASE_URL`, `AIRBNB_ICAL_URL`, `BOOKING_ICAL_URL`, `RESEND_API_KEY`, `SECRET_KEY_BASE`
+- Item `staging`: `DATABASE_URL`, `AIRBNB_ICAL_URL`, `BOOKING_ICAL_URL`, `RESEND_API_KEY`, `SECRET_KEY_BASE`
 
 The Infomaniak experimental web server is configured in `.kamal/secrets-common` as `KAMAL_INFOMANIAK_HOST=185.143.102.224`.
 

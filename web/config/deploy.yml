@@ -30,6 +30,8 @@ env:
     BOOKING_OWNER_EMAIL: hello@lesvendredis.casa
   secret:
     - DATABASE_URL
+    - AIRBNB_ICAL_URL
+    - BOOKING_ICAL_URL
     - RAILS_MASTER_KEY
     - RESEND_API_KEY
     - SECRET_KEY_BASE
