@@ -11,6 +11,16 @@ class CalendarImports::SyncAllTest < ActiveSupport::TestCase
     assert_equal CalendarImport::PROVIDERS.sort, synced.sort
   end
 
+  test "skips inactive calendars" do
+    CalendarImport.create!(provider: "airbnb", active: false)
+    synced = []
+    syncer = ->(calendar_import) { -> { synced << calendar_import.provider } }
+
+    CalendarImports::SyncAll.new(syncer: syncer, output: StringIO.new).call
+
+    assert_equal [ "booking" ], synced
+  end
+
   test "attempts remaining calendars and reports all failures" do
     attempted = []
     syncer = lambda do |calendar_import|

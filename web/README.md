@@ -45,6 +45,8 @@ the 1Password vault `lesvendredis.casa` and are injected by Kamal.
 Required production secrets:
 
 - `DATABASE_URL`
+- `AIRBNB_ICAL_URL`
+- `BOOKING_ICAL_URL`
 - `RAILS_MASTER_KEY`
 - `RESEND_API_KEY`
 - `SECRET_KEY_BASE`

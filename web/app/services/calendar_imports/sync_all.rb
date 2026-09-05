@@ -11,7 +11,7 @@ module CalendarImports
       CalendarImport.ensure_defaults!
       failures = []
 
-      CalendarImport.find_each do |calendar_import|
+      CalendarImport.where(active: true).find_each do |calendar_import|
         syncer.call(calendar_import).call
         output.puts "#{calendar_import.provider}: synced"
       rescue StandardError => error

@@ -3,6 +3,8 @@ namespace :production do
   task check: :environment do
     required = %w[
       APP_HOST
+      AIRBNB_ICAL_URL
+      BOOKING_ICAL_URL
       DATABASE_URL
       RAILS_MASTER_KEY
       RESEND_API_KEY

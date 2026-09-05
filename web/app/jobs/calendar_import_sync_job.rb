@@ -6,7 +6,7 @@ class CalendarImportSyncJob < ApplicationJob
       CalendarImports::Sync.new(CalendarImport.find_or_create_by!(provider: provider)).call
     else
       CalendarImport.ensure_defaults!
-      CalendarImport.active.find_each { |calendar_import| CalendarImports::Sync.new(calendar_import).call }
+      CalendarImport.where(active: true).find_each { |calendar_import| CalendarImports::Sync.new(calendar_import).call }
     end
   end
 end
