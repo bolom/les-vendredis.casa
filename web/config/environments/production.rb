@@ -82,7 +82,6 @@ Rails.application.configure do
   config.hosts = [
     "lesvendredis.casa",
     "www.lesvendredis.casa",
-    "staging.lesvendredis.casa",
     /.*\.localhost/
   ]
   #

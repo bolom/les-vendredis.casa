@@ -29,7 +29,6 @@ env:
     MAIL_REPLY_TO: hello@lesvendredis.casa
     BOOKING_OWNER_EMAIL: hello@lesvendredis.casa
   secret:
-    - DATABASE_URL
     - RAILS_MASTER_KEY
 
 volumes:

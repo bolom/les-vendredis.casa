@@ -1,18 +1,18 @@
 namespace :production do
-  desc "Check production/staging boot-critical environment without printing secret values"
+  desc "Check production boot-critical configuration without printing secret values"
   task check: :environment do
-    required = %w[
-      APP_HOST
-      AIRBNB_ICAL_URL
-      BOOKING_ICAL_URL
-      DATABASE_URL
-      RAILS_MASTER_KEY
-      RESEND_API_KEY
-      SECRET_KEY_BASE
-    ]
+    required_credentials = {
+      "database.url" => Rails.application.credentials.dig(:database, :url),
+      "resend.api_key" => Rails.application.credentials.dig(:resend, :api_key),
+      "calendars.airbnb_ical_url" => Rails.application.credentials.dig(:calendars, :airbnb_ical_url),
+      "calendars.booking_ical_url" => Rails.application.credentials.dig(:calendars, :booking_ical_url),
+      "secret_key_base" => Rails.application.credentials.secret_key_base
+    }
 
-    missing = required.select { |key| ENV[key].blank? }
-    abort "Missing required environment: #{missing.join(', ')}" if missing.any?
+    missing = required_credentials.filter_map do |name, value|
+      name if value.blank? || value.to_s.match?(/\A(?:REPLACE_ME|CHANGE_ME)\z/i)
+    end
+    abort "Missing Rails credentials: #{missing.join(', ')}" if missing.any?
 
     checks = {
       "mailer delivery" => ActionMailer::Base.delivery_method,
