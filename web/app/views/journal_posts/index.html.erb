@@ -1,0 +1,24 @@
+<% french = @locale == :fr %>
+<% content_for :title, french ? "Journal — Les Vendredis" : "Journal — Les Vendredis" %>
+
+<main class="journal">
+  <div class="wrap">
+    <header class="home-journal-header">
+      <div>
+        <p class="hero-minimal-eyebrow">Journal</p>
+        <h1 class="hero-minimal-h1"><%= french ? "Les histoires du domaine." : "Stories from the domain." %></h1>
+      </div>
+    </header>
+
+    <ul class="home-journal-secondary">
+      <% @journal_posts.each do |post| %>
+        <li>
+          <%= link_to(french ? french_journal_post_path(post.slug) : journal_post_path(post.slug)) do %>
+            <time class="home-journal-secondary-date" datetime="<%= post.published_on.iso8601 %>"><%= l(post.published_on, format: :long) %></time>
+            <span class="home-journal-secondary-title"><%= post.title %></span>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</main>

@@ -7,6 +7,7 @@
         <span class="ornament"></span>Les Vendredis<span class="ornament"></span>
       <% end %>
       <nav class="top-right" aria-label="Navigation principale">
+        <%= link_to "Journal", french ? french_journal_path : journal_path, class: "desktop-only" %>
         <%= link_to(french ? "Disponibilités" : "Availability", availability_path, class: "desktop-only") %>
         <%= link_to(french ? "Réserver" : "Book", new_booking_inquiry_path, class: "desktop-only") %>
         <span class="lang-toggle">

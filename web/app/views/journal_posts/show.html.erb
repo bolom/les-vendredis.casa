@@ -1,0 +1,28 @@
+<% french = @locale == :fr %>
+<% content_for :title, "#{@journal_post.title} — Les Vendredis" %>
+
+<main>
+  <article class="article-page">
+    <header class="article-header">
+      <nav class="article-breadcrumbs" aria-label="Breadcrumb">
+        <%= link_to(french ? "Accueil" : "Home", french ? french_home_path : root_path) %>
+        <span aria-hidden="true">/</span>
+        <%= link_to "Journal", french ? french_journal_path : journal_path %>
+      </nav>
+      <div class="article-meta">
+        <time class="entry-date" datetime="<%= @journal_post.published_on.iso8601 %>"><%= l(@journal_post.published_on, format: :long) %></time>
+        <% if @journal_post.tag.present? %><span class="entry-tag"><%= @journal_post.tag %></span><% end %>
+      </div>
+      <h1 class="article-title"><%= @journal_post.title %></h1>
+      <% if @journal_post.summary.present? %><p class="article-summary"><%= @journal_post.summary %></p><% end %>
+    </header>
+
+    <% if @journal_post.image_path.present? %>
+      <figure class="article-hero">
+        <%= image_tag @journal_post.image_path, alt: @journal_post.image_alt.presence || @journal_post.title, loading: "eager" %>
+      </figure>
+    <% end %>
+
+    <div class="article-body"><%= render_markdown(@journal_post.body_markdown) %></div>
+  </article>
+</main>
