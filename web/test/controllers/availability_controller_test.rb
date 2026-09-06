@@ -1,6 +1,13 @@
 require "test_helper"
 
 class AvailabilityControllerTest < ActionDispatch::IntegrationTest
+  test "renders a public availability landing page without dates" do
+    get availability_path
+
+    assert_response :success
+    assert_select "h1", /Check when the A-frame is free/
+  end
+
   test "returns public availability without personal data" do
     get availability_path, params: { from: "2026-10-01", to: "2026-10-03" }
 

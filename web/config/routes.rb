@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
   root "pages#home"
+  get "fr" => "pages#home", defaults: { locale: "fr" }, as: :french_home
+  get "journal" => "journal_posts#index", defaults: { locale: "en" }, as: :journal
+  get "journal/:slug" => "journal_posts#show", defaults: { locale: "en" }, as: :journal_post
+  get "fr/journal" => "journal_posts#index", defaults: { locale: "fr" }, as: :french_journal
+  get "fr/journal/:slug" => "journal_posts#show", defaults: { locale: "fr" }, as: :french_journal_post
   get "availability" => "availability#show"
   resources :booking_inquiries, only: [ :new, :create, :show ], path: "booking-requests"
 

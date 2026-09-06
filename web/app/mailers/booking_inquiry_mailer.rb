@@ -1,5 +1,5 @@
 class BookingInquiryMailer < ApplicationMailer
-  default to: ENV.fetch("BOOKING_OWNER_EMAIL", "hello@lesvendredis.casa")
+  default to: -> { AppConfig.fetch("BOOKING_OWNER_EMAIL", :mail, :owner, default: "hello@lesvendredis.casa") }
 
   def owner_notification
     @booking_inquiry = params[:booking_inquiry]

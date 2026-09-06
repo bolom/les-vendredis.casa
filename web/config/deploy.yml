@@ -9,6 +9,9 @@ servers:
       - <%= ENV.fetch("KAMAL_INFOMANIAK_HOST", "replace-with-infomaniak-host") %>
     cmd: bin/jobs
 
+ssh:
+  user: ubuntu
+
 proxy:
   ssl: true
   host: lesvendredis.casa
@@ -23,18 +26,12 @@ env:
   clear:
     RAILS_ENV: production
     RAILS_LOG_LEVEL: info
-    APP_HOST: lesvendredis.casa
     GA_MEASUREMENT_ID: G-HD3V7YWDWQ
     MAIL_FROM: hello@lesvendredis.casa
     MAIL_REPLY_TO: hello@lesvendredis.casa
     BOOKING_OWNER_EMAIL: hello@lesvendredis.casa
   secret:
-    - DATABASE_URL
-    - AIRBNB_ICAL_URL
-    - BOOKING_ICAL_URL
     - RAILS_MASTER_KEY
-    - RESEND_API_KEY
-    - SECRET_KEY_BASE
 
 volumes:
   - "les_vendredis_storage:/rails/storage"

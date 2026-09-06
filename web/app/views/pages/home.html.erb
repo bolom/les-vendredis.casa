@@ -1,4 +1,45 @@
+<% french = @locale == :fr %>
+<% content_for :title, french ? "Les Vendredis — Cabane A-frame en Martinique" : "Les Vendredis — A-frame cabin in Martinique" %>
+
 <main>
-  <h1>Les Vendredis</h1>
-  <p>Rails migration foundation. The Jekyll site remains the public production site until cutover.</p>
+  <div class="wrap">
+    <header class="hero-minimal">
+      <div class="hero-minimal-text">
+        <p class="hero-minimal-eyebrow">Sainte-Luce, Martinique</p>
+        <% if french %>
+          <h1 class="hero-minimal-h1">Les Vendredis, c’est la vraie vie<br>d’une famille autour <em>d’un domaine en Martinique.</em></h1>
+          <p class="hero-minimal-sub">Le vendredi, Bolo écrit. Quand la maison est libre, vous pouvez venir dormir.</p>
+          <div class="hero-minimal-ctas">
+            <%= link_to "Voir les disponibilités", availability_path, class: "hero-cta-primary" %>
+            <%= link_to "Demander un séjour →", new_booking_inquiry_path, class: "hero-cta-secondary", data: { analytics_event: "start_inquiry" } %>
+          </div>
+        <% else %>
+          <h1 class="hero-minimal-h1">Les Vendredis is the real life<br>of a family around <em>a domain in Martinique.</em></h1>
+          <p class="hero-minimal-sub">On Fridays, Bolo writes. When the house is free, you can come stay.</p>
+          <div class="hero-minimal-ctas">
+            <%= link_to "Check availability", availability_path, class: "hero-cta-primary" %>
+            <%= link_to "Request a stay →", new_booking_inquiry_path, class: "hero-cta-secondary", data: { analytics_event: "start_inquiry" } %>
+          </div>
+        <% end %>
+      </div>
+      <div class="hero-minimal-photo">
+        <%= image_tag "jpk-cabane-facade-plein-air.webp", alt: french ? "La cabane A-frame dans son jardin tropical" : "The A-frame cabin in its tropical garden", width: 1200, height: 1600, fetchpriority: "high" %>
+      </div>
+    </header>
+  </div>
+
+  <section class="come-stay" id="stay">
+    <div class="wrap come-stay-inner">
+      <div class="come-stay-text">
+        <h2 class="come-stay-h2"><%= french ? "Venez dormir." : "Come stay." %></h2>
+        <p class="come-stay-lead"><%= french ? "Choisissez vos dates et écrivez-nous. Nous vérifions le calendrier, échangeons avec vous et confirmons simplement." : "Choose your dates and write to us. We check the calendar, talk with you, and confirm simply." %></p>
+        <%= link_to(french ? "Faire une demande →" : "Send a request →", new_booking_inquiry_path, class: "come-stay-email") %>
+      </div>
+      <div class="come-stay-calendar">
+        <p class="hero-minimal-eyebrow"><%= french ? "Réservation directe" : "Direct booking" %></p>
+        <p class="come-stay-lead"><%= french ? "Consultez d’abord les périodes libres, puis envoyez votre demande depuis l’application." : "Review open dates, then send your request directly from the application." %></p>
+        <%= link_to(french ? "Ouvrir le calendrier" : "Open the calendar", availability_path, class: "hero-cta-primary") %>
+      </div>
+    </div>
+  </section>
 </main>

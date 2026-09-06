@@ -57,13 +57,15 @@ Rails.application.configure do
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
 
-  config.action_mailer.default_url_options = { host: ENV.fetch("APP_HOST", "lesvendredis.casa") }
+  config.action_mailer.default_url_options = {
+    host: AppConfig.fetch("APP_HOST", :app, :host, default: "lesvendredis.casa")
+  }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     address: "smtp.resend.com",
     port: 587,
     user_name: "resend",
-    password: ENV.fetch("RESEND_API_KEY", "missing-resend-api-key"),
+    password: AppConfig.fetch("RESEND_API_KEY", :resend, :api_key, default: "missing-resend-api-key"),
     authentication: :plain,
     enable_starttls_auto: true
   }
@@ -82,7 +84,6 @@ Rails.application.configure do
   config.hosts = [
     "lesvendredis.casa",
     "www.lesvendredis.casa",
-    "staging.lesvendredis.casa",
     /.*\.localhost/
   ]
   #

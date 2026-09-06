@@ -1,6 +1,6 @@
 # Resend production checklist
 
-Use `hello@lesvendredis.casa` as sender and reply-to. Keep `RESEND_API_KEY` only in the 1Password vault `lesvendredis.casa` and Kamal secrets.
+Use `hello@lesvendredis.casa` as sender and reply-to. Keep `RESEND_API_KEY` in Rails encrypted credentials.
 
 ## Domain
 
@@ -22,19 +22,12 @@ Required environment:
 - `MAIL_FROM=Les Vendredis <hello@lesvendredis.casa>`
 - `MAIL_REPLY_TO=hello@lesvendredis.casa`
 - `BOOKING_OWNER_EMAIL=hello@lesvendredis.casa`
-- `RESEND_API_KEY` as a Kamal secret
+- `resend.api_key` in `config/credentials.yml.enc`
 
-Store `RESEND_API_KEY` in 1Password:
+Edit it locally with:
 
-- Vault: `lesvendredis.casa`
-- Item: `production` for production
-- Item: `staging` for staging
-- Field name: `RESEND_API_KEY`
-
-Staging smoke test, after deploy:
-
-```bash
-bin/rails resend:smoke RAILS_ENV=staging RESEND_SMOKE_TO=delivered@resend.dev
+```console
+bin/rails credentials:edit
 ```
 
 Production smoke test needs explicit opt-in:

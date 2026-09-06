@@ -39,17 +39,12 @@ User.create!(
 
 ## Environment
 
-Copy `.env.example` only for local development. Production/staging secrets live in
-the 1Password vault `lesvendredis.casa` and are injected by Kamal.
+Copy `.env.example` only for non-secret local settings. Application secrets live
+in `config/credentials.yml.enc`; 1Password supplies its master key to Kamal.
 
 Required production secrets:
 
-- `DATABASE_URL`
-- `AIRBNB_ICAL_URL`
-- `BOOKING_ICAL_URL`
 - `RAILS_MASTER_KEY`
-- `RESEND_API_KEY`
-- `SECRET_KEY_BASE`
 - `KAMAL_REGISTRY_PASSWORD`
 
 Resend production setup and smoke-test steps are documented in

@@ -1,0 +1,26 @@
+---
+layout: article
+title: "Construire une A-frame en Martinique"
+summary: "Tout a commencé par un déjeuner de Noël sur une dalle de béton vide. À la fin de la journée, on savait qu'on allait la couvrir."
+description: "Comment Les Vendredis a commencé — un déjeuner de Noël sur une dalle nue à Sainte-Luce, Martinique, et la décision de construire une A-frame."
+tag: "Build log"
+date: 2022-12-25
+image: "/public/images/terrain-debut-chantier-les-vendredis-martinique.webp"
+image_alt: "Le terrain des Vendredis avant la construction, Sainte-Luce, Martinique"
+lang: "fr"
+locale: fr_FR
+translation_key: "noel-dalle"
+permalink: /fr/journal/noel-dalle/
+---
+
+On a passé Noël sur le terrain. Pas de A-frame — juste une dalle de béton coulée quelques mois avant comme terrasse de l'annexe, les collines derrière nous, et une table dressée sous le ciel ouvert.
+
+Au milieu du repas, le soleil a frappé la dalle à un angle particulier. Anaïs a regardé Bolo. Bolo a regardé Anaïs. Personne n'a rien dit pendant une minute.
+
+Cet après-midi-là, on a décidé : on allait construire quelque chose dessus.
+
+Pas une pergola. Pas un simple abri. Quelque chose de vrai — une A-frame dans laquelle on pourrait vraiment dormir, avec des murs, un toit, un plancher. On réglerait les détails plus tard.
+
+La dalle était déjà là. Le terrain était à nous. Léon avait cinq ans et courait entre les arbres. Samsam dormait à l'ombre. C'était évident de la façon dont les bonnes décisions le sont souvent — pas comme une révélation, mais comme quelque chose qu'on avait toujours su sans le dire à voix haute.
+
+On a commencé à chercher des plans le soir même. Le chantier a duré deux ans — les fondations en moins d'un mois, la charpente et le gros œuvre en quatre mois, la toiture le plus long. Des amis ont donné de leur temps et de leur énergie. Un artisan charpentier nous a transmis des techniques qu'on n'avait pas. Les arbres, Bolo les a plantés depuis la graine — les palmiers, le flamboyant à l'entrée — avec une pensée pour Bérénice, une amitié dont elle ne trouve pas les mots tant elle a compté.
