@@ -8,3 +8,4 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 Journal::Importer.new.call
+ContentPages::Importer.new.call

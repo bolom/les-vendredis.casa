@@ -1,0 +1,15 @@
+<% content_for :title, @content_page.title %>
+<% if %w[nous us].include?(@content_page.path) %>
+  <% content_for :page_stylesheets, stylesheet_link_tag("nous", "data-turbo-track": "reload") %>
+<% end %>
+<% content_for :head do %>
+  <% if @content_page.description.present? %><meta name="description" content="<%= @content_page.description %>"><% end %>
+  <% if @content_page.canonical_url.present? %><link rel="canonical" href="<%= @content_page.canonical_url %>"><% end %>
+  <% if @content_page.robots.present? %><meta name="robots" content="<%= @content_page.robots %>"><% end %>
+  <% if @content_page.alternate_en_url.present? %><link rel="alternate" hreflang="en" href="<%= @content_page.alternate_en_url %>"><% end %>
+  <% if @content_page.alternate_fr_url.present? %><link rel="alternate" hreflang="fr" href="<%= @content_page.alternate_fr_url %>"><% end %>
+  <% if @content_page.alternate_en_url.present? %><link rel="alternate" hreflang="x-default" href="<%= @content_page.alternate_en_url %>"><% end %>
+  <% if @content_page.structured_data.present? %><script type="application/ld+json"><%= raw @content_page.structured_data %></script><% end %>
+<% end %>
+
+<main><%= sanitize @content_page.body_html, tags: Rails::HTML5::SafeListSanitizer.allowed_tags + %w[section picture source figure figcaption time], attributes: Rails::HTML5::SafeListSanitizer.allowed_attributes + %w[class id src srcset sizes alt loading width height fetchpriority datetime data-availability-url] %></main>

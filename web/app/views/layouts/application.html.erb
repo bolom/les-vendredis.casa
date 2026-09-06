@@ -18,6 +18,8 @@
 
     <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    <%= yield :page_stylesheets %>
+    <%= javascript_include_tag "topbar", "lang-toggle", "availability", "email-protect", "lightbox", "analytics", defer: true, "data-turbo-track": "reload" %>
     <% if (ga_measurement_id = ENV["GA_MEASUREMENT_ID"]).present? %>
       <script async src="https://www.googletagmanager.com/gtag/js?id=<%= ga_measurement_id %>" data-lv-ga-script></script>
       <script>

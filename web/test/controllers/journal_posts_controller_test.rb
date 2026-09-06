@@ -22,7 +22,7 @@ class JournalPostsControllerTest < ActionDispatch::IntegrationTest
     assert_select "h1", "The garden"
     assert_select ".article-body h2", "Growing"
     assert_select ".article-body strong", "Mangoes"
-    assert_select "script", count: 0
+    assert_select ".article-body script", count: 0
   end
 
   test "keeps French and English slugs isolated" do

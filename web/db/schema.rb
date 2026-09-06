@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_09_06_130000) do
+ActiveRecord::Schema[8.0].define(version: 2026_09_06_173000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "btree_gist"
   enable_extension "pg_catalog.plpgsql"
@@ -94,6 +94,24 @@ ActiveRecord::Schema[8.0].define(version: 2026_09_06_130000) do
     t.check_constraint "last_event_count IS NULL OR last_event_count >= 0", name: "calendar_imports_last_event_count_not_negative"
     t.check_constraint "last_status::text = ANY (ARRAY['never_synced'::character varying, 'success'::character varying, 'failed'::character varying]::text[])", name: "calendar_imports_valid_last_status"
     t.check_constraint "provider::text = ANY (ARRAY['airbnb'::character varying, 'booking'::character varying]::text[])", name: "calendar_imports_valid_provider"
+  end
+
+  create_table "content_pages", force: :cascade do |t|
+    t.string "path", null: false
+    t.string "locale", null: false
+    t.string "title", null: false
+    t.text "description"
+    t.string "canonical_url"
+    t.string "robots"
+    t.string "alternate_en_url"
+    t.string "alternate_fr_url"
+    t.text "structured_data"
+    t.text "body_html", null: false
+    t.boolean "published", default: true, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["locale", "published"], name: "index_content_pages_on_locale_and_published"
+    t.index ["path"], name: "index_content_pages_on_path", unique: true
   end
 
   create_table "journal_posts", force: :cascade do |t|
