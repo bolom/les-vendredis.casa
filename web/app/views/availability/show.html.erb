@@ -1,0 +1,13 @@
+<% content_for :title, "Availability — Les Vendredis" %>
+
+<main class="wrap">
+  <section class="hero-minimal-text" style="padding: clamp(48px, 8vw, 96px) 0; max-width: 760px">
+    <p class="hero-minimal-eyebrow">Sainte-Luce · Martinique</p>
+    <h1 class="hero-minimal-h1">Check when the A-frame is free.</h1>
+    <p class="hero-minimal-sub">Availability combines direct reservations with our Airbnb and Booking calendars. Pick your dates in the request form and we will confirm them personally.</p>
+    <div class="hero-minimal-ctas">
+      <%= link_to "Request a stay", new_booking_inquiry_path, class: "hero-cta-primary" %>
+      <%= link_to "Back home →", root_path, class: "hero-cta-secondary" %>
+    </div>
+  </section>
+</main>

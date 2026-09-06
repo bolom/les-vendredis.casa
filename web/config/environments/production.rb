@@ -63,7 +63,7 @@ Rails.application.configure do
     address: "smtp.resend.com",
     port: 587,
     user_name: "resend",
-    password: ENV.fetch("RESEND_API_KEY", "missing-resend-api-key"),
+    password: AppConfig.fetch("RESEND_API_KEY", :resend, :api_key, default: "missing-resend-api-key"),
     authentication: :plain,
     enable_starttls_auto: true
   }

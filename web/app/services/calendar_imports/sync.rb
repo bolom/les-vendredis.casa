@@ -44,7 +44,8 @@ module CalendarImports
     attr_reader :calendar_import, :fetcher
 
     def secret_url
-      ENV.fetch(PROVIDER_ENV.fetch(calendar_import.provider))
+      provider = calendar_import.provider.to_sym
+      AppConfig.fetch!(PROVIDER_ENV.fetch(calendar_import.provider), :calendars, :"#{provider}_ical_url")
     end
 
     def fetch(url)

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root "pages#home"
+  get "fr" => "pages#home", defaults: { locale: "fr" }, as: :french_home
   get "availability" => "availability#show"
   resources :booking_inquiries, only: [ :new, :create, :show ], path: "booking-requests"
 

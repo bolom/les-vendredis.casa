@@ -2,6 +2,8 @@ class AvailabilityController < ApplicationController
   allow_unauthenticated_access only: :show
 
   def show
+    return if params[:from].blank? && params[:to].blank?
+
     check = Availability::Check.new(from: params[:from], to: params[:to])
 
     if check.valid?

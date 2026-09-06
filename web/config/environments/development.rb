@@ -37,8 +37,15 @@ Rails.application.configure do
   # Make template changes take effect immediately.
   config.action_mailer.perform_caching = false
 
+  # Keep local email safe and inspectable without contacting real recipients.
+  config.action_mailer.delivery_method = :file
+  config.action_mailer.file_settings = { location: Rails.root.join("tmp", "mails") }
+
   # Set localhost to be used by links generated in mailer templates.
-  config.action_mailer.default_url_options = { host: "localhost", port: 3000 }
+  mailer_host, mailer_port = Rails.application.credentials.dig(:app, :host)
+    .presence
+    .then { |value| (value || "localhost:3000").split(":", 2) }
+  config.action_mailer.default_url_options = { host: mailer_host, port: mailer_port&.to_i }
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log

@@ -1,0 +1,19 @@
+<% french = @locale == :fr %>
+<header class="top-bar-wrap" id="top-bar">
+  <div class="wrap">
+    <div class="top-bar">
+      <span class="top-left">Sainte-Luce · Martinique</span>
+      <%= link_to root_path, class: "mark" do %>
+        <span class="ornament"></span>Les Vendredis<span class="ornament"></span>
+      <% end %>
+      <nav class="top-right" aria-label="Navigation principale">
+        <%= link_to(french ? "Disponibilités" : "Availability", availability_path, class: "desktop-only") %>
+        <%= link_to(french ? "Réserver" : "Book", new_booking_inquiry_path, class: "desktop-only") %>
+        <span class="lang-toggle">
+          <%= link_to "FR", french_home_path, class: ("active" if french), lang: "fr", hreflang: "fr" %>
+          <%= link_to "EN", root_path, class: ("active" unless french), lang: "en", hreflang: "en" %>
+        </span>
+      </nav>
+    </div>
+  </div>
+</header>
