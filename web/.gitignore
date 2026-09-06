@@ -17,5 +17,3 @@
 /config/credentials/*.key
 /.env*
 !/.env.example
-
-/config/credentials/development.key

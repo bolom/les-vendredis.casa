@@ -2,7 +2,7 @@ module AppConfig
   module_function
 
   def fetch(env_key, *credential_path, default: nil, credentials: Rails.application.credentials)
-    ENV[env_key].presence || credentials.dig(*credential_path).presence || default
+    credentials.dig(*credential_path).presence || ENV[env_key].presence || default
   end
 
   def fetch!(env_key, *credential_path, credentials: Rails.application.credentials)

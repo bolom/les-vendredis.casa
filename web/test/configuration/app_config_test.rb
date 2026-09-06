@@ -7,19 +7,19 @@ class AppConfigTest < ActiveSupport::TestCase
     end
   end
 
-  test "prefers environment values" do
+  test "prefers encrypted credentials" do
     with_env("APP_CONFIG_TEST", "from-env") do
       credentials = FakeCredentials.new({ example: "from-credentials" })
 
-      assert_equal "from-env", AppConfig.fetch("APP_CONFIG_TEST", :example, credentials: credentials)
+      assert_equal "from-credentials", AppConfig.fetch("APP_CONFIG_TEST", :example, credentials: credentials)
     end
   end
 
-  test "falls back to credentials" do
-    with_env("APP_CONFIG_TEST", nil) do
-      credentials = FakeCredentials.new({ example: "from-credentials" })
+  test "falls back to environment during credential migration" do
+    with_env("APP_CONFIG_TEST", "from-env") do
+      credentials = FakeCredentials.new({ example: nil })
 
-      assert_equal "from-credentials", AppConfig.fetch("APP_CONFIG_TEST", :example, credentials: credentials)
+      assert_equal "from-env", AppConfig.fetch("APP_CONFIG_TEST", :example, credentials: credentials)
     end
   end
 
