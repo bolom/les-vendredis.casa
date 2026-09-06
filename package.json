@@ -1,14 +1,12 @@
 {
   "name": "les-vendredis.casa",
   "version": "1.0.0",
-  "description": "A Jekyll site for Les Vendredis, a handmade A-frame cabin and private garden in Sainte-Luce, Martinique.",
+  "description": "Rails monolith for Les Vendredis, a handmade A-frame cabin and private garden in Sainte-Luce, Martinique.",
   "main": "index.js",
   "directories": {
     "doc": "docs"
   },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/bolom/les-vendredis.casa.git"

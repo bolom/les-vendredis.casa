@@ -1,1 +1,8 @@
-# See https://www.robotstxt.org/robotstxt.html for documentation on how to use the robots.txt file
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /booking-requests
+Disallow: /session
+Disallow: /passwords
+
+Sitemap: https://lesvendredis.casa/sitemap_index.xml

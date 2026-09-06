@@ -6,10 +6,11 @@ cd "$(dirname "$0")/../.."
 required_files=(
   "web/config/deploy.yml"
   "web/Dockerfile"
+  "web/bin/ci"
+  "web/app/views/layouts/application.html.erb"
+  "web/config/routes.rb"
+  "web/public/robots.txt"
   ".dockerignore"
-  "_config.yml"
-  "sitemap.xml"
-  "robots.txt"
 )
 
 for file in "${required_files[@]}"; do
@@ -27,8 +28,6 @@ for file in $(git ls-files 'web/.kamal/secrets*'); do
     exit 1
   fi
 done
-
-PATH="$HOME/.rbenv/shims:$PATH" bundle exec jekyll build --quiet
 
 (
   cd web

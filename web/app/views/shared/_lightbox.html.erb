@@ -1,0 +1,13 @@
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true">
+  <button class="lb-close" onclick="closeLightbox()" aria-label="Close">✕</button>
+  <button class="lb-nav lb-prev" onclick="moveLightbox(-1)" aria-label="Previous">‹</button>
+  <button class="lb-nav lb-next" onclick="moveLightbox(1)" aria-label="Next">›</button>
+  <div class="lb-content">
+    <img class="lb-img" id="lb-img" src="" alt="">
+    <div class="lb-caption">
+      <h3 id="lb-title"></h3>
+      <p id="lb-desc"></p>
+      <span class="lb-counter" id="lb-counter"></span>
+    </div>
+  </div>
+</div>

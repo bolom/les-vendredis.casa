@@ -1,7 +1,6 @@
 # Les Vendredis Rails App
 
-Rails V1 for Les Vendredis direct booking. The production public site remains
-the root Jekyll app until the migration cutover issue is approved.
+Rails monolith for Les Vendredis direct booking and public content.
 
 ## Stack
 
@@ -40,7 +39,7 @@ User.create!(
 ## Environment
 
 Copy `.env.example` only for non-secret local settings. Application secrets live
-in `config/credentials.yml.enc`; 1Password supplies its master key to Kamal.
+in `config/credentials.yml.enc`; 1Password supplies the master key to Kamal.
 
 Required production secrets:
 

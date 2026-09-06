@@ -42,7 +42,7 @@ From the repo root:
 web/bin/deploy-preflight
 ```
 
-This checks ignored secret/data artifacts, builds Jekyll, and runs Rails CI.
+This checks ignored secret/data artifacts and runs the Rails CI/preflight path.
 
 ## Production Cutover
 
@@ -67,7 +67,7 @@ Post-cutover:
 
 - Verify `/up`, public pages, booking inquiry, admin, jobs, email.
 - Submit sitemap in Search Console if needed.
-- Keep rollback path to the previous Jekyll deployment until monitoring is clean.
+- Keep rollback path to the previous deployment until monitoring is clean.
 
 ## Rollback
 

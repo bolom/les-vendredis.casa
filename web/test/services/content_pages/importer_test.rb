@@ -20,6 +20,7 @@ class ContentPages::ImporterTest < ActiveSupport::TestCase
     assert page.title.present?
     assert page.description.present?
     assert_equal "https://lesvendredis.casa/unique-stay-martinique/", page.canonical_url
+    assert_kind_of Array, JSON.parse(page.structured_data)
     assert_includes page.structured_data, "LodgingBusiness"
   end
 end

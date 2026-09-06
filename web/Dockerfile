@@ -53,18 +53,6 @@ RUN bundle exec bootsnap precompile -j 1 app/ lib/
 # Precompiling assets for production without requiring secret RAILS_MASTER_KEY
 RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
 
-# Build the legacy Jekyll site into Rails public/ for the first SEO-safe cutover.
-WORKDIR /jekyll
-COPY Gemfile Gemfile.lock ./
-RUN bundle install
-COPY . .
-RUN bundle exec jekyll build --destination /rails/public
-
-WORKDIR /rails
-
-
-
-
 # Final stage for app image
 FROM base
 

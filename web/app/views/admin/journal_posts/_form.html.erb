@@ -1,0 +1,14 @@
+<%= form_with model: @journal_post, url: @journal_post.persisted? ? admin_journal_post_path(@journal_post.id) : admin_journal_posts_path do |form| %>
+  <% @journal_post.errors.full_messages.each do |message| %><p role="alert"><%= message %></p><% end %>
+  <p><%= form.label :title, "Titre" %><%= form.text_field :title, required: true %></p>
+  <p><%= form.label :slug, "Adresse (mots-avec-tirets)" %><%= form.text_field :slug, required: true %></p>
+  <p><%= form.label :locale, "Langue" %><%= form.select :locale, [["Français", "fr"], ["English", "en"]] %></p>
+  <p><%= form.label :summary, "Résumé" %><%= form.text_area :summary, rows: 3 %></p>
+  <p><%= form.label :body_markdown, "Article (Markdown)" %><%= form.text_area :body_markdown, rows: 24, required: true %></p>
+  <p><%= form.label :tag, "Catégorie" %><%= form.text_field :tag %></p>
+  <p><%= form.label :image_path, "Image (chemin ou URL)" %><%= form.text_field :image_path %></p>
+  <p><%= form.label :image_alt, "Description de l’image" %><%= form.text_field :image_alt %></p>
+  <p><%= form.label :published_on, "Date de publication" %><%= form.date_field :published_on, required: true %></p>
+  <p><%= form.check_box :published %><%= form.label :published, "Publier (une date future programme la publication)" %></p>
+  <%= form.submit "Enregistrer" %>
+<% end %>

@@ -1,4 +1,5 @@
 require "nokogiri"
+require "json"
 
 module ContentPages
   class Importer
@@ -38,7 +39,7 @@ module ContentPages
         robots: meta_content(document, "robots"),
         alternate_en_url: alternate_url(document, "en"),
         alternate_fr_url: alternate_url(document, "fr"),
-        structured_data: document.css('script[type="application/ld+json"]').map(&:text).join("\n"),
+        structured_data: JSON.generate(document.css('script[type="application/ld+json"]').map(&:text)),
         body_html: document.at_css("main")&.inner_html.to_s.strip,
         published: true
       }

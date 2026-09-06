@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get "sitemap_index.xml" => "discovery#sitemap_index"
+  get "sitemap.xml" => "discovery#sitemap"
+  get "fr/sitemap.xml" => "discovery#sitemap", defaults: { locale: "fr" }
+  get "feed.xml" => "discovery#feed"
   root "pages#home"
   get "fr" => "pages#home", defaults: { locale: "fr" }, as: :french_home
   get "journal" => "journal_posts#index", defaults: { locale: "en" }, as: :journal
@@ -9,6 +13,7 @@ Rails.application.routes.draw do
   resources :booking_inquiries, only: [ :new, :create, :show ], path: "booking-requests"
 
   namespace :admin do
+    resources :journal_posts, except: [ :show, :destroy ]
     root "dashboard#show"
     resources :booking_inquiries, only: [ :index, :show ] do
       post :accept, on: :member

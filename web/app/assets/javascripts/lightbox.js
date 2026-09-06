@@ -80,12 +80,12 @@ function render() {
 
 document.addEventListener('keydown', e => {
   const lb = document.getElementById('lightbox');
-  if (!lb.classList.contains('open')) return;
+  if (!lb || !lb.classList.contains('open')) return;
   if (e.key === 'Escape') closeLightbox();
   if (e.key === 'ArrowRight') moveLightbox(1);
   if (e.key === 'ArrowLeft') moveLightbox(-1);
 });
 
-document.getElementById('lightbox').addEventListener('click', e => {
+document.getElementById('lightbox')?.addEventListener('click', e => {
   if (e.target === e.currentTarget) closeLightbox();
 });

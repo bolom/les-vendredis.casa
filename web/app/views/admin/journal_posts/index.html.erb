@@ -1,0 +1,9 @@
+<main class="wrap">
+  <h1>Journal</h1>
+  <%= link_to "Nouvel article", new_admin_journal_post_path %>
+  <ul>
+    <% @journal_posts.each do |post| %>
+      <li><%= link_to post.title, edit_admin_journal_post_path(post.id) %> — <%= post.locale.upcase %> — <%= post.published? ? post.published_on : "Brouillon" %></li>
+    <% end %>
+  </ul>
+</main>

@@ -16,8 +16,7 @@
 
     <meta name="theme-color" content="#F8F1E4">
 
-    <%# Includes all stylesheet files in app/assets/stylesheets %>
-    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= yield :page_stylesheets %>
     <%= javascript_include_tag "topbar", "lang-toggle", "availability", "email-protect", "lightbox", "analytics", defer: true, "data-turbo-track": "reload" %>
     <% if (ga_measurement_id = ENV["GA_MEASUREMENT_ID"]).present? %>
@@ -49,6 +48,7 @@
   <body>
     <%= render "shared/header" %>
     <%= yield %>
+    <%= render "shared/lightbox" %>
     <%= render "shared/footer" %>
   </body>
 </html>

@@ -20,6 +20,7 @@ class ContentPagesControllerTest < ActionDispatch::IntegrationTest
     assert_select "title", @page.title
     assert_select "meta[name=description][content=?]", @page.description
     assert_select "link[rel=canonical][href=?]", @page.canonical_url
+    assert_select "head script[type='application/ld+json']", count: 1
     assert_select "main section.landing h1", "The cabin"
     assert_select "main script", count: 0
   end
