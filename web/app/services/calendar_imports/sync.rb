@@ -68,6 +68,10 @@ module CalendarImports
         external_updated_at: event.external_updated_at,
         summary: event.summary
       )
+      if calendar_event.status == "confirmed"
+        overlapping_blocks = AvailabilityBlock.blocking.overlapping(event.starts_on, event.ends_on).select(:id)
+        PaymentOrder.where(availability_block_id: overlapping_blocks, status: %w[settling paid]).update_all(status: "review", updated_at: Time.current)
+      end
     end
 
     def duration_ms(started_at)

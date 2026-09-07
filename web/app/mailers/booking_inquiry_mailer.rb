@@ -29,4 +29,9 @@ class BookingInquiryMailer < ApplicationMailer
       subject: @booking_inquiry.locale == "fr" ? "Votre demande Les Vendredis" : "Your Les Vendredis request"
     )
   end
+
+  def guest_cancellation
+    @booking_inquiry = params[:booking_inquiry]
+    mail(to: @booking_inquiry.email, subject: @booking_inquiry.locale == "fr" ? "Annulation de votre séjour Les Vendredis" : "Your Les Vendredis stay cancellation")
+  end
 end

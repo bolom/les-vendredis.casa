@@ -30,6 +30,7 @@ module Availability
       check_in = coerce_date(check_in)
       check_out = coerce_date(check_out)
       return false if check_in.blank? || check_out.blank? || check_out <= check_in
+      return false if check_in < Date.current
 
       requested_stay = Struct.new(:check_in, :check_out, :adults, :children).new(check_in, check_out, 1, 0)
       @stay_rule.validate_stay(requested_stay).empty? && !blocked?(check_in, check_out)

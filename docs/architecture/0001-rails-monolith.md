@@ -1,5 +1,13 @@
 # ADR 0001: Rails monolith for the public site and direct booking
 
+> Implementation update — 2026-09-07: the public runtime is now Rails, including
+> the journal and legacy content routes. Application secrets are stored in Rails
+> encrypted credentials; 1Password holds the master key. The historical V1 scope
+> below is retained as decision history, not current operational instructions.
+> Quote/rules endpoints and x402 v2 verification/settlement now exist, covered by
+> simulated-payment tests. Checkout stays disabled until configured. See ADR 0002,
+> README and the dated correction backlog for current status and remaining launch checks.
+
 - **Status:** Accepted for the Rails V1 implementation
 - **Date:** 2026-09-02
 - **Decision owners:** Les Vendredis product owner; implementation owner to be assigned

@@ -9,6 +9,9 @@ class AvailabilityBlock < ApplicationRecord
   validates :status, inclusion: { in: %w[tentative confirmed cancelled] }
   validate :ends_after_start
   validate :blocking_range_does_not_overlap
+  before_update :protect_linked_booking_dates
+  before_update :protect_unresolved_payment
+  after_update :cancel_linked_bookings
 
   scope :blocking, -> { where(status: BLOCKING_STATUSES) }
   scope :overlapping, ->(starts_on, ends_on) { where("starts_on < ? AND ends_on > ?", ends_on, starts_on) }
@@ -18,6 +21,27 @@ class AvailabilityBlock < ApplicationRecord
   end
 
   private
+
+  def protect_unresolved_payment
+    return unless status_changed? && status == "cancelled"
+    return unless PaymentOrder.where(availability_block_id: id, status: %w[settling review paid]).exists?
+
+    errors.add(:base, "Payment must be reconciled before cancellation")
+    throw :abort
+  end
+
+  def protect_linked_booking_dates
+    return unless (starts_on_changed? || ends_on_changed?) && booking_inquiries.exists?
+
+    errors.add(:base, "Cancel the booking before changing its dates")
+    throw :abort
+  end
+
+  def cancel_linked_bookings
+    return unless saved_change_to_status? && status == "cancelled"
+
+    booking_inquiries.where(status: "accepted").find_each { |inquiry| inquiry.update!(status: "cancelled") }
+  end
 
   def ends_after_start
     return if starts_on.blank? || ends_on.blank?

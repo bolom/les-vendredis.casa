@@ -6,6 +6,9 @@
   <% end %>
 
   <%= form.label :minimum_nights %>
+  <%= form.label :nightly_price_eur, "Prix par nuit (EUR)" %>
+  <%= form.number_field :nightly_price_eur, min: "0.01", max: 100000, step: "0.01" %>
+
   <%= form.number_field :minimum_nights, min: 1 %>
 
   <%= form.label :maximum_nights %>

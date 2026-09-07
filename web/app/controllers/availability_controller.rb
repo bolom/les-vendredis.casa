@@ -1,5 +1,8 @@
 class AvailabilityController < ApplicationController
   allow_unauthenticated_access only: :show
+  rescue_from MachineBookings::Quote::InvalidPrice do
+    render json: { error: "pricing_unavailable" }, status: :service_unavailable
+  end
 
   def show
     return if params[:from].blank? && params[:to].blank?

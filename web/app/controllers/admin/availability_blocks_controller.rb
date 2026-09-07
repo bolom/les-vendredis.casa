@@ -33,8 +33,12 @@ module Admin
     end
 
     def cancel
-      AvailabilityBlock.find(params[:id]).update!(status: "cancelled")
-      redirect_to admin_availability_blocks_path, notice: "Block cancelled."
+      block = AvailabilityBlock.find(params[:id])
+      if block.update(status: "cancelled")
+        redirect_to admin_availability_blocks_path, notice: "Block cancelled."
+      else
+        redirect_to admin_availability_blocks_path, alert: block.errors.full_messages.to_sentence
+      end
     end
 
     private

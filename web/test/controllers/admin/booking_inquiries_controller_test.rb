@@ -18,7 +18,7 @@ module Admin
       sign_in_as users(:one)
       inquiry = create_inquiry
 
-      assert_enqueued_emails 1 do
+      assert_enqueued_jobs 1, only: BookingNotificationJob do
         post accept_admin_booking_inquiry_path(inquiry)
       end
 
@@ -51,12 +51,24 @@ module Admin
       inquiry = create_inquiry
 
       assert_no_difference -> { AvailabilityBlock.count } do
-        assert_enqueued_emails 1 do
+        assert_enqueued_jobs 1, only: BookingNotificationJob do
           post decline_admin_booking_inquiry_path(inquiry)
         end
       end
 
       assert_equal "declined", inquiry.reload.status
+    end
+
+    test "repeated acceptance is idempotent and decline cannot undo acceptance" do
+      inquiry = create_inquiry
+      inquiry.accept!
+      assert_no_difference "AvailabilityBlock.count" do
+        assert_equal false, inquiry.accept!
+      end
+      assert_raises(ActiveRecord::RecordInvalid) { inquiry.decline! }
+      assert inquiry.reload.status_accepted?
+      inquiry.availability_block.update!(status: "cancelled")
+      assert inquiry.reload.status_cancelled?
     end
 
     private

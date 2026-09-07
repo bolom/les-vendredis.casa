@@ -44,7 +44,22 @@ class BookingInquiriesControllerTest < ActionDispatch::IntegrationTest
       }
     end
 
-    assert_redirected_to new_booking_inquiry_path
+    assert_redirected_to new_booking_inquiry_path(locale: "en")
+  end
+
+  test "requires explicit consent on the server" do
+    assert_no_difference "BookingInquiry.count" do
+      post booking_inquiries_path, params: { booking_inquiry: valid_params.except(:contact_consent) }
+    end
+    assert_response :unprocessable_entity
+  end
+
+  test "French request keeps its language through confirmation" do
+    post booking_inquiries_path, params: { locale: "fr", booking_inquiry: valid_params }
+    follow_redirect!
+    assert_response :success
+    assert_includes response.body, "Demande reçue"
+    assert BookingInquiry.last.consent_at.present?
   end
 
   private
@@ -58,7 +73,8 @@ class BookingInquiriesControllerTest < ActionDispatch::IntegrationTest
       guest_name: "Guest",
       email: "guest@example.com",
       phone: "+596696000000",
-      message: "Hello"
+      message: "Hello",
+      contact_consent: "1"
     }
   end
 end

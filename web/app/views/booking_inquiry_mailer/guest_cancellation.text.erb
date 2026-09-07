@@ -1,0 +1,15 @@
+<% if @booking_inquiry.locale == "fr" %>
+Bonjour <%= @booking_inquiry.guest_name %>,
+
+Votre séjour du <%= @booking_inquiry.check_in %> au <%= @booking_inquiry.check_out %> a été annulé.
+Contactez-nous pour toute question. Ce message ne constitue pas une confirmation de remboursement.
+
+Référence : <%= @booking_inquiry.public_reference %>
+<% else %>
+Hello <%= @booking_inquiry.guest_name %>,
+
+Your stay from <%= @booking_inquiry.check_in %> to <%= @booking_inquiry.check_out %> has been cancelled.
+Please contact us with any questions. This message does not confirm a refund.
+
+Reference: <%= @booking_inquiry.public_reference %>
+<% end %>

@@ -43,24 +43,30 @@ class MachineBookingsControllerTest < ActionDispatch::IntegrationTest
     assert_includes response.parsed_body["errors"], "dates are not available"
   end
 
-  test "book requires x402 payment before confirmation" do
+  test "explicit adults and children respect separate capacities" do
+    post "/quote", params: { date: "2026-11-30", nights: 2, adults: 2, children: 1 }, as: :json
+    assert_response :success
+    assert_equal 3, response.parsed_body["guests"]
+    post "/quote", params: { date: "2026-11-30", nights: 2, adults: 3, children: 0 }, as: :json
+    assert_response :unprocessable_entity
+  end
+
+  test "book is unavailable until payment verification exists" do
     assert_no_difference "BookingInquiry.count" do
       assert_no_difference "AvailabilityBlock.count" do
         post "/book", params: { date: "2026-11-30", nights: 2, guests: 2 }, as: :json
       end
     end
 
-    assert_response :payment_required
-    body = response.parsed_body
-    assert_equal "payment_required", body["error"]
-    assert_equal "x402", body["paymentMethods"].first["scheme"]
-    assert_equal "148000000", body["paymentMethods"].first["amount"]
+    assert_response :service_unavailable
+    assert_equal "payment_unavailable", response.parsed_body["error"]
+    assert_nil response.headers["WWW-Authenticate"]
+  end
 
-    auth_scheme, encoded = response.headers.fetch("WWW-Authenticate").match(/\A(\w+) request="([^"]+)"\z/).captures
-    assert_equal "Payment", auth_scheme
-    challenge = JSON.parse(Base64.strict_decode64(encoded))
-    assert_equal "148000000", challenge["amount"]
-    assert_equal "EURC", challenge["asset"]
-    assert_equal "polygon", challenge["network"]
+  test "rejects past dates fractional counts and excess adults" do
+    [ { date: Date.yesterday.iso8601 }, { nights: 1.9 }, { guests: 2.9 }, { guests: 3 }, { nights: [] } ].each do |invalid|
+      post "/quote", params: { date: "2026-11-30", nights: 2, guests: 2 }.merge(invalid), as: :json
+      assert_response :unprocessable_entity
+    end
   end
 end

@@ -1,4 +1,5 @@
-<h1>Request a stay</h1>
+<% french = @booking_inquiry.locale == "fr" %>
+<h1><%= french ? "Demander un séjour" : "Request a stay" %></h1>
 
 <script>
   window.LesVendredisAnalytics?.track("start_inquiry", { locale: "<%= j @booking_inquiry.locale %>", source: "booking_form" });
@@ -6,40 +7,40 @@
 
 <%= form_with model: @booking_inquiry, data: { analytics_event: "submit_inquiry", analytics_source: "booking_form" } do |form| %>
   <% if @booking_inquiry.errors.any? %>
-    <p><%= @booking_inquiry.errors.full_messages.to_sentence %></p>
+    <div role="alert"><% booking_error_messages(@booking_inquiry).each do |message| %><p><%= message %></p><% end %></div>
   <% end %>
 
   <input type="text" name="company" autocomplete="off" tabindex="-1" hidden>
   <%= hidden_field_tag :locale, @booking_inquiry.locale %>
 
-  <%= form.label :check_in %>
+  <%= form.label :check_in, french ? "Arrivée" : "Check in" %>
   <%= form.date_field :check_in, required: true %>
 
-  <%= form.label :check_out %>
+  <%= form.label :check_out, french ? "Départ" : "Check out" %>
   <%= form.date_field :check_out, required: true %>
 
-  <%= form.label :adults %>
+  <%= form.label :adults, french ? "Adultes" : "Adults" %>
   <%= form.number_field :adults, min: 1, value: @booking_inquiry.adults || 2, required: true %>
 
-  <%= form.label :children %>
+  <%= form.label :children, french ? "Enfants" : "Children" %>
   <%= form.number_field :children, min: 0, value: @booking_inquiry.children || 0, required: true %>
 
-  <%= form.label :guest_name, "Name" %>
+  <%= form.label :guest_name, french ? "Nom" : "Name" %>
   <%= form.text_field :guest_name, required: true %>
 
   <%= form.label :email %>
   <%= form.email_field :email, required: true %>
 
-  <%= form.label :phone %>
+  <%= form.label :phone, french ? "Téléphone" : "Phone" %>
   <%= form.telephone_field :phone %>
 
   <%= form.label :message %>
   <%= form.text_area :message %>
 
   <label>
-    <input type="checkbox" required>
-    I agree to be contacted about this booking request.
+    <%= form.check_box :contact_consent, required: true %>
+    <%= french ? "J’accepte d’être contacté au sujet de cette demande de séjour." : "I agree to be contacted about this booking request." %>
   </label>
 
-  <%= form.submit "Send request" %>
+  <%= form.submit(french ? "Envoyer la demande" : "Send request") %>
 <% end %>

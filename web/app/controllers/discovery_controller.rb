@@ -78,10 +78,10 @@ class DiscoveryController < ApplicationController
 
       - GET /rules — stay rules, capacity, price, currency, network, asset, recipient.
       - GET /availability?from=YYYY-MM-DD&to=YYYY-MM-DD — available nights with price metadata.
-      - POST /quote — JSON body: {"date":"YYYY-MM-DD","nights":2,"guests":2}
-      - POST /book — returns HTTP 402 with x402 payment challenge when payment is required.
+      - POST /quote — JSON body: {"date":"YYYY-MM-DD","nights":2,"adults":2,"children":0}. When paymentConfigured is true, save quoteId and authorizationNonce.
+      - POST /book?quote_id=QUOTE_ID — x402 v2 PAYMENT-REQUIRED challenge; retry with PAYMENT-SIGNATURE and guest_name, email, locale and contact_consent="1".
 
-      Booking is not confirmed until payment verification succeeds. If paymentConfigured is false, the payment recipient is not configured yet.
+      The EIP-3009 nonce must equal authorizationNonce to bind payment to the quote. A settled payment confirms the stay; an uncertain settlement returns payment_review without charging again. When configuration is missing, /book returns HTTP 503; use /booking-requests/new for enquiries. Legacy guests in quote requests means adults.
     TEXT
   end
 
@@ -102,13 +102,13 @@ class DiscoveryController < ApplicationController
         book: "#{SITE_URL}/book"
       },
       x402: {
-        version: "1.0",
+        version: "2",
         network: MachineBookings::Quote.network,
         chainId: MachineBookings::Quote.chain_id,
         asset: MachineBookings::Quote.asset,
         currency: MachineBookings::Quote.currency,
         payTo: MachineBookings::Quote.pay_to,
-        paymentConfigured: MachineBookings::Quote.pay_to.present?
+        paymentConfigured: MachineBookings::Quote.payment_configured?
       }
     }
   end

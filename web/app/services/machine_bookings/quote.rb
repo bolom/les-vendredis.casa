@@ -4,24 +4,29 @@ require "json"
 
 module MachineBookings
   class Quote
+    class InvalidPrice < ArgumentError; end
     DEFAULT_UNIT_PRICE_EUR = "74".freeze
     DEFAULT_NETWORK = "polygon".freeze
     DEFAULT_CHAIN_ID = 137
     DEFAULT_ASSET = "EURC".freeze
     DEFAULT_EXPIRY = 15.minutes
 
-    attr_reader :check_in, :check_out, :nights, :guests, :errors, :expires_at
+    attr_reader :check_in, :check_out, :nights, :guests, :adults, :children, :errors, :expires_at
 
     def self.build(params)
       new(
         date: params[:date].presence || params[:checkIn].presence || params[:check_in],
         nights: params[:nights],
-        guests: params[:guests]
+        guests: params[:guests], adults: params[:adults], children: params[:children]
       ).tap(&:validate)
     end
 
     def self.unit_price
-      BigDecimal(AppConfig.fetch("MACHINE_BOOKING_PRICE_EUR", :booking, :machine_price_eur, default: DEFAULT_UNIT_PRICE_EUR).to_s)
+      value = BigDecimal((StayRule.current.nightly_price_eur || AppConfig.fetch("MACHINE_BOOKING_PRICE_EUR", :booking, :machine_price_eur, default: DEFAULT_UNIT_PRICE_EUR)).to_s)
+      raise InvalidPrice, "Invalid nightly price" unless value.finite? && value.positive? && value <= 100_000 && value.round(2) == value
+      value
+    rescue ArgumentError
+      raise InvalidPrice, "Invalid nightly price"
     end
 
     def self.currency
@@ -29,7 +34,7 @@ module MachineBookings
     end
 
     def self.network
-      AppConfig.fetch("X402_NETWORK", :x402, :network, default: DEFAULT_NETWORK)
+      PaymentConfiguration.fetch(:chain_id).present? ? "eip155:#{chain_id}" : DEFAULT_NETWORK
     end
 
     def self.chain_id
@@ -44,10 +49,16 @@ module MachineBookings
       AppConfig.fetch("X402_PAY_TO", :x402, :pay_to)
     end
 
-    def initialize(date:, nights:, guests:)
+    def self.payment_configured?
+      PaymentConfiguration.configured?
+    end
+
+    def initialize(date:, nights:, guests: nil, adults: nil, children: nil)
       @raw_date = date
       @nights = coerce_integer(nights)
-      @guests = coerce_integer(guests)
+      @adults = coerce_integer(adults.nil? ? guests : adults)
+      @children = coerce_integer(children.nil? ? 0 : children, minimum: 0)
+      @guests = @adults + @children if @adults && @children
       @errors = []
       @expires_at = DEFAULT_EXPIRY.from_now.utc
     end
@@ -78,11 +89,7 @@ module MachineBookings
     end
 
     def payment_configured?
-      self.class.pay_to.present?
-    end
-
-    def amount_base_units
-      (total_price * 1_000_000).to_i.to_s
+      self.class.payment_configured?
     end
 
     def as_json(*)
@@ -91,6 +98,8 @@ module MachineBookings
         checkOut: check_out.iso8601,
         nights: nights,
         guests: guests,
+        adults: adults,
+        children: children,
         unitPrice: decimal_string(unit_price),
         totalPrice: decimal_string(total_price),
         currency: self.class.currency,
@@ -103,40 +112,10 @@ module MachineBookings
       }
     end
 
-    def payment_method
-      {
-        scheme: "x402",
-        network: self.class.network,
-        chainId: self.class.chain_id,
-        asset: self.class.asset,
-        recipient: self.class.pay_to,
-        amount: amount_base_units,
-        decimals: 6,
-        currency: self.class.currency,
-        expiresAt: expires_at.iso8601
-      }
-    end
-
-    def authenticate_header
-      payload = {
-        amount: amount_base_units,
-        asset: self.class.asset,
-        currency: self.class.currency,
-        recipient: self.class.pay_to,
-        network: self.class.network,
-        chainId: self.class.chain_id,
-        expiresAt: expires_at.iso8601
-      }
-
-      %(Payment request="#{Base64.strict_encode64(JSON.generate(payload))}")
-    end
-
     private
 
     def validate_stay_rules
       rule = StayRule.current
-      adults = [ guests, rule.maximum_adults ].min
-      children = guests - adults
       stay = Struct.new(:check_in, :check_out, :adults, :children).new(check_in, check_out, adults, children)
 
       rule.validate_stay(stay).each do |attribute, message|
@@ -156,7 +135,10 @@ module MachineBookings
       nil
     end
 
-    def coerce_integer(value)
+    def coerce_integer(value, minimum: 1)
+      return nil unless value.is_a?(Integer) || (value.is_a?(String) && value.match?(/\A[0-9]{1,3}\z/))
+      return nil unless value.to_i.between?(minimum, 365)
+
       Integer(value)
     rescue ArgumentError, TypeError
       nil

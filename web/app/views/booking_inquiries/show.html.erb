@@ -1,7 +1,8 @@
-<h1>Request received</h1>
+<% french = @booking_inquiry.locale == "fr" %>
+<h1><%= french ? "Demande reçue" : "Request received" %></h1>
 
-<p>Your request reference is <%= @booking_inquiry.public_reference %>.</p>
-<p>This is not a confirmed booking yet. We will reply soon.</p>
+<p><%= french ? "Référence de votre demande :" : "Your request reference is" %> <%= @booking_inquiry.public_reference %>.</p>
+<p><%= french ? "Votre réservation n’est pas encore confirmée. Nous vous répondrons bientôt." : "This is not a confirmed booking yet. We will reply soon." %></p>
 
 <script>
   window.LesVendredisAnalytics?.track("inquiry_success", { locale: "<%= j @booking_inquiry.locale %>", status: "received", source: "booking_form" });
