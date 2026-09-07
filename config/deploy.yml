@@ -1,12 +1,26 @@
-# Production deployment. The proxy currently serves the pre-production
-# hostname (staging.lesvendredis.casa) while the public cutover is pending;
-# switch proxy.host to lesvendredis.casa (and lower DNS TTL) at cutover.
+# Production deployment. The Caddy reverse proxy on the VPS routes
+# staging.lesvendredis.casa to the app through Docker labels (see
+# servers/web/labels) while the public cutover is pending; switch the
+# caddy label to lesvendredis.casa (and lower the DNS TTL) at cutover.
 service: les-vendredis
 image: bolomichelin/les-vendredis
 
 servers:
   web:
-    - <%= ENV.fetch("KAMAL_INFOMANIAK_HOST", "185.143.102.224") %>
+    hosts:
+      - <%= ENV.fetch("KAMAL_INFOMANIAK_HOST", "185.143.102.224") %>
+    proxy: false
+    labels:
+      caddy: staging.lesvendredis.casa
+      caddy.reverse_proxy: "{{upstreams 80}}"
+    options:
+      expose:
+        - "80"
+      health-cmd: "curl -fsS http://127.0.0.1/up >/dev/null"
+      health-interval: 10s
+      health-timeout: 5s
+      health-retries: 30
+      health-start-period: 120s
   job:
     hosts:
       - <%= ENV.fetch("KAMAL_INFOMANIAK_HOST", "185.143.102.224") %>
@@ -14,11 +28,6 @@ servers:
 
 ssh:
   user: ubuntu
-
-proxy:
-  ssl: true
-  host: staging.lesvendredis.casa
-  app_port: 80
 
 registry:
   username: <%= ENV.fetch("KAMAL_REGISTRY_USER", "bolomichelin") %>
@@ -39,8 +48,6 @@ env:
 
 volumes:
   - "les_vendredis_storage:/rails/storage"
-
-asset_path: /rails/public/assets
 
 builder:
   arch: amd64
