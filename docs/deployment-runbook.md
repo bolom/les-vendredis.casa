@@ -43,53 +43,45 @@ bin/deploy-preflight
 
 This checks ignored secret/data artifacts and runs the Rails CI/preflight path.
 
-## Staging (pre-production host)
+## Pre-production preview (before the public cutover)
 
-`staging.lesvendredis.casa` serves the SAME production Rails environment on
-the Infomaniak VPS; it is a preview of the app before the public cutover.
-Kamal destination `staging` (`config/deploy.staging.yml`) isolates the service
-name, volumes and database accessory: `DATABASE_URL` points the app at the
-staging Postgres container instead of the credentials URL, and
-`GA_MEASUREMENT_ID` is blank so staging does not pollute analytics. Booking
-emails are real (`hello@lesvendredis.casa` is the verified sender), so use
-your own address when testing the booking flow.
+There is a single production deployment. Until the public cutover, the Kamal
+proxy serves the app on **staging.lesvendredis.casa** (`proxy.host` in
+`config/deploy.yml`), so the real site stays on GitHub Pages untouched. At
+cutover, switch `proxy.host` to `lesvendredis.casa`, lower the DNS TTL, and
+redeploy.
 
-One-time setup:
+1Password prerequisites (vault `lesvendredis.casa`, item `production`):
 
-- In Cloudflare, the `staging` A record points at `185.143.102.224` and is
-  **DNS only** (grey cloud) so kamal-proxy can obtain its own Let's Encrypt
-  certificate.
-- Item `production` (vault `lesvendredis.casa`): field `RAILS_MASTER_KEY`
-  must contain the value of `config/master.key`.
-- Item `staging`: field `POSTGRES_PASSWORD` must contain the staging database
-  password (the one baked into the staging `DATABASE_URL`).
-- `bin/setup-1password-kamal` creates empty fields only; paste values in
-  1Password, never in the repository.
+- `RAILS_MASTER_KEY` = the value of `config/master.key`
+- `POSTGRES_PASSWORD` = the database password (also baked into the
+  `DATABASE_URL` that Kamal builds from it)
+
+The Postgres accessory lives in the `les-vendredis-db` container on the same
+VPS (volume `les_vendredis_db`, bound to the Docker bridge gateway so it is
+not exposed to the internet).
 
 Deploy:
 
 ```bash
-bin/kamal setup -d staging   # first deploy: proxy, Postgres accessory, app
-bin/kamal deploy -d staging
+export KAMAL_1PASSWORD_ACCOUNT=<account id>
+bin/kamal setup      # first deploy: docker, proxy, Postgres accessory, app
+bin/kamal deploy
 ```
 
 Verify:
 
 ```bash
 curl -fsS https://staging.lesvendredis.casa/up
-bin/kamal app exec "bin/rails production:check" -d staging
-bin/kamal logs -d staging
+bin/kamal app exec "bin/rails production:check"
+bin/kamal logs
 ```
 
 Rollback:
 
 ```bash
-bin/kamal rollback -d staging <version>
+bin/kamal rollback <version>
 ```
-
-The staging Postgres lives in the `les-vendredis-staging-db` container with
-volume `les_vendredis_staging_db`. To wipe staging data and start fresh,
-remove the volume, the accessory and run `bin/kamal setup -d staging` again.
 
 ## Production Cutover
 

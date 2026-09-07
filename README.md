@@ -72,13 +72,13 @@ bin/brakeman --no-pager
 bin/bundler-audit
 ```
 
-## Staging
+## Deployment
 
-`staging.lesvendredis.casa` previews the production environment before the
-public cutover (same Rails env, isolated database). See the
-[deployment runbook](docs/deployment-runbook.md) for first-time setup:
+The app deploys with Kamal. Until the public cutover, the proxy serves the
+pre-production hostname `staging.lesvendredis.casa`; see the
+[deployment runbook](docs/deployment-runbook.md):
 
 ```bash
-bin/kamal setup -d staging   # first deploy only
-bin/kamal deploy -d staging
+bin/kamal setup      # first deploy only
+bin/kamal deploy
 ```
