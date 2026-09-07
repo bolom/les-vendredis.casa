@@ -23,4 +23,19 @@ class ContentPages::ImporterTest < ActiveSupport::TestCase
     assert_kind_of Array, JSON.parse(page.structured_data)
     assert_includes page.structured_data, "LodgingBusiness"
   end
+
+  test "removes layout chrome ids from imported bodies but keeps page-owned content" do
+    ContentPages::Importer.new.call
+    gallery_page = ContentPage.find_by!(path: "unique-stay-martinique")
+    booking_page = ContentPage.find_by!(path: "come-stay")
+
+    assert_no_match(/id="lightbox"/, gallery_page.body_html)
+    assert_no_match(/id="top-bar"/, gallery_page.body_html)
+    assert_no_match(/id="mobile-nav"/, gallery_page.body_html)
+    assert_no_match(/onclick=/, gallery_page.body_html)
+    assert_includes gallery_page.body_html, 'data-lv-action="open-lightbox"'
+    assert_includes booking_page.body_html, "data-email-link"
+    assert_includes booking_page.body_html, "data-ep-u"
+    assert_includes booking_page.body_html, 'id="availability-cal"'
+  end
 end

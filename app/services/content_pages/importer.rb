@@ -40,7 +40,7 @@ module ContentPages
         alternate_en_url: alternate_url(document, "en"),
         alternate_fr_url: alternate_url(document, "fr"),
         structured_data: JSON.generate(document.css('script[type="application/ld+json"]').map(&:text)),
-        body_html: document.at_css("main")&.inner_html.to_s.strip,
+        body_html: cleaned_body_html(document),
         published: true
       }
     end
@@ -51,6 +51,23 @@ module ContentPages
 
     def alternate_url(document, language)
       document.at_css("link[rel='alternate'][hreflang='#{language}']")&.[]("href")
+    end
+
+    # The preserved Jekyll pages embed layout chrome (top bar, mobile menu,
+    # lightbox) that the Rails layout already renders; keeping them would
+    # duplicate element ids. Inline gallery handlers become data attributes so
+    # the sanitizer can keep the markup strict.
+    def cleaned_body_html(document)
+      main = document.at_css("main")
+      main.css("#top-bar, #lightbox, #mobile-nav, #mobile-nav-overlay").each(&:remove)
+      main.css("[onclick]").each do |node|
+        if (match = node["onclick"].match(/\AopenLightbox\((\d+)\)\z/))
+          node["data-lv-action"] = "open-lightbox"
+          node["data-lv-index"] = match[1]
+        end
+        node.remove_attribute("onclick")
+      end
+      main.inner_html.to_s.strip
     end
   end
 end

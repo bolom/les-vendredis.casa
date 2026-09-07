@@ -30,4 +30,20 @@ class JournalPostsControllerTest < ActionDispatch::IntegrationTest
 
     assert_response :not_found
   end
+
+  test "formats French journal dates in French" do
+    post_fr = JournalPost.create!(
+      title: "Le jardin",
+      slug: "le-jardin",
+      locale: "fr",
+      summary: "Une histoire de jardin",
+      body_markdown: "**Mangues**",
+      published_on: Date.new(2026, 1, 17)
+    )
+
+    get french_journal_path
+    assert_response :success
+    assert_select "time", /17 janvier 2026/
+    assert_no_match(/17 January 2026/, response.body)
+  end
 end

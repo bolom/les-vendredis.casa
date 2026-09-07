@@ -32,4 +32,30 @@ class ContentPagesControllerTest < ActionDispatch::IntegrationTest
 
     assert_response :not_found
   end
+
+  test "keeps gallery handlers and protected email markup the layout does not own" do
+    @page.update!(
+      body_html: <<~HTML
+        <section class="gallery"><div class="gallery-item" data-lv-action="open-lightbox" data-lv-index="0"><img src="/images/jpk-cabane-vegetation-palmiers.webp" alt="gallery"></div></section>
+        <a href="#" data-email-link data-ep-u="olleh" data-ep-d="zshdjfpm">Email</a>
+        <span data-email-text data-ep-u="olleh" data-ep-d="zshdjfpm">hidden</span>
+      HTML
+    )
+
+    get content_page_path(@page.path)
+
+    assert_select "main [data-lv-action='open-lightbox'][data-lv-index='0']"
+    assert_select "main a[data-email-link][data-ep-u='olleh']"
+    assert_select "main [data-email-text][data-ep-d='zshdjfpm']"
+  end
+
+  test "imported pages do not duplicate layout element ids" do
+    ContentPages::Importer.new.call
+    get content_page_path("unique-stay-martinique")
+
+    assert_response :success
+    assert_select "#top-bar", count: 1
+    assert_select "#lightbox", count: 1
+    assert_select "#mobile-nav", count: 1
+  end
 end

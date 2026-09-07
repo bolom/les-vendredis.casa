@@ -14,4 +14,4 @@
   <% end %>
 <% end %>
 
-<main><%= sanitize @content_page.body_html, tags: Rails::HTML5::SafeListSanitizer.allowed_tags + %w[section picture source figure figcaption time], attributes: Rails::HTML5::SafeListSanitizer.allowed_attributes + %w[class id src srcset sizes alt loading width height fetchpriority datetime data-availability-url] %></main>
+<main><%= sanitize @content_page.body_html, tags: Rails::HTML5::SafeListSanitizer.allowed_tags + %w[section picture source figure figcaption time], attributes: Rails::HTML5::SafeListSanitizer.allowed_attributes + %w[class id src srcset sizes alt loading width height fetchpriority datetime data-availability-url data-email-link data-email-text data-ep-u data-ep-d data-lv-action data-lv-index] %></main>

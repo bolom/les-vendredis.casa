@@ -9,12 +9,37 @@
       <nav class="top-right" aria-label="Navigation principale">
         <%= link_to "Journal", french ? french_journal_path : journal_path, class: "desktop-only" %>
         <%= link_to(french ? "Disponibilités" : "Availability", availability_path, class: "desktop-only") %>
-        <%= link_to(french ? "Réserver" : "Book", new_booking_inquiry_path, class: "desktop-only") %>
+        <%= link_to(french ? "Réserver" : "Book", new_booking_inquiry_path(locale: french ? "fr" : "en"), class: "desktop-only") %>
         <span class="lang-toggle">
           <%= link_to "FR", french_home_path, class: ("active" if french), lang: "fr", hreflang: "fr" %>
           <%= link_to "EN", root_path, class: ("active" unless french), lang: "en", hreflang: "en" %>
         </span>
+        <button class="menu-toggle" aria-label="Menu" aria-expanded="false" data-lv-action="toggle-menu">
+          <span></span><span></span><span></span>
+        </button>
       </nav>
     </div>
   </div>
+
+  <nav class="mobile-nav" id="mobile-nav" aria-hidden="true">
+    <div class="mobile-nav-inner">
+      <a href="<%= root_path %>" class="mobile-nav-brand">Les Vendredis</a>
+      <div class="mobile-nav-links">
+        <%= link_to "Journal", french ? french_journal_path : journal_path %>
+        <%= link_to(french ? "La cabane" : "The A-frame", content_page_path("unique-stay-martinique")) %>
+        <span class="mobile-nav-sub-label"><%= french ? "Autour" : "Around" %></span>
+        <%= link_to "Roches gravées", content_page_path("roches-gravees-sainte-luce"), class: "mobile-nav-sub" %>
+        <%= link_to "Montravail", content_page_path("montravail-forest"), class: "mobile-nav-sub" %>
+        <%= link_to "Sentiers", content_page_path("trails-sainte-luce"), class: "mobile-nav-sub" %>
+        <div class="mobile-nav-divider"></div>
+        <%= link_to(french ? "Réserver" : "Book", new_booking_inquiry_path(locale: french ? "fr" : "en"), class: "mobile-nav-book") %>
+        <%= link_to "WhatsApp", "https://wa.me/33666535289", target: "_blank", rel: "noopener" %>
+      </div>
+      <div class="mobile-nav-lang">
+        <%= link_to "FR", french_home_path, lang: "fr", hreflang: "fr" %>
+        <%= link_to "EN", root_path, lang: "en", hreflang: "en" %>
+      </div>
+    </div>
+  </nav>
+  <div class="mobile-nav-overlay" id="mobile-nav-overlay" data-lv-action="toggle-menu" aria-hidden="true"></div>
 </header>

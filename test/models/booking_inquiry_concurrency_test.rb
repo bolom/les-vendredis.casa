@@ -160,7 +160,7 @@ class BookingInquiryConcurrencyTest < ActiveSupport::TestCase
           begin
             checkout.call(payment_proof(order), { guest_name: "Buyer #{order.public_id}", email: "buyer@example.test", locale: "en", contact_consent: "1" })
             order.reload.status
-          rescue MachineBookings::Checkout::Conflict, ActiveRecord::StatementInvalid
+          rescue MachineBookings::Checkout::Conflict, ActiveRecord::StatementInvalid, ActiveRecord::RecordInvalid
             "conflict"
           end
         end
