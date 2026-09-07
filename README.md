@@ -71,3 +71,13 @@ bin/rubocop
 bin/brakeman --no-pager
 bin/bundler-audit
 ```
+
+## Staging
+
+Staging deploys to the same VPS as production under `staging.lesvendredis.casa`
+(see the [deployment runbook](docs/deployment-runbook.md) for first-time setup):
+
+```bash
+bin/kamal setup -d staging   # first deploy only
+bin/kamal deploy -d staging
+```

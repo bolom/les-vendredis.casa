@@ -1,0 +1,52 @@
+# Kamal destination for staging. Deploy with:
+#
+#   bin/kamal setup -d staging
+#   bin/kamal deploy -d staging
+#
+# It runs on the same Infomaniak VPS as production; kamal-proxy routes by
+# hostname (staging.lesvendredis.casa). The service name, volumes and database
+# accessory are separate from production.
+
+service: les-vendredis-staging
+
+servers:
+  web:
+    - <%= ENV.fetch("KAMAL_INFOMANIAK_HOST", "replace-with-infomaniak-host") %>
+  job:
+    hosts:
+      - <%= ENV.fetch("KAMAL_INFOMANIAK_HOST", "replace-with-infomaniak-host") %>
+    cmd: bin/jobs
+
+proxy:
+  ssl: true
+  host: staging.lesvendredis.casa
+
+env:
+  clear:
+    RAILS_ENV: staging
+    RAILS_LOG_LEVEL: info
+    GA_MEASUREMENT_ID: ""
+    MAIL_FROM: hello@lesvendredis.casa
+    MAIL_REPLY_TO: hello@lesvendredis.casa
+    BOOKING_OWNER_EMAIL: hello@lesvendredis.casa
+  secret:
+    - RAILS_MASTER_KEY
+
+volumes:
+  - "les_vendredis_staging_storage:/rails/storage"
+
+accessories:
+  db:
+    image: postgres:16
+    host: <%= ENV.fetch("KAMAL_INFOMANIAK_HOST", "replace-with-infomaniak-host") %>
+    # Bind to the Docker bridge gateway so only containers on this host can
+    # reach Postgres; the port is not exposed to the internet.
+    port: "172.17.0.1:5433:5432"
+    env:
+      clear:
+        POSTGRES_DB: les_vendredis_staging
+        POSTGRES_USER: les_vendredis
+      secret:
+        - POSTGRES_PASSWORD
+    volumes:
+      - "les_vendredis_staging_db:/var/lib/postgresql/data"

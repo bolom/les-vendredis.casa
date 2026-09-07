@@ -43,6 +43,52 @@ bin/deploy-preflight
 
 This checks ignored secret/data artifacts and runs the Rails CI/preflight path.
 
+## Staging
+
+Staging runs on the same Infomaniak VPS as production under the hostname
+`staging.lesvendredis.casa`; kamal-proxy routes by hostname. The Kamal
+destination `staging` (`config/deploy.staging.yml`) isolates the service name,
+volumes and database accessory from production. Analytics are disabled on
+staging (`GA_MEASUREMENT_ID` is blank) and booking emails are real
+(`hello@lesvendredis.casa` is the verified sender), so use your own address
+when testing the booking flow.
+
+One-time setup:
+
+- In Cloudflare, create the `staging` A record pointing at `185.143.102.224`
+  and set it to **DNS only** (grey cloud) so kamal-proxy can obtain its own
+  Let's Encrypt certificate.
+- Sign in to the 1Password CLI (`op whoami`), then run `bin/setup-1password-kamal`
+  to create the `staging` item with empty `RAILS_MASTER_KEY` and
+  `POSTGRES_PASSWORD` fields.
+- Copy the values from `tmp/1password-staging-paste.txt` into the 1Password
+  `staging` item, then delete that file (`rm tmp/1password-staging-paste.txt`).
+
+Deploy:
+
+```bash
+bin/kamal setup -d staging   # first deploy: proxy, Postgres accessory, app
+bin/kamal deploy -d staging
+```
+
+Verify:
+
+```bash
+curl -fsS https://staging.lesvendredis.casa/up
+bin/kamal app exec "bin/rails production:check" -d staging
+bin/kamal logs -d staging
+```
+
+Rollback:
+
+```bash
+bin/kamal rollback -d staging <version>
+```
+
+The staging Postgres lives in the `les-vendredis-staging-db` container with
+volume `les_vendredis_staging_db`. To wipe staging data and start fresh,
+remove the volume, the accessory and run `bin/kamal setup -d staging` again.
+
 ## Production Cutover
 
 Before cutover:

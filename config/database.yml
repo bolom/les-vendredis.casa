@@ -97,3 +97,17 @@ production:
   cable:
     <<: *primary_production
     migrations_paths: db/cable_migrate
+
+staging:
+  primary: &primary_staging
+    <<: *default
+    url: <%= Rails.application.credentials.dig(:database, :url) %>
+  cache:
+    <<: *primary_staging
+    migrations_paths: db/cache_migrate
+  queue:
+    <<: *primary_staging
+    migrations_paths: db/queue_migrate
+  cable:
+    <<: *primary_staging
+    migrations_paths: db/cable_migrate
