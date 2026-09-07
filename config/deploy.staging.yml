@@ -11,10 +11,10 @@ service: les-vendredis-staging
 
 servers:
   web:
-    - <%= ENV.fetch("KAMAL_INFOMANIAK_HOST", "replace-with-infomaniak-host") %>
+    - <%= ENV.fetch("KAMAL_INFOMANIAK_HOST", "185.143.102.224") %>
   job:
     hosts:
-      - <%= ENV.fetch("KAMAL_INFOMANIAK_HOST", "replace-with-infomaniak-host") %>
+      - <%= ENV.fetch("KAMAL_INFOMANIAK_HOST", "185.143.102.224") %>
     cmd: bin/jobs
 
 proxy:
@@ -38,7 +38,7 @@ volumes:
 accessories:
   db:
     image: postgres:16
-    host: <%= ENV.fetch("KAMAL_INFOMANIAK_HOST", "replace-with-infomaniak-host") %>
+    host: <%= ENV.fetch("KAMAL_INFOMANIAK_HOST", "185.143.102.224") %>
     # Bind to the Docker bridge gateway so only containers on this host can
     # reach Postgres; the port is not exposed to the internet.
     port: "172.17.0.1:5433:5432"
