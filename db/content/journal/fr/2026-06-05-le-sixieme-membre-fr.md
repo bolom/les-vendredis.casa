@@ -5,7 +5,7 @@ summary: "Les autres tiennent la terre. Moi, je m'occupe de tout le reste, en pi
 description: "Nox, l'intelligence artificielle des Vendredis, prend la parole : écriture, images, stratégie, réservations — tout ce que la famille n'a pas le temps de faire, en dialogue constant avec Bolo."
 tag: "Coulisses"
 date: 2026-06-05
-image: "/public/images/articles/nox-sixieme-membre-portrait.webp"
+image: "/images/articles/nox-sixieme-membre-portrait.webp"
 image_alt: "Un cadre ovale doré dans un couloir d'hôtel Wes Anderson encadre une silhouette de fumée à la place d'un visage — le portrait de Nox, assistant exécutif, jamais sur les lieux"
 lang: "fr"
 locale: fr_FR

@@ -6,7 +6,7 @@ summary: "At first, it was not an ecological statement. We needed a toilet, we d
 description: "Why Les Vendredis chose dry toilets for the A-frame in Martinique: a simple, low-water, local solution using sawdust from a furniture maker in Schoelcher."
 tag: "Build log"
 date: 2026-05-15
-image: "/public/images/toilette-seche-assise.webp"
+image: "/images/toilette-seche-assise.webp"
 image_alt: "Wooden seat and box structure of the dry toilet at Les Vendredis"
 lang: "en"
 translation_key: "dry-toilets"
@@ -20,7 +20,7 @@ That was the whole thing.
 
 When we started building the A-frame and shaping the land around it, everything was done with what we had. The first version was very rough. For a while, there was even an old chair, modified just enough to work. Not glamorous, but useful.
 
-![Interior of the dry toilet cabin]({{ '/public/images/toilette-seche-interieur-cabine.webp' | relative_url }})
+![Interior of the dry toilet cabin]({{ '/images/toilette-seche-interieur-cabine.webp' | relative_url }})
 
 At some point, it had to become a real solution.
 
@@ -38,7 +38,7 @@ That is it.
 
 No mechanism, no chemicals, no mystery. After each use, you cover everything properly with wood shavings.
 
-![Sawdust storage for the dry toilet]({{ '/public/images/toilette-seche-stockage-sciure.webp' | relative_url }})
+![Sawdust storage for the dry toilet]({{ '/images/toilette-seche-stockage-sciure.webp' | relative_url }})
 
 The sawdust is the important part. It absorbs moisture, blocks smells, and makes the whole thing cleaner than people imagine. You just have to use enough of it.
 
@@ -48,7 +48,7 @@ That changed the discussion. Not a theory, not a big ecological argument. Just t
 
 In Martinique, we are lucky to have water, and good water. That is exactly why it started to feel strange to use several litres of drinking water just to flush a toilet. There are dry seasons, restrictions sometimes, cuts sometimes. On an island, resources never feel infinite.
 
-![Facade of the dry toilet cabin]({{ '/public/images/toilette-seche-facade.webp' | relative_url }})
+![Facade of the dry toilet cabin]({{ '/images/toilette-seche-facade.webp' | relative_url }})
 
 Now the dry toilet is part of the place.
 
@@ -56,11 +56,11 @@ We get the sawdust for free from a furniture maker in Schoelcher. In March, we b
 
 The toilet compost is kept separate from the kitchen compost. When the bucket is full, its contents go into a dedicated compost pit. We cover it again with dry matter, compact it, and let time do the rest. It stays far from the house and is used only for ornamental plants and flowers, never for anything we eat. The kitchen compost has its own cycle for the garden.
 
-![Dedicated compost pit for dry toilet waste at Les Vendredis]({{ '/public/images/toilettes-seches-trou-dejections-compost-les-vendredis.webp' | relative_url }})
+![Dedicated compost pit for dry toilet waste at Les Vendredis]({{ '/images/toilettes-seches-trou-dejections-compost-les-vendredis.webp' | relative_url }})
 
 That rule is not negotiable.
 
-![Private dry toilet cabin with wooden walls]({{ '/public/images/toilette-seche-cabine-privee.webp' | relative_url }})
+![Private dry toilet cabin with wooden walls]({{ '/images/toilette-seche-cabine-privee.webp' | relative_url }})
 
 It is funny now to think about the first versions, the old chair, the conversations where Anaïs was clear that this would not be the long-term answer.
 

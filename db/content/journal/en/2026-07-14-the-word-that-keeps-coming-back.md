@@ -5,7 +5,7 @@ summary: "I am away for a while, so Anaïs is looking after the bookings on her 
 description: "While Bolo is away, Anaïs is looking after the bookings at Les Vendredis in Sainte-Luce. A simple note from guests says what the garden and cabin are really for."
 tag: "Journal"
 date: 2026-07-14
-image: "/public/images/articles/mot-doux-invites-amour-les-vendredis.webp"
+image: "/images/articles/mot-doux-invites-amour-les-vendredis.webp"
 image_alt: "A handwritten note on a carved wooden tray, next to an empty rum glass, garden in the background"
 lang: "en"
 translation_key: "le-mot-qui-revient"

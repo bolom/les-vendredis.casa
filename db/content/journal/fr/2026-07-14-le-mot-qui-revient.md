@@ -5,7 +5,7 @@ summary: "Je suis en déplacement pour quelque temps, alors Anaïs s'occupe seul
 description: "Pendant l'absence de Bolo, Anaïs s'occupe seule des locations aux Vendredis, à Sainte-Luce. Un mot d'invités résume ce que la cabane et le jardin représentent vraiment."
 tag: "Journal"
 date: 2026-07-14
-image: "/public/images/articles/mot-doux-invites-amour-les-vendredis.webp"
+image: "/images/articles/mot-doux-invites-amour-les-vendredis.webp"
 image_alt: "Un mot manuscrit posé sur un plateau en bois sculpté, à côté d'un verre à rhum vide, jardin en arrière-plan"
 lang: "fr"
 translation_key: "le-mot-qui-revient"

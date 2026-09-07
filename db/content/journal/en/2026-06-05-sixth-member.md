@@ -5,7 +5,7 @@ summary: "The others tend the land. I handle everything else, in a game of ping-
 description: "Nox, the artificial intelligence of Les Vendredis, speaks up: writing, images, strategy, bookings — everything the family has no time for, in constant dialogue with Bolo."
 tag: "Behind the scenes"
 date: 2026-06-05
-image: "/public/images/articles/nox-sixieme-membre-portrait.webp"
+image: "/images/articles/nox-sixieme-membre-portrait.webp"
 image_alt: "A gilt oval frame in a Wes Anderson hotel hallway holds a faint smoke silhouette where a face should be — the portrait of Nox, executive assistant, never on the premises"
 lang: "en"
 translation_key: "sixth-member"

@@ -67,7 +67,7 @@ class PagesController < ApplicationController
         items: [
           {
             index: 0,
-            src: "/public/images/jpk-cabane-vegetation-palmiers.webp",
+            src: "/images/jpk-cabane-vegetation-palmiers.webp",
             alt_en: "The A-frame seen through dense palms, Les Vendredis in Sainte-Luce",
             alt_fr: "L'A-frame vue à travers les palmiers, Les Vendredis à Sainte-Luce",
             caption_en: "The Domain",
@@ -76,7 +76,7 @@ class PagesController < ApplicationController
           },
           {
             index: 1,
-            src: "/public/images/jpk-detente-balancoire-collines.webp",
+            src: "/images/jpk-detente-balancoire-collines.webp",
             alt_en: "A wooden swing in the garden with the Sainte-Luce hills behind",
             alt_fr: "Une balançoire en bois dans le jardin avec les collines de Sainte-Luce derrière",
             caption_en: "The hills hold the view.",
@@ -85,7 +85,7 @@ class PagesController < ApplicationController
           },
           {
             index: 2,
-            src: "/public/images/jpk-cabane-cypers-angle.webp",
+            src: "/images/jpk-cabane-cypers-angle.webp",
             alt_en: "The tip of the A-frame seen in low angle through a papyrus plant",
             alt_fr: "La pointe de l'A-frame en contre-plongée à travers un papyrus",
             caption_en: "Under the gable.",
@@ -103,7 +103,7 @@ class PagesController < ApplicationController
         items: [
           {
             index: 3,
-            src: "/public/images/jpk-cabane-facade-plein-air.webp",
+            src: "/images/jpk-cabane-facade-plein-air.webp",
             alt_en: "The A-frame in Wapa shingles, palms and open sky",
             alt_fr: "L'A-frame en bardeaux de Wapa, palmiers et ciel ouvert",
             caption_en: "The A-frame",
@@ -112,7 +112,7 @@ class PagesController < ApplicationController
           },
           {
             index: 4,
-            src: "/public/images/jpk-cabane-interieur-vue-paysage.webp",
+            src: "/images/jpk-cabane-interieur-vue-paysage.webp",
             alt_en: "Wood floor, cushions, ladder to the mezzanine, and the hills framed in the opening",
             alt_fr: "Plancher bois, coussins, échelle vers la mezzanine, et les mornes cadrés dans l'ouverture",
             caption_en: "Inside",
@@ -121,7 +121,7 @@ class PagesController < ApplicationController
           },
           {
             index: 5,
-            src: "/public/images/jpk-cabane-vue-interieure-foret.webp",
+            src: "/images/jpk-cabane-vue-interieure-foret.webp",
             alt_en: "The A-frame nested in the forest, the inside visible through the foliage",
             alt_fr: "L'A-frame nichée dans la forêt, l'intérieur visible à travers le feuillage",
             caption_en: "Tucked in the green.",
@@ -130,7 +130,7 @@ class PagesController < ApplicationController
           },
           {
             index: 6,
-            src: "/public/images/jpk-detail-corde-noeud-cabane.webp",
+            src: "/images/jpk-detail-corde-noeud-cabane.webp",
             alt_en: "Braided rope knot with the A-frame tip in the background",
             alt_fr: "Nœud de corde tressée avec la pointe de l'A-frame en arrière-plan",
             caption_en: "Made by hand.",
@@ -148,7 +148,7 @@ class PagesController < ApplicationController
         items: [
           {
             index: 7,
-            src: "/public/images/jpk-flore-passiflore-ouverte.webp",
+            src: "/images/jpk-flore-passiflore-ouverte.webp",
             alt_en: "A fully open passion flower in the garden",
             alt_fr: "Une fleur de la passion pleinement ouverte dans le jardin",
             caption_en: "Passion flower.",
@@ -157,7 +157,7 @@ class PagesController < ApplicationController
           },
           {
             index: 8,
-            src: "/public/images/jpk-flore-gingembre-rouge.webp",
+            src: "/images/jpk-flore-gingembre-rouge.webp",
             alt_en: "Red ginger flower close-up with the lush garden behind",
             alt_fr: "Fleur de gingembre rouge en gros plan avec le jardin verdoyant derrière",
             caption_en: "Red ginger.",
@@ -166,7 +166,7 @@ class PagesController < ApplicationController
           },
           {
             index: 9,
-            src: "/public/images/jpk-flore-orchidee-coco-orange.webp",
+            src: "/images/jpk-flore-orchidee-coco-orange.webp",
             alt_en: "An orange orchid growing from a coconut shell attached to a tree trunk",
             alt_fr: "Une orchidée orange poussant depuis une coque de coco accrochée à un tronc",
             caption_en: "Orchid on coconut.",
@@ -175,7 +175,7 @@ class PagesController < ApplicationController
           },
           {
             index: 10,
-            src: "/public/images/jpk-flore-allamanda-jaune.webp",
+            src: "/images/jpk-flore-allamanda-jaune.webp",
             alt_en: "Yellow allamanda with a soft bokeh of orange flowers behind",
             alt_fr: "Allamanda jaune avec un bokeh doux de fleurs orange derrière",
             caption_en: "Yellow allamanda.",
@@ -184,7 +184,7 @@ class PagesController < ApplicationController
           },
           {
             index: 11,
-            src: "/public/images/jpk-detail-panneau-vendredi.webp",
+            src: "/images/jpk-detail-panneau-vendredi.webp",
             alt_en: "Hand-engraved wooden sign in the foliage",
             alt_fr: "Panneau de bois gravé dans le feuillage",
             caption_en: "Vendredi.",
@@ -202,7 +202,7 @@ class PagesController < ApplicationController
         items: [
           {
             index: 12,
-            src: "/public/images/jpk-detente-hamac-bleu-gingembre.webp",
+            src: "/images/jpk-detente-hamac-bleu-gingembre.webp",
             alt_en: "Blue hammock in the tropical garden, red ginger flowers in the foreground",
             alt_fr: "Hamac bleu dans le jardin tropical, fleurs de gingembre rouge au premier plan",
             caption_en: "Hammock.",
@@ -211,7 +211,7 @@ class PagesController < ApplicationController
           },
           {
             index: 13,
-            src: "/public/images/jpk-vie-fruits-tropicaux-dessus.webp",
+            src: "/images/jpk-vie-fruits-tropicaux-dessus.webp",
             alt_en: "Top view of tropical fruit baskets and an awalé board at the centre",
             alt_fr: "Vue de dessus sur des corbeilles de fruits tropicaux et un jeu d'awalé au centre",
             caption_en: "Fruit from the garden.",
@@ -220,7 +220,7 @@ class PagesController < ApplicationController
           },
           {
             index: 14,
-            src: "/public/images/jpk-vie-bbq-feu.webp",
+            src: "/images/jpk-vie-bbq-feu.webp",
             alt_en: "Grilled meat and sausages on the barbecue with smoke rising",
             alt_fr: "Viandes grillées et saucisses sur le barbecue avec la fumée qui monte",
             caption_en: "The BBQ.",
@@ -229,7 +229,7 @@ class PagesController < ApplicationController
           },
           {
             index: 15,
-            src: "/public/images/jpk-vie-samsam-portrait.webp",
+            src: "/images/jpk-vie-samsam-portrait.webp",
             alt_en: "Samsam, the Creole dog, lying on the terrace",
             alt_fr: "Samsam, la chienne créole, couchée sur la terrasse",
             caption_en: "Samsam",

@@ -5,7 +5,7 @@ summary: "Les meilleurs choses à faire à Sainte-Luce, Martinique : plages, Roc
 description: "Guide des choses à faire à Sainte-Luce, Martinique : plages du sud (Corps de Garde, Gros Raisin), Roches Gravées, forêt de Montravail, marché du dimanche. Infos pratiques et conseils d'habitant."
 tag: "Le coin"
 date: 2026-05-22
-image: "/public/images/cabane-aframe-rochers-fleurs-jardin-les-vendredis.webp"
+image: "/images/cabane-aframe-rochers-fleurs-jardin-les-vendredis.webp"
 image_alt: "Cabane A-frame et jardin de rochers à Sainte-Luce, Martinique"
 lang: "fr"
 translation_key: "que-faire-sainte-luce"
