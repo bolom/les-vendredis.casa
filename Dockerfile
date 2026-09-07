@@ -2,7 +2,7 @@
 # check=error=true
 
 # This Dockerfile is designed for production from the repository root:
-# docker build -f web/Dockerfile -t les_vendredis .
+# docker build -t les_vendredis .
 # docker run -d -p 80:80 --env-file .env --name les_vendredis les_vendredis
 
 # For a containerized dev environment, see Dev Containers: https://guides.rubyonrails.org/getting_started_with_devcontainer.html
@@ -36,7 +36,7 @@ RUN apt-get update -qq && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
 # Install Rails application gems
-COPY web/Gemfile web/Gemfile.lock ./
+COPY Gemfile Gemfile.lock ./
 
 RUN bundle install && \
     rm -rf ~/.bundle/ "${BUNDLE_PATH}"/ruby/*/cache "${BUNDLE_PATH}"/ruby/*/bundler/gems/*/.git && \
@@ -44,7 +44,7 @@ RUN bundle install && \
     bundle exec bootsnap precompile -j 1 --gemfile
 
 # Copy Rails application code
-COPY web/ .
+COPY . .
 
 # Precompile bootsnap code for faster boot times.
 # -j 1 disable parallel compilation to avoid a QEMU bug: https://github.com/rails/bootsnap/issues/495

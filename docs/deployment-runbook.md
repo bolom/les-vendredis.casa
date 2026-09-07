@@ -28,7 +28,6 @@ The Infomaniak experimental web server is configured in `.kamal/secrets-common` 
 Create the vault/items skeleton:
 
 ```bash
-cd web
 bin/setup-1password-kamal
 ```
 
@@ -39,7 +38,7 @@ The script creates empty fields only. Paste real secret values inside 1Password,
 From the repo root:
 
 ```bash
-web/bin/deploy-preflight
+bin/deploy-preflight
 ```
 
 This checks ignored secret/data artifacts and runs the Rails CI/preflight path.
@@ -56,7 +55,6 @@ Before cutover:
 Deploy:
 
 ```bash
-cd web
 bin/kamal setup
 bin/kamal deploy
 bin/kamal app exec "bin/rails production:check"
@@ -72,7 +70,6 @@ Post-cutover:
 ## Rollback
 
 ```bash
-cd web
 bin/kamal rollback
 ```
 

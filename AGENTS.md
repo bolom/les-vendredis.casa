@@ -2,33 +2,25 @@
 
 ## Project Structure & Module Organization
 
-The repository contains two Ruby applications. The production Jekyll site lives at the root: page content is in root and `fr/` HTML files, journal posts are in `_posts/` and `fr/journal/`, reusable Liquid fragments are in `_includes/`, and layouts are in `_layouts/`. Browser code is under `assets/`; optimized media belongs in `public/images/`. Root checks live in `test/`.
-
-The Rails 8 replacement is isolated in `web/` until migration cutover. Application code is in `web/app/`, configuration in `web/config/`, migrations in `web/db/`, and tests in `web/test/`. Architecture decisions belong in `docs/`. Do not edit generated `_site/` output.
+The repository is a single Rails 8 application. Application code is in `app/`, configuration in `config/`, migrations in `db/`, and tests in `test/`. Architecture decisions belong in `docs/`; deployment docs are in `docs/` (`deployment-runbook.md`, `resend-production.md`, `analytics.md`). Optimized media lives in `public/images/`. Kamal deployment config is in `config/deploy.yml`; the production Dockerfile is at the repository root.
 
 ## Build, Test, and Development Commands
 
-For Jekyll (repository root):
-
-- `bundle install` installs Ruby dependencies.
-- `bundle exec jekyll serve` starts the local preview server.
-- `bundle exec jekyll build` generates `_site/` with strict Liquid checking.
-- `bundle exec rake test` builds the site, then validates internal links and image references.
-- `ruby test/analytics_static_test.rb` runs the focused analytics allowlist test.
-
-For Rails, run from `web/`:
+Run from the repository root:
 
 - `bin/setup --skip-server` prepares dependencies and the database.
+- `bin/rails server` starts the local development server.
 - `bin/rails test` runs the Minitest suite.
 - `bin/ci` runs the full project checks; `bin/rubocop`, `bin/brakeman --no-pager`, and `bin/bundler-audit` run style and security checks individually.
+- `bin/deploy-preflight` validates the deployment prerequisites.
 
 ## Coding Style & Naming Conventions
 
-Use two-space indentation for Ruby, YAML, HTML, CSS, and JavaScript. Follow existing Liquid and front-matter patterns, use lowercase kebab-case for public page and image filenames, and descriptive snake_case for Ruby files and methods. Rails code must pass the repository's `rubocop-rails-omakase` configuration. Keep French and English routes aligned when changing translated content.
+Use two-space indentation for Ruby, YAML, HTML, CSS, and JavaScript. Follow Rails conventions, use lowercase kebab-case for public page and image filenames, and descriptive snake_case for Ruby files and methods. Rails code must pass the repository's `rubocop-rails-omakase` configuration. Keep French and English routes aligned when changing translated content.
 
 ## Testing Guidelines
 
-Tests use Minitest and follow `*_test.rb` naming. Add Rails tests beside the relevant layer (`web/test/models`, `controllers`, `services`, or `integration`). For static-site changes, run `bundle exec rake test`; verify both locales and ensure every referenced local image exists.
+Tests use Minitest and follow `*_test.rb` naming. Add Rails tests beside the relevant layer (`test/models`, `controllers`, `services`, or `integration`). Run `bin/rails test` before committing; verify both locales and ensure every referenced local image exists.
 
 ## Commit & Pull Request Guidelines
 

@@ -2,14 +2,8 @@ name: Rails CI
 
 on:
   pull_request:
-    paths:
-      - "web/**"
-      - ".github/workflows/rails-ci.yml"
   push:
     branches: [main]
-    paths:
-      - "web/**"
-      - ".github/workflows/rails-ci.yml"
 
 jobs:
   rails:
@@ -31,7 +25,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: web
+        working-directory: .
 
     steps:
       - name: Checkout code
@@ -46,7 +40,6 @@ jobs:
         with:
           ruby-version: 3.3.0
           bundler-cache: true
-          working-directory: web
 
       - name: Prepare database
         env:

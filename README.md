@@ -1,39 +1,73 @@
 # Les Vendredis
 
-Rails monolith for Les Vendredis, a handmade A-frame cabin and private garden in Sainte-Luce, Martinique.
+Rails monolith for Les Vendredis, a handmade A-frame cabin and private garden
+in Sainte-Luce, Martinique. Direct booking, public content and the journal are
+all served by this single Rails application.
 
-## Local Development
+## Stack
 
-The active app lives in `web/`.
+- Ruby 3.3.0
+- Rails 8.0
+- PostgreSQL
+- Hotwire, Turbo and Stimulus
+- Propshaft
+- Minitest
+- Solid Queue, Solid Cache and Solid Cable
+- Kamal deployment to Infomaniak
+
+## Local Setup
 
 ```bash
-cd web
+bundle install
 bin/setup --skip-server
 bin/rails test
-bin/rails server
 ```
 
-Run `web/bin/deploy-preflight` from the repository root before deployment.
-Use two-space indentation, Rails conventions and `web/bin/rubocop`. Tests use
-Minitest under `web/test/`; public content and journal records are rendered by Rails.
+The app uses `America/Martinique` as its business timezone and stores database
+timestamps in UTC.
 
-## Configuration and checkout status
+Run `bin/deploy-preflight` before deployment. Direct enquiries work through
+`/booking-requests/new` (`?locale=fr` for French). `/quote` accepts `date`,
+integer `nights`, `adults` and `children`; legacy `guests` means adults.
+Configured checkout uses x402 v2 through a trusted HTTPS facilitator, persisted
+quotes and a hold before settlement. `/book` returns 503 when payment
+credentials are incomplete or disabled. See
+[payment operations](docs/architecture/0002-payment-operations.md) for the
+client contract and activation requirements. A quote alone never confirms a stay.
 
-Application secrets belong in encrypted Rails credentials. Only the master key
-needs to be retrieved from 1Password; local development uses `web/config/master.key`.
-Never commit that key. Development emails are written to `web/tmp/mails`.
+Remaining work and acceptance criteria:
+[correction backlog](docs/migration/2026-09-07-correction-backlog.md).
 
-Direct enquiries work through `/booking-requests/new` (`?locale=fr` for French).
-`/quote` accepts `date`, integer `nights`, `adults` and `children`; legacy `guests`
-means adults. Configured checkout uses x402 v2 through a trusted HTTPS facilitator,
-persisted quotes and a hold before settlement. `/book` returns 503 when payment
-credentials are incomplete or disabled. See [payment operations](docs/architecture/0002-payment-operations.md)
-for the client contract and activation requirements. A quote alone never confirms a stay.
+## Admin Access
 
-Remaining work and acceptance criteria: [correction backlog](docs/migration/2026-09-07-correction-backlog.md).
+Public sign-up is disabled. Create the first administrator from a Rails console
+or a one-off production task, using credentials stored outside the repository.
 
-## Legacy Source
+```ruby
+User.create!(
+  email_address: "admin@example.com",
+  password: "replace-with-a-generated-password"
+)
+```
 
-The repository still contains archived legacy source material while the
-migration finishes, but the public application and deployment path are now
-Rails-first.
+## Environment
+
+Copy `.env.example` only for non-secret local settings. Application secrets live
+in `config/credentials.yml.enc`; 1Password supplies the master key to Kamal.
+
+Required production secrets:
+
+- `RAILS_MASTER_KEY`
+- `KAMAL_REGISTRY_PASSWORD`
+
+Resend production setup and smoke-test steps are documented in
+[`docs/resend-production.md`](docs/resend-production.md).
+
+## Checks
+
+```bash
+bin/ci
+bin/rubocop
+bin/brakeman --no-pager
+bin/bundler-audit
+```

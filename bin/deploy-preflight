@@ -1,15 +1,15 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-cd "$(dirname "$0")/../.."
+cd "$(dirname "$0")/.."
 
 required_files=(
-  "web/config/deploy.yml"
-  "web/Dockerfile"
-  "web/bin/ci"
-  "web/app/views/layouts/application.html.erb"
-  "web/config/routes.rb"
-  "web/public/robots.txt"
+  "config/deploy.yml"
+  "Dockerfile"
+  "bin/ci"
+  "app/views/layouts/application.html.erb"
+  "config/routes.rb"
+  "public/robots.txt"
   ".dockerignore"
 )
 
@@ -22,7 +22,7 @@ if git ls-files | rg -q '(^|/)(\.env|.*\.(dump|sql|sqlite3))$'; then
   exit 1
 fi
 
-for file in $(git ls-files 'web/.kamal/secrets*'); do
+for file in $(git ls-files '.kamal/secrets*'); do
   if rg -q '^(DATABASE_URL|AIRBNB_ICAL_URL|BOOKING_ICAL_URL|RAILS_MASTER_KEY|RESEND_API_KEY|SECRET_KEY_BASE|KAMAL_REGISTRY_PASSWORD)=[^$]' "$file"; then
     echo "raw secret value found in $file"
     exit 1
@@ -30,7 +30,6 @@ for file in $(git ls-files 'web/.kamal/secrets*'); do
 done
 
 (
-  cd web
   PATH="$HOME/.rbenv/shims:$PATH" bin/ci
 )
 

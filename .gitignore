@@ -1,24 +1,36 @@
-coverage/
+# Ruby / Rails
+/.bundle
+/vendor/bundle
+/db/*.sqlite3
+/log/*
+/storage/*
+/tmp/*
+/public/assets
+/coverage/
+
+!/log/.keep
+!/storage/.keep
+!/tmp/.keep
+!/tmp/pids
+/tmp/pids/*
+!/tmp/pids/.keep
+!/tmp/storage
+!/tmp/storage/.keep
+
+# Secrets and credentials
+/config/master.key
+/config/credentials/*.key
+/.env*
+!/.env.example
+.kamal/secrets*
+
+# Local artifacts
 .DS_Store
 *.log
-.env
-.env.*
-!.env.example
-.kamal/secrets*
 *.dump
 *.sql
-*.sqlite3
-credentials/*.key
 __pycache__/
 *.pyc
 .claude/
 .superpowers/
-# Jekyll build output and dependencies
-_site/
-.bundle/
-vendor/
-.sass-cache/
-.jekyll-cache/
-.jekyll-metadata
 .worktrees
-public/images/.bak/
