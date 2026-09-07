@@ -87,7 +87,8 @@ test:
 production:
   primary: &primary_production
     <<: *default
-    url: <%= Rails.application.credentials.dig(:database, :url) %>
+    # DATABASE_URL (set per Kamal destination, e.g. staging) overrides credentials.
+    url: <%= ENV["DATABASE_URL"].presence || Rails.application.credentials.dig(:database, :url) %>
   cache:
     <<: *primary_production
     migrations_paths: db/cache_migrate
@@ -96,18 +97,4 @@ production:
     migrations_paths: db/queue_migrate
   cable:
     <<: *primary_production
-    migrations_paths: db/cable_migrate
-
-staging:
-  primary: &primary_staging
-    <<: *default
-    url: <%= Rails.application.credentials.dig(:database, :url) %>
-  cache:
-    <<: *primary_staging
-    migrations_paths: db/cache_migrate
-  queue:
-    <<: *primary_staging
-    migrations_paths: db/queue_migrate
-  cable:
-    <<: *primary_staging
     migrations_paths: db/cable_migrate

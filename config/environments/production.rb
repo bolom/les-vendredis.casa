@@ -84,6 +84,8 @@ Rails.application.configure do
   config.hosts = [
     "lesvendredis.casa",
     "www.lesvendredis.casa",
+    # Pre-production preview host, same Rails environment.
+    "staging.lesvendredis.casa",
     /.*\.localhost/
   ]
   #

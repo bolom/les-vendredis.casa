@@ -74,8 +74,9 @@ bin/bundler-audit
 
 ## Staging
 
-Staging deploys to the same VPS as production under `staging.lesvendredis.casa`
-(see the [deployment runbook](docs/deployment-runbook.md) for first-time setup):
+`staging.lesvendredis.casa` previews the production environment before the
+public cutover (same Rails env, isolated database). See the
+[deployment runbook](docs/deployment-runbook.md) for first-time setup:
 
 ```bash
 bin/kamal setup -d staging   # first deploy only
