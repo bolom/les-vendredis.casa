@@ -2,7 +2,7 @@
 # hostname (staging.lesvendredis.casa) while the public cutover is pending;
 # switch proxy.host to lesvendredis.casa (and lower DNS TTL) at cutover.
 service: les-vendredis
-image: bolom/les-vendredis
+image: bolomichelin/les-vendredis
 
 servers:
   web:
@@ -21,7 +21,7 @@ proxy:
   app_port: 80
 
 registry:
-  username: <%= ENV.fetch("KAMAL_REGISTRY_USER", "bolom") %>
+  username: <%= ENV.fetch("KAMAL_REGISTRY_USER", "bolomichelin") %>
   password:
     - KAMAL_REGISTRY_PASSWORD
 
