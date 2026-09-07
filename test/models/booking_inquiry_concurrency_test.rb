@@ -144,4 +144,48 @@ class BookingInquiryConcurrencyTest < ActiveSupport::TestCase
     assert_equal "accepted", inquiry.reload.status
     assert_empty BookingNotification.where(event: "guest_cancellation")
   end
+
+  test "concurrent purchases of overlapping dates charge exactly once" do
+    quote = MachineBookings::Quote.build(date: "2026-11-10", nights: 2, adults: 2, children: 0)
+    orders = 2.times.map do
+      PaymentOrder.create!(quote: quote.as_json, expires_at: 15.minutes.from_now, requirements: {
+        scheme: "exact", network: "eip155:8453", amount: "148000000", asset: "0x#{'1' * 40}", payTo: "0x#{'2' * 40}", maxTimeoutSeconds: 900
+      })
+    end
+
+    threads = orders.map do |order|
+      Thread.new do
+        ActiveRecord::Base.connection_pool.with_connection do
+          checkout = MachineBookings::Checkout.new(order, facilitator: FakeCheckoutFacilitator.new)
+          begin
+            checkout.call(payment_proof(order), { guest_name: "Buyer #{order.public_id}", email: "buyer@example.test", locale: "en", contact_consent: "1" })
+            order.reload.status
+          rescue MachineBookings::Checkout::Conflict, ActiveRecord::StatementInvalid
+            "conflict"
+          end
+        end
+      end
+    end
+    outcomes = threads.map(&:value)
+
+    assert_equal 1, outcomes.count("paid")
+    assert_equal 1, PaymentOrder.where(status: "paid").count
+    assert_equal 1, AvailabilityBlock.where(status: "confirmed").count
+    assert_equal 1, BookingInquiry.where(status: "accepted").count
+  end
+
+  private
+
+  def payment_proof(order)
+    auth = { from: "0x#{'4' * 40}", to: order.requirements["payTo"], value: "148000000", validAfter: (Time.current.to_i - 10).to_s,
+      validBefore: order.expires_at.to_i.to_s, nonce: "0x#{Digest::SHA256.hexdigest(order.public_id)}" }
+    Base64.strict_encode64(JSON.generate(x402Version: 2, accepted: order.requirements, payload: { signature: "0x#{'5' * 130}", authorization: auth }))
+  end
+
+  class FakeCheckoutFacilitator
+    def call(action, payload, requirements)
+      return { "isValid" => true } if action == "verify"
+      { "success" => true, "network" => requirements["network"], "transaction" => "0x#{'a' * 64}" }
+    end
+  end
 end

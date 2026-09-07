@@ -5,6 +5,7 @@ class MachineBookingsController < ApplicationController
   rescue_from MachineBookings::PaymentConfiguration::Invalid, with: :payment_unavailable
   rescue_from MachineBookings::Facilitator::Unavailable, with: :payment_unavailable
   rescue_from MachineBookings::Quote::InvalidPrice, with: :payment_unavailable
+  rescue_from ActiveRecord::RecordNotFound, with: :quote_not_found
 
   def rules
     stay_rule = StayRule.current
@@ -64,6 +65,10 @@ class MachineBookingsController < ApplicationController
   end
 
   private
+
+  def quote_not_found
+    render json: { error: "quote_not_found" }, status: :not_found
+  end
 
   def payment_unavailable
     render json: { error: "payment_unavailable", message: "Online payment is not available. Please submit a booking request." }, status: :service_unavailable
