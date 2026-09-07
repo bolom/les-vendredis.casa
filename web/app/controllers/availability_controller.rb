@@ -8,7 +8,7 @@ class AvailabilityController < ApplicationController
 
     if check.valid?
       render json: {
-        days: check.days,
+        days: check.days.map { |day| day.merge(price: MachineBookings::Quote.unit_price.to_s("F").sub(/\.0+\z/, ""), currency: MachineBookings::Quote.currency) },
         generated_at: Time.current.utc.iso8601
       }
     else

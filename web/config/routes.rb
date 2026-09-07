@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   get "sitemap.xml" => "discovery#sitemap"
   get "fr/sitemap.xml" => "discovery#sitemap", defaults: { locale: "fr" }
   get "feed.xml" => "discovery#feed"
+  get "llms.txt" => "discovery#llms"
+  get ".well-known/agent.json" => "discovery#agent"
   root "pages#home"
   get "fr" => "pages#home", defaults: { locale: "fr" }, as: :french_home
   get "journal" => "journal_posts#index", defaults: { locale: "en" }, as: :journal
@@ -10,6 +12,9 @@ Rails.application.routes.draw do
   get "fr/journal" => "journal_posts#index", defaults: { locale: "fr" }, as: :french_journal
   get "fr/journal/:slug" => "journal_posts#show", defaults: { locale: "fr" }, as: :french_journal_post
   get "availability" => "availability#show"
+  get "rules" => "machine_bookings#rules"
+  post "quote" => "machine_bookings#quote"
+  post "book" => "machine_bookings#book"
   resources :booking_inquiries, only: [ :new, :create, :show ], path: "booking-requests"
 
   namespace :admin do

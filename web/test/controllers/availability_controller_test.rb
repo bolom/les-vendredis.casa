@@ -14,8 +14,8 @@ class AvailabilityControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
     payload = response.parsed_body
     assert_equal [
-      { "date" => "2026-10-01", "available" => true },
-      { "date" => "2026-10-02", "available" => true }
+      { "date" => "2026-10-01", "available" => true, "price" => "74", "currency" => "EURC" },
+      { "date" => "2026-10-02", "available" => true, "price" => "74", "currency" => "EURC" }
     ], payload.fetch("days")
     assert payload.fetch("generated_at")
     assert_not_includes payload.to_json, "guest"

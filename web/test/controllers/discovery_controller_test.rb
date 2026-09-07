@@ -24,4 +24,18 @@ class DiscoveryControllerTest < ActionDispatch::IntegrationTest
       assert_empty Nokogiri::XML(response.body).errors
     end
   end
+
+  test "machine discovery documents point to Rails booking API" do
+    get "/llms.txt"
+    assert_response :success
+    assert_includes response.body, "POST /book"
+    assert_includes response.body, "https://lesvendredis.casa"
+    refute_includes response.body, "tail1aced7"
+
+    get "/.well-known/agent.json"
+    assert_response :success
+    body = response.parsed_body
+    assert_equal "https://lesvendredis.casa/book", body.dig("api", "book")
+    assert_equal "EURC", body.dig("x402", "asset")
+  end
 end

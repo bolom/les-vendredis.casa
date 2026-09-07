@@ -65,4 +65,51 @@ class DiscoveryController < ApplicationController
     end
     render body: xml.target!, content_type: "application/atom+xml"
   end
+
+  def llms
+    render plain: <<~TEXT, content_type: "text/plain"
+      # Les Vendredis
+
+      A-frame cabin rental in Sainte-Luce, Martinique. Direct booking is handled by this Rails application.
+
+      ## Machine Booking API
+
+      Base URL: #{SITE_URL}
+
+      - GET /rules — stay rules, capacity, price, currency, network, asset, recipient.
+      - GET /availability?from=YYYY-MM-DD&to=YYYY-MM-DD — available nights with price metadata.
+      - POST /quote — JSON body: {"date":"YYYY-MM-DD","nights":2,"guests":2}
+      - POST /book — returns HTTP 402 with x402 payment challenge when payment is required.
+
+      Booking is not confirmed until payment verification succeeds. If paymentConfigured is false, the payment recipient is not configured yet.
+    TEXT
+  end
+
+  def agent
+    render json: {
+      name: "Les Vendredis",
+      description: "A-frame cabin rental in Sainte-Luce, Martinique.",
+      url: SITE_URL,
+      provides: [ "short_term_rental" ],
+      contact: {
+        email: "hello@lesvendredis.casa",
+        whatsapp: "+596696969699"
+      },
+      api: {
+        rules: "#{SITE_URL}/rules",
+        availability: "#{SITE_URL}/availability",
+        quote: "#{SITE_URL}/quote",
+        book: "#{SITE_URL}/book"
+      },
+      x402: {
+        version: "1.0",
+        network: MachineBookings::Quote.network,
+        chainId: MachineBookings::Quote.chain_id,
+        asset: MachineBookings::Quote.asset,
+        currency: MachineBookings::Quote.currency,
+        payTo: MachineBookings::Quote.pay_to,
+        paymentConfigured: MachineBookings::Quote.pay_to.present?
+      }
+    }
+  end
 end
