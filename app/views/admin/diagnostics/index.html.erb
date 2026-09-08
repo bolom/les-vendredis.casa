@@ -1,0 +1,35 @@
+<h1>Imports &amp; diagnostics</h1>
+<p class="admin-definition">Détails techniques des imports de calendriers : horodatages bruts, durées, compteurs d'événements et messages d'erreur.</p>
+
+<table class="admin-table">
+  <thead>
+    <tr>
+      <th scope="col">Fournisseur</th>
+      <th scope="col">Actif</th>
+      <th scope="col">Statut</th>
+      <th scope="col">Dernière synchro</th>
+      <th scope="col">Durée</th>
+      <th scope="col">Événements</th>
+      <th scope="col">Erreur</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @calendar_imports.each do |calendar_import| %>
+      <tr>
+        <td><%= calendar_import.provider %></td>
+        <td><%= calendar_import.active? ? "Oui" : "Non" %></td>
+        <td><%= t("admin.calendar_imports.last_status.#{calendar_import.last_status}") %></td>
+        <td><%= calendar_import.last_synced_at ? "#{l(calendar_import.last_synced_at, format: :long)} (#{time_ago_in_words(calendar_import.last_synced_at)})" : "Jamais" %></td>
+        <td><%= calendar_import.last_duration_ms ? "#{calendar_import.last_duration_ms} ms" : "—" %></td>
+        <td><%= @event_counts[calendar_import.id] || 0 %> importés · <%= calendar_import.last_event_count || "—" %> dernier cycle</td>
+        <td><%= calendar_import.last_error_at ? "#{calendar_import.last_error_message.presence || 'Échec'} — #{l(calendar_import.last_error_at, format: :long)}" : "—" %></td>
+        <td>
+          <%= button_to "Synchroniser maintenant", sync_admin_calendar_import_path(calendar_import), method: :post, data: { lv_confirm: "Lancer la synchronisation du calendrier #{calendar_import.provider} maintenant ?" } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to "← Section technique", admin_root_path, class: "admin-button admin-button--secondary" %>
