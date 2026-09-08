@@ -23,6 +23,8 @@ module AvailabilityBlocks
     )
     block.save!
     block
+  rescue ActiveRecord::RecordInvalid => error
+    raise Error, error.record.errors.full_messages.to_sentence
   end
 
   # Cancellation is the only allowed end-of-life here: blocks are kept for
@@ -32,7 +34,7 @@ module AvailabilityBlocks
   def cancel(block)
     block.update!(status: "cancelled")
     block
-  rescue ActiveRecord::RecordInvalid => error
-    raise Error, error.record.errors.full_messages.to_sentence
+  rescue ActiveRecord::RecordInvalid, ActiveRecord::RecordNotSaved => error
+    raise Error, error.message.presence || "this block cannot be cancelled"
   end
 end

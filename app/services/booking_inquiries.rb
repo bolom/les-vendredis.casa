@@ -29,14 +29,23 @@ module BookingInquiries
   # Cancelling an accepted booking releases its dates: the linked block is
   # cancelled first, then the inquiry. Guards on the block model (managed
   # stay, unresolved payment) still apply and surface as domain errors.
+  # Cancelling an accepted booking releases its dates: the linked block is
+  # cancelled first, then the inquiry. Payment-protected stays refuse to
+  # change; every failure surfaces as a domain error instead of a raw Rails
+  # exception leaking to the admin HTML or the agent API.
   def cancel(inquiry)
     raise Error, "only accepted bookings can be cancelled" unless inquiry.status_accepted?
 
-    if inquiry.availability_block
-      AvailabilityBlocks.cancel(inquiry.availability_block)
+    block = inquiry.availability_block
+    raise Error, "payment in reconciliation: this stay cannot be cancelled" if block&.managed_by_payment?
+
+    if block
+      AvailabilityBlocks.cancel(block)
     else
       inquiry.update!(status: "cancelled")
     end
     inquiry
+  rescue AvailabilityBlocks::Error, ActiveRecord::RecordInvalid, ActiveRecord::RecordNotSaved => error
+    raise Error, error.message.presence || "this booking cannot be cancelled"
   end
 end

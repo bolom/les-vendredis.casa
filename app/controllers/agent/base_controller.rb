@@ -16,7 +16,12 @@ module Agent
     rescue_from Agent::Errors::ForbiddenError, with: :render_forbidden
     rescue_from Agent::Errors::NotFoundError, with: :render_not_found
     rescue_from Agent::Errors::UnprocessableError, with: :render_unprocessable
-    rescue_from ActiveRecord::RecordNotFound, with: -> { raise Agent::Errors::NotFoundError }
+    # A missing record is a clean JSON 404, not a crash. This handler must
+    # render directly: an exception raised inside a rescue_from handler is
+    # not caught by the other handlers.
+    rescue_from ActiveRecord::RecordNotFound do
+      render json: { error: "not_found" }, status: :not_found
+    end
 
     protected
 
@@ -43,9 +48,9 @@ module Agent
       require_agent_permission!(permission)
 
       key = request.headers["Idempotency-Key"].presence
-      claimed = claim_idempotency!(action, key) if key
+      claimed = key ? AgentIdempotencyKey.claim!(agent_token: current_agent_token, key: key, action: action)[1] : nil
 
-      if claimed.is_a?(AgentIdempotencyKey) && claimed.replayable?
+      if claimed&.replayable?
         status, body = claimed.replay
         return render json: body, status: status
       end
@@ -53,13 +58,13 @@ module Agent
       begin
         payload = yield
         log_agent_action!(action, target: target, result: "ok", request_key: key)
-        respond_with_idempotency!(claimed, status: :ok, payload: { action: action, status: "ok", result: payload })
+        respond_with_idempotency!(claimed, status: 200, payload: { action: action, status: "ok", result: payload })
       rescue Agent::Errors::UnprocessableError, AvailabilityBlocks::Error, BookingInquiries::Error, StayRules::Error => error
         log_agent_action!(action, target: target, result: "error", details: { error: error.message }, request_key: key)
-        respond_with_idempotency!(claimed, status: :unprocessable_entity, payload: { action: action, status: "error", error: error.message })
+        respond_with_idempotency!(claimed, status: 422, payload: { action: action, status: "error", error: error.message })
       rescue StandardError
         # Unexpected crash: release the claimed key so a retry can execute.
-        claimed&.destroy if claimed.is_a?(AgentIdempotencyKey)
+        claimed&.destroy if claimed&.running?
         raise
       end
     end
@@ -76,12 +81,6 @@ module Agent
     end
 
     private
-
-    # Returns nil (no key), a replayable record, or a fresh claimed record.
-    def claim_idempotency!(action, key)
-      created, record = AgentIdempotencyKey.claim!(agent_token: current_agent_token, key: key, action: action)
-      record if created || !record.replayable?
-    end
 
     def respond_with_idempotency!(claimed, status:, payload:)
       claimed&.store!(status: status, body: payload)
