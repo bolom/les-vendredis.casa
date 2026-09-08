@@ -7,6 +7,8 @@ module Admin
     # The back-office is French-only, whatever the public-site locale params.
     around_action ->(_controller, action) { I18n.with_locale(:fr) { action.call } }
 
+    helper_method :admin_nav_class
+
     private
 
     def admin_nav_class(path)
