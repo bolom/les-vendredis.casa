@@ -1,5 +1,7 @@
 module Admin
   class PaymentOrdersController < BaseController
+    before_action :require_technical_access
+
     FILTERABLE_STATUSES = %w[pending quoted settling paid review refunded cancelled].freeze
 
     def index

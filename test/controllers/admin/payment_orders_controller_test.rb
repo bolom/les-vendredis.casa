@@ -12,6 +12,15 @@ module Admin
       )
     end
 
+    test "redirects accounts without technical access" do
+      sign_in_as users(:two)
+
+      get admin_payment_orders_path
+
+      assert_redirected_to admin_root_path
+      assert_equal "Section technique réservée aux comptes autorisés.", flash[:alert]
+    end
+
     test "requires authentication" do
       get admin_payment_orders_path
 
@@ -39,14 +48,15 @@ module Admin
       assert_select "td", text: @order.public_id
     end
 
-    test "admin can inspect a payment order" do
+    test "admin can inspect a payment order without raw technical dumps" do
       sign_in_as users(:one)
 
       get admin_payment_order_path(@order)
 
       assert_response :success
       assert_select "h1", /#{Regexp.escape(@order.public_id)}/
-      assert_select "dd", text: "review"
+      assert_select "dd", text: "À vérifier"
+      assert_select ".admin-details summary", text: /Détails techniques/
     end
 
     test "reconciliation form is offered for orders awaiting reconciliation" do
