@@ -1,6 +1,27 @@
-<h1>Nouveau bloc de disponibilité</h1>
-<p class="admin-definition">Bloque des dates (maintenance, réservation extérieure) sur le calendrier public. Le type « fermeture manuelle » est attribué automatiquement.</p>
+<h1>Bloquer des dates</h1>
+<p class="admin-definition">Les dates bloquées deviennent indisponibles immédiatement sur le site public (maintenance, affaires personnelles…). Un libellé facultatif t'aidera à te souvenir du pourquoi.</p>
 
-<%= render "form", availability_block: @availability_block %>
+<%= form_with model: [:admin, @availability_block], url: admin_availability_blocks_path, class: "admin-form" do |form| %>
+  <% if @availability_block.errors.any? %>
+    <p role="alert"><%= @availability_block.errors.full_messages.to_sentence %></p>
+  <% end %>
 
-<%= link_to "← Toutes les disponibilités", admin_availability_blocks_path, class: "admin-button admin-button--secondary" %>
+  <div>
+    <%= form.label :starts_on, "Du" %>
+    <%= form.date_field :starts_on, required: true %>
+  </div>
+
+  <div>
+    <%= form.label :ends_on, "Au (jour de départ, la nuit du départ est libérée)" %>
+    <%= form.date_field :ends_on, required: true %>
+  </div>
+
+  <div>
+    <%= form.label :summary, "Libellé (facultatif)" %>
+    <%= form.text_field :summary, placeholder: "Ex. : week-end en famille" %>
+  </div>
+
+  <div><%= form.submit "Bloquer ces dates" %></div>
+<% end %>
+
+<%= link_to "← Retour au calendrier", admin_calendar_path, class: "admin-button admin-button--secondary" %>

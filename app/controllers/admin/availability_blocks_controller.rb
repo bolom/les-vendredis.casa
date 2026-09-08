@@ -1,4 +1,8 @@
 module Admin
+  # Anaïs only ever blocks dates: dates + optional label. The controller pins
+  # kind/source/status (manual_closure / manual / confirmed) — no technical
+  # status is ever exposed. Existing model guards are untouched: a manual
+  # closure is the only kind this controller can create.
   class AvailabilityBlocksController < BaseController
     def index
       @availability_blocks = AvailabilityBlock.order(starts_on: :asc)
@@ -6,58 +10,44 @@ module Admin
     end
 
     def new
-      @availability_block = AvailabilityBlock.new(kind: "manual_closure", source: "manual", status: "confirmed")
+      @availability_block = AvailabilityBlock.new(
+        starts_on: params[:starts_on].presence || Date.current,
+        ends_on: params[:ends_on].presence || Date.current + 1,
+        summary: params[:summary].presence
+      )
     end
 
     def create
-      @availability_block = AvailabilityBlock.new(availability_block_params.merge(kind: "manual_closure", source: "manual"))
+      @availability_block = AvailabilityBlock.new(
+        starts_on: availability_block_params[:starts_on],
+        ends_on: availability_block_params[:ends_on],
+        summary: availability_block_params[:summary],
+        kind: "manual_closure",
+        source: "manual",
+        status: "confirmed"
+      )
 
       if @availability_block.save
-        redirect_to admin_availability_blocks_path, notice: "Bloc de disponibilité créé."
+        redirect_to admin_calendar_path(month: @availability_block.starts_on.strftime("%Y-%m")),
+                    notice: "Dates bloquées du #{l(@availability_block.starts_on, format: "%-d %B")} au #{l(@availability_block.ends_on, format: "%-d %B")}."
       else
         render :new, status: :unprocessable_entity
-      end
-    end
-
-    def edit
-      @availability_block = AvailabilityBlock.find(params[:id])
-    end
-
-    def update
-      @availability_block = AvailabilityBlock.find(params[:id])
-      if managed_stay_form_update?
-        @availability_block.errors.add(:base, "Le statut et les dates de ce séjour sont gérés par sa réservation : utilisez les actions de la demande")
-        return render :edit, status: :unprocessable_entity
-      end
-
-      if @availability_block.update(availability_block_params)
-        redirect_to admin_availability_blocks_path, notice: "Bloc de disponibilité mis à jour."
-      else
-        render :edit, status: :unprocessable_entity
       end
     end
 
     def cancel
       block = AvailabilityBlock.find(params[:id])
       if block.update(status: "cancelled")
-        redirect_to admin_availability_blocks_path, notice: "Bloc annulé. Les réservations acceptées liées sont annulées."
+        redirect_back fallback_location: admin_calendar_path, notice: "Blocage annulé : ces dates sont de nouveau disponibles."
       else
-        redirect_to admin_availability_blocks_path, alert: block.errors.full_messages.to_sentence
+        redirect_back fallback_location: admin_calendar_path, alert: block.errors.full_messages.to_sentence
       end
     end
 
     private
 
-    # A direct stay is owned by its booking: the generic form may not move its
-    # status or dates. The cancel action stays available for blocks without an
-    # unresolved payment (the model refuses those itself).
-    def managed_stay_form_update?
-      @availability_block.direct_stay? &&
-        (availability_block_params[:status].present? || availability_block_params[:starts_on].present? || availability_block_params[:ends_on].present?)
-    end
-
     def availability_block_params
-      params.require(:availability_block).permit(:starts_on, :ends_on, :status, :summary, :note)
+      params.require(:availability_block).permit(:starts_on, :ends_on, :summary)
     end
   end
 end

@@ -1,18 +1,12 @@
 <h1>Disponibilités</h1>
-<p><%= link_to "Nouveau bloc", new_admin_availability_block_path, class: "admin-button" %></p>
-
-<%= form_with url: admin_availability_blocks_path, method: :get, class: "admin-filters" do %>
-  <%= label_tag :status, "Statut" %>
-  <%= select_tag :status, options_for_select([["Tous", ""], ["Confirmé", "confirmed"], ["Provisoire", "tentative"], ["Annulé", "cancelled"]], params[:status]) %>
-  <%= submit_tag "Filtrer" %>
-<% end %>
+<p class="admin-definition">Les blocages maison peuvent être annulés ici. Les séjours directs sont gérés par leurs réservations.</p>
 
 <table class="admin-table">
   <thead>
     <tr>
       <th scope="col">Dates</th>
-      <th scope="col">Type</th>
-      <th scope="col">Statut</th>
+      <th scope="col">Origine</th>
+      <th scope="col">État</th>
       <th scope="col">Libellé</th>
       <th scope="col">Actions</th>
     </tr>
@@ -20,17 +14,17 @@
   <tbody>
     <% @availability_blocks.each do |availability_block| %>
       <tr>
-        <td><%= l(availability_block.starts_on) %> → <%= l(availability_block.ends_on) %></td>
+        <td><%= human_date_range(availability_block.starts_on, availability_block.ends_on) %></td>
         <td><%= t("admin.availability_blocks.kind.#{availability_block.kind}") %> / <%= t("admin.availability_blocks.source.#{availability_block.source}") %></td>
         <td><%= t("admin.availability_blocks.status.#{availability_block.status}") %></td>
         <td><%= availability_block.summary.presence || "—" %></td>
         <td>
           <% if availability_block.direct_stay? %>
             <span class="admin-definition">Géré par sa réservation — voir <%= link_to "la demande liée", admin_booking_inquiry_path(availability_block.booking_inquiries.order(:created_at).last) if availability_block.booking_inquiries.exists? %></span>
+          <% elsif availability_block.status != "cancelled" %>
+            <%= button_to "Annuler ce blocage", cancel_admin_availability_block_path(availability_block), method: :post, class: "admin-button--danger", data: { lv_confirm: "Annuler le blocage du #{human_date(availability_block.starts_on)} au #{human_date(availability_block.ends_on)} ? Les dates redeviendront disponibles et les réservations acceptées liées seront annulées." } %>
           <% else %>
-            <%= link_to "Modifier", edit_admin_availability_block_path(availability_block) %>
-            ·
-            <%= button_to "Annuler le bloc", cancel_admin_availability_block_path(availability_block), method: :post, class: "admin-button--danger", data: { lv_confirm: "Annuler définitivement le bloc du #{l(availability_block.starts_on)} au #{l(availability_block.ends_on)} ? Les réservations acceptées liées seront annulées." } %>
+            <span class="admin-definition">Annulé</span>
           <% end %>
         </td>
       </tr>
