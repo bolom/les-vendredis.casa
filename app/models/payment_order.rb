@@ -26,7 +26,7 @@ class PaymentOrder < ApplicationRecord
     end
   end
 
-  ALLOWED_CHALLENGE_HOSTS = [ "lesvendredis.casa", "staging.lesvendredis.casa" ].freeze
+  ALLOWED_CHALLENGE_HOSTS = [ "lesvendredis.casa" ].freeze
 
   def challenge
     { x402Version: 2, resource: { url: resource_url, mimeType: "application/json" }, accepts: [ requirements ] }

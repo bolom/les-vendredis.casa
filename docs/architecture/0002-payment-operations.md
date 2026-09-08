@@ -24,7 +24,7 @@ of real on-chain compatibility or settlement.
 The challenge `resource.url` host is the public host of the environment, from
 `APP_HOST` or credentials `app.host` (default `lesvendredis.casa`) — the same
 source of truth as production mailer URLs. It is strictly allowlisted
-(`lesvendredis.casa`, `staging.lesvendredis.casa`) and always HTTPS: an
+(`lesvendredis.casa`) and always HTTPS: an
 unauthorized value raises instead of leaking into the challenge, and request
 headers are never used (no Host header injection). Local development never
 advertises a payable challenge because x402 stays disabled there and its host
