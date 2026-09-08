@@ -1,25 +1,64 @@
-<main>
-  <h1>Admin Les Vendredis</h1>
-  <nav>
-    <%= link_to "Journal", admin_journal_posts_path %>
-    <%= link_to "Booking inquiries", admin_booking_inquiries_path %>
-    <%= link_to "Availability blocks", admin_availability_blocks_path %>
-    <%= link_to "Stay rules", edit_admin_stay_rule_path %>
-    <%= link_to "Calendar imports", admin_calendar_imports_path %>
-  </nav>
-  <h2>Paiements à vérifier</h2>
-  <% @payment_reviews.each do |order| %>
-    <p><%= order.public_id %> — <%= order.status %> — <%= order.requirements["amount"] %> unités — <%= link_to "Réservation", admin_booking_inquiry_path(order.booking_inquiry) if order.booking_inquiry %></p>
-    <%= form_with url: admin_payment_order_path(order), method: :patch do %>
-      <p>Enregistrer uniquement un résultat déjà vérifié chez le prestataire ou sur la blockchain. Cette action n’envoie aucun paiement ni remboursement.</p>
-      <%= select_tag :outcome, options_for_select([["Paiement confirmé", "confirmed"], ["Remboursement effectué", "refunded"], ["Aucun transfert effectué", "no_transfer"]]) %>
-      <%= text_area_tag :evidence, nil, required: true, minlength: 20, maxlength: 2000, placeholder: "Référence de transaction / prestataire et vérifications effectuées", aria: { label: "Preuve de rapprochement" } %>
-      <label><%= check_box_tag :review_confirmed, "1", false, required: true %> J’ai vérifié le résultat et ses justificatifs.</label>
-      <%= submit_tag "Enregistrer le rapprochement" %>
+<h1>Tableau de bord</h1>
+
+<div class="admin-counters">
+  <div class="admin-counter">
+    <strong><%= @new_inquiries_count %></strong>
+    nouvelles demandes de réservation
+    <%= link_to "Voir", admin_booking_inquiries_path(status: "new") %>
+  </div>
+  <div class="admin-counter">
+    <strong><%= @payments_review_count %></strong>
+    paiements à rapprocher
+    <%= link_to "Voir", admin_payment_orders_path(status: "pending") %>
+  </div>
+  <div class="admin-counter">
+    <strong><%= @failed_notifications_count %></strong>
+    notifications en échec
+    <%= link_to "Voir", admin_root_path(anchor: "notifications-en-echec") %>
+  </div>
+  <div class="admin-counter">
+    <strong><%= @draft_posts_count %></strong>
+    articles du journal en brouillon
+    <%= link_to "Voir", admin_journal_posts_path %>
+  </div>
+</div>
+
+<h2>Dernières demandes de réservation</h2>
+<%= render "admin/booking_inquiries/table", booking_inquiries: @recent_inquiries %>
+
+<h2>Paiements en attente de rapprochement</h2>
+<% if @pending_payment_orders.any? %>
+  <ul>
+    <% @pending_payment_orders.each do |order| %>
+      <li><%= link_to order.public_id, admin_payment_order_path(order) %> — <%= order.status %></li>
     <% end %>
-  <% end %>
-  <h2>Notifications en attente après erreur</h2>
-  <% @notification_failures.each do |notification| %>
-    <p><%= notification.event %> — <%= notification.attempts %> essais — <%= notification.last_error %> — <%= link_to "Réservation", admin_booking_inquiry_path(notification.booking_inquiry) %></p>
-  <% end %>
-</main>
+  </ul>
+<% else %>
+  <p class="admin-definition">Aucun paiement en attente de rapprochement.</p>
+<% end %>
+
+<h2 id="notifications-en-echec">Notifications en échec</h2>
+<% if @failed_notifications.any? %>
+  <table class="admin-table">
+    <thead>
+      <tr>
+        <th scope="col">Réservation</th>
+        <th scope="col">Événement</th>
+        <th scope="col">Essais</th>
+        <th scope="col">Dernière erreur</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @failed_notifications.each do |notification| %>
+        <tr>
+          <td><%= link_to notification.booking_inquiry.public_reference, admin_booking_inquiry_path(notification.booking_inquiry) %></td>
+          <td><%= notification.event %></td>
+          <td><%= notification.attempts %></td>
+          <td><%= notification.last_error %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p class="admin-definition">Aucune notification en échec.</p>
+<% end %>
