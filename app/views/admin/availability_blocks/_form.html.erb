@@ -1,27 +1,37 @@
 <% managed = availability_block.direct_stay? && availability_block.persisted? %>
-<%= form_with model: [:admin, availability_block] do |form| %>
+<%= form_with model: [:admin, availability_block], class: "admin-form" do |form| %>
   <% if availability_block.errors.any? %>
-    <p><%= availability_block.errors.full_messages.to_sentence %></p>
+    <p role="alert"><%= availability_block.errors.full_messages.to_sentence %></p>
   <% end %>
 
   <% if managed %>
-    <p>This stay is managed by its booking. Status and dates must be changed through the booking actions (accept/decline, payment reconciliation), not this form.</p>
+    <p class="admin-definition">Ce séjour est géré par sa réservation : statut et dates se changent via les actions de la demande (acceptation, rapprochement de paiement), pas via ce formulaire.</p>
   <% end %>
 
-  <%= form.label :starts_on %>
-  <%= form.date_field :starts_on, required: true, disabled: managed %>
+  <div>
+    <%= form.label :starts_on, "Début" %>
+    <%= form.date_field :starts_on, required: true, disabled: managed %>
+  </div>
 
-  <%= form.label :ends_on %>
-  <%= form.date_field :ends_on, required: true, disabled: managed %>
+  <div>
+    <%= form.label :ends_on, "Fin" %>
+    <%= form.date_field :ends_on, required: true, disabled: managed %>
+  </div>
 
-  <%= form.label :status %>
-  <%= form.select :status, %w[confirmed tentative cancelled], {}, disabled: managed %>
+  <div>
+    <%= form.label :status, "Statut" %>
+    <%= form.select :status, [["Confirmé", "confirmed"], ["Provisoire", "tentative"], ["Annulé", "cancelled"]], {}, disabled: managed %>
+  </div>
 
-  <%= form.label :summary %>
-  <%= form.text_field :summary %>
+  <div>
+    <%= form.label :summary, "Libellé" %>
+    <%= form.text_field :summary, placeholder: "Ex. : maintenance, réservation extérieure…" %>
+  </div>
 
-  <%= form.label :note %>
-  <%= form.text_area :note %>
+  <div>
+    <%= form.label :note, "Note interne" %>
+    <%= form.text_area :note, rows: 4 %>
+  </div>
 
-  <%= form.submit %>
+  <div><%= form.submit "Enregistrer" %></div>
 <% end %>

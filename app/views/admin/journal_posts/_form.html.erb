@@ -4,6 +4,7 @@
   <p><%= form.label :slug, "Adresse (mots-avec-tirets)" %><%= form.text_field :slug, required: true %></p>
   <p><%= form.label :locale, "Langue" %><%= form.select :locale, [["Français", "fr"], ["English", "en"]] %></p>
   <p><%= form.label :summary, "Résumé" %><%= form.text_area :summary, rows: 3 %></p>
+  <p><%= form.label :description, "Description (meta)" %><%= form.text_area :description, rows: 2 %></p>
   <p><%= form.label :body_markdown, "Article (Markdown)" %><%= form.text_area :body_markdown, rows: 24, required: true %></p>
   <p><%= form.label :tag, "Catégorie" %><%= form.text_field :tag %></p>
   <p><%= form.label :image_path, "Image (chemin ou URL)" %><%= form.text_field :image_path %></p>

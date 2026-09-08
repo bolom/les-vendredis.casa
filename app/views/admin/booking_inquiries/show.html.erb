@@ -1,10 +1,53 @@
-<h1><%= @booking_inquiry.public_reference %></h1>
+<h1>Demande <%= @booking_inquiry.public_reference %></h1>
 
-<p><%= @booking_inquiry.check_in %> - <%= @booking_inquiry.check_out %></p>
-<p><%= @booking_inquiry.guest_name %> · <%= @booking_inquiry.email %></p>
-<p><%= @booking_inquiry.phone.presence || "-" %></p>
-<p><%= @booking_inquiry.message.presence || "-" %></p>
-<p>Status: <%= @booking_inquiry.status %></p>
+<div class="admin-card">
+  <dl>
+    <dt>Statut</dt>
+    <dd><%= @booking_inquiry.status %></dd>
+    <dt>Séjour</dt>
+    <dd><%= l(@booking_inquiry.check_in, format: :long) %> → <%= l(@booking_inquiry.check_out, format: :long) %> (<%= @booking_inquiry.nights %> nuit(s))</dd>
+    <dt>Voyageur</dt>
+    <dd><%= @booking_inquiry.guest_name %></dd>
+    <dt>Email</dt>
+    <dd><%= mail_to @booking_inquiry.email %></dd>
+    <dt>Téléphone</dt>
+    <dd><%= @booking_inquiry.phone.presence || "—" %></dd>
+    <dt>Personnes</dt>
+    <dd><%= @booking_inquiry.adults %> adulte(s), <%= @booking_inquiry.children %> enfant(s)</dd>
+    <dt>Langue</dt>
+    <dd><%= @booking_inquiry.locale.upcase %></dd>
+    <dt>Message</dt>
+    <dd><%= simple_format(@booking_inquiry.message.presence || "—") %></dd>
+    <dt>Reçue le</dt>
+    <dd><%= l(@booking_inquiry.created_at, format: :long) %></dd>
+    <% if @booking_inquiry.contacted_at %>
+      <dt>Contactée le</dt>
+      <dd><%= l(@booking_inquiry.contacted_at, format: :long) %></dd>
+    <% end %>
+    <% if @booking_inquiry.accepted_at %>
+      <dt>Acceptée le</dt>
+      <dd><%= l(@booking_inquiry.accepted_at, format: :long) %></dd>
+    <% end %>
+    <% if @booking_inquiry.declined_at %>
+      <dt>Refusée le</dt>
+      <dd><%= l(@booking_inquiry.declined_at, format: :long) %></dd>
+    <% end %>
+  </dl>
+</div>
 
-<%= button_to "Accept", accept_admin_booking_inquiry_path(@booking_inquiry), method: :post %>
-<%= button_to "Decline", decline_admin_booking_inquiry_path(@booking_inquiry), method: :post %>
+<% if @booking_inquiry.availability_block %>
+  <p class="admin-definition">Séjour lié : <%= l(@booking_inquiry.availability_block.starts_on) %> → <%= l(@booking_inquiry.availability_block.ends_on) %> (<%= @booking_inquiry.availability_block.status %>)</p>
+<% end %>
+
+<% if @booking_inquiry.status_new? || @booking_inquiry.status_contacted? %>
+  <% if @booking_inquiry.availability_block_id.nil? %>
+    <%= button_to "Refuser la demande", decline_admin_booking_inquiry_path(@booking_inquiry), method: :post, class: "admin-button--danger", data: { lv_confirm: "Refuser définitivement la demande #{@booking_inquiry.public_reference} ?" } %>
+    <%= button_to "Accepter la demande", accept_admin_booking_inquiry_path(@booking_inquiry), method: :post, data: { lv_confirm: "Accepter la demande #{@booking_inquiry.public_reference} et bloquer les dates du #{l(@booking_inquiry.check_in)} au #{l(@booking_inquiry.check_out)} ?" } %>
+  <% else %>
+    <%= button_to "Accepter la demande", accept_admin_booking_inquiry_path(@booking_inquiry), method: :post, data: { lv_confirm: "Accepter la demande #{@booking_inquiry.public_reference} et bloquer les dates du #{l(@booking_inquiry.check_in)} au #{l(@booking_inquiry.check_out)} ?" } %>
+  <% end %>
+<% else %>
+  <p class="admin-definition">Cette demande est déjà traitée (<%= @booking_inquiry.status %>).</p>
+<% end %>
+
+<%= link_to "← Toutes les demandes", admin_booking_inquiries_path, class: "admin-button admin-button--secondary" %>

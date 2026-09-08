@@ -1,9 +1,35 @@
-<main class="wrap">
-  <h1>Journal</h1>
-  <%= link_to "Nouvel article", new_admin_journal_post_path %>
-  <ul>
+<h1>Journal</h1>
+<p><%= link_to "Nouvel article", new_admin_journal_post_path, class: "admin-button" %></p>
+
+<%= form_with url: admin_journal_posts_path, method: :get, class: "admin-filters" do %>
+  <%= label_tag :locale, "Langue" %>
+  <%= select_tag :locale, options_for_select([["Toutes", ""], ["Français", "fr"], ["English", "en"]], params[:locale]) %>
+  <%= label_tag :status, "Statut" %>
+  <%= select_tag :status, options_for_select([["Tous", ""], ["Publié", "published"], ["Brouillon", "draft"]], params[:status]) %>
+  <%= label_tag :q, "Recherche" %>
+  <%= search_field_tag :q, params[:q], placeholder: "Titre ou slug" %>
+  <%= submit_tag "Filtrer" %>
+<% end %>
+
+<table class="admin-table">
+  <thead>
+    <tr>
+      <th scope="col">Titre</th>
+      <th scope="col">Langue</th>
+      <th scope="col">Catégorie</th>
+      <th scope="col">Statut</th>
+      <th scope="col">Date de publication</th>
+    </tr>
+  </thead>
+  <tbody>
     <% @journal_posts.each do |post| %>
-      <li><%= link_to post.title, edit_admin_journal_post_path(post.id) %> — <%= post.locale.upcase %> — <%= post.published? ? post.published_on : "Brouillon" %></li>
+      <tr>
+        <td><%= link_to post.title, edit_admin_journal_post_path(post.id) %></td>
+        <td><%= post.locale.upcase %></td>
+        <td><%= post.tag.presence || "—" %></td>
+        <td><%= post.published? ? "Publié" : "Brouillon" %></td>
+        <td><%= l(post.published_on) %></td>
+      </tr>
     <% end %>
-  </ul>
-</main>
+  </tbody>
+</table>

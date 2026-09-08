@@ -1,5 +1,5 @@
 module Admin
-  class CalendarImportsController < ApplicationController
+  class CalendarImportsController < BaseController
     before_action :ensure_calendar_imports
 
     def index
@@ -9,7 +9,7 @@ module Admin
     def sync
       calendar_import = CalendarImport.find(params[:id])
       CalendarImportSyncJob.perform_later(calendar_import.provider)
-      redirect_to admin_calendar_imports_path, notice: "Calendar sync queued."
+      redirect_to admin_calendar_imports_path, notice: "Synchronisation du calendrier #{calendar_import.provider} lancée. Elle s’exécute en tâche de fond."
     end
 
     private
