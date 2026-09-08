@@ -61,7 +61,10 @@ Required production secrets:
 - `KAMAL_REGISTRY_PASSWORD`
 
 Resend production setup and smoke-test steps are documented in
-[`docs/resend-production.md`](docs/resend-production.md).
+[`docs/resend-production.md`](docs/resend-production.md). The public host used
+by payment challenges and production mailer URLs comes from `APP_HOST`
+(default `lesvendredis.casa`), allowlisted in production only — see
+[`docs/architecture/0002-payment-operations.md`](docs/architecture/0002-payment-operations.md).
 
 ## Checks
 

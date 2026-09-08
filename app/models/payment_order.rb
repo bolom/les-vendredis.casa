@@ -26,7 +26,23 @@ class PaymentOrder < ApplicationRecord
     end
   end
 
+  ALLOWED_CHALLENGE_HOSTS = [ "lesvendredis.casa", "staging.lesvendredis.casa" ].freeze
+
   def challenge
-    { x402Version: 2, resource: { url: "https://lesvendredis.casa/book?quote_id=#{public_id}", mimeType: "application/json" }, accepts: [ requirements ] }
+    { x402Version: 2, resource: { url: resource_url, mimeType: "application/json" }, accepts: [ requirements ] }
+  end
+
+  private
+
+  # The challenge describes the resource to pay for. Its host comes from explicit
+  # configuration (APP_HOST / credentials app.host, same source as production
+  # mailer URLs), never from request headers, and is strictly allowlisted so an
+  # unexpected value fails closed instead of advertising a forged resource.
+  def resource_url
+    host = AppConfig.fetch("APP_HOST", :app, :host, default: "lesvendredis.casa")
+    unless ALLOWED_CHALLENGE_HOSTS.include?(host)
+      raise KeyError, "Refusing to build x402 challenge with unauthorized APP_HOST: #{host.inspect}"
+    end
+    "https://#{host}/book?quote_id=#{public_id}"
   end
 end
