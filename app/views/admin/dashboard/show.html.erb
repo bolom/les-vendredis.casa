@@ -1,64 +1,73 @@
-<h1>Tableau de bord</h1>
+<h1>Accueil</h1>
 
-<div class="admin-counters">
-  <div class="admin-counter">
-    <strong><%= @new_inquiries_count %></strong>
-    nouvelles demandes de réservation
-    <%= link_to "Voir", admin_booking_inquiries_path(status: "new") %>
-  </div>
-  <div class="admin-counter">
-    <strong><%= @payments_review_count %></strong>
-    paiements à rapprocher
-    <%= link_to "Voir", admin_payment_orders_path(status: "pending") %>
-  </div>
-  <div class="admin-counter">
-    <strong><%= @failed_notifications_count %></strong>
-    notifications en échec
-    <%= link_to "Voir", admin_root_path(anchor: "notifications-en-echec") %>
-  </div>
-  <div class="admin-counter">
-    <strong><%= @draft_posts_count %></strong>
-    articles du journal en brouillon
-    <%= link_to "Voir", admin_journal_posts_path %>
-  </div>
+<div class="admin-shortcuts">
+  <%= link_to "Bloquer des dates", new_admin_availability_block_path, class: "admin-button" %>
+  <%= link_to "Voir le calendrier", admin_calendar_path, class: "admin-button admin-button--secondary" %>
 </div>
 
-<h2>Dernières demandes de réservation</h2>
-<%= render "admin/booking_inquiries/table", booking_inquiries: @recent_inquiries %>
-
-<h2>Paiements en attente de rapprochement</h2>
-<% if @pending_payment_orders.any? %>
-  <ul>
-    <% @pending_payment_orders.each do |order| %>
-      <li><%= link_to order.public_id, admin_payment_order_path(order) %> — <%= order.status %></li>
+<h2>Prochaines arrivées</h2>
+<% if @upcoming_arrivals.any? %>
+  <ul class="admin-task-list">
+    <% @upcoming_arrivals.each do |stay| %>
+      <li>
+        <span><%= stay_occupant(stay) %></span>
+        <span>arrive le <%= human_date(stay.starts_on) %> · <%= human_date_range(stay.starts_on, stay.ends_on) %></span>
+      </li>
     <% end %>
   </ul>
 <% else %>
-  <p class="admin-definition">Aucun paiement en attente de rapprochement.</p>
+  <p class="admin-definition">Aucune arrivée dans les 14 prochains jours.</p>
 <% end %>
 
-<h2 id="notifications-en-echec">Notifications en échec</h2>
-<% if @failed_notifications.any? %>
-  <table class="admin-table">
-    <thead>
-      <tr>
-        <th scope="col">Réservation</th>
-        <th scope="col">Événement</th>
-        <th scope="col">Essais</th>
-        <th scope="col">Dernière erreur</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @failed_notifications.each do |notification| %>
-        <tr>
-          <td><%= link_to notification.booking_inquiry.public_reference, admin_booking_inquiry_path(notification.booking_inquiry) %></td>
-          <td><%= notification.event %></td>
-          <td><%= notification.attempts %></td>
-          <td><%= notification.last_error %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+<h2>Prochains départs</h2>
+<% if @upcoming_departures.any? %>
+  <ul class="admin-task-list">
+    <% @upcoming_departures.each do |stay| %>
+      <li>
+        <span><%= stay_occupant(stay) %></span>
+        <span>part le <%= human_date(stay.ends_on) %></span>
+      </li>
+    <% end %>
+  </ul>
 <% else %>
-  <p class="admin-definition">Aucune notification en échec.</p>
+  <p class="admin-definition">Aucun départ dans les 14 prochains jours.</p>
 <% end %>
+
+<h2>Demandes à traiter</h2>
+<% if @inquiries_to_handle.any? %>
+  <ul class="admin-task-list">
+    <% @inquiries_to_handle.each do |inquiry| %>
+      <li>
+        <span><%= link_to inquiry.guest_name, admin_booking_inquiry_path(inquiry) %> · <%= human_date_range(inquiry.check_in, inquiry.check_out) %></span>
+        <span>reçue <%= human_ago(inquiry.created_at) %> · <%= link_to "Traiter", admin_booking_inquiry_path(inquiry) %></span>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p class="admin-definition">Aucune demande en attente.</p>
+<% end %>
+
+<h2>Conflits de dates à vérifier</h2>
+<% if @date_conflicts.any? %>
+  <ul class="admin-task-list">
+    <% @date_conflicts.each do |conflict| %>
+      <li>
+        <span><%= stay_occupant(conflict[:block]) %> · <%= human_date_range(conflict[:block].starts_on, conflict[:block].ends_on) %></span>
+        <span>chevauche <%= human_platform(conflict[:event.calendar_import.provider]) %> · <%= human_date_range(conflict[:event].starts_on, conflict[:event].ends_on) %></span>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p class="admin-definition">Aucun conflit entre les séjours bloqués ici et les calendriers externes.</p>
+<% end %>
+
+<h2>Calendriers externes</h2>
+<ul class="admin-task-list">
+  <% @calendar_imports.each do |calendar_import| %>
+    <% summary = calendar_sync_summary(calendar_import) %>
+    <li>
+      <span><span class="admin-state admin-state--<%= summary[:state] %>"><%= summary[:label] %></span></span>
+      <span><%= human_platform(calendar_import.provider) %> · <%= button_to "Réessayer maintenant", sync_admin_calendar_import_path(calendar_import), method: :post, data: { lv_confirm: "Relancer la synchronisation #{human_platform(calendar_import.provider)} maintenant ?" } %> · <%= link_to "Détails", admin_calendars_path %></span>
+    </li>
+  <% end %>
+</ul>

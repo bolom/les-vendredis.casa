@@ -13,64 +13,125 @@ class AdminDashboardControllerTest < ActionDispatch::IntegrationTest
     get admin_root_path
 
     assert_response :success
-    assert_select "h1", "Tableau de bord"
+    assert_select "h1", "Accueil"
   end
 
-  test "shows useful counters" do
+  test "lists upcoming arrivals and departures in human language" do
     sign_in_as users(:one)
-    create_inquiry(status: "new")
-    create_inquiry(status: "declined")
+    AvailabilityBlock.create!(
+      starts_on: 3.days.from_now.to_date,
+      ends_on: 6.days.from_now.to_date,
+      kind: "direct_stay",
+      source: "direct",
+      status: "confirmed"
+    )
+
+    get admin_root_path
+
+    assert_select "h2", text: "Prochaines arrivées"
+    assert_select "h2", text: "Prochains départs"
+    assert_select ".admin-task-list li", text: /arrive le/
+    assert_select ".admin-task-list li", text: /part le/
+  end
+
+  test "lists inquiries to handle with their received age" do
+    sign_in_as users(:one)
+    inquiry = BookingInquiry.create!(
+      check_in: Date.new(2026, 10, 1),
+      check_out: Date.new(2026, 10, 3),
+      adults: 2,
+      guest_name: "Marie Dupont",
+      email: "marie@example.com",
+      locale: "en"
+    )
+
+    get admin_root_path
+
+    assert_select ".admin-task-list li", text: /Marie Dupont/
+    assert_select "a[href='#{admin_booking_inquiry_path(inquiry)}']", text: "Traiter"
+  end
+
+  test "shows external calendar states with sync shortcuts" do
+    sign_in_as users(:one)
+    CalendarImport.ensure_defaults!
+    CalendarImport.find_by(provider: "airbnb").update!(last_status: "success", last_synced_at: 4.minutes.ago)
+
+    get admin_root_path
+
+    assert_select ".admin-state--ok", text: /À jour · synchronisé il y a 4 min/
+    assert_select ".admin-state--problem", minimum: 1
+    assert_select "form[action='#{sync_admin_calendar_import_path(CalendarImport.find_by(provider: "airbnb"))}'] [data-lv-confirm]"
+  end
+
+  test "offers house shortcuts and does not show technical counters" do
+    sign_in_as users(:one)
+    PaymentOrder.create!(
+      public_id: "0f0e0d0c-aaaa-bbbb-cccc-444455556666",
+      quote: { totalPrice: "148" }.as_json,
+      requirements: { scheme: "exact" }.as_json,
+      expires_at: 15.minutes.from_now,
+      status: "review"
+    )
     JournalPost.create!(title: "Brouillon", slug: "brouillon", locale: "fr", body_markdown: "x", published_on: Date.current, published: false)
 
     get admin_root_path
 
-    assert_select ".admin-counter strong", text: "1"
-    assert_select ".admin-counter", text: /articles du journal en brouillon/
+    assert_select "a[href='#{new_admin_availability_block_path}']", text: "Bloquer des dates"
+    assert_select "a[href='#{admin_calendar_path}']", minimum: 1
+    assert_select ".admin-counter", count: 0
+    assert_select "form[action='#{admin_payment_order_path(PaymentOrder.last)}']", count: 0
+    assert_select "*", text: /articles du journal en brouillon/, count: 0
   end
 
-  test "links every back-office section from the navigation" do
+  test "navigation is split into house and technical zones" do
     sign_in_as users(:one)
 
     get admin_root_path
 
-    %w[
-      admin_root_path
-      admin_booking_inquiries_path
-      admin_availability_blocks_path
-      edit_admin_stay_rule_path
-      admin_calendar_imports_path
-      admin_journal_posts_path
-      admin_content_pages_path
-      admin_payment_orders_path
-      admin_users_path
-    ].each do |route|
-      assert_select "a[href='#{send(route)}']", minimum: 1
+    assert_select "nav[aria-label='Gestion de la maison']" do |nav|
+      assert_select nav, "a[href='#{admin_calendar_path}']"
+      assert_select nav, "a[href='#{admin_booking_inquiries_path}']"
+      assert_select nav, "a[href='#{edit_admin_stay_rule_path}']"
+      assert_select nav, "a[href='#{admin_journal_posts_path}']"
+      assert_select nav, "a[href='#{admin_content_pages_path}']", count: 0
+      assert_select nav, "a[href='#{admin_payment_orders_path}']", count: 0
+      assert_select nav, "a[href='#{admin_users_path}']", count: 0
     end
+    assert_select "nav[aria-label='Section technique']" do |nav|
+      assert_select nav, "a[href='#{admin_payment_orders_path}']"
+      assert_select nav, "a[href='#{admin_users_path}']"
+      assert_select nav, "a[href='#{admin_content_pages_path}']"
+      assert_select nav, "a[href='#{admin_diagnostics_path}']"
+      assert_select nav, "a[href='#{admin_notifications_path}']"
+    end
+    assert_select "button.admin-nav-toggle"
+  end
+
+  test "payments live in the technical zone only" do
+    sign_in_as users(:two)
+
+    get admin_root_path
+
+    assert_select "nav[aria-label='Gestion de la maison'] a[href='#{admin_payment_orders_path}']", count: 0
+    assert_select "nav[aria-label='Section technique']", count: 0
+    assert_select "button.admin-nav-toggle", count: 0
   end
 
   test "renders French flash notices inside the admin layout" do
     sign_in_as users(:one)
-    inquiry = create_inquiry(status: "new")
+    inquiry = BookingInquiry.create!(
+      check_in: Date.new(2026, 10, 1),
+      check_out: Date.new(2026, 10, 3),
+      adults: 2,
+      guest_name: "Guest",
+      email: "guest@example.com",
+      locale: "en"
+    )
 
     post decline_admin_booking_inquiry_path(inquiry)
     follow_redirect!
 
     assert_response :success
     assert_select ".admin-flash--notice", text: "Demande refusée : le voyageur est notifié."
-  end
-
-  private
-
-  def create_inquiry(status:)
-    BookingInquiry.create!(
-      check_in: Date.new(2026, 10, 1),
-      check_out: Date.new(2026, 10, 3),
-      adults: 2,
-      children: 0,
-      guest_name: "Guest #{status} #{rand(1_000)}",
-      email: "guest-#{status}-#{rand(1_000)}@example.com",
-      locale: "en",
-      status: status
-    )
   end
 end
