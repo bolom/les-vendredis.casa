@@ -9,19 +9,18 @@
 - `KAMAL_1PASSWORD_ACCOUNT` is exported locally with the 1Password account identifier.
 - Resend domain is verified; see `docs/resend-production.md`.
 
-Required Kamal secrets:
+Secrets architecture, rotation checklist and the exact mirror set used by
+the deploy CI are documented in [`docs/secrets.md`](secrets.md).
+
+Required Kamal secrets (local deploys, via 1Password):
 
 - `RAILS_MASTER_KEY`
+- `POSTGRES_PASSWORD`
 - `KAMAL_REGISTRY_PASSWORD`
 
-1Password item layout:
-
-- Vault: `lesvendredis.casa`
-- Item `common`: `KAMAL_REGISTRY_PASSWORD`
-- Item `production`: `RAILS_MASTER_KEY`
-
-Database, calendar, Resend and Rails application secrets are stored in
-`config/credentials.yml.enc`, not as separate 1Password fields.
+Application runtime secrets (`SECRET_KEY_BASE`, `DATABASE_URL`, `RESEND_API_KEY`,
+calendar URLs, x402 settings) live in `config/credentials.yml.enc`, unlocked by
+`RAILS_MASTER_KEY`.
 
 The Infomaniak experimental web server is configured in `.kamal/secrets-common` as `KAMAL_INFOMANIAK_HOST=185.143.102.224`.
 
