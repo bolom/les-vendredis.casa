@@ -1,16 +1,21 @@
+<% managed = availability_block.direct_stay? && availability_block.persisted? %>
 <%= form_with model: [:admin, availability_block] do |form| %>
   <% if availability_block.errors.any? %>
     <p><%= availability_block.errors.full_messages.to_sentence %></p>
   <% end %>
 
+  <% if managed %>
+    <p>This stay is managed by its booking. Status and dates must be changed through the booking actions (accept/decline, payment reconciliation), not this form.</p>
+  <% end %>
+
   <%= form.label :starts_on %>
-  <%= form.date_field :starts_on, required: true %>
+  <%= form.date_field :starts_on, required: true, disabled: managed %>
 
   <%= form.label :ends_on %>
-  <%= form.date_field :ends_on, required: true %>
+  <%= form.date_field :ends_on, required: true, disabled: managed %>
 
   <%= form.label :status %>
-  <%= form.select :status, %w[confirmed tentative cancelled] %>
+  <%= form.select :status, %w[confirmed tentative cancelled], {}, disabled: managed %>
 
   <%= form.label :summary %>
   <%= form.text_field :summary %>

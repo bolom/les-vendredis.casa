@@ -24,6 +24,10 @@ module Admin
 
     def update
       @availability_block = AvailabilityBlock.find(params[:id])
+      if managed_stay_form_update?
+        @availability_block.errors.add(:base, "This stay's status and dates are managed by its booking; use the booking actions")
+        return render :edit, status: :unprocessable_entity
+      end
 
       if @availability_block.update(availability_block_params)
         redirect_to admin_availability_blocks_path, notice: "Block updated."
@@ -42,6 +46,14 @@ module Admin
     end
 
     private
+
+    # A direct stay is owned by its booking: the generic form may not move its
+    # status or dates. The cancel action stays available for blocks without an
+    # unresolved payment (the model refuses those itself).
+    def managed_stay_form_update?
+      @availability_block.direct_stay? &&
+        (availability_block_params[:status].present? || availability_block_params[:starts_on].present? || availability_block_params[:ends_on].present?)
+    end
 
     def availability_block_params
       params.require(:availability_block).permit(:starts_on, :ends_on, :status, :summary, :note)
