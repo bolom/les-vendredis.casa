@@ -12,7 +12,7 @@
   <tbody>
     <% @users.each do |user| %>
       <tr>
-        <td><%= user.email_address %><%= " (vous)" if user == Current.user %></td>
+        <td><%= user.email_address %><%= " (vous)" if user == Current.user %><br><span class="admin-definition">Accès technique : <%= user.technical_access? ? "actif" : "inactif" %></span></td>
         <td><%= l(user.created_at, format: :long) %></td>
         <td>
           <%= link_to "Modifier", edit_admin_user_path(user) %>

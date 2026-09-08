@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_09_07_133000) do
+ActiveRecord::Schema[8.0].define(version: 2026_09_08_140000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "btree_gist"
   enable_extension "pg_catalog.plpgsql"
@@ -27,10 +27,10 @@ ActiveRecord::Schema[8.0].define(version: 2026_09_07_133000) do
     t.datetime "updated_at", null: false
 
     t.check_constraint "ends_on > starts_on", name: "availability_blocks_valid_date_range"
-    t.check_constraint "kind::text = ANY (ARRAY['manual_closure'::character varying::text, 'direct_stay'::character varying::text])", name: "availability_blocks_valid_kind"
-    t.check_constraint "source::text = ANY (ARRAY['direct'::character varying::text, 'manual'::character varying::text])", name: "availability_blocks_valid_source"
-    t.check_constraint "status::text = ANY (ARRAY['tentative'::character varying::text, 'confirmed'::character varying::text, 'cancelled'::character varying::text])", name: "availability_blocks_valid_status"
-    t.exclusion_constraint "daterange(starts_on, ends_on, '[)'::text) WITH &&", where: "(status)::text = ANY (ARRAY[('tentative'::character varying)::text, ('confirmed'::character varying)::text])", using: :gist, name: "availability_blocks_no_overlap"
+    t.check_constraint "kind::text = ANY (ARRAY['manual_closure'::character varying, 'direct_stay'::character varying]::text[])", name: "availability_blocks_valid_kind"
+    t.check_constraint "source::text = ANY (ARRAY['direct'::character varying, 'manual'::character varying]::text[])", name: "availability_blocks_valid_source"
+    t.check_constraint "status::text = ANY (ARRAY['tentative'::character varying, 'confirmed'::character varying, 'cancelled'::character varying]::text[])", name: "availability_blocks_valid_status"
+    t.exclusion_constraint "daterange(starts_on, ends_on, '[)'::text) WITH &&", where: "(status)::text = ANY ((ARRAY['tentative'::character varying, 'confirmed'::character varying])::text[])", using: :gist, name: "availability_blocks_no_overlap"
   end
 
   create_table "booking_inquiries", force: :cascade do |t|
@@ -57,8 +57,8 @@ ActiveRecord::Schema[8.0].define(version: 2026_09_07_133000) do
     t.check_constraint "adults >= 1", name: "booking_inquiries_adults_positive"
     t.check_constraint "check_out > check_in", name: "booking_inquiries_valid_date_range"
     t.check_constraint "children >= 0", name: "booking_inquiries_children_not_negative"
-    t.check_constraint "locale::text = ANY (ARRAY['en'::character varying::text, 'fr'::character varying::text])", name: "booking_inquiries_valid_locale"
-    t.check_constraint "status::text = ANY (ARRAY['new'::character varying::text, 'contacted'::character varying::text, 'accepted'::character varying::text, 'declined'::character varying::text, 'cancelled'::character varying::text])", name: "booking_inquiries_valid_status"
+    t.check_constraint "locale::text = ANY (ARRAY['en'::character varying, 'fr'::character varying]::text[])", name: "booking_inquiries_valid_locale"
+    t.check_constraint "status::text = ANY (ARRAY['new'::character varying, 'contacted'::character varying, 'accepted'::character varying, 'declined'::character varying, 'cancelled'::character varying]::text[])", name: "booking_inquiries_valid_status"
   end
 
   create_table "booking_notifications", force: :cascade do |t|
@@ -91,7 +91,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_09_07_133000) do
     t.index ["calendar_import_id", "external_uid"], name: "index_calendar_events_on_calendar_import_id_and_external_uid", unique: true
     t.index ["calendar_import_id"], name: "index_calendar_events_on_calendar_import_id"
     t.check_constraint "ends_on > starts_on", name: "calendar_events_valid_date_range"
-    t.check_constraint "status::text = ANY (ARRAY['confirmed'::character varying::text, 'cancelled'::character varying::text])", name: "calendar_events_valid_status"
+    t.check_constraint "status::text = ANY (ARRAY['confirmed'::character varying, 'cancelled'::character varying]::text[])", name: "calendar_events_valid_status"
   end
 
   create_table "calendar_imports", force: :cascade do |t|
@@ -108,8 +108,8 @@ ActiveRecord::Schema[8.0].define(version: 2026_09_07_133000) do
     t.index ["provider"], name: "index_calendar_imports_on_provider", unique: true
     t.check_constraint "last_duration_ms IS NULL OR last_duration_ms >= 0", name: "calendar_imports_last_duration_not_negative"
     t.check_constraint "last_event_count IS NULL OR last_event_count >= 0", name: "calendar_imports_last_event_count_not_negative"
-    t.check_constraint "last_status::text = ANY (ARRAY['never_synced'::character varying::text, 'success'::character varying::text, 'failed'::character varying::text])", name: "calendar_imports_valid_last_status"
-    t.check_constraint "provider::text = ANY (ARRAY['airbnb'::character varying::text, 'booking'::character varying::text])", name: "calendar_imports_valid_provider"
+    t.check_constraint "last_status::text = ANY (ARRAY['never_synced'::character varying, 'success'::character varying, 'failed'::character varying]::text[])", name: "calendar_imports_valid_last_status"
+    t.check_constraint "provider::text = ANY (ARRAY['airbnb'::character varying, 'booking'::character varying]::text[])", name: "calendar_imports_valid_provider"
   end
 
   create_table "content_pages", force: :cascade do |t|
@@ -205,6 +205,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_09_07_133000) do
     t.string "password_digest", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "technical_access", default: false, null: false
     t.index ["email_address"], name: "index_users_on_email_address", unique: true
   end
 

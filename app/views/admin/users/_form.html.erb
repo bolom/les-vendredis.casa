@@ -10,6 +10,17 @@
     <%= form.email_field :email_address, required: true, autocomplete: "off" %>
   </div>
 
+  <% if @user.persisted? && @user == Current.user %>
+    <div>
+      <span class="admin-definition">Accès technique : <%= @user.technical_access? ? "actif" : "inactif" %> (non modifiable sur votre propre compte)</span>
+    </div>
+  <% else %>
+    <div>
+      <%= form.check_box :technical_access %>
+      <%= form.label :technical_access, "Accès à la zone technique (paiements, utilisateurs, diagnostics)", class: "admin-inline" %>
+    </div>
+  <% end %>
+
   <div>
     <%= form.label :password, @user.persisted? ? "Nouveau mot de passe (laisser vide pour conserver)" : "Mot de passe" %>
     <%= form.password_field :password, required: !@user.persisted?, autocomplete: "new-password", maxlength: 72 %>

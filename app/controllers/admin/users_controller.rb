@@ -1,5 +1,7 @@
 module Admin
   class UsersController < BaseController
+    before_action :require_technical_access
+
     def index
       @users = User.order(:email_address)
     end
@@ -23,7 +25,10 @@ module Admin
 
     def update
       @user = User.find(params[:id])
-      if @user.update(user_params)
+      if @user == Current.user && user_params.key?("technical_access") &&
+          ActiveModel::Type::Boolean.new.cast(user_params["technical_access"]) != @user.technical_access
+        redirect_to edit_admin_user_path(@user), alert: "Vous ne pouvez pas modifier votre propre accès à la zone technique."
+      elsif @user.update(user_params)
         redirect_to admin_users_path, notice: "Utilisateur « #{@user.email_address} » mis à jour."
       else
         render :edit, status: :unprocessable_entity
@@ -45,7 +50,7 @@ module Admin
     private
 
     def user_params
-      permitted = params.require(:user).permit(:email_address, :password, :password_confirmation)
+      permitted = params.require(:user).permit(:email_address, :password, :password_confirmation, :technical_access)
       permitted.delete(:password) if permitted[:password].blank?
       permitted.delete(:password_confirmation) if permitted[:password_confirmation].blank?
       permitted
