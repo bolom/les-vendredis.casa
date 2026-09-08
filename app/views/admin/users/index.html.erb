@@ -1,0 +1,25 @@
+<h1>Utilisateurs</h1>
+<p><%= link_to "Nouvel utilisateur", new_admin_user_path, class: "admin-button" %></p>
+
+<table class="admin-table">
+  <thead>
+    <tr>
+      <th scope="col">Email</th>
+      <th scope="col">Créé le</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.email_address %><%= " (vous)" if user == Current.user %></td>
+        <td><%= l(user.created_at, format: :long) %></td>
+        <td>
+          <%= link_to "Modifier", edit_admin_user_path(user) %>
+          ·
+          <%= button_to "Supprimer", admin_user_path(user), method: :delete, class: "admin-button--danger", data: { lv_confirm: "Supprimer définitivement l’utilisateur #{user.email_address} ? Ses sessions seront révoquées." } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
