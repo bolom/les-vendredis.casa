@@ -10,7 +10,7 @@
   <ul class="admin-task-list">
     <% @upcoming_arrivals.each do |stay| %>
       <li>
-        <span><%= stay_occupant(stay) %></span>
+        <span><%= stay.occupant %></span>
         <span>arrive le <%= human_date(stay.starts_on) %> · <%= human_date_range(stay.starts_on, stay.ends_on) %></span>
       </li>
     <% end %>
@@ -24,7 +24,7 @@
   <ul class="admin-task-list">
     <% @upcoming_departures.each do |stay| %>
       <li>
-        <span><%= stay_occupant(stay) %></span>
+        <span><%= stay.occupant %></span>
         <span>part le <%= human_date(stay.ends_on) %></span>
       </li>
     <% end %>

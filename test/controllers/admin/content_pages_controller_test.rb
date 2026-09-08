@@ -2,6 +2,15 @@ require "test_helper"
 
 module Admin
   class ContentPagesControllerTest < ActionDispatch::IntegrationTest
+    test "redirects accounts without technical access" do
+      sign_in_as users(:two)
+
+      get admin_content_pages_path
+
+      assert_redirected_to admin_root_path
+      assert_equal "Section technique réservée aux comptes autorisés.", flash[:alert]
+    end
+
     test "requires authentication" do
       get admin_content_pages_path
 

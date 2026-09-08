@@ -23,7 +23,8 @@ class AdminDashboardControllerTest < ActionDispatch::IntegrationTest
       ends_on: 6.days.from_now.to_date,
       kind: "direct_stay",
       source: "direct",
-      status: "confirmed"
+      status: "confirmed",
+      summary: "Séjour direct LV-TEST"
     )
 
     get admin_root_path
@@ -32,6 +33,44 @@ class AdminDashboardControllerTest < ActionDispatch::IntegrationTest
     assert_select "h2", text: "Prochains départs"
     assert_select ".admin-task-list li", text: /arrive le/
     assert_select ".admin-task-list li", text: /part le/
+    assert_select ".admin-task-list li", text: /Séjour direct LV-TEST/
+  end
+
+  test "upcoming stays include imported platform reservations with their platform label" do
+    sign_in_as users(:one)
+    imported = CalendarImport.create!(provider: "booking")
+    CalendarEvent.create!(
+      calendar_import: imported,
+      external_uid: "evt-dash-1",
+      starts_on: 5.days.from_now.to_date,
+      ends_on: 8.days.from_now.to_date,
+      status: "confirmed",
+      fingerprint: "fp-dash-1",
+      summary: "Plateforme LV-TEST"
+    )
+
+    get admin_root_path
+
+    assert_select ".admin-task-list li", text: /Plateforme LV-TEST/, count: 2
+    assert_select ".admin-task-list li", text: /Booking\.com/
+  end
+
+  test "manual closures never appear as upcoming arrivals or departures" do
+    sign_in_as users(:one)
+    AvailabilityBlock.create!(
+      starts_on: 2.days.from_now.to_date,
+      ends_on: 4.days.from_now.to_date,
+      kind: "manual_closure",
+      source: "manual",
+      status: "confirmed",
+      summary: "Peinture maison"
+    )
+
+    get admin_root_path
+
+    assert_select ".admin-task-list li", text: /Peinture maison/, count: 0
+    assert_select "p.admin-definition", text: "Aucune arrivée dans les 14 prochains jours."
+    assert_select "p.admin-definition", text: "Aucun départ dans les 14 prochains jours."
   end
 
   test "lists inquiries to handle with their received age" do

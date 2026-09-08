@@ -1,5 +1,7 @@
 module Admin
   class ContentPagesController < BaseController
+    before_action :require_technical_access
+
     def index
       @content_pages = ContentPage.order(:path, :locale)
       @content_pages = @content_pages.where(locale: params[:locale]) if params[:locale].in?(%w[en fr])

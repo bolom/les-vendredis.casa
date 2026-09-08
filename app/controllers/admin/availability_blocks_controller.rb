@@ -28,7 +28,7 @@ module Admin
       )
 
       if @availability_block.save
-        redirect_to admin_calendar_path(month: @availability_block.starts_on.strftime("%Y-%m")),
+        redirect_to admin_calendar_path(year: @availability_block.starts_on.year, month: @availability_block.starts_on.month),
                     notice: "Dates bloquées du #{l(@availability_block.starts_on, format: "%-d %B")} au #{l(@availability_block.ends_on, format: "%-d %B")}."
       else
         render :new, status: :unprocessable_entity

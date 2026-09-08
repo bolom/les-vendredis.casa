@@ -22,7 +22,10 @@ module Admin
       end
 
       block = AvailabilityBlock.order(:id).last
-      assert_redirected_to admin_calendar_path(month: "2026-10")
+      assert_redirected_to admin_calendar_path(year: 2026, month: 10)
+      follow_redirect!
+      assert_response :success
+      assert_equal "http://www.example.com/admin/calendar?month=10&year=2026", request.url
       assert_equal "manual_closure", block.kind
       assert_equal "manual", block.source
       assert_equal "confirmed", block.status
