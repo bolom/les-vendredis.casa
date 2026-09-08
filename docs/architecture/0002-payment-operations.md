@@ -19,6 +19,17 @@ of real on-chain compatibility or settlement.
 6. Only a verified, successful settlement yields `confirmed` and `PAYMENT-RESPONSE`.
    Replay with the same signature returns the existing confirmation without charging again.
 
+## Resource host
+
+The challenge `resource.url` host is the public host of the environment, from
+`APP_HOST` or credentials `app.host` (default `lesvendredis.casa`) — the same
+source of truth as production mailer URLs. It is strictly allowlisted
+(`lesvendredis.casa`, `staging.lesvendredis.casa`) and always HTTPS: an
+unauthorized value raises instead of leaking into the challenge, and request
+headers are never used (no Host header injection). Local development never
+advertises a payable challenge because x402 stays disabled there and its host
+would fail the allowlist.
+
 ## Activation
 
 Store `x402.enabled`, `pay_to`, token contract `asset`, `chain_id`, `decimals`,
