@@ -68,7 +68,7 @@ jobs:
         run: |
           bin/rails db:solid_stores
           bin/rails db:solid_stores
-          bin/rails runner 'exit 1 unless %w[solid_queue_jobs solid_cache_entries solid_cable_messages].all? { |t| ActiveRecord::Base.connection.table_exists?(t) }; puts "solid stores bootstrap OK"'
+          bin/rails runner 'exit 1 unless %w[solid_queue_batch_executions solid_cache_entries solid_cable_messages].all? { |t| ActiveRecord::Base.connection.table_exists?(t) }; puts "solid stores bootstrap OK"'
 
       - name: Lint Ruby
         run: bin/rubocop -f github

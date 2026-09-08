@@ -6,7 +6,7 @@ namespace :db do
     # absent. db:prepare alone never loads these schemas when the roles
     # share one physical Postgres database with primary (refs #33).
     stores = {
-      "queue" => [ "solid_queue_jobs", "db/queue_schema.rb" ],
+      "queue" => [ "solid_queue_batch_executions", "db/queue_schema.rb" ],
       "cache" => [ "solid_cache_entries", "db/cache_schema.rb" ],
       "cable" => [ "solid_cable_messages", "db/cable_schema.rb" ]
     }
