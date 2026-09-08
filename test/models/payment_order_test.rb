@@ -24,20 +24,19 @@ class PaymentOrderTest < ActiveSupport::TestCase
     assert_equal [ @order.requirements ], challenge[:accepts]
   end
 
-  test "challenge honours APP_HOST for staging" do
+  test "challenge rejects the retired staging host" do
     ENV["APP_HOST"] = "staging.lesvendredis.casa"
-    challenge = @order.challenge
-    assert_equal "https://staging.lesvendredis.casa/book?quote_id=#{@order.public_id}", challenge.dig(:resource, :url)
-    assert_equal "application/json", challenge.dig(:resource, :mimeType)
+    error = assert_raises(KeyError) { @order.challenge }
+    assert_match(/unauthorized APP_HOST/i, error.message)
   end
 
   test "challenge honours credentials app.host" do
     original_fetch = AppConfig.method(:fetch)
     AppConfig.define_singleton_method(:fetch) do |env_key, *credential_path, **kwargs|
-      credential_path == [ :app, :host ] ? "staging.lesvendredis.casa" : original_fetch.call(env_key, *credential_path, **kwargs)
+      credential_path == [ :app, :host ] ? "lesvendredis.casa" : original_fetch.call(env_key, *credential_path, **kwargs)
     end
     challenge = @order.challenge
-    assert_equal "https://staging.lesvendredis.casa/book?quote_id=#{@order.public_id}", challenge.dig(:resource, :url)
+    assert_equal "https://lesvendredis.casa/book?quote_id=#{@order.public_id}", challenge.dig(:resource, :url)
   ensure
     AppConfig.define_singleton_method(:fetch, original_fetch)
   end
