@@ -17,5 +17,5 @@ production:
     command: "SolidQueue::Job.clear_finished_in_batches(sleep_between_batches: 0.3)"
     schedule: every hour at minute 12
   sync_calendar_imports:
-    class: CalendarImportSyncJob
+    class: CalendarImports::SyncAllJob
     schedule: every 15 minutes
