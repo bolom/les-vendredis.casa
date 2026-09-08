@@ -1,5 +1,5 @@
-<h1>Règles de séjour</h1>
-<p class="admin-definition">Ces règles s’appliquent à toutes les nouvelles demandes de réservation du site (durée, capacité, jours d’arrivée et de départ, prix affiché).</p>
+<h1>Réglages des séjours</h1>
+<p class="admin-definition">Ces réglages s'appliquent à toutes les nouvelles demandes de réservation du site (durée, capacité, jours d'arrivée et de départ, prix affiché). Les demandes déjà acceptées ne sont pas touchées.</p>
 
 <%= form_with model: @stay_rule, url: admin_stay_rule_path, class: "admin-form" do |form| %>
   <% if @stay_rule.errors.any? %>
@@ -7,18 +7,21 @@
   <% end %>
 
   <div>
-    <%= form.label :nightly_price_eur, "Prix par nuit (EUR)" %>
+    <%= form.label :nightly_price_eur, "Prix par nuit" %>
     <%= form.number_field :nightly_price_eur, min: "0.01", max: 100000, step: "0.01" %>
+    <p class="admin-definition">Le prix affiché aux voyageurs pour une nuit, en euros. Le site calcule lui-même le total selon le nombre de nuits.</p>
   </div>
 
   <div>
-    <%= form.label :minimum_nights, "Nuits minimum (vide = aucun minimum)" %>
+    <%= form.label :minimum_nights, "Nuits minimum" %>
     <%= form.number_field :minimum_nights, min: 1 %>
+    <p class="admin-definition">Durée minimale d'un séjour. Laisse vide pour accepter même une seule nuit.</p>
   </div>
 
   <div>
-    <%= form.label :maximum_nights, "Nuits maximum (vide = aucun maximum)" %>
+    <%= form.label :maximum_nights, "Nuits maximum" %>
     <%= form.number_field :maximum_nights, min: 1 %>
+    <p class="admin-definition">Durée maximale d'un séjour. Laisse vide pour ne pas limiter.</p>
   </div>
 
   <div>
@@ -29,20 +32,24 @@
   <div>
     <%= form.label :maximum_children, "Enfants maximum" %>
     <%= form.number_field :maximum_children, min: 0 %>
+    <p class="admin-definition">Compte les enfants de plus de 2 ans ; les bébés ne sont pas comptés.</p>
   </div>
 
   <div>
-    <%= form.label :booking_window_days, "Fenêtre de réservation (jours à l’avance, vide = illimitée)" %>
+    <%= form.label :booking_window_days, "Réserver jusqu'à combien de temps à l'avance ?" %>
     <%= form.number_field :booking_window_days, min: 1 %>
+    <p class="admin-definition">Nombre de jours à l'avance maximum (par exemple 365 = un an). Laisse vide pour ne pas limiter.</p>
   </div>
 
   <div>
     <%= form.check_box :pets_allowed %>
     <%= form.label :pets_allowed, "Animaux acceptés", class: "admin-inline" %>
+    <p class="admin-definition">Coché, les voyageurs peuvent préciser qu'ils viennent avec un animal.</p>
   </div>
 
   <fieldset>
-    <legend>Jours d’arrivée autorisés (tout cocher ou décocher = tous les jours)</legend>
+    <legend>Jours d'arrivée possibles</legend>
+    <p class="admin-definition">Laisse tout vide pour autoriser tous les jours.</p>
     <% Date::DAYNAMES.each_with_index do |name, index| %>
       <label>
         <%= check_box_tag "stay_rule[allowed_check_in_days][]", index, @stay_rule.allowed_check_in_on?(Date.commercial(2026, 1, index.zero? ? 7 : index)) %>
@@ -52,7 +59,8 @@
   </fieldset>
 
   <fieldset>
-    <legend>Jours de départ autorisés (tout cocher ou décocher = tous les jours)</legend>
+    <legend>Jours de départ possibles</legend>
+    <p class="admin-definition">Laisse tout vide pour autoriser tous les jours.</p>
     <% Date::DAYNAMES.each_with_index do |name, index| %>
       <label>
         <%= check_box_tag "stay_rule[allowed_check_out_days][]", index, @stay_rule.allowed_check_out_on?(Date.commercial(2026, 1, index.zero? ? 7 : index)) %>
@@ -61,5 +69,5 @@
     <% end %>
   </fieldset>
 
-  <div><%= form.submit "Enregistrer les règles" %></div>
+  <div><%= form.submit "Enregistrer les réglages" %></div>
 <% end %>

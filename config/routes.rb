@@ -31,6 +31,7 @@ Rails.application.routes.draw do
     resources :booking_inquiries, only: [ :index, :show ] do
       post :accept, on: :member
       post :decline, on: :member
+      post :cancel, on: :member
     end
     resources :availability_blocks, only: [ :index, :new, :create ] do
       post :cancel, on: :member
@@ -42,6 +43,23 @@ Rails.application.routes.draw do
   end
 
   resource :session
+
+  # Agent (machine) API: Bearer-token auth, separate from human web sessions.
+  namespace :agent do
+    get "house", to: "state#house"
+    get "calendar", to: "state#calendar"
+    get "booking_requests", to: "state#booking_requests"
+    get "booking_requests/:id", to: "state#booking_request"
+
+    post "blocks", to: "actions#block_dates"
+    post "blocks/:id/cancel", to: "actions#cancel_block"
+    post "booking_requests/:id/accept", to: "actions#accept_booking"
+    post "booking_requests/:id/decline", to: "actions#decline_booking"
+    post "booking_requests/:id/cancel", to: "actions#cancel_booking"
+    patch "stay_rules", to: "actions#update_stay_rules"
+    post "calendar_syncs", to: "actions#sync_calendars"
+  end
+
   resources :passwords, param: :token
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

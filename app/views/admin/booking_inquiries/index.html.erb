@@ -1,11 +1,31 @@
 <h1>Demandes de réservation</h1>
 
 <%= form_with url: admin_booking_inquiries_path, method: :get, class: "admin-filters" do %>
-  <%= label_tag :status, "Statut" %>
-  <%= select_tag :status, options_for_select([["Tous", ""]] + BookingInquiry.statuses.keys.map { |status| [status, status] }, params[:status]) %>
+  <%= label_tag :status, "Afficher" %>
+  <%= select_tag :status, options_for_select([["Toutes les demandes", ""]] + BookingInquiry.statuses.keys.map { |status| [human_inquiry_status(status), status] }, params[:status]) %>
   <%= label_tag :q, "Recherche" %>
-  <%= search_field_tag :q, params[:q], placeholder: "Référence, nom ou email" %>
+  <%= search_field_tag :q, params[:q], placeholder: "Nom ou email du voyageur" %>
   <%= submit_tag "Filtrer" %>
 <% end %>
 
-<%= render "table", booking_inquiries: @booking_inquiries %>
+<% if @booking_inquiries.any? %>
+  <div class="admin-inquiry-list">
+    <% @booking_inquiries.each do |booking_inquiry| %>
+      <article class="admin-inquiry-card">
+        <div class="admin-inquiry-head">
+          <h2><%= link_to booking_inquiry.guest_name, admin_booking_inquiry_path(booking_inquiry) %></h2>
+          <span class="admin-state admin-state--<%= inquiry_state_tone(booking_inquiry.status) %>"><%= human_inquiry_status(booking_inquiry.status) %></span>
+        </div>
+        <p class="admin-definition"><%= link_to booking_inquiry.public_reference, admin_booking_inquiry_path(booking_inquiry) %></p>
+        <p class="admin-inquiry-dates">
+          <%= human_date_range(booking_inquiry.check_in, booking_inquiry.check_out) %> · <%= human_nights(booking_inquiry.check_in, booking_inquiry.check_out) %> ·
+          <%= booking_inquiry.adults %> adulte<%= "s" if booking_inquiry.adults > 1 %><%= ", #{booking_inquiry.children} enfant#{'s' if booking_inquiry.children > 1}" if booking_inquiry.children.positive? %>
+        </p>
+        <p class="admin-definition">Reçue <%= human_ago(booking_inquiry.created_at) %><%= " · #{booking_inquiry.email}" if booking_inquiry.email.present? %></p>
+        <p><%= link_to "Voir la fiche", admin_booking_inquiry_path(booking_inquiry), class: "admin-button admin-button--secondary" %></p>
+      </article>
+    <% end %>
+  </div>
+<% else %>
+  <p class="admin-definition">Aucune demande ne correspond à ce filtre.</p>
+<% end %>

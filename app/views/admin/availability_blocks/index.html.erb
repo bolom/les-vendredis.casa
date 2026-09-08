@@ -1,5 +1,5 @@
-<h1>Disponibilités</h1>
-<p class="admin-definition">Les blocages maison peuvent être annulés ici. Les séjours directs sont gérés par leurs réservations.</p>
+<h1>Dates bloquées</h1>
+<p class="admin-definition">Les blocages maison peuvent être annulés ici. Les séjours acceptés sont gérés depuis leur demande de réservation.</p>
 
 <table class="admin-table">
   <thead>
@@ -7,7 +7,7 @@
       <th scope="col">Dates</th>
       <th scope="col">Origine</th>
       <th scope="col">État</th>
-      <th scope="col">Libellé</th>
+      <th scope="col">Motif</th>
       <th scope="col">Actions</th>
     </tr>
   </thead>
@@ -15,16 +15,20 @@
     <% @availability_blocks.each do |availability_block| %>
       <tr>
         <td><%= human_date_range(availability_block.starts_on, availability_block.ends_on) %></td>
-        <td><%= t("admin.availability_blocks.kind.#{availability_block.kind}") %> / <%= t("admin.availability_blocks.source.#{availability_block.source}") %></td>
-        <td><%= t("admin.availability_blocks.status.#{availability_block.status}") %></td>
+        <td><%= t("admin.availability_blocks.kind.#{availability_block.kind}") %></td>
+        <td>
+          <% if availability_block.status == "cancelled" %>
+            <span class="admin-state admin-state--neutral">Annulé</span>
+          <% else %>
+            <span class="admin-state admin-state--ok">Actif</span>
+          <% end %>
+        </td>
         <td><%= availability_block.summary.presence || "—" %></td>
         <td>
           <% if availability_block.direct_stay? %>
             <span class="admin-definition">Géré par sa réservation — voir <%= link_to "la demande liée", admin_booking_inquiry_path(availability_block.booking_inquiries.order(:created_at).last) if availability_block.booking_inquiries.exists? %></span>
           <% elsif availability_block.status != "cancelled" %>
             <%= button_to "Annuler ce blocage", cancel_admin_availability_block_path(availability_block), method: :post, class: "admin-button--danger", data: { lv_confirm: "Annuler le blocage du #{human_date(availability_block.starts_on)} au #{human_date(availability_block.ends_on)} ? Les dates redeviendront disponibles et les réservations acceptées liées seront annulées." } %>
-          <% else %>
-            <span class="admin-definition">Annulé</span>
           <% end %>
         </td>
       </tr>

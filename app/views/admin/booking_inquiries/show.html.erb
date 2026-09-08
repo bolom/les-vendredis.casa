@@ -1,4 +1,7 @@
-<h1><%= @booking_inquiry.guest_name %> · <%= human_date_range(@booking_inquiry.check_in, @booking_inquiry.check_out) %></h1>
+<h1>
+  <%= @booking_inquiry.guest_name %>
+  <span class="admin-state admin-state--<%= inquiry_state_tone(@booking_inquiry.status) %>"><%= human_inquiry_status(@booking_inquiry.status) %></span>
+</h1>
 
 <div class="admin-card">
   <dl>
@@ -20,13 +23,10 @@
     <dd><%= human_ago(@booking_inquiry.created_at) %> (<%= l(@booking_inquiry.created_at, format: :long) %>)</dd>
     <% if @booking_inquiry.status_accepted? %>
       <dt>Acceptée</dt>
-      <dd><%= human_ago(@booking_inquiry.accepted_at) %></dd>
+      <dd><%= human_ago(@booking_inquiry.accepted_at) %> — les dates sont bloquées</dd>
     <% elsif @booking_inquiry.status_declined? %>
       <dt>Refusée</dt>
       <dd><%= human_ago(@booking_inquiry.declined_at) %></dd>
-    <% elsif @booking_inquiry.status_cancelled? %>
-      <dt>Annulée</dt>
-      <dd>—</dd>
     <% end %>
   </dl>
 </div>
@@ -40,20 +40,27 @@
     <% else %>
       <p class="admin-definition">Ces dates sont déjà bloquées : libère-les d'abord sur le <%= link_to "calendrier", admin_calendar_path %> pour accepter cette demande.</p>
     <% end %>
+  <% elsif @booking_inquiry.status_accepted? %>
+    <%= mail_to @booking_inquiry.email, "Contacter le voyageur", class: "admin-button admin-button--secondary" %>
+    <% if @booking_inquiry.availability_block&.managed_by_payment? %>
+      <p class="admin-definition">Le règlement de ce séjour est en cours : l'annulation se fait avec Bolo, depuis la zone technique.</p>
+    <% else %>
+      <%= button_to "Annuler le séjour", cancel_admin_booking_inquiry_path(@booking_inquiry), method: :post, class: "admin-button--danger", data: { lv_confirm: "Annuler le séjour de #{@booking_inquiry.guest_name} (#{human_date_range(@booking_inquiry.check_in, @booking_inquiry.check_out)}) ? Le voyageur recevra un email d'annulation et les dates redeviendront disponibles." } %>
+    <% end %>
   <% else %>
     <p class="admin-definition">
-      <% if @booking_inquiry.status_accepted? %>
-        Demande acceptée — le voyageur a été notifié. Les dates sont bloquées.
-      <% elsif @booking_inquiry.status_declined? %>
+      <% if @booking_inquiry.status_declined? %>
         Demande refusée — le voyageur a été notifié.
       <% else %>
-        Demande annulée.
+        Demande annulée — aucune action n'est nécessaire.
       <% end %>
-      Aucune action n'est nécessaire.
     </p>
   <% end %>
 </div>
 
-<p class="admin-definition">Référence technique : <%= @booking_inquiry.public_reference %></p>
+<details class="admin-details">
+  <summary>Détails techniques (pour Bolo)</summary>
+  <p class="admin-definition">Référence de la demande : <%= @booking_inquiry.public_reference %></p>
+</details>
 
 <%= link_to "← Toutes les demandes", admin_booking_inquiries_path, class: "admin-button admin-button--secondary" %>

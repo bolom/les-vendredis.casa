@@ -97,6 +97,8 @@
 .admin-state { display: inline-block; padding: 2px 10px; border-radius: 999px; font-size: 13px; border: 1px solid var(--rule); }
 .admin-state--ok { background: #e3eddc; border-color: #b9cfab; }
 .admin-state--problem { background: #f6dfd7; border-color: #ddb4a4; }
+.admin-state--pending { background: #f3e5c0; border-color: #ddc790; }
+.admin-state--neutral { background: transparent; }
 
 /* ── month calendar ── */
 .admin-calendar-head { display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap; margin: 12px 0; }
@@ -133,3 +135,15 @@
 .admin-actions-row form { margin: 0; }
 .admin-detail-panel li { display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; align-items: center; }
 .admin-detail-panel li form { margin: 0; }
+
+/* ── inquiry cards (business fiches, mobile-first) ── */
+.admin-inquiry-list { display: flex; flex-direction: column; gap: 12px; margin: 14px 0; }
+.admin-inquiry-card { background: var(--cream); border: 1px solid var(--rule); border-radius: 8px; padding: 14px 16px; font-size: 14px; }
+.admin-inquiry-card p { margin: 4px 0; }
+.admin-inquiry-head { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.admin-inquiry-head h2 { font-family: var(--serif); font-weight: 500; font-size: 19px; margin: 0; }
+.admin-inquiry-head a { color: inherit; }
+.admin-inquiry-dates { font-size: 15px; }
+@media (min-width: 720px) {
+  .admin-inquiry-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+}

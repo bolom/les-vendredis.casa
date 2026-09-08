@@ -1,8 +1,8 @@
 module Admin
-  # Anaïs only ever blocks dates: dates + optional label. The controller pins
-  # kind/source/status (manual_closure / manual / confirmed) — no technical
-  # status is ever exposed. Existing model guards are untouched: a manual
-  # closure is the only kind this controller can create.
+  # Anaïs only ever blocks dates: dates + optional label. Kind/source/status
+  # pinning and the guards live in AvailabilityBlocks (shared with the agent
+  # API) — no technical status is ever exposed here. Existing model guards
+  # are untouched: a manual closure is the only kind this controller creates.
   class AvailabilityBlocksController < BaseController
     def index
       @availability_blocks = AvailabilityBlock.order(starts_on: :asc)
@@ -18,30 +18,24 @@ module Admin
     end
 
     def create
-      @availability_block = AvailabilityBlock.new(
+      @availability_block = AvailabilityBlocks.create(
         starts_on: availability_block_params[:starts_on],
         ends_on: availability_block_params[:ends_on],
-        summary: availability_block_params[:summary],
-        kind: "manual_closure",
-        source: "manual",
-        status: "confirmed"
+        summary: availability_block_params[:summary]
       )
-
-      if @availability_block.save
-        redirect_to admin_calendar_path(year: @availability_block.starts_on.year, month: @availability_block.starts_on.month),
-                    notice: "Dates bloquées du #{l(@availability_block.starts_on, format: "%-d %B")} au #{l(@availability_block.ends_on, format: "%-d %B")}."
-      else
-        render :new, status: :unprocessable_entity
-      end
+      redirect_to admin_calendar_path(year: @availability_block.starts_on.year, month: @availability_block.starts_on.month),
+                  notice: "Dates bloquées du #{l(@availability_block.starts_on, format: "%-d %B")} au #{l(@availability_block.ends_on, format: "%-d %B")}."
+    rescue ActiveRecord::RecordInvalid, ArgumentError
+      @availability_block ||= AvailabilityBlock.new(availability_block_params)
+      render :new, status: :unprocessable_entity
     end
 
     def cancel
       block = AvailabilityBlock.find(params[:id])
-      if block.update(status: "cancelled")
-        redirect_back fallback_location: admin_calendar_path, notice: "Blocage annulé : ces dates sont de nouveau disponibles."
-      else
-        redirect_back fallback_location: admin_calendar_path, alert: block.errors.full_messages.to_sentence
-      end
+      AvailabilityBlocks.cancel(block)
+      redirect_back fallback_location: admin_calendar_path, notice: "Blocage annulé : ces dates sont de nouveau disponibles."
+    rescue AvailabilityBlocks::Error => error
+      redirect_back fallback_location: admin_calendar_path, alert: error.message
     end
 
     private

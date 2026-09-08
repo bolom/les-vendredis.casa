@@ -62,6 +62,22 @@ class BookingInquiry < ApplicationRecord
     end
   end
 
+  # Cancels an accepted stay by cancelling the house block that holds its
+  # dates: the block callbacks cascade (inquiry cancelled, guest notified,
+  # dates freed). Payment-protected blocks refuse to change, so callers get a
+  # symbolic result to translate instead of a raw Rails error.
+  def cancel_stay!
+    with_lock do
+      return :already if status_cancelled?
+      return :no_stay unless status_accepted? && availability_block.present?
+
+      availability_block.status = "cancelled"
+      return :ok if availability_block.save
+
+      availability_block.managed_by_payment? ? :payment_pending : :invalid
+    end
+  end
+
   private
 
   def record_submission_notifications
