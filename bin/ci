@@ -11,7 +11,9 @@ echo "== Gem audit =="
 bin/bundler-audit
 
 echo "== Brakeman =="
-bin/brakeman --quiet --no-pager --exit-on-warn --exit-on-error
+# EOLRails excluded here too (see bin/brakeman) until the Rails 8.1 upgrade
+# tracked in issue #41 removes the need.
+bin/brakeman --quiet --no-pager --exit-on-warn --exit-on-error -x EOLRails
 
 echo "== Tests =="
 bin/rails test
