@@ -8,10 +8,10 @@
 
 | Secret | Source of truth | Mirrored to | Used by |
 |---|---|---|---|
-| Rails app secrets (`SECRET_KEY_BASE`, `DATABASE_URL`, `RESEND_API_KEY`, calendar URLs, x402 settings) | `config/credentials.yml.enc` | — | Rails runtime (prod + staging) |
+| Rails app secrets (`SECRET_KEY_BASE`, `DATABASE_URL`, `RESEND_API_KEY`, calendar URLs, x402 settings) | `config/credentials.yml.enc` | — | Rails runtime (production) |
 | `RAILS_MASTER_KEY` | 1Password vault `lesvendredis.casa`, item `production` | GitHub Actions Secret (deploy CI) | Kamal (unlocks `credentials.yml.enc`) |
 | `POSTGRES_PASSWORD` | 1Password vault `lesvendredis.casa`, item `production` | GitHub Actions Secret (deploy CI) | Postgres accessory + `DATABASE_URL` build in `.kamal/secrets` |
-| `KAMAL_REGISTRY_PASSWORD` | 1Password vault `lesvendredis.casa`, item `common` (Docker Hub token also shared with the Compass Deploy vault) | GitHub Actions Secret (deploy CI) | Kamal image push/pull |
+| `KAMAL_REGISTRY_PASSWORD` | 1Password vault `Compass Deploy` (Docker Hub access token, shared with the Compass deployments; fetched by `.kamal/secrets-common`) | GitHub Actions Secret (deploy CI) | Kamal image push/pull |
 | `SSH_PRIVATE_KEY` | Never in 1Password (keypair owned by GitHub Actions) | GitHub Actions Secret only | Deploy CI → VPS |
 
 Why the mirrors exist: the automated deploy runs on GitHub Actions, which has
@@ -41,7 +41,7 @@ only; real values are pasted in 1Password, never in the shell or repository.
 5. Verify after deploy (deliberate, from the Deploy workflow's
    `workflow_dispatch` — the CI gate still applies):
    - Deploy workflow green, then
-     `curl -fsS https://staging.lesvendredis.casa/up`.
+     `curl -fsS https://lesvendredis.casa/up`.
    - `bin/kamal app exec "bin/rails production:check"`.
 
 ## Rules

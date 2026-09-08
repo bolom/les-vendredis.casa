@@ -45,10 +45,10 @@ This checks ignored secret/data artifacts and runs the Rails CI/preflight path.
 ## Pre-production preview (before the public cutover)
 
 There is a single production deployment. Until the public cutover, the Caddy
-reverse proxy on the VPS serves the app on **staging.lesvendredis.casa**
-(via Docker labels in `config/deploy.yml`), so the real site stays on GitHub
-Pages untouched. At cutover, switch the `caddy` label to `lesvendredis.casa`,
-lower the DNS TTL, and redeploy.
+reverse proxy on the VPS serves the app through the transition Docker label
+in `config/deploy.yml`, so the real site stays on GitHub Pages untouched.
+At cutover, set the `caddy` label to `lesvendredis.casa`, lower the DNS TTL,
+and redeploy.
 
 1Password prerequisites (vault `lesvendredis.casa`, item `production`):
 
@@ -71,7 +71,7 @@ bin/kamal deploy
 Verify:
 
 ```bash
-curl -fsS https://staging.lesvendredis.casa/up
+curl -fsS https://lesvendredis.casa/up
 bin/kamal app exec "bin/rails production:check"
 bin/kamal logs
 ```
