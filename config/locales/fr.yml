@@ -1,4 +1,26 @@
 fr:
+  admin:
+    availability_blocks:
+      kind:
+        manual_closure: "Fermeture manuelle"
+        direct_stay: "Séjour direct"
+      source:
+        manual: "manuel"
+        direct: "réservation"
+      status:
+        confirmed: "confirmé"
+        tentative: "provisoire"
+        cancelled: "annulé"
+    calendar_imports:
+      last_status:
+        never_synced: "jamais synchronisé"
+        success: "succès"
+        failed: "échec"
+  time:
+    formats:
+      default: "%d/%m/%Y %H:%M"
+      short: "%-d %b %H:%M"
+      long: "%-d %B %Y à %Hh%M"
   date:
     formats:
       default: "%d/%m/%Y"

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <title><%= content_for(:title) || "Admin — Les Vendredis" %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="robots" content="noindex">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "admin", "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "actions", "confirm", defer: true, "data-turbo-track": "reload" %>
+  </head>
+  <body class="admin-body">
+    <header class="admin-topbar">
+      <p class="admin-brand">Les Vendredis — Administration</p>
+      <nav aria-label="Sections de l’administration">
+        <ul class="admin-nav">
+          <li><%= link_to "Tableau de bord", admin_root_path, class: admin_nav_class(admin_root_path) %></li>
+          <li><%= link_to "Demandes de réservation", admin_booking_inquiries_path, class: admin_nav_class(admin_booking_inquiries_path) %></li>
+          <li><%= link_to "Disponibilités", admin_availability_blocks_path, class: admin_nav_class(admin_availability_blocks_path) %></li>
+          <li><%= link_to "Règles de séjour", edit_admin_stay_rule_path, class: admin_nav_class(edit_admin_stay_rule_path) %></li>
+          <li><%= link_to "Calendriers importés", admin_calendar_imports_path, class: admin_nav_class(admin_calendar_imports_path) %></li>
+          <li><%= link_to "Journal", admin_journal_posts_path, class: admin_nav_class(admin_journal_posts_path) %></li>
+          <li><%= link_to "Pages de contenu", admin_content_pages_path, class: admin_nav_class(admin_content_pages_path) %></li>
+          <li><%= link_to "Paiements", admin_payment_orders_path, class: admin_nav_class(admin_payment_orders_path) %></li>
+          <li><%= link_to "Utilisateurs", admin_users_path, class: admin_nav_class(admin_users_path) %></li>
+        </ul>
+      </nav>
+    </header>
+    <main class="admin-main">
+      <% if flash[:notice] %>
+        <p class="admin-flash admin-flash--notice" role="status"><%= flash[:notice] %></p>
+      <% end %>
+      <% if flash[:alert] %>
+        <p class="admin-flash admin-flash--alert" role="alert"><%= flash[:alert] %></p>
+      <% end %>
+      <%= yield %>
+    </main>
+    <footer class="admin-footer">
+      <p><%= link_to "Voir le site", root_path %></p>
+    </footer>
+  </body>
+</html>

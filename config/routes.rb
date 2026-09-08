@@ -18,9 +18,11 @@ Rails.application.routes.draw do
   resources :booking_inquiries, only: [ :new, :create, :show ], path: "booking-requests"
 
   namespace :admin do
-    resources :payment_orders, only: :update
-    resources :journal_posts, except: [ :show, :destroy ]
     root "dashboard#show"
+    resources :content_pages
+    resources :users
+    resources :payment_orders, only: [ :index, :show, :update ]
+    resources :journal_posts, except: [ :show, :destroy ]
     resources :booking_inquiries, only: [ :index, :show ] do
       post :accept, on: :member
       post :decline, on: :member
