@@ -1,0 +1,37 @@
+<h1>Pages de contenu</h1>
+<p><%= link_to "Nouvelle page", new_admin_content_page_path, class: "admin-button" %></p>
+
+<%= form_with url: admin_content_pages_path, method: :get, class: "admin-filters" do %>
+  <%= label_tag :locale, "Langue" %>
+  <%= select_tag :locale, options_for_select([["Toutes", ""], ["Français", "fr"], ["English", "en"]], params[:locale]) %>
+  <%= label_tag :q, "Recherche" %>
+  <%= search_field_tag :q, params[:q], placeholder: "Chemin ou titre" %>
+  <%= submit_tag "Filtrer" %>
+<% end %>
+
+<table class="admin-table">
+  <thead>
+    <tr>
+      <th scope="col">Chemin</th>
+      <th scope="col">Titre</th>
+      <th scope="col">Langue</th>
+      <th scope="col">Publiée</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @content_pages.each do |content_page| %>
+      <tr>
+        <td><code>/<%= content_page.path %></code></td>
+        <td><%= link_to content_page.title, admin_content_page_path(content_page.id) %></td>
+        <td><%= content_page.locale.upcase %></td>
+        <td><%= content_page.published? ? "Oui" : "Non" %></td>
+        <td>
+          <%= link_to "Modifier", edit_admin_content_page_path(content_page.id) %>
+          ·
+          <%= button_to "Supprimer", admin_content_page_path(content_page.id), method: :delete, class: "admin-button--danger", data: { lv_confirm: "Supprimer définitivement la page « #{content_page.title} » (/#{content_page.path}) ? Cette action est irréversible." } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
