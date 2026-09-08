@@ -62,6 +62,9 @@ fr:
         tentative: "provisoire"
         cancelled: "annulé"
     calendar_imports:
+      platforms:
+        airbnb: "Airbnb"
+        booking: "Booking.com"
       last_status:
         never_synced: "jamais synchronisé"
         success: "succès"
