@@ -1,4 +1,54 @@
 fr:
+  activerecord:
+    attributes:
+      journal_post:
+        title: "Titre"
+        slug: "Adresse"
+        locale: "Langue"
+        summary: "Résumé"
+        description: "Description"
+        body_markdown: "Article"
+        published_on: "Date de publication"
+        tag: "Catégorie"
+        image_path: "Image"
+        image_alt: "Description de l’image"
+      content_page:
+        path: "Chemin"
+        locale: "Langue"
+        title: "Titre"
+        description: "Description"
+        body_html: "Contenu"
+        structured_data: "Données structurées"
+      user:
+        email_address: "Adresse email"
+        password: "Mot de passe"
+        password_confirmation: "Confirmation du mot de passe"
+        password_digest: "Mot de passe"
+      availability_block:
+        starts_on: "Début"
+        ends_on: "Fin"
+        status: "Statut"
+        base: "Bloc de disponibilité"
+      booking_inquiry:
+        base: "Demande de réservation"
+      stay_rule:
+        base: "Règles de séjour"
+    errors:
+      messages:
+        blank: "ne peut pas être vide"
+        taken: "est déjà utilisé"
+        invalid: "est invalide"
+        inclusion: "n’est pas inclus dans la liste"
+        not_a_number: "n’est pas un nombre"
+        greater_than: "doit être supérieur à %{count}"
+        greater_than_or_equal_to: "doit être supérieur ou égal à %{count}"
+        less_than_or_equal_to: "doit être inférieur ou égal à %{count}"
+        record_invalid: "La validation a échoué : %{errors}"
+  errors:
+    messages:
+      blank: "ne peut pas être vide"
+      taken: "est déjà utilisé"
+      invalid: "est invalide"
   admin:
     availability_blocks:
       kind:

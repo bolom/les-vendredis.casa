@@ -8,8 +8,8 @@ module Admin
       get admin_calendar_imports_path
 
       assert_response :success
-      assert_select "td", "airbnb"
-      assert_select "td", "booking"
+      assert_select "td", "Airbnb"
+      assert_select "td", "Booking"
     end
 
     test "sync queues a provider job" do

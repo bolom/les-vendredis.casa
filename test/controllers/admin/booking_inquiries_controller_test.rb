@@ -14,6 +14,33 @@ module Admin
       assert_select "a", inquiry.public_reference
     end
 
+    test "admin can filter and search inquiries" do
+      sign_in_as users(:one)
+      inquiry = create_inquiry
+
+      get admin_booking_inquiries_path, params: { status: "new" }
+      assert_select "a", inquiry.public_reference
+
+      get admin_booking_inquiries_path, params: { status: "declined" }
+      assert_select "a", { text: inquiry.public_reference, count: 0 }
+
+      get admin_booking_inquiries_path, params: { q: inquiry.public_reference }
+      assert_select "a", inquiry.public_reference
+
+      get admin_booking_inquiries_path, params: { q: "personne" }
+      assert_select "a", { text: inquiry.public_reference, count: 0 }
+    end
+
+    test "accept and decline ask for confirmation" do
+      sign_in_as users(:one)
+      inquiry = create_inquiry
+
+      get admin_booking_inquiry_path(inquiry)
+
+      assert_select "form[action='#{accept_admin_booking_inquiry_path(inquiry)}'] [data-lv-confirm]"
+      assert_select "form[action='#{decline_admin_booking_inquiry_path(inquiry)}'] [data-lv-confirm]"
+    end
+
     test "admin accept creates confirmed availability block" do
       sign_in_as users(:one)
       inquiry = create_inquiry

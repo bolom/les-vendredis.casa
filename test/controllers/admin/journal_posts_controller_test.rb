@@ -53,6 +53,23 @@ module Admin
       assert_equal false, post.published?
     end
 
+    test "admin can filter and search journal posts" do
+      sign_in_as users(:one)
+      post = JournalPost.create!(title: "Plage de Sel", slug: "plage-de-sel", locale: "fr", body_markdown: "Body", published_on: Date.current, published: true)
+
+      get admin_journal_posts_path, params: { locale: "fr" }
+      assert_select "td", text: /Plage de Sel/
+
+      get admin_journal_posts_path, params: { locale: "en" }
+      assert_select "td", text: /Plage de Sel/, count: 0
+
+      get admin_journal_posts_path, params: { status: "draft" }
+      assert_select "td", text: /Plage de Sel/, count: 0
+
+      get admin_journal_posts_path, params: { q: "plage-de-sel" }
+      assert_select "td", text: /Plage de Sel/
+    end
+
     test "admin sees validation errors" do
       sign_in_as users(:one)
       post = JournalPost.create!(
@@ -76,7 +93,7 @@ module Admin
       }
 
       assert_response :unprocessable_entity
-      assert_select "[role='alert']", /Title can't be blank/
+      assert_select "[role='alert']", /Titre ne peut pas être vide/
     end
   end
 end

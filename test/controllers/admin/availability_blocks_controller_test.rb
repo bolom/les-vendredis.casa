@@ -77,5 +77,38 @@ module Admin
       assert_redirected_to admin_availability_blocks_path
       assert_equal "tentative", block.reload.status
     end
+
+    test "admin can filter blocks by status" do
+      sign_in_as users(:one)
+      AvailabilityBlock.create!(
+        starts_on: Date.new(2026, 10, 1),
+        ends_on: Date.new(2026, 10, 3),
+        kind: "manual_closure",
+        source: "manual",
+        status: "confirmed",
+        summary: "Peinture"
+      )
+
+      get admin_availability_blocks_path, params: { status: "confirmed" }
+      assert_select "td", text: /Peinture/
+
+      get admin_availability_blocks_path, params: { status: "tentative" }
+      assert_select "td", text: /Peinture/, count: 0
+    end
+
+    test "cancel asks for confirmation" do
+      sign_in_as users(:one)
+      block = AvailabilityBlock.create!(
+        starts_on: Date.new(2026, 10, 1),
+        ends_on: Date.new(2026, 10, 3),
+        kind: "manual_closure",
+        source: "manual",
+        status: "confirmed"
+      )
+
+      get admin_availability_blocks_path
+
+      assert_select "form[action='#{cancel_admin_availability_block_path(block)}'] [data-lv-confirm]"
+    end
   end
 end
