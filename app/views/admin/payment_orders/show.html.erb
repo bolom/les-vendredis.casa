@@ -1,0 +1,70 @@
+<h1>Paiement <%= @payment_order.public_id %></h1>
+
+<div class="admin-card">
+  <dl>
+    <dt>État</dt>
+    <dd><%= human_payment_status(@payment_order.status) %></dd>
+    <dt>Montant</dt>
+    <dd><%= @payment_order.requirements["amount"] %> unités</dd>
+    <dt>Émis</dt>
+    <dd><%= human_ago(@payment_order.created_at) %> (<%= l(@payment_order.created_at, format: :long) %>)</dd>
+    <dt>Expire</dt>
+    <dd><%= l(@payment_order.expires_at, format: :long) %></dd>
+    <dt>Réservation</dt>
+    <dd><%= link_to(@payment_order.booking_inquiry.guest_name, admin_booking_inquiry_path(@payment_order.booking_inquiry)) if @payment_order.booking_inquiry %></dd>
+    <dt>Séjour concerné</dt>
+    <dd>
+      <% if @payment_order.availability_block %>
+        <%= human_date_range(@payment_order.availability_block.starts_on, @payment_order.availability_block.ends_on) %>
+      <% else %>
+        —
+      <% end %>
+    </dd>
+  </dl>
+</div>
+
+<details class="admin-details">
+  <summary>Détails techniques</summary>
+  <div class="admin-card">
+    <dl>
+      <dt>Statut brut</dt>
+      <dd><code><%= @payment_order.status %></code></dd>
+      <dt>Devis</dt>
+      <dd><code><%= JSON.pretty_generate(@payment_order.quote) %></code></dd>
+      <dt>Exigences de paiement</dt>
+      <dd><code><%= JSON.pretty_generate(@payment_order.requirements) %></code></dd>
+      <% if @payment_order.settlement %>
+        <dt>Règlement</dt>
+        <dd><code><%= JSON.pretty_generate(@payment_order.settlement) %></code></dd>
+      <% end %>
+      <% if @payment_order.reconciliation %>
+        <dt>Rapprochement</dt>
+        <dd><code><%= JSON.pretty_generate(@payment_order.reconciliation) %></code></dd>
+      <% end %>
+    </dl>
+  </div>
+</details>
+
+<% if @payment_order.status.in?(%w[settling review paid]) %>
+  <h2>Rapprochement manuel</h2>
+  <p class="admin-definition">Enregistre uniquement un résultat déjà vérifié chez le prestataire ou sur la blockchain. Cette action n’envoie aucun paiement ni remboursement.</p>
+  <%= form_with url: admin_payment_order_path(@payment_order), method: :patch, class: "admin-form" do %>
+    <div>
+      <%= label_tag :outcome, "Résultat vérifié" %>
+      <%= select_tag :outcome, options_for_select([["Paiement confirmé", "confirmed"], ["Remboursement effectué", "refunded"], ["Aucun transfert effectué", "no_transfer"]]) %>
+    </div>
+    <div>
+      <%= label_tag :evidence, "Preuve de rapprochement" %>
+      <%= text_area_tag :evidence, nil, required: true, minlength: 20, maxlength: 2000, placeholder: "Référence de transaction / prestataire et vérifications effectuées", aria: { label: "Preuve de rapprochement" } %>
+    </div>
+    <div>
+      <%= label_tag :review_confirmed, "J’ai vérifié le résultat et ses justificatifs.", class: "admin-inline" %>
+      <%= check_box_tag :review_confirmed, "1", false, required: true %>
+    </div>
+    <div><%= submit_tag "Enregistrer le rapprochement" %></div>
+  <% end %>
+<% else %>
+  <p class="admin-definition">Le rapprochement manuel n’est disponible que pour les paiements en attente de règlement, à vérifier ou payés.</p>
+<% end %>
+
+<%= link_to "← Tous les paiements", admin_payment_orders_path, class: "admin-button admin-button--secondary" %>

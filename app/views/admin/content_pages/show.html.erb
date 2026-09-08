@@ -1,0 +1,36 @@
+<h1>Page « <%= @content_page.title %> »</h1>
+
+<div class="admin-card">
+  <dl>
+    <dt>Chemin public</dt>
+    <dd><code>/<%= @content_page.path %></code></dd>
+    <dt>Langue</dt>
+    <dd><%= @content_page.locale.upcase %></dd>
+    <dt>Publiée</dt>
+    <dd><%= @content_page.published? ? "Oui" : "Non" %></dd>
+    <dt>Description</dt>
+    <dd><%= @content_page.description.presence || "—" %></dd>
+    <dt>URL canonique</dt>
+    <dd><%= @content_page.canonical_url.presence || "—" %></dd>
+    <dt>Robots</dt>
+    <dd><%= @content_page.robots.presence || "—" %></dd>
+    <dt>Alternative EN</dt>
+    <dd><%= @content_page.alternate_en_url.presence || "—" %></dd>
+    <dt>Alternative FR</dt>
+    <dd><%= @content_page.alternate_fr_url.presence || "—" %></dd>
+    <dt>Données structurées</dt>
+    <dd>
+      <% @content_page.structured_data_blocks.each do |block| %>
+        <code style="display:block; white-space:pre-wrap;"><%= block %></code>
+      <% end %>
+    </dd>
+  </dl>
+</div>
+
+<h2>Aperçu du contenu</h2>
+<div class="admin-card"><%= sanitized_content_body_html(@content_page) %></div>
+
+<p>
+  <%= link_to "Modifier", edit_admin_content_page_path(@content_page.id), class: "admin-button" %>
+  <%= link_to "← Toutes les pages", admin_content_pages_path, class: "admin-button admin-button--secondary" %>
+</p>

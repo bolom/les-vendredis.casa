@@ -18,18 +18,25 @@ Rails.application.routes.draw do
   resources :booking_inquiries, only: [ :new, :create, :show ], path: "booking-requests"
 
   namespace :admin do
-    resources :payment_orders, only: :update
-    resources :journal_posts, except: [ :show, :destroy ]
     root "dashboard#show"
+    get "calendar", to: "calendar#show", as: :calendar
+    get "calendar/day", to: "calendar#day", as: :calendar_day
+    get "calendars", to: "calendars#index", as: :calendars
+    get "diagnostics", to: "diagnostics#index", as: :diagnostics
+    get "notifications", to: "notifications#index", as: :notifications
+    resources :content_pages
+    resources :users
+    resources :payment_orders, only: [ :index, :show, :update ]
+    resources :journal_posts, except: [ :show, :destroy ]
     resources :booking_inquiries, only: [ :index, :show ] do
       post :accept, on: :member
       post :decline, on: :member
     end
-    resources :availability_blocks, except: :destroy do
+    resources :availability_blocks, only: [ :index, :new, :create ] do
       post :cancel, on: :member
     end
     resource :stay_rule, only: [ :edit, :update ]
-    resources :calendar_imports, only: :index do
+    resources :calendar_imports, only: [] do
       post :sync, on: :member
     end
   end

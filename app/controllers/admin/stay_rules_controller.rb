@@ -1,5 +1,5 @@
 module Admin
-  class StayRulesController < ApplicationController
+  class StayRulesController < BaseController
     def edit
       @stay_rule = StayRule.current
     end
@@ -8,7 +8,7 @@ module Admin
       @stay_rule = StayRule.current
 
       if @stay_rule.persisted? ? @stay_rule.update(stay_rule_params) : @stay_rule.update(stay_rule_params.merge(active: true))
-        redirect_to edit_admin_stay_rule_path, notice: "Stay rules updated."
+        redirect_to edit_admin_stay_rule_path, notice: "Règles de séjour enregistrées."
       else
         render :edit, status: :unprocessable_entity
       end

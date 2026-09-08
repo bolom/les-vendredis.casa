@@ -1,21 +1,11 @@
 module Admin
-  class CalendarImportsController < ApplicationController
-    before_action :ensure_calendar_imports
-
-    def index
-      @calendar_imports = CalendarImport.order(:provider)
-    end
-
+  # Only the manual sync trigger lives here; the readable per-platform state is
+  # CalendarsController and the raw details are DiagnosticsController.
+  class CalendarImportsController < BaseController
     def sync
       calendar_import = CalendarImport.find(params[:id])
       CalendarImportSyncJob.perform_later(calendar_import.provider)
-      redirect_to admin_calendar_imports_path, notice: "Calendar sync queued."
-    end
-
-    private
-
-    def ensure_calendar_imports
-      CalendarImport.ensure_defaults!
+      redirect_to admin_calendars_path, notice: "Synchronisation de #{t("admin.calendar_imports.platforms.#{calendar_import.provider}", default: calendar_import.provider)} relancée. Elle s’exécute en tâche de fond."
     end
   end
 end

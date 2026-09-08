@@ -19,5 +19,11 @@
         window.openLightbox(index);
       }
     }
+    if (target.dataset.lvAction === 'toggle-admin-technical') {
+      const bar = document.querySelector('.admin-topbar');
+      if (!bar) return;
+      const isOpen = bar.classList.toggle('technical-open');
+      target.setAttribute('aria-expanded', String(isOpen));
+    }
   });
 })();

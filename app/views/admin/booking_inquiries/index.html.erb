@@ -1,22 +1,11 @@
-<h1>Booking inquiries</h1>
+<h1>Demandes de réservation</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Reference</th>
-      <th>Dates</th>
-      <th>Guest</th>
-      <th>Status</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @booking_inquiries.each do |booking_inquiry| %>
-      <tr>
-        <td><%= link_to booking_inquiry.public_reference, admin_booking_inquiry_path(booking_inquiry) %></td>
-        <td><%= booking_inquiry.check_in %> - <%= booking_inquiry.check_out %></td>
-        <td><%= booking_inquiry.guest_name %></td>
-        <td><%= booking_inquiry.status %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<%= form_with url: admin_booking_inquiries_path, method: :get, class: "admin-filters" do %>
+  <%= label_tag :status, "Statut" %>
+  <%= select_tag :status, options_for_select([["Tous", ""]] + BookingInquiry.statuses.keys.map { |status| [status, status] }, params[:status]) %>
+  <%= label_tag :q, "Recherche" %>
+  <%= search_field_tag :q, params[:q], placeholder: "Référence, nom ou email" %>
+  <%= submit_tag "Filtrer" %>
+<% end %>
+
+<%= render "table", booking_inquiries: @booking_inquiries %>

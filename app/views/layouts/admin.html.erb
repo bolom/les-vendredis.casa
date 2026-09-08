@@ -1,0 +1,59 @@
+<% content_for :title, "Admin — Les Vendredis" %>
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <title><%= content_for(:title) || "Admin — Les Vendredis" %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="robots" content="noindex">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "admin", "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "actions", "confirm", "admin-calendar", defer: true, "data-turbo-track": "reload" %>
+  </head>
+  <body class="admin-body">
+    <header class="admin-topbar">
+      <div class="admin-topbar-inner">
+        <p class="admin-brand">Les Vendredis — Administration</p>
+        <% if technical_access? %>
+          <button type="button" class="admin-nav-toggle" data-lv-action="toggle-admin-technical" aria-expanded="false" aria-controls="admin-zone-technique">Section technique</button>
+        <% end %>
+      </div>
+      <nav aria-label="Gestion de la maison">
+        <ul class="admin-nav admin-zone-links">
+          <li><span class="admin-zone" aria-hidden="true">Maison</span></li>
+          <li><%= link_to "Accueil", admin_root_path, class: admin_nav_class(admin_root_path) %></li>
+          <li><%= link_to "Calendrier", admin_calendar_path, class: admin_nav_class(admin_calendar_path) %></li>
+          <li><%= link_to "Réservations", admin_booking_inquiries_path, class: admin_nav_class(admin_booking_inquiries_path) %></li>
+          <li><%= link_to "Calendriers", admin_calendars_path, class: admin_nav_class(admin_calendars_path) %></li>
+          <li><%= link_to "Réglages des séjours", edit_admin_stay_rule_path, class: admin_nav_class(edit_admin_stay_rule_path) %></li>
+          <li><%= link_to "Journal", admin_journal_posts_path, class: admin_nav_class(admin_journal_posts_path) %></li>
+        </ul>
+      </nav>
+      <% if technical_access? %>
+        <nav aria-label="Section technique" id="admin-zone-technique">
+          <ul class="admin-nav admin-nav--technical admin-zone-links">
+            <li><span class="admin-zone" aria-hidden="true">Technique — Bolo</span></li>
+            <li><%= link_to "Paiements", admin_payment_orders_path, class: admin_nav_class(admin_payment_orders_path) %></li>
+            <li><%= link_to "Utilisateurs", admin_users_path, class: admin_nav_class(admin_users_path) %></li>
+            <li><%= link_to "Pages", admin_content_pages_path, class: admin_nav_class(admin_content_pages_path) %></li>
+            <li><%= link_to "Imports & diagnostics", admin_diagnostics_path, class: admin_nav_class(admin_diagnostics_path) %></li>
+            <li><%= link_to "Notifications en échec", admin_notifications_path, class: admin_nav_class(admin_notifications_path) %></li>
+          </ul>
+        </nav>
+      <% end %>
+    </header>
+    <main class="admin-main">
+      <% if flash[:notice] %>
+        <p class="admin-flash admin-flash--notice" role="status"><%= flash[:notice] %></p>
+      <% end %>
+      <% if flash[:alert] %>
+        <p class="admin-flash admin-flash--alert" role="alert"><%= flash[:alert] %></p>
+      <% end %>
+      <%= yield %>
+    </main>
+    <footer class="admin-footer">
+      <p><%= link_to "Voir le site", root_path %></p>
+    </footer>
+  </body>
+</html>
