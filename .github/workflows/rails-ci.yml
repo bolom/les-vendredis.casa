@@ -53,6 +53,23 @@ jobs:
           DATABASE_URL: postgres://postgres:postgres@localhost:5432/les_vendredis_test
         run: bin/rails test
 
+      # Coverage for the Solid store bootstrap (#33): run the task against
+      # a database where primary schema exists but Solid tables do not, then
+      # verify the three Solid schemas are present. Second run proves it is
+      # idempotent.
+      - name: Verify Solid stores bootstrap
+        env:
+          RAILS_ENV: production
+          SECRET_KEY_BASE_DUMMY: 1
+          DATABASE_URL: postgres://postgres:postgres@localhost:5432/les_vendredis_test
+          CACHE_DATABASE_URL: postgres://postgres:postgres@localhost:5432/les_vendredis_test
+          QUEUE_DATABASE_URL: postgres://postgres:postgres@localhost:5432/les_vendredis_test
+          CABLE_DATABASE_URL: postgres://postgres:postgres@localhost:5432/les_vendredis_test
+        run: |
+          bin/rails db:solid_stores
+          bin/rails db:solid_stores
+          bin/rails runner 'exit 1 unless %w[solid_queue_jobs solid_cache_entries solid_cable_messages].all? { |t| ActiveRecord::Base.connection.table_exists?(t) }; puts "solid stores bootstrap OK"'
+
       - name: Lint Ruby
         run: bin/rubocop -f github
 

@@ -1,8 +1,9 @@
 #!/bin/bash -e
 
-# If running the rails server then create or migrate existing database
-if [ "${@: -2:1}" == "./bin/rails" ] && [ "${@: -1:1}" == "server" ]; then
-  ./bin/rails db:prepare
-fi
+# Prepare the primary database and the Solid stores (queue/cache/cable).
+# db:prepare alone can skip the Solid schemas when primary already exists
+# in the shared Postgres database (refs #33). The task is idempotent, so
+# it is safe for every role (web server, jobs worker, one-off consoles).
+./bin/rails db:prepare db:solid_stores
 
 exec "${@}"
