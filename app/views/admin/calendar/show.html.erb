@@ -1,0 +1,47 @@
+<main class="admin-main" data-controller="admin-calendar">
+  <div class="admin-calendar-head">
+    <h1>Calendrier</h1>
+    <nav aria-label="Mois affiché">
+      <%= link_to "‹ Mois précédent", admin_calendar_path(year: @month_start.prev_month.year, month: @month_start.prev_month.month), class: "admin-button admin-button--secondary" %>
+      <strong><%= l(@month_start, format: "%B %Y") %></strong>
+      <%= link_to "Mois suivant ›", admin_calendar_path(year: @month_end.year, month: @month_end.month), class: "admin-button admin-button--secondary" %>
+    </nav>
+    <p><%= link_to "Bloquer des dates", new_admin_availability_block_path, class: "admin-button" %></p>
+  </div>
+
+  <div class="admin-calendar" role="grid" aria-label="Calendrier des blocages et séjours de <%= l(@month_start, format: "%B %Y") %>">
+    <% %w[lundi mardi mercredi jeudi vendredi samedi dimanche].each do |weekday| %>
+      <span class="admin-calendar-weekday" role="columnheader"><%= weekday %></span>
+    <% end %>
+    <% @days.each do |day| %>
+      <% if day[:segments].empty? && day[:date].month != @month_start.month %>
+        <span class="admin-day admin-day--empty" role="gridcell"><%= day[:date].day %></span>
+      <% else %>
+        <button type="button"
+                class="admin-day <%= "admin-day--today" if day[:today] %>"
+                role="gridcell"
+                data-lv-action="show-day-detail"
+                data-date="<%= day[:date].iso8601 %>"
+                aria-label="<%= l(day[:date], format: "%-d %B") %><%= " : #{day[:segments].map { |s| s[:occupant] }.join(", ")}" if day[:segments].any? %>">
+          <strong><%= day[:date].day %></strong>
+          <% day[:segments].each do |segment| %>
+            <span class="admin-day-segment admin-day-segment--<%= segment[:origin] %>"><%= segment[:occupant] %></span>
+          <% end %>
+        </button>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="admin-calendar-legend">
+    <span><span class="admin-day-segment admin-day-segment--manual_closure">Blocage maison</span></span>
+    <span><span class="admin-day-segment admin-day-segment--direct_stay">Séjour direct</span></span>
+    <span><span class="admin-day-segment admin-day-segment--airbnb">Airbnb</span></span>
+    <span><span class="admin-day-segment admin-day-segment--booking">Booking.com</span></span>
+  </div>
+
+  <div class="admin-detail-panel" data-day-detail data-day-detail-url="<%= admin_calendar_day_path %>" hidden>
+    <h3 data-detail-title></h3>
+    <ul data-detail-entries></ul>
+    <p><%= link_to "Bloquer ces dates", new_admin_availability_block_path, class: "admin-button", data: { detail_block_link: true } %></p>
+  </div>
+</main>
