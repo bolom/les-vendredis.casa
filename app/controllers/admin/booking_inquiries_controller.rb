@@ -14,6 +14,7 @@ module Admin
 
     def show
       @booking_inquiry = BookingInquiry.find(params[:id])
+      @inquiry_price = compute_inquiry_price(@booking_inquiry)
     end
 
     def accept
@@ -34,6 +35,16 @@ module Admin
       redirect_to admin_booking_inquiry_path(inquiry), notice: "Demande refusée : le voyageur est notifié."
     rescue ActiveRecord::RecordInvalid
       redirect_to admin_booking_inquiry_path(params[:id]), alert: "Cette demande ne peut pas être refusée."
+    end
+    private
+
+    # Human-language price for the inquiry screen: the configured nightly
+    # price times the requested nights, when a price is configured at all.
+    def compute_inquiry_price(inquiry)
+      price = StayRule.current.nightly_price_eur
+      return nil if price.blank?
+
+      price * inquiry.nights
     end
   end
 end
