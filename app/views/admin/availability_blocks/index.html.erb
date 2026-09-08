@@ -6,6 +6,7 @@
   <thead>
     <tr>
       <th>Dates</th>
+      <th>Kind</th>
       <th>Status</th>
       <th>Summary</th>
       <th></th>
@@ -15,10 +16,15 @@
     <% @availability_blocks.each do |availability_block| %>
       <tr>
         <td><%= availability_block.starts_on %> - <%= availability_block.ends_on %></td>
+        <td><%= availability_block.kind %> / <%= availability_block.source %></td>
         <td><%= availability_block.status %></td>
         <td><%= availability_block.summary.presence || "-" %></td>
         <td>
-          <%= link_to "Edit", edit_admin_availability_block_path(availability_block) %>
+          <% if availability_block.direct_stay? %>
+            Managed by its booking — use the booking actions.
+          <% else %>
+            <%= link_to "Edit", edit_admin_availability_block_path(availability_block) %>
+          <% end %>
           <%= button_to "Cancel", cancel_admin_availability_block_path(availability_block), method: :post %>
         </td>
       </tr>

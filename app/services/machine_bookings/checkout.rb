@@ -40,7 +40,7 @@ module MachineBookings
             @order.update!(status: "review")
             return @order
           end
-          @order.availability_block.update!(status: "confirmed")
+          @order.availability_block.update!(status: "confirmed", business_transition: true)
           @order.booking_inquiry.update!(status: "accepted", accepted_at: Time.current)
           @order.update!(status: "paid")
         end

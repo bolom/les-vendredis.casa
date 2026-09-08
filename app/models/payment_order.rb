@@ -13,13 +13,13 @@ class PaymentOrder < ApplicationRecord
       raise ArgumentError if status == "settling" && updated_at > 5.minutes.ago
       if outcome == "confirmed"
         raise ArgumentError if CalendarEvent.blocking.overlapping(availability_block.starts_on, availability_block.ends_on).exists?
-        availability_block.update!(status: "confirmed")
+        availability_block.update!(status: "confirmed", business_transition: true)
         booking_inquiry.update!(status: "accepted", accepted_at: booking_inquiry.accepted_at || Time.current)
         update!(status: "paid")
       else
         raise ArgumentError if outcome == "no_transfer" && (status == "paid" || settlement&.dig("success") == true)
         update!(status: outcome == "refunded" ? "refunded" : "cancelled")
-        availability_block.update!(status: "cancelled")
+        availability_block.update!(status: "cancelled", business_transition: true)
         booking_inquiry.update!(status: "cancelled") unless booking_inquiry.reload.status_cancelled?
       end
       update!(reconciliation: { outcome: outcome, evidence: evidence, actor_id: actor.id, at: Time.current.iso8601 })

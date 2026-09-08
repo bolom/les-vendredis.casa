@@ -41,5 +41,41 @@ module Admin
 
       assert_equal "cancelled", block.reload.status
     end
+
+    test "admin cannot move a direct stay through the generic form" do
+      sign_in_as users(:one)
+      block = AvailabilityBlock.create!(
+        starts_on: Date.new(2026, 10, 1),
+        ends_on: Date.new(2026, 10, 3),
+        kind: "direct_stay",
+        source: "direct",
+        status: "tentative"
+      )
+
+      patch admin_availability_block_path(block), params: {
+        availability_block: { status: "confirmed" }
+      }
+
+      assert_response :unprocessable_entity
+      assert_equal "tentative", block.reload.status
+    end
+
+    test "admin can still edit a manual block" do
+      sign_in_as users(:one)
+      block = AvailabilityBlock.create!(
+        starts_on: Date.new(2026, 10, 1),
+        ends_on: Date.new(2026, 10, 3),
+        kind: "manual_closure",
+        source: "manual",
+        status: "confirmed"
+      )
+
+      patch admin_availability_block_path(block), params: {
+        availability_block: { status: "tentative", summary: "Plumbing" }
+      }
+
+      assert_redirected_to admin_availability_blocks_path
+      assert_equal "tentative", block.reload.status
+    end
   end
 end
