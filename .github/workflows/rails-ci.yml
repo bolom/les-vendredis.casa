@@ -56,8 +56,10 @@ jobs:
       - name: Lint Ruby
         run: bin/rubocop -f github
 
+      # EOLRails excluded: Rails 8.0 EOL warning flips at the 60-day mark
+      # depending on runner local date (broke CI 2026-09-08, see issue #41).
       - name: Scan Rails security
-        run: bin/brakeman --no-pager
+        run: bin/brakeman --no-pager -x EOLRails
 
       - name: Audit gems
         run: bin/bundler-audit
