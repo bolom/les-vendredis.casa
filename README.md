@@ -81,7 +81,7 @@ bin/bundler-audit
 ## Deployment
 
 The app deploys with Kamal. Until the public cutover, the proxy serves the
-pre-production hostname `staging.lesvendredis.casa`; see the
+transition hostname (see `config/deploy.yml`); see the
 [deployment runbook](docs/deployment-runbook.md):
 
 ```bash
