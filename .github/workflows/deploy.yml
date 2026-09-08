@@ -1,19 +1,88 @@
 name: Deploy
 
+# Deploys main automatically, but ONLY after a green Rails CI run for the
+# exact same SHA (see the wait-for-ci job). The manual workflow_dispatch
+# trigger is a deliberate, voluntary action: it still goes through the same
+# CI gate, so a human can force a re-deploy of a known-green commit but can
+# never bypass CI.
+
 on:
   push:
     branches: [main]
   workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
 
 concurrency:
   group: deploy-production
   cancel-in-progress: false
 
 jobs:
+  # Gate: wait for the Rails CI run of THIS exact SHA and require it to be
+  # green. Fail-closed in every other case:
+  #   - no CI run found within the timeout        -> fail, no deploy
+  #   - CI run red (any failed/completed failure) -> fail, no deploy
+  #   - CI run still running past the timeout     -> fail, no deploy
+  wait-for-ci:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for a green Rails CI run on this SHA
+        env:
+          GH_TOKEN: ${{ github.token }}
+          CI_WAIT_TIMEOUT_SECONDS: 1200 # 20 min upper bound
+        run: |
+          set -euo pipefail
+
+          repo="${GITHUB_REPOSITORY}"
+          sha="${GITHUB_SHA}"
+          deadline=$(( $(date +%s) + CI_WAIT_TIMEOUT_SECONDS ))
+
+          echo "Waiting for Rails CI on commit ${sha} (repo ${repo})…"
+
+          while :; do
+            runs="$(gh run list \
+              --repo "${repo}" \
+              --workflow "Rails CI" \
+              --commit "${sha}" \
+              --json databaseId,status,conclusion \
+              --limit 10)"
+
+            if (( $(jq 'length' <<<"$runs") > 0 )); then
+              failed="$(jq '[.[] | select(.status == "completed" and .conclusion != "success")] | length' <<<"$runs")"
+              if (( failed > 0 )); then
+                echo "::error::Rails CI is not green for ${sha} — refusing to deploy (fail-closed)."
+                exit 1
+              fi
+
+              green_run="$(jq -r '[.[] | select(.status == "completed" and .conclusion == "success")][0].databaseId' <<<"$runs")"
+              if [[ "${green_run}" != "null" ]]; then
+                echo "Rails CI run ${green_run} is green for ${sha} — deploy may proceed."
+                gh run view "${green_run}" --repo "${repo}" || true
+                exit 0
+              fi
+
+              echo "Rails CI for ${sha} is still running…"
+            else
+              echo "No Rails CI run found yet for ${sha}…"
+            fi
+
+            if (( $(date +%s) >= deadline )); then
+              echo "::error::Rails CI for ${sha} did not complete within ${CI_WAIT_TIMEOUT_SECONDS}s — refusing to deploy (fail-closed)."
+              exit 1
+            fi
+
+            sleep 20
+          done
+
   deploy:
+    needs: wait-for-ci
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
 
       - uses: ruby/setup-ruby@v1
         with:
