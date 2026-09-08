@@ -1,3 +1,6 @@
+# Secrets for the automated deploy come from GitHub Actions Secrets, mirrored
+# from the 1Password vault (source of truth) — see docs/secrets.md. Never put
+# raw values here.
 name: Deploy
 
 # Deploys main automatically, but ONLY after a green Rails CI run for the

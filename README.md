@@ -55,10 +55,13 @@ User.create!(
 Copy `.env.example` only for non-secret local settings. Application secrets live
 in `config/credentials.yml.enc`; 1Password supplies the master key to Kamal.
 
-Required production secrets:
+Required production secrets (full architecture and rotation checklist in
+[`docs/secrets.md`](docs/secrets.md)):
 
 - `RAILS_MASTER_KEY`
+- `POSTGRES_PASSWORD`
 - `KAMAL_REGISTRY_PASSWORD`
+- `SSH_PRIVATE_KEY` (deploy CI only)
 
 Resend production setup and smoke-test steps are documented in
 [`docs/resend-production.md`](docs/resend-production.md). The public host used
