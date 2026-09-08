@@ -22,7 +22,7 @@ module Admin
         post accept_admin_booking_inquiry_path(inquiry)
       end
 
-      assert_redirected_to admin_booking_inquiries_path
+      assert_redirected_to admin_booking_inquiry_path(inquiry)
       inquiry.reload
       assert_equal "accepted", inquiry.status
       assert_equal "confirmed", inquiry.availability_block.status
