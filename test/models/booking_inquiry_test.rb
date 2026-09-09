@@ -1,6 +1,25 @@
 require "test_helper"
 
 class BookingInquiryTest < ActiveSupport::TestCase
+  test "acceptance snapshots the configured prices" do
+    StayRule.current.update!(nightly_price_eur: 68, airbnb_nightly_price_eur: 71)
+    inquiry = BookingInquiry.create!(
+      check_in: Date.new(2027, 2, 1),
+      check_out: Date.new(2027, 2, 3),
+      adults: 2,
+      children: 0,
+      guest_name: "Guest",
+      email: "guest@example.com",
+      locale: "en"
+    )
+
+    inquiry.accept!
+
+    assert_equal 68, inquiry.accepted_nightly_price_eur
+    assert_equal 136, inquiry.accepted_total_price_eur
+    assert_equal 71, inquiry.accepted_airbnb_nightly_price_eur
+  end
+
   test "one night stay is accepted by default" do
     inquiry = BookingInquiry.new(
       check_in: Date.new(2026, 10, 1),

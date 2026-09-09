@@ -7,9 +7,15 @@
   <% end %>
 
   <div>
-    <%= form.label :nightly_price_eur, "Prix par nuit" %>
+    <%= form.label :airbnb_nightly_price_eur, "Prix Airbnb par nuit (référence)" %>
+    <%= form.number_field :airbnb_nightly_price_eur, min: "0.01", max: 100000, step: "0.01" %>
+    <p class="admin-definition">Le prix de l'annonce Airbnb pour la même nuit. Sert de plafond : le prix direct doit toujours être plus bas.</p>
+  </div>
+
+  <div>
+    <%= form.label :nightly_price_eur, "Prix direct par nuit" %>
     <%= form.number_field :nightly_price_eur, min: "0.01", max: 100000, step: "0.01" %>
-    <p class="admin-definition">Le prix affiché aux voyageurs pour une nuit, en euros. Le site calcule lui-même le total selon le nombre de nuits.</p>
+    <p class="admin-definition">Le prix affiché aux voyageurs qui réservent en direct, en euros. Il doit rester strictement inférieur au prix Airbnb ci-dessus. Le site calcule lui-même le total selon le nombre de nuits.</p>
   </div>
 
   <div>

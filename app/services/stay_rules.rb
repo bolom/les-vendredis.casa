@@ -13,6 +13,7 @@ module StayRules
 
   PERMITTED = %i[
     nightly_price_eur
+    airbnb_nightly_price_eur
     minimum_nights
     maximum_nights
     maximum_adults

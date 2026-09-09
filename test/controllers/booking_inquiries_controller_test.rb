@@ -62,7 +62,44 @@ class BookingInquiriesControllerTest < ActionDispatch::IntegrationTest
     assert BookingInquiry.last.consent_at.present?
   end
 
+  test "accepted French booking keeps its locale and historical price" do
+    StayRule.current.update!(nightly_price_eur: 68, airbnb_nightly_price_eur: 71)
+    inquiry = create_accepted_inquiry(locale: "fr")
+    StayRule.current.update!(nightly_price_eur: 65, airbnb_nightly_price_eur: 70)
+
+    get booking_inquiry_path(inquiry.public_reference)
+
+    assert_response :success
+    assert_includes response.body, "8 janvier 2027"
+    assert_not_includes response.body, "8 January 2027"
+    assert_includes response.body, "136 €"
+  end
+
+  test "accepted English booking ignores a conflicting URL locale" do
+    inquiry = create_accepted_inquiry(locale: "en")
+
+    get booking_inquiry_path(inquiry.public_reference), params: { locale: "fr" }
+
+    assert_response :success
+    assert_includes response.body, "8 January 2027"
+    assert_not_includes response.body, "8 janvier 2027"
+  end
+
   private
+
+  def create_accepted_inquiry(locale:)
+    inquiry = BookingInquiry.create!(
+      check_in: Date.new(2027, 1, 8),
+      check_out: Date.new(2027, 1, 10),
+      adults: 2,
+      children: 0,
+      guest_name: "Guest",
+      email: "guest@example.com",
+      locale: locale
+    )
+    inquiry.accept!
+    inquiry
+  end
 
   def valid_params
     {

@@ -1,9 +1,49 @@
 <% french = @booking_inquiry.locale == "fr" %>
-<h1><%= french ? "Demande reçue" : "Request received" %></h1>
+<% accepted = @booking_inquiry.status_accepted? %>
+<% cancelled = @booking_inquiry.status_cancelled? %>
+<% declined = @booking_inquiry.status_declined? %>
 
-<p><%= french ? "Référence de votre demande :" : "Your request reference is" %> <%= @booking_inquiry.public_reference %>.</p>
-<p><%= french ? "Votre réservation n’est pas encore confirmée. Nous vous répondrons bientôt." : "This is not a confirmed booking yet. We will reply soon." %></p>
+<h1>
+  <% if accepted %>
+    <%= french ? "Séjour confirmé" : "Stay confirmed" %>
+  <% elsif cancelled %>
+    <%= french ? "Séjour annulé" : "Stay cancelled" %>
+  <% elsif declined %>
+    <%= french ? "Demande refusée" : "Request declined" %>
+  <% else %>
+    <%= french ? "Demande reçue" : "Request received" %>
+  <% end %>
+</h1>
+
+<p><%= french ? "Référence :" : "Reference:" %> <strong><%= @booking_inquiry.public_reference %></strong></p>
+
+<% if accepted %>
+  <p>
+    <%= french ?
+      "Votre réservation est confirmée. Nous vous avons envoyé tous les détails par email." :
+      "Your booking is confirmed. We have emailed you all the details." %>
+  </p>
+
+  <ul>
+    <li><%= french ? "Arrivée" : "Check-in" %> : <%= l(@booking_inquiry.check_in, format: "%-d %B %Y") %></li>
+    <li><%= french ? "Départ" : "Check-out" %> : <%= l(@booking_inquiry.check_out, format: "%-d %B %Y") %></li>
+    <li><%= french ? "Durée" : "Length" %> : <%= @booking_inquiry.nights %> <%= french ? "nuit" : "night" %><%= "s" if @booking_inquiry.nights > 1 %></li>
+    <% if @price.present? %>
+      <li><%= french ? "Prix" : "Price" %> : <%= number_to_currency(@price, unit: "€", precision: 0, format: "%n %u") %></li>
+    <% end %>
+  </ul>
+<% elsif cancelled %>
+  <p><%= french ? "Ce séjour a été annulé. Les dates ont été libérées." : "This stay has been cancelled. The dates are available again." %></p>
+<% elsif declined %>
+  <p><%= french ? "Cette demande n’a pas pu être acceptée. Écrivez-nous si vous souhaitez d’autres dates." : "This request could not be accepted. Write to us if you would like other dates." %></p>
+<% else %>
+  <p><%= french ? "Votre réservation n’est pas encore confirmée. Nous vous répondrons bientôt." : "This is not a confirmed booking yet. We will reply soon." %></p>
+  <ul>
+    <li><%= french ? "Arrivée" : "Check-in" %> : <%= l(@booking_inquiry.check_in, format: "%-d %B %Y") %></li>
+    <li><%= french ? "Départ" : "Check-out" %> : <%= l(@booking_inquiry.check_out, format: "%-d %B %Y") %></li>
+  </ul>
+<% end %>
 
 <script>
-  window.LesVendredisAnalytics?.track("inquiry_success", { locale: "<%= j @booking_inquiry.locale %>", status: "received", source: "booking_form" });
+  window.LesVendredisAnalytics?.track("inquiry_success", { locale: "<%= j @booking_inquiry.locale %>", status: "<%= j @booking_inquiry.status %>", source: "booking_form" });
 </script>

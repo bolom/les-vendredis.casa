@@ -41,7 +41,12 @@ module MachineBookings
             return @order
           end
           @order.availability_block.update!(status: "confirmed", business_transition: true)
-          @order.booking_inquiry.update!(status: "accepted", accepted_at: Time.current)
+          @order.booking_inquiry.update!(
+            status: "accepted",
+            accepted_at: Time.current,
+            accepted_nightly_price_eur: @order.quote["unitPrice"],
+            accepted_total_price_eur: @order.quote["totalPrice"]
+          )
           @order.update!(status: "paid")
         end
       rescue StandardError
