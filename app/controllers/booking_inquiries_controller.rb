@@ -1,6 +1,7 @@
 class BookingInquiriesController < ApplicationController
   allow_unauthenticated_access
   rate_limit to: 10, within: 5.minutes, only: :create
+  around_action :use_inquiry_locale, only: :show
 
   def new
     @booking_inquiry = BookingInquiry.new(locale: locale_param)
@@ -22,11 +23,15 @@ class BookingInquiriesController < ApplicationController
   end
 
   def show
-    @booking_inquiry = BookingInquiry.find_by!(public_reference: params[:id])
-    @price = StayRule.current.price_for(@booking_inquiry.nights) if @booking_inquiry.status_accepted?
+    @price = @booking_inquiry.accepted_total_price_eur if @booking_inquiry.status_accepted?
   end
 
   private
+
+  def use_inquiry_locale(&action)
+    @booking_inquiry = BookingInquiry.find_by!(public_reference: params[:id])
+    I18n.with_locale(@booking_inquiry.locale, &action)
+  end
 
   def booking_inquiry_params
     params.require(:booking_inquiry).permit(:check_in, :check_out, :adults, :children, :guest_name, :email, :phone, :message, :contact_consent)

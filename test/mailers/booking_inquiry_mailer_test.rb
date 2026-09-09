@@ -21,11 +21,25 @@ class BookingInquiryMailerTest < ActionMailer::TestCase
 
   test "guest acceptance confirms the stay" do
     inquiry = create_inquiry
+    inquiry.accept!
     mail = BookingInquiryMailer.with(booking_inquiry: inquiry).guest_acceptance
 
     assert_equal [ "guest@example.com" ], mail.to
     assert_match "confirmed", mail.subject
     assert_match "is confirmed", mail.body.encoded
+  end
+
+  test "French acceptance uses the inquiry locale and snapshotted price" do
+    StayRule.current.update!(nightly_price_eur: 68, airbnb_nightly_price_eur: 71)
+    inquiry = create_inquiry(locale: "fr")
+    inquiry.accept!
+    StayRule.current.update!(nightly_price_eur: 65, airbnb_nightly_price_eur: 70)
+
+    mail = BookingInquiryMailer.with(booking_inquiry: inquiry.reload).guest_acceptance
+
+    assert_match "1 octobre 2026", mail.body.decoded
+    assert_match "136 € au total \(68 € la nuit\)", mail.body.decoded
+    assert_match "locale=fr", mail.body.decoded
   end
 
   test "guest decline does not expose admin details" do
@@ -39,7 +53,7 @@ class BookingInquiryMailerTest < ActionMailer::TestCase
 
   private
 
-  def create_inquiry
+  def create_inquiry(locale: "en")
     BookingInquiry.create!(
       check_in: Date.new(2026, 10, 1),
       check_out: Date.new(2026, 10, 3),
@@ -47,7 +61,7 @@ class BookingInquiryMailerTest < ActionMailer::TestCase
       children: 0,
       guest_name: "Guest",
       email: "guest@example.com",
-      locale: "en"
+      locale: locale
     )
   end
 end

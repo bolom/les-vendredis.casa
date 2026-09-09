@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_09_08_153000) do
+ActiveRecord::Schema[8.0].define(version: 2026_09_09_210000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "btree_gist"
   enable_extension "pg_catalog.plpgsql"
@@ -91,8 +91,14 @@ ActiveRecord::Schema[8.0].define(version: 2026_09_08_153000) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "public_reference", null: false
+    t.decimal "accepted_nightly_price_eur", precision: 10, scale: 2
+    t.decimal "accepted_total_price_eur", precision: 10, scale: 2
+    t.decimal "accepted_airbnb_nightly_price_eur", precision: 10, scale: 2
     t.index ["availability_block_id"], name: "index_booking_inquiries_on_availability_block_id"
     t.index ["public_reference"], name: "index_booking_inquiries_on_public_reference", unique: true
+    t.check_constraint "accepted_airbnb_nightly_price_eur IS NULL OR accepted_airbnb_nightly_price_eur > 0::numeric", name: "booking_inquiries_positive_accepted_airbnb_price"
+    t.check_constraint "accepted_nightly_price_eur IS NULL OR accepted_nightly_price_eur > 0::numeric", name: "booking_inquiries_positive_accepted_nightly_price"
+    t.check_constraint "accepted_total_price_eur IS NULL OR accepted_total_price_eur > 0::numeric", name: "booking_inquiries_positive_accepted_total_price"
     t.check_constraint "adults >= 1", name: "booking_inquiries_adults_positive"
     t.check_constraint "check_out > check_in", name: "booking_inquiries_valid_date_range"
     t.check_constraint "children >= 0", name: "booking_inquiries_children_not_negative"

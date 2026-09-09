@@ -6,6 +6,7 @@ class BookingInquiry < ApplicationRecord
   belongs_to :availability_block, optional: true
 
   before_validation :assign_public_reference, if: :new_record?
+  before_validation :snapshot_accepted_price, if: :accepting?
   after_create :record_submission_notifications
   after_update :record_status_notification
 
@@ -87,6 +88,17 @@ class BookingInquiry < ApplicationRecord
   end
 
   private
+
+  def accepting?
+    status_accepted? && will_save_change_to_status?
+  end
+
+  def snapshot_accepted_price
+    rule = StayRule.current
+    self.accepted_nightly_price_eur ||= rule.nightly_price_eur
+    self.accepted_total_price_eur ||= rule.price_for(nights)
+    self.accepted_airbnb_nightly_price_eur ||= rule.airbnb_nightly_price_eur
+  end
 
   def record_submission_notifications
     BookingNotification.record!(self, "owner_notification")

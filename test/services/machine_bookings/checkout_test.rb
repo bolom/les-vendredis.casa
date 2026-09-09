@@ -32,6 +32,8 @@ class MachineBookingsCheckoutTest < ActiveSupport::TestCase
     result = checkout.call(proof, @guest)
     assert_equal "paid", result.status
     assert result.booking_inquiry.status_accepted?
+    assert_equal 74, result.booking_inquiry.accepted_nightly_price_eur
+    assert_equal 148, result.booking_inquiry.accepted_total_price_eur
     assert_equal "confirmed", result.availability_block.status
     assert_equal "148000000", result.requirements["amount"]
     assert_no_difference [ "BookingInquiry.count", "AvailabilityBlock.count" ] do

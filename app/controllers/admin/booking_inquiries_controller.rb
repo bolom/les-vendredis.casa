@@ -48,6 +48,8 @@ module Admin
     # Human-language price for the inquiry screen: the configured nightly
     # price times the requested nights, when a price is configured at all.
     def compute_inquiry_price(inquiry)
+      return inquiry.accepted_total_price_eur if inquiry.status_accepted?
+
       price = StayRule.current.nightly_price_eur
       return nil if price.blank?
 

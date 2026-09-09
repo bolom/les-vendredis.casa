@@ -16,9 +16,13 @@ class BookingInquiryMailer < ApplicationMailer
 
   def guest_acceptance
     @booking_inquiry = params[:booking_inquiry]
-    @price = StayRule.current.price_for(@booking_inquiry.nights)
-    @nightly_price = StayRule.current.nightly_price_eur
-    @confirmation_url = booking_inquiry_url(@booking_inquiry.public_reference, host: AppConfig.fetch("APP_HOST", :app, :host, default: "lesvendredis.casa"))
+    @price = @booking_inquiry.accepted_total_price_eur
+    @nightly_price = @booking_inquiry.accepted_nightly_price_eur
+    @confirmation_url = booking_inquiry_url(
+      @booking_inquiry.public_reference,
+      locale: @booking_inquiry.locale,
+      host: AppConfig.fetch("APP_HOST", :app, :host, default: "lesvendredis.casa")
+    )
     I18n.with_locale(@booking_inquiry.locale) do
       mail(
         to: @booking_inquiry.email,
