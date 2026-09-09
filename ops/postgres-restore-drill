@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+backup_dir="${LES_VENDREDIS_BACKUP_DIR:-/var/backups/les-vendredis}"
+backup_file="${1:-$(find "${backup_dir}" -type f -name 'les-vendredis-*.dump' -print | sort | tail -1)}"
+drill_container="les-vendredis-restore-drill-$$"
+
+if [[ -z "${backup_file}" || ! -s "${backup_file}" ]]; then
+  echo "No non-empty PostgreSQL backup found" >&2
+  exit 1
+fi
+
+cleanup() {
+  docker rm --force "${drill_container}" >/dev/null 2>&1 || true
+}
+trap cleanup EXIT
+
+docker run --detach --name "${drill_container}" \
+  --env POSTGRES_USER=les_vendredis \
+  --env POSTGRES_PASSWORD=restore-drill-only \
+  --env POSTGRES_DB=les_vendredis_restore \
+  postgres:16 >/dev/null
+
+for _attempt in {1..30}; do
+  if docker exec "${drill_container}" pg_isready --username les_vendredis --dbname les_vendredis_restore >/dev/null 2>&1; then
+    break
+  fi
+  sleep 1
+done
+docker exec "${drill_container}" pg_isready --username les_vendredis --dbname les_vendredis_restore >/dev/null
+
+docker cp "${backup_file}" "${drill_container}:/tmp/restore.dump"
+docker exec "${drill_container}" pg_restore \
+  --username les_vendredis \
+  --dbname les_vendredis_restore \
+  --clean --if-exists --no-owner --no-privileges \
+  /tmp/restore.dump
+
+table_count="$(docker exec "${drill_container}" psql --username les_vendredis --dbname les_vendredis_restore --tuples-only --no-align --command "SELECT count(*) FROM pg_tables WHERE schemaname = 'public';")"
+if [[ "${table_count}" -lt 1 ]]; then
+  echo "Restore drill failed: restored database has no public tables" >&2
+  exit 1
+fi
+
+echo "Restore drill passed: ${table_count} public tables restored from ${backup_file}"

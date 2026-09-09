@@ -104,7 +104,7 @@ module HouseState
         list << {
           kind: "calendar_sync_stale",
           target: "calendar_import:#{import.provider}",
-          message: "#{import.provider} has not synced in the last 30 minutes.",
+          message: "#{import.provider} has not synced in the last #{import.freshness_threshold_description}.",
           action: "sync_calendars"
         }
       end

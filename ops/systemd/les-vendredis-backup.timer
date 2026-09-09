@@ -1,0 +1,11 @@
+[Unit]
+Description=Run Les Vendredis PostgreSQL backup daily
+
+[Timer]
+OnCalendar=*-*-* 02:15:00 UTC
+Persistent=true
+RandomizedDelaySec=10m
+Unit=les-vendredis-backup.service
+
+[Install]
+WantedBy=timers.target

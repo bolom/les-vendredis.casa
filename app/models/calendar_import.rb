@@ -1,5 +1,9 @@
 class CalendarImport < ApplicationRecord
   PROVIDERS = %w[airbnb booking].freeze
+  DEFAULT_FRESHNESS_THRESHOLDS = {
+    "airbnb" => 4.hours,
+    "booking" => 4.hours
+  }.freeze
 
   has_many :calendar_events, dependent: :destroy
 
@@ -13,6 +17,26 @@ class CalendarImport < ApplicationRecord
   end
 
   def stale?
-    last_synced_at.blank? || last_synced_at < 30.minutes.ago
+    last_synced_at.blank? || last_synced_at < freshness_threshold.ago
+  end
+
+  def freshness_threshold
+    configured_minutes = AppConfig.fetch(
+      "#{provider.upcase}_ICAL_STALE_AFTER_MINUTES",
+      :calendars,
+      :"#{provider}_stale_after_minutes",
+      default: DEFAULT_FRESHNESS_THRESHOLDS.fetch(provider).in_minutes.to_i
+    )
+
+    Integer(configured_minutes).minutes
+  rescue ArgumentError, TypeError
+    raise ArgumentError, "Invalid iCal freshness threshold for #{provider}: #{configured_minutes.inspect}"
+  end
+
+  def freshness_threshold_description
+    minutes = freshness_threshold.in_minutes.to_i
+    return "#{minutes / 60} hours" if (minutes % 60).zero?
+
+    "#{minutes} minutes"
   end
 end
