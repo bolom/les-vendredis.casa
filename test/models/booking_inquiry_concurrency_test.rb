@@ -22,13 +22,19 @@ class BookingInquiryConcurrencyTest < ActiveSupport::TestCase
       locale: "en"
     )
 
+    ready = Queue.new
+    start = Queue.new
     threads = 2.times.map do
       Thread.new do
         ActiveRecord::Base.connection_pool.with_connection do
+          thread_inquiry = BookingInquiry.find(inquiry.id)
+          ready << true
+          start.pop
+
           outcome = nil
           5.times do
             begin
-              outcome = inquiry.reload.accept!
+              outcome = thread_inquiry.reload.accept!
               break
             rescue ActiveRecord::RecordNotFound
               sleep 0.05
@@ -38,6 +44,8 @@ class BookingInquiryConcurrencyTest < ActiveSupport::TestCase
         end
       end
     end
+    2.times { ready.pop }
+    2.times { start << true }
     outcomes = threads.map(&:value).compact
 
     assert_equal 1, outcomes.select { |outcome| outcome != false }.size
