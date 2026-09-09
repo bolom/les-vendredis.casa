@@ -1,17 +1,67 @@
 <% if @booking_inquiry.locale == "fr" %>
 Bonjour <%= @booking_inquiry.guest_name %>,
 
-Votre séjour aux Vendredis est confirmé du <%= @booking_inquiry.check_in %> au <%= @booking_inquiry.check_out %>.
+Votre séjour aux Vendredis est confirmé. Voici tout ce qu'il faut savoir.
 
-Nous revenons vers vous avec les derniers détails pratiques.
-
+RÉSERVATION
+Arrivée : <%= l(@booking_inquiry.check_in, format: "%-d %B %Y") %>
+Départ : <%= l(@booking_inquiry.check_out, format: "%-d %B %Y") %>
+Durée : <%= @booking_inquiry.nights %> nuit<%= "s" if @booking_inquiry.nights > 1 %>
+Voyageurs : <%= @booking_inquiry.adults %> adulte<%= "s" if @booking_inquiry.adults > 1 %><%= ", #{@booking_inquiry.children} enfant#{'s' if @booking_inquiry.children > 1}" if @booking_inquiry.children.positive? %>
 Référence : <%= @booking_inquiry.public_reference %>
+<% if @price.present? %>
+Prix : <%= @price.round %> € au total<%= " (#{@nightly_price.round} € la nuit)" if @nightly_price.present? %>
+<% end %>
+OÙ NOUS TROUVER
+Les Vendredis
+Quartier Montravail, route de Zaire
+Sainte-Luce, Martinique
+La cabane est à 250 m d'altitude, dans la forêt. Les plages de Sainte-Luce sont à 5 minutes en voiture. Une voiture est fortement recommandée.
+
+ARRIVÉE ET DÉPART
+Pas de boîte à clés ni de code : nous vous accueillons nous-mêmes ou organisons un contact humain. Prévenez-nous de votre heure d'arrivée.
+
+BON À SAVOIR
+- Pas de climatisation, pas de télévision, WiFi limité : le lieu est pensé pour déconnecter. Les alizés rafraîchissent la cabane la nuit.
+- Votre animal est le bienvenu.
+- Le jardin privatif fait 600 m².
+
+Votre réservation : <%= @confirmation_url %>
+
+À très bientôt,
+Bolo — Les Vendredis
+hello@lesvendredis.casa
 <% else %>
 Hello <%= @booking_inquiry.guest_name %>,
 
-Your stay at Les Vendredis is confirmed from <%= @booking_inquiry.check_in %> to <%= @booking_inquiry.check_out %>.
+Your stay at Les Vendredis is confirmed. Here is everything you need to know.
 
-We will follow up with the final practical details.
-
+BOOKING
+Check-in: <%= l(@booking_inquiry.check_in, format: "%-d %B %Y") %>
+Check-out: <%= l(@booking_inquiry.check_out, format: "%-d %B %Y") %>
+Length: <%= @booking_inquiry.nights %> night<%= "s" if @booking_inquiry.nights > 1 %>
+Guests: <%= @booking_inquiry.adults %> adult<%= "s" if @booking_inquiry.adults > 1 %><%= ", #{@booking_inquiry.children} child#{'ren' if @booking_inquiry.children > 1}" if @booking_inquiry.children.positive? %>
 Reference: <%= @booking_inquiry.public_reference %>
+<% if @price.present? %>
+Price: €<%= @price.round %> total<%= " (€#{@nightly_price.round} per night)" if @nightly_price.present? %>
+<% end %>
+FINDING US
+Les Vendredis
+Quartier Montravail, route de Zaire
+Sainte-Luce, Martinique
+The cabin sits at 250 m altitude, surrounded by forest. The beaches of Sainte-Luce are a 5-minute drive away. A car is strongly recommended.
+
+ARRIVAL AND DEPARTURE
+No lockbox, no code: we welcome you ourselves or arrange a human handover. Let us know your arrival time.
+
+GOOD TO KNOW
+- No air conditioning, no TV, limited WiFi: the place is meant for disconnecting. Trade winds cool the cabin at night.
+- Your pet is welcome.
+- The private garden is 600 m².
+
+Your booking: <%= @confirmation_url %>
+
+See you soon,
+Bolo — Les Vendredis
+hello@lesvendredis.casa
 <% end %>

@@ -23,6 +23,7 @@ class BookingInquiriesController < ApplicationController
 
   def show
     @booking_inquiry = BookingInquiry.find_by!(public_reference: params[:id])
+    @price = StayRule.current.price_for(@booking_inquiry.nights) if @booking_inquiry.status_accepted?
   end
 
   private

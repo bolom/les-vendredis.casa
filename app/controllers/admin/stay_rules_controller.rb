@@ -17,6 +17,7 @@ module Admin
     def stay_rule_params
       permitted = params.require(:stay_rule).permit(
         :nightly_price_eur,
+        :airbnb_nightly_price_eur,
         :minimum_nights,
         :maximum_nights,
         :maximum_adults,

@@ -1,5 +1,7 @@
 class StayRule < ApplicationRecord
   validates :nightly_price_eur, numericality: { greater_than: 0, less_than_or_equal_to: 100_000 }, allow_nil: true
+  validates :airbnb_nightly_price_eur, numericality: { greater_than: 0, less_than_or_equal_to: 100_000 }, allow_nil: true
+  validate :direct_price_cheaper_than_airbnb
   validates :minimum_nights, numericality: { only_integer: true, greater_than_or_equal_to: 1 }, allow_nil: true
   validates :maximum_nights, numericality: { only_integer: true, greater_than_or_equal_to: 1 }, allow_nil: true
   validates :maximum_adults, numericality: { only_integer: true, greater_than_or_equal_to: 1 }
@@ -12,6 +14,24 @@ class StayRule < ApplicationRecord
 
   def self.current
     active.order(updated_at: :desc).first || new
+  end
+
+  # What the guest pays for a stay: the direct nightly price times the
+  # nights. Nil when no price is configured yet.
+  def price_for(nights)
+    return nil if nightly_price_eur.blank?
+
+    nightly_price_eur * nights
+  end
+
+  # The whole point of booking direct is paying less than the platforms, so a
+  # direct price at or above the Airbnb reference for the same dates is a
+  # configuration error, not a choice. Enforced again by a DB check constraint.
+  def direct_price_cheaper_than_airbnb
+    return if nightly_price_eur.blank? || airbnb_nightly_price_eur.blank?
+    return if nightly_price_eur < airbnb_nightly_price_eur
+
+    errors.add(:nightly_price_eur, "must be lower than the Airbnb price for the same dates")
   end
 
   def validate_stay(stay)
