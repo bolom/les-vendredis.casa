@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get "fr/journal" => "journal_posts#index", defaults: { locale: "fr" }, as: :french_journal
   get "fr/journal/:slug" => "journal_posts#show", defaults: { locale: "fr" }, as: :french_journal_post
   get "availability" => "availability#show"
+  get "calendar/:token.ics" => "calendar_exports#show", as: :calendar_export, format: false
   get "rules" => "machine_bookings#rules"
   post "quote" => "machine_bookings#quote"
   post "book" => "machine_bookings#book"

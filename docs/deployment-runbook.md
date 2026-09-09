@@ -22,6 +22,9 @@ Application runtime secrets (`SECRET_KEY_BASE`, `DATABASE_URL`, `RESEND_API_KEY`
 calendar URLs, x402 settings) live in `config/credentials.yml.enc`, unlocked by
 `RAILS_MASTER_KEY`.
 
+The private outbound calendar token and the Airbnb/Booking subscription steps
+are documented in [`docs/ical-export.md`](ical-export.md).
+
 The Infomaniak experimental web server is configured in `.kamal/secrets-common` as `KAMAL_INFOMANIAK_HOST=185.143.102.224`.
 
 Create the vault/items skeleton:
@@ -90,6 +93,8 @@ Before cutover:
 - Freeze changes on the old system.
 - Export any manual booking/blocking state.
 - Run final iCal sync after deploy.
+- Configure `calendars.export_token`, subscribe Airbnb and Booking.com to the
+  private export URL, and verify the feed as described in `docs/ical-export.md`.
 
 Deploy:
 
