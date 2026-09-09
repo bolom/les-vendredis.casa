@@ -14,10 +14,11 @@ sa valeur dans Git, un ticket, un log ou une capture d'écran.
 L'URL à fournir aux plateformes est :
 
 ```text
-https://lesvendredis.casa/calendar/<TOKEN>.ics
+https://lesvendredis.casa/calendar/export.ics?token=<TOKEN>
 ```
 
-Une requête sans le bon token retourne `404`. Le flux ne contient ni nom, ni
+Le token reste dans le paramètre `token`, que Rails masque dans ses logs. Une
+requête sans le bon token retourne `404`. Le flux ne contient ni nom, ni
 email, ni téléphone, ni référence de réservation : chaque période porte
 seulement le libellé `Unavailable`.
 

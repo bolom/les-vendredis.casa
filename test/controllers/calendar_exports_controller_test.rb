@@ -22,6 +22,7 @@ class CalendarExportsControllerTest < ActionDispatch::IntegrationTest
 
     assert_response :success
     assert_equal "text/calendar", response.media_type
+    assert_equal "no-cache", response.headers["cache-control"]
     assert_includes response.body, "BEGIN:VCALENDAR\r\n"
     assert_includes response.body, "UID:availability-block-#{direct.id}@lesvendredis.casa"
     assert_includes response.body, "DTSTART;VALUE=DATE:20261101"
@@ -52,6 +53,21 @@ class CalendarExportsControllerTest < ActionDispatch::IntegrationTest
     get calendar_export_path(token: "wrong-token")
 
     assert_response :not_found
+  end
+
+  test "returns not found without a token" do
+    get calendar_export_path
+
+    assert_response :not_found
+  end
+
+  test "keeps the token out of the route path" do
+    url = calendar_export_path(token: "test-export-token")
+    get url
+
+    assert_equal "/calendar/export.ics?token=test-export-token", url
+    assert_not_includes URI.parse(url).path, "test-export-token"
+    assert_equal "/calendar/export.ics?token=[FILTERED]", request.filtered_path
   end
 
   private
