@@ -26,6 +26,31 @@ module BookingInquiries
     raise Error, "this inquiry cannot be declined"
   end
 
+  # Records a stay already agreed with the guest outside the public form
+  # (WhatsApp, email, phone). Deliberately does NOT accept it: no dates are
+  # blocked and no guest email is sent — acceptance stays a human decision in
+  # the admin, which is where the confirmation email originates. The owner is
+  # still notified, because that is the signal to go and accept it.
+  def record(check_in:, check_out:, guest_name:, email:, adults: 1, children: 0,
+             phone: nil, message: nil, locale: "fr")
+    inquiry = BookingInquiry.new(
+      check_in: check_in,
+      check_out: check_out,
+      guest_name: guest_name,
+      email: email,
+      adults: adults,
+      children: children,
+      phone: phone,
+      message: message,
+      locale: locale
+    )
+    inquiry.skip_guest_acknowledgement = true
+    inquiry.save!
+    inquiry
+  rescue ActiveRecord::RecordInvalid => error
+    raise Error, error.record.errors.full_messages.to_sentence
+  end
+
   # Cancelling an accepted booking releases its dates: the linked block is
   # cancelled first, then the inquiry. Guards on the block model (managed
   # stay, unresolved payment) still apply and surface as domain errors.

@@ -11,6 +11,7 @@ class AgentToken < ApplicationRecord
   MUTATION_PERMISSIONS = %w[
     block_dates
     cancel_block
+    record_booking
     accept_booking
     decline_booking
     cancel_booking

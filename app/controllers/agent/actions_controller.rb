@@ -34,6 +34,26 @@ module Agent
       end
     end
 
+    # Records a stay agreed with the guest outside the public form. No dates
+    # are blocked and no guest email is sent: accepting the inquiry stays a
+    # human decision in the admin, where the confirmation email originates.
+    def record_booking
+      run_agent_action!(permission: "record_booking", action: "record_booking") do
+        inquiry = BookingInquiries.record(
+          check_in: required_date(:check_in),
+          check_out: required_date(:check_out),
+          guest_name: required_string(:guest_name),
+          email: required_string(:email),
+          adults: integer_param(:adults, default: 1),
+          children: integer_param(:children, default: 0),
+          phone: params[:phone].presence,
+          message: params[:message].presence,
+          locale: locale_param
+        )
+        [ inquiry, inquiry_json(inquiry) ]
+      end
+    end
+
     def decline_booking
       inquiry = find_inquiry
       run_agent_action!(permission: "decline_booking", action: "decline_booking", target: inquiry) do
@@ -125,6 +145,23 @@ module Agent
       Date.iso8601(value)
     rescue ArgumentError, TypeError
       raise Agent::Errors::UnprocessableError, "#{name} must be an ISO date"
+    end
+
+    def required_string(name)
+      params[name].presence or raise Agent::Errors::UnprocessableError, "#{name} is required"
+    end
+
+    def integer_param(name, default:)
+      value = params[name].presence
+      return default if value.nil?
+
+      Integer(value)
+    rescue ArgumentError, TypeError
+      raise Agent::Errors::UnprocessableError, "#{name} must be an integer"
+    end
+
+    def locale_param
+      params[:locale].presence_in(%w[en fr]) || "fr"
     end
 
     def required_provider

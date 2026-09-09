@@ -12,7 +12,7 @@ class AgentApiTest < ActionDispatch::IntegrationTest
     setup do
       @token_record, @token = AgentToken.generate!(
         name: "nox",
-        permissions: %w[read block_dates cancel_block accept_booking cancel_booking]
+        permissions: %w[read block_dates cancel_block record_booking accept_booking cancel_booking]
       )
     end
 
@@ -146,6 +146,103 @@ class AgentApiTest < ActionDispatch::IntegrationTest
              headers: auth_header(@token).merge("Idempotency-Key" => "qa-key-4")
       end
       assert_response :ok
+    end
+
+    test "record_booking stores an agreed stay without blocking dates or emailing the guest" do
+      assert_difference -> { BookingInquiry.count }, 1 do
+        assert_no_difference -> { AvailabilityBlock.count } do
+          post "/agent/booking_requests", params: {
+            check_in: "2027-01-08", check_out: "2027-01-10",
+            guest_name: "Lou Le Landais", email: "lou.llandais@gmail.com",
+            phone: "+590690927149", adults: 2, locale: "fr"
+          }, headers: auth_header(@token)
+        end
+      end
+
+      assert_response :ok
+      result = response.parsed_body["result"].last
+      inquiry = BookingInquiry.order(:id).last
+      assert_equal "new", inquiry.status
+      assert_nil inquiry.availability_block_id
+      assert_equal "Lou Le Landais", inquiry.guest_name
+      assert_equal 2, inquiry.nights
+      assert_equal inquiry.public_reference, result["reference"]
+    end
+
+    test "record_booking keeps dates that are currently blocked, acceptance re-checks later" do
+      AvailabilityBlock.create!(
+        starts_on: Date.new(2027, 1, 1), ends_on: Date.new(2027, 12, 31),
+        kind: "manual_closure", source: "manual", status: "confirmed"
+      )
+
+      post "/agent/booking_requests", params: {
+        check_in: "2027-01-08", check_out: "2027-01-10",
+        guest_name: "Lou Le Landais", email: "lou.llandais@gmail.com"
+      }, headers: auth_header(@token)
+
+      assert_response :ok
+      assert_equal "new", BookingInquiry.order(:id).last.status
+    end
+
+    test "record_booking notifies the owner but never sends the guest acknowledgement" do
+      assert_enqueued_email = -> { ActionMailer::Base.deliveries.size }
+      before = assert_enqueued_email.call
+
+      post "/agent/booking_requests", params: {
+        check_in: "2027-01-08", check_out: "2027-01-10",
+        guest_name: "Lou Le Landais", email: "lou.llandais@gmail.com", locale: "fr"
+      }, headers: auth_header(@token)
+
+      assert_response :ok
+      events = BookingNotification.order(:id).last(2).map(&:event)
+      assert_includes events, "owner_notification"
+      assert_not_includes events, "guest_acknowledgement"
+      assert_equal before, ActionMailer::Base.deliveries.size
+    end
+
+    test "record_booking without the capability is an explicit 403" do
+      _record, read_only = AgentToken.generate!(name: "readonly-record")
+
+      assert_no_difference -> { BookingInquiry.count } do
+        post "/agent/booking_requests", params: {
+          check_in: "2027-01-08", check_out: "2027-01-10",
+          guest_name: "Lou", email: "lou@example.com"
+        }, headers: auth_header(read_only)
+      end
+      assert_response :forbidden
+      assert_equal "record_booking", response.parsed_body["missing_permission"]
+    end
+
+    test "record_booking rejects missing fields and bad dates as json 422" do
+      post "/agent/booking_requests", params: { check_in: "2027-01-08", check_out: "2027-01-10" },
+           headers: auth_header(@token)
+      assert_response :unprocessable_entity
+      assert_match(/guest_name is required/, response.parsed_body["error"])
+
+      post "/agent/booking_requests", params: {
+        check_in: "2027-01-10", check_out: "2027-01-08",
+        guest_name: "Lou", email: "lou@example.com"
+      }, headers: auth_header(@token)
+      assert_response :unprocessable_entity
+      assert_equal "application/json", response.media_type
+    end
+
+    test "record_booking is idempotent under the same key" do
+      headers = auth_header(@token).merge("Idempotency-Key" => "record-key-1")
+      params = {
+        check_in: "2027-01-08", check_out: "2027-01-10",
+        guest_name: "Lou Le Landais", email: "lou.llandais@gmail.com"
+      }
+
+      post "/agent/booking_requests", params: params, headers: headers
+      assert_response :ok
+      first_body = response.parsed_body
+
+      assert_no_difference -> { BookingInquiry.count } do
+        post "/agent/booking_requests", params: params, headers: headers
+      end
+      assert_response :ok
+      assert_equal first_body, response.parsed_body
     end
 
     private
