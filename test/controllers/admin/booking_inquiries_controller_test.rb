@@ -98,6 +98,64 @@ module Admin
       assert inquiry.reload.status_cancelled?
     end
 
+    test "admin can cancel an accepted stay and the dates become available again" do
+      sign_in_as users(:one)
+      inquiry = create_inquiry
+      post accept_admin_booking_inquiry_path(inquiry)
+      assert_equal "accepted", inquiry.reload.status
+
+      assert_enqueued_jobs 1, only: BookingNotificationJob do
+        post cancel_admin_booking_inquiry_path(inquiry)
+      end
+
+      assert_redirected_to admin_booking_inquiry_path(inquiry)
+      assert_equal "cancelled", inquiry.reload.status
+      assert_equal "cancelled", inquiry.availability_block.reload.status
+
+      follow_redirect!
+      assert_match(/Séjour annulé/, flash[:notice])
+
+      get availability_path, params: { from: "2026-10-01", to: "2026-10-02" }
+      assert_equal true, response.parsed_body.dig("days", 0, "available")
+    end
+
+    test "cancel asks for confirmation with human language" do
+      sign_in_as users(:one)
+      inquiry = create_inquiry
+      inquiry.accept!
+
+      get admin_booking_inquiry_path(inquiry)
+
+      assert_select "form[action='#{cancel_admin_booking_inquiry_path(inquiry)}'] [data-lv-confirm]"
+    end
+
+    test "cancel refuses while a payment is unresolved and notifies nobody" do
+      sign_in_as users(:one)
+      inquiry = create_inquiry
+      inquiry.accept!
+      block = inquiry.availability_block
+      block.update_columns(status: "tentative")
+      PaymentOrder.create!(
+        quote: { totalPrice: "148" }.as_json,
+        requirements: { scheme: "exact" }.as_json,
+        expires_at: 15.minutes.from_now,
+        status: "settling",
+        booking_inquiry_id: inquiry.id,
+        availability_block_id: block.id
+      )
+
+      assert_no_enqueued_jobs only: BookingNotificationJob do
+        post cancel_admin_booking_inquiry_path(inquiry)
+      end
+
+      assert_redirected_to admin_booking_inquiry_path(inquiry)
+      assert_equal "accepted", inquiry.reload.status
+      assert_equal "tentative", block.reload.status
+
+      follow_redirect!
+      assert_match(/règlement/, flash[:alert])
+    end
+
     private
 
     def create_inquiry

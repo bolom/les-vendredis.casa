@@ -19,22 +19,29 @@ module Admin
 
     def accept
       inquiry = BookingInquiry.find(params[:id])
-      inquiry.accept!
+      BookingInquiries.accept(inquiry)
       redirect_to admin_booking_inquiry_path(inquiry), notice: "Demande acceptée : les dates sont bloquées et le voyageur notifié."
-    rescue ActiveRecord::RecordInvalid
-      redirect_to admin_booking_inquiry_path(params[:id]), alert: "Les dates ne sont plus disponibles."
-    rescue ActiveRecord::StatementInvalid => error
-      raise unless error.cause.is_a?(PG::ExclusionViolation)
-
+    rescue BookingInquiries::Error
       redirect_to admin_booking_inquiry_path(params[:id]), alert: "Les dates ne sont plus disponibles."
     end
 
     def decline
       inquiry = BookingInquiry.find(params[:id])
-      inquiry.decline!
+      BookingInquiries.decline(inquiry)
       redirect_to admin_booking_inquiry_path(inquiry), notice: "Demande refusée : le voyageur est notifié."
-    rescue ActiveRecord::RecordInvalid
+    rescue BookingInquiries::Error
       redirect_to admin_booking_inquiry_path(params[:id]), alert: "Cette demande ne peut pas être refusée."
+    end
+
+    def cancel
+      inquiry = BookingInquiry.find(params[:id])
+      BookingInquiries.cancel(inquiry)
+      redirect_to admin_booking_inquiry_path(inquiry), notice: "Séjour annulé : le voyageur est notifié et les dates redeviennent disponibles."
+    rescue BookingInquiries::Error
+      message = inquiry.availability_block&.managed_by_payment? ?
+        "Ce séjour ne peut pas être annulé : le règlement est en cours, l'annulation se fait avec Bolo." :
+        "Ce séjour ne peut pas être annulé."
+      redirect_to admin_booking_inquiry_path(params[:id]), alert: message
     end
     private
 

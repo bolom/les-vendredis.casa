@@ -91,6 +91,28 @@ module ApplicationHelper
     t("admin.calendar_imports.platforms.#{provider}", default: provider)
   end
 
+  INQUIRY_STATUS_LABELS = {
+    "new" => "À traiter",
+    "contacted" => "En discussion",
+    "accepted" => "Acceptée",
+    "declined" => "Refusée",
+    "cancelled" => "Annulée"
+  }.freeze
+
+  def human_inquiry_status(status)
+    INQUIRY_STATUS_LABELS.fetch(status, status)
+  end
+
+  # Colour tone of an inquiry state badge: pending work stands out, terminal
+  # states stay neutral. The label itself always carries the meaning.
+  def inquiry_state_tone(status)
+    case status
+    when "new", "contacted" then :pending
+    when "accepted" then :ok
+    else :neutral
+    end
+  end
+
   # Simple two-state summary for the day-to-day screen: "À jour" when the last
   # sync succeeded recently, "Problème" otherwise. Details live in the
   # technical diagnostics screen only.

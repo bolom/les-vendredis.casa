@@ -10,10 +10,49 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_09_08_140000) do
+ActiveRecord::Schema[8.0].define(version: 2026_09_08_150020) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "btree_gist"
   enable_extension "pg_catalog.plpgsql"
+
+  create_table "agent_action_logs", force: :cascade do |t|
+    t.bigint "agent_token_id", null: false
+    t.string "action", null: false
+    t.string "target_type"
+    t.bigint "target_id"
+    t.string "result", default: "ok", null: false
+    t.jsonb "details", default: {}, null: false
+    t.string "request_key"
+    t.datetime "created_at", null: false
+    t.index ["agent_token_id", "created_at"], name: "index_agent_action_logs_on_agent_token_id_and_created_at"
+    t.index ["agent_token_id"], name: "index_agent_action_logs_on_agent_token_id"
+    t.index ["target_type", "target_id"], name: "index_agent_action_logs_on_target"
+  end
+
+  create_table "agent_idempotency_keys", force: :cascade do |t|
+    t.bigint "agent_token_id", null: false
+    t.string "key", null: false
+    t.string "action", null: false
+    t.string "result_status", null: false
+    t.jsonb "result_body", null: false
+    t.datetime "created_at", null: false
+    t.index ["agent_token_id", "key"], name: "index_agent_idempotency_keys_on_agent_token_id_and_key", unique: true
+    t.index ["agent_token_id"], name: "index_agent_idempotency_keys_on_agent_token_id"
+  end
+
+  create_table "agent_tokens", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "token_digest", null: false
+    t.string "token_prefix", null: false
+    t.boolean "active", default: true, null: false
+    t.jsonb "permissions", default: [], null: false
+    t.datetime "last_used_at"
+    t.datetime "revoked_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["token_digest"], name: "index_agent_tokens_on_token_digest", unique: true
+    t.index ["token_prefix"], name: "index_agent_tokens_on_token_prefix"
+  end
 
   create_table "availability_blocks", force: :cascade do |t|
     t.date "starts_on", null: false
@@ -27,10 +66,10 @@ ActiveRecord::Schema[8.0].define(version: 2026_09_08_140000) do
     t.datetime "updated_at", null: false
 
     t.check_constraint "ends_on > starts_on", name: "availability_blocks_valid_date_range"
-    t.check_constraint "kind::text = ANY (ARRAY['manual_closure'::character varying, 'direct_stay'::character varying]::text[])", name: "availability_blocks_valid_kind"
-    t.check_constraint "source::text = ANY (ARRAY['direct'::character varying, 'manual'::character varying]::text[])", name: "availability_blocks_valid_source"
-    t.check_constraint "status::text = ANY (ARRAY['tentative'::character varying, 'confirmed'::character varying, 'cancelled'::character varying]::text[])", name: "availability_blocks_valid_status"
-    t.exclusion_constraint "daterange(starts_on, ends_on, '[)'::text) WITH &&", where: "(status)::text = ANY ((ARRAY['tentative'::character varying, 'confirmed'::character varying])::text[])", using: :gist, name: "availability_blocks_no_overlap"
+    t.check_constraint "kind::text = ANY (ARRAY['manual_closure'::character varying::text, 'direct_stay'::character varying::text])", name: "availability_blocks_valid_kind"
+    t.check_constraint "source::text = ANY (ARRAY['direct'::character varying::text, 'manual'::character varying::text])", name: "availability_blocks_valid_source"
+    t.check_constraint "status::text = ANY (ARRAY['tentative'::character varying::text, 'confirmed'::character varying::text, 'cancelled'::character varying::text])", name: "availability_blocks_valid_status"
+    t.exclusion_constraint "daterange(starts_on, ends_on, '[)'::text) WITH &&", where: "(status)::text = ANY (ARRAY[('tentative'::character varying)::text, ('confirmed'::character varying)::text])", using: :gist, name: "availability_blocks_no_overlap"
   end
 
   create_table "booking_inquiries", force: :cascade do |t|
@@ -57,8 +96,8 @@ ActiveRecord::Schema[8.0].define(version: 2026_09_08_140000) do
     t.check_constraint "adults >= 1", name: "booking_inquiries_adults_positive"
     t.check_constraint "check_out > check_in", name: "booking_inquiries_valid_date_range"
     t.check_constraint "children >= 0", name: "booking_inquiries_children_not_negative"
-    t.check_constraint "locale::text = ANY (ARRAY['en'::character varying, 'fr'::character varying]::text[])", name: "booking_inquiries_valid_locale"
-    t.check_constraint "status::text = ANY (ARRAY['new'::character varying, 'contacted'::character varying, 'accepted'::character varying, 'declined'::character varying, 'cancelled'::character varying]::text[])", name: "booking_inquiries_valid_status"
+    t.check_constraint "locale::text = ANY (ARRAY['en'::character varying::text, 'fr'::character varying::text])", name: "booking_inquiries_valid_locale"
+    t.check_constraint "status::text = ANY (ARRAY['new'::character varying::text, 'contacted'::character varying::text, 'accepted'::character varying::text, 'declined'::character varying::text, 'cancelled'::character varying::text])", name: "booking_inquiries_valid_status"
   end
 
   create_table "booking_notifications", force: :cascade do |t|
@@ -91,7 +130,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_09_08_140000) do
     t.index ["calendar_import_id", "external_uid"], name: "index_calendar_events_on_calendar_import_id_and_external_uid", unique: true
     t.index ["calendar_import_id"], name: "index_calendar_events_on_calendar_import_id"
     t.check_constraint "ends_on > starts_on", name: "calendar_events_valid_date_range"
-    t.check_constraint "status::text = ANY (ARRAY['confirmed'::character varying, 'cancelled'::character varying]::text[])", name: "calendar_events_valid_status"
+    t.check_constraint "status::text = ANY (ARRAY['confirmed'::character varying::text, 'cancelled'::character varying::text])", name: "calendar_events_valid_status"
   end
 
   create_table "calendar_imports", force: :cascade do |t|
@@ -108,8 +147,8 @@ ActiveRecord::Schema[8.0].define(version: 2026_09_08_140000) do
     t.index ["provider"], name: "index_calendar_imports_on_provider", unique: true
     t.check_constraint "last_duration_ms IS NULL OR last_duration_ms >= 0", name: "calendar_imports_last_duration_not_negative"
     t.check_constraint "last_event_count IS NULL OR last_event_count >= 0", name: "calendar_imports_last_event_count_not_negative"
-    t.check_constraint "last_status::text = ANY (ARRAY['never_synced'::character varying, 'success'::character varying, 'failed'::character varying]::text[])", name: "calendar_imports_valid_last_status"
-    t.check_constraint "provider::text = ANY (ARRAY['airbnb'::character varying, 'booking'::character varying]::text[])", name: "calendar_imports_valid_provider"
+    t.check_constraint "last_status::text = ANY (ARRAY['never_synced'::character varying::text, 'success'::character varying::text, 'failed'::character varying::text])", name: "calendar_imports_valid_last_status"
+    t.check_constraint "provider::text = ANY (ARRAY['airbnb'::character varying::text, 'booking'::character varying::text])", name: "calendar_imports_valid_provider"
   end
 
   create_table "content_pages", force: :cascade do |t|
@@ -167,7 +206,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_09_08_140000) do
     t.index ["availability_block_id"], name: "index_payment_orders_on_availability_block_id"
     t.index ["booking_inquiry_id"], name: "index_payment_orders_on_booking_inquiry_id"
     t.index ["public_id"], name: "index_payment_orders_on_public_id", unique: true
-    t.check_constraint "status::text = ANY (ARRAY['quoted'::character varying, 'settling'::character varying, 'paid'::character varying, 'review'::character varying, 'refunded'::character varying, 'cancelled'::character varying]::text[])", name: "payment_orders_valid_status"
+    t.check_constraint "status::text = ANY (ARRAY['quoted'::character varying::text, 'settling'::character varying::text, 'paid'::character varying::text, 'review'::character varying::text, 'refunded'::character varying::text, 'cancelled'::character varying::text])", name: "payment_orders_valid_status"
   end
 
   create_table "sessions", force: :cascade do |t|
@@ -209,6 +248,8 @@ ActiveRecord::Schema[8.0].define(version: 2026_09_08_140000) do
     t.index ["email_address"], name: "index_users_on_email_address", unique: true
   end
 
+  add_foreign_key "agent_action_logs", "agent_tokens"
+  add_foreign_key "agent_idempotency_keys", "agent_tokens"
   add_foreign_key "booking_inquiries", "availability_blocks"
   add_foreign_key "booking_notifications", "booking_inquiries"
   add_foreign_key "calendar_events", "calendar_imports"
