@@ -53,6 +53,7 @@ Rails.application.routes.draw do
 
     post "blocks", to: "actions#block_dates"
     post "blocks/:id/cancel", to: "actions#cancel_block"
+    post "booking_requests", to: "actions#record_booking"
     post "booking_requests/:id/accept", to: "actions#accept_booking"
     post "booking_requests/:id/decline", to: "actions#decline_booking"
     post "booking_requests/:id/cancel", to: "actions#cancel_booking"

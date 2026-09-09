@@ -27,6 +27,10 @@ class BookingInquiry < ApplicationRecord
   validate :stay_rules_allow_requested_stay
   validate :future_arrival, if: :new_record?
   attr_accessor :contact_consent
+  # Set when an already-agreed stay is recorded on the guest's behalf: the
+  # owner must know, but the guest must not receive a "we received your
+  # request" email for a booking they did not submit.
+  attr_accessor :skip_guest_acknowledgement
   validates :contact_consent, acceptance: true, on: :public_submission
 
   def nights
@@ -81,7 +85,8 @@ class BookingInquiry < ApplicationRecord
   private
 
   def record_submission_notifications
-    %w[owner_notification guest_acknowledgement].each { |event| BookingNotification.record!(self, event) }
+    BookingNotification.record!(self, "owner_notification")
+    BookingNotification.record!(self, "guest_acknowledgement") unless skip_guest_acknowledgement
   end
 
   def record_status_notification
