@@ -12,13 +12,16 @@
     <%= javascript_include_tag "actions", "confirm", "admin-calendar", defer: true, "data-turbo-track": "reload" %>
   </head>
   <body class="admin-body">
+    <a class="admin-skip" href="#admin-content">Aller au contenu</a>
+
     <header class="admin-topbar">
       <div class="admin-topbar-inner">
-        <p class="admin-brand">Les Vendredis — Administration</p>
+        <p class="admin-brand">Les Vendredis <em>— Administration</em></p>
         <% if technical_access? %>
           <button type="button" class="admin-nav-toggle" data-lv-action="toggle-admin-technical" aria-expanded="false" aria-controls="admin-zone-technique">Section technique</button>
         <% end %>
       </div>
+
       <nav aria-label="Gestion de la maison">
         <ul class="admin-nav admin-zone-links">
           <li><span class="admin-zone" aria-hidden="true">Maison</span></li>
@@ -30,6 +33,7 @@
           <li><%= link_to "Journal", admin_journal_posts_path, class: admin_nav_class(admin_journal_posts_path) %></li>
         </ul>
       </nav>
+
       <% if technical_access? %>
         <nav aria-label="Section technique" id="admin-zone-technique">
           <ul class="admin-nav admin-nav--technical admin-zone-links">
@@ -43,7 +47,8 @@
         </nav>
       <% end %>
     </header>
-    <main class="admin-main">
+
+    <main class="admin-main" id="admin-content">
       <% if flash[:notice] %>
         <p class="admin-flash admin-flash--notice" role="status"><%= flash[:notice] %></p>
       <% end %>
@@ -52,8 +57,10 @@
       <% end %>
       <%= yield %>
     </main>
+
     <footer class="admin-footer">
       <p><%= link_to "Voir le site", root_path %></p>
+      <p>Les Vendredis · Sainte-Luce, Martinique</p>
     </footer>
   </body>
 </html>

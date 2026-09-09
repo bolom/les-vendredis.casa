@@ -1,9 +1,24 @@
 <h1>Accueil</h1>
+<p class="admin-definition">La maison en un coup d'œil : qui arrive, qui part, ce qu'il reste à traiter.</p>
 
 <div class="admin-shortcuts">
   <%= link_to "Bloquer des dates", new_admin_availability_block_path, class: "admin-button" %>
   <%= link_to "Voir le calendrier", admin_calendar_path, class: "admin-button admin-button--secondary" %>
 </div>
+
+<h2>Demandes à traiter</h2>
+<% if @inquiries_to_handle.any? %>
+  <ul class="admin-task-list">
+    <% @inquiries_to_handle.each do |inquiry| %>
+      <li>
+        <span><%= link_to inquiry.guest_name, admin_booking_inquiry_path(inquiry) %> · <%= human_date_range(inquiry.check_in, inquiry.check_out) %></span>
+        <span>reçue <%= human_ago(inquiry.created_at) %> · <%= link_to "Traiter", admin_booking_inquiry_path(inquiry) %></span>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p class="admin-definition">Aucune demande en attente.</p>
+<% end %>
 
 <h2>Prochaines arrivées</h2>
 <% if @upcoming_arrivals.any? %>
@@ -33,20 +48,6 @@
   <p class="admin-definition">Aucun départ dans les 14 prochains jours.</p>
 <% end %>
 
-<h2>Demandes à traiter</h2>
-<% if @inquiries_to_handle.any? %>
-  <ul class="admin-task-list">
-    <% @inquiries_to_handle.each do |inquiry| %>
-      <li>
-        <span><%= link_to inquiry.guest_name, admin_booking_inquiry_path(inquiry) %> · <%= human_date_range(inquiry.check_in, inquiry.check_out) %></span>
-        <span>reçue <%= human_ago(inquiry.created_at) %> · <%= link_to "Traiter", admin_booking_inquiry_path(inquiry) %></span>
-      </li>
-    <% end %>
-  </ul>
-<% else %>
-  <p class="admin-definition">Aucune demande en attente.</p>
-<% end %>
-
 <h2>Conflits de dates à vérifier</h2>
 <% if @date_conflicts.any? %>
   <ul class="admin-task-list">
@@ -67,7 +68,11 @@
     <% summary = calendar_sync_summary(calendar_import) %>
     <li>
       <span><span class="admin-state admin-state--<%= summary[:state] %>"><%= summary[:label] %></span></span>
-      <span><%= human_platform(calendar_import.provider) %> · <%= button_to "Réessayer maintenant", sync_admin_calendar_import_path(calendar_import), method: :post, data: { lv_confirm: "Relancer la synchronisation #{human_platform(calendar_import.provider)} maintenant ?" } %> · <%= link_to "Détails", admin_calendars_path %></span>
+      <span>
+        <%= human_platform(calendar_import.provider) %> ·
+        <%= button_to "Réessayer maintenant", sync_admin_calendar_import_path(calendar_import), method: :post, class: "admin-button--secondary", data: { lv_confirm: "Relancer la synchronisation #{human_platform(calendar_import.provider)} maintenant ?" } %> ·
+        <%= link_to "Détails", admin_calendars_path %>
+      </span>
     </li>
   <% end %>
 </ul>

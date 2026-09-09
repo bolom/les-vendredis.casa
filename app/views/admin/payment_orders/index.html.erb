@@ -7,25 +7,27 @@
   <%= submit_tag "Filtrer" %>
 <% end %>
 
-<table class="admin-table">
-  <thead>
-    <tr>
-      <th scope="col">Référence</th>
-      <th scope="col">Statut</th>
-      <th scope="col">Montant</th>
-      <th scope="col">Créé le</th>
-      <th scope="col">Expire le</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @payment_orders.each do |payment_order| %>
+<div class="admin-table-wrap">
+  <table class="admin-table">
+    <thead>
       <tr>
-        <td><%= link_to payment_order.public_id, admin_payment_order_path(payment_order) %></td>
-        <td><%= payment_order.status %></td>
-        <td><%= payment_order.requirements["amount"] %> unités</td>
-        <td><%= l(payment_order.created_at, format: :long) %></td>
-        <td><%= l(payment_order.expires_at, format: :long) %></td>
+        <th scope="col">Référence</th>
+        <th scope="col">Statut</th>
+        <th scope="col">Montant</th>
+        <th scope="col">Créé le</th>
+        <th scope="col">Expire le</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @payment_orders.each do |payment_order| %>
+        <tr>
+          <td><%= link_to payment_order.public_id, admin_payment_order_path(payment_order) %></td>
+          <td><%= human_payment_status(payment_order.status) %></td>
+          <td><%= payment_order.requirements["amount"] %> unités</td>
+          <td><%= l(payment_order.created_at, format: :long) %></td>
+          <td><%= l(payment_order.expires_at, format: :long) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

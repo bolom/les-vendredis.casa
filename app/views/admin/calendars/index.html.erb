@@ -1,26 +1,28 @@
 <h1>Calendriers</h1>
 <p class="admin-definition">Les réservations Airbnb et Booking.com arrivent automatiquement sur le calendrier. Si une plateforme affiche un problème, essaie d'abord « Réessayer maintenant ».</p>
 
-<table class="admin-table">
-  <thead>
-    <tr>
-      <th scope="col">Plateforme</th>
-      <th scope="col">État</th>
-      <th scope="col"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @calendar_imports.each do |calendar_import| %>
-      <% summary = calendar_sync_summary(calendar_import) %>
+<div class="admin-table-wrap">
+  <table class="admin-table">
+    <thead>
       <tr>
-        <td><%= human_platform(calendar_import.provider) %></td>
-        <td><span class="admin-state admin-state--<%= summary[:state] %>"><%= summary[:label] %></span></td>
-        <td>
-          <%= button_to "Réessayer maintenant", sync_admin_calendar_import_path(calendar_import), method: :post, data: { lv_confirm: "Relancer la synchronisation #{human_platform(calendar_import.provider)} maintenant ?" } %>
-        </td>
+        <th scope="col">Plateforme</th>
+        <th scope="col">État</th>
+        <th scope="col"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @calendar_imports.each do |calendar_import| %>
+        <% summary = calendar_sync_summary(calendar_import) %>
+        <tr>
+          <td><%= human_platform(calendar_import.provider) %></td>
+          <td><span class="admin-state admin-state--<%= summary[:state] %>"><%= summary[:label] %></span></td>
+          <td>
+            <%= button_to "Réessayer maintenant", sync_admin_calendar_import_path(calendar_import), method: :post, class: "admin-button--secondary", data: { lv_confirm: "Relancer la synchronisation #{human_platform(calendar_import.provider)} maintenant ?" } %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 
 <%= link_to "← Retour à l'accueil", admin_root_path, class: "admin-button admin-button--secondary" %>
