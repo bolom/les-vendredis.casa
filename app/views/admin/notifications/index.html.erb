@@ -2,28 +2,30 @@
 <p class="admin-definition">Notifications de réservation qui n'ont pas pu être envoyées. Le balayeur récurrent réessaie automatiquement.</p>
 
 <% if @notifications.any? %>
-  <table class="admin-table">
-    <thead>
-      <tr>
-        <th scope="col">Réservation</th>
-        <th scope="col">Événement</th>
-        <th scope="col">Essais</th>
-        <th scope="col">Dernière erreur</th>
-        <th scope="col">Dernier essai</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @notifications.each do |notification| %>
+  <div class="admin-table-wrap">
+    <table class="admin-table">
+      <thead>
         <tr>
-          <td><%= link_to notification.booking_inquiry.public_reference, admin_booking_inquiry_path(notification.booking_inquiry) %></td>
-          <td><%= notification.event %></td>
-          <td><%= notification.attempts %></td>
-          <td><%= notification.last_error %></td>
-          <td><%= notification.updated_at ? l(notification.updated_at, format: :long) : "—" %></td>
+          <th scope="col">Réservation</th>
+          <th scope="col">Événement</th>
+          <th scope="col">Essais</th>
+          <th scope="col">Dernière erreur</th>
+          <th scope="col">Dernier essai</th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+        <% @notifications.each do |notification| %>
+          <tr>
+            <td><%= link_to notification.booking_inquiry.public_reference, admin_booking_inquiry_path(notification.booking_inquiry) %></td>
+            <td><%= notification.event %></td>
+            <td><%= notification.attempts %></td>
+            <td><%= notification.last_error %></td>
+            <td><%= notification.updated_at ? l(notification.updated_at, format: :long) : "—" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 <% else %>
   <p class="admin-definition">Aucune notification en échec.</p>
 <% end %>
