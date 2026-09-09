@@ -1,6 +1,8 @@
 require "securerandom"
 
 class BookingInquiry < ApplicationRecord
+  class DatesUnavailable < StandardError; end
+
   belongs_to :availability_block, optional: true
 
   before_validation :assign_public_reference, if: :new_record?
@@ -43,7 +45,9 @@ class BookingInquiry < ApplicationRecord
     with_lock do
       return false if status_accepted?
       raise ActiveRecord::RecordInvalid, self unless status_new? || status_contacted?
-      raise ActiveRecord::RecordInvalid, self unless Availability::Check.new(from: check_in, to: check_out).available?(check_in: check_in, check_out: check_out)
+      unless Availability::Check.new(from: check_in, to: check_out).available?(check_in: check_in, check_out: check_out)
+        raise DatesUnavailable, "dates are no longer available"
+      end
 
       block = AvailabilityBlock.create!(
         starts_on: check_in,

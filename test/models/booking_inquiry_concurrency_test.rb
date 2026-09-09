@@ -32,6 +32,9 @@ class BookingInquiryConcurrencyTest < ActiveSupport::TestCase
               break
             rescue ActiveRecord::RecordNotFound
               sleep 0.05
+            rescue BookingInquiry::DatesUnavailable
+              outcome = false
+              break
             end
           end
           outcome
@@ -79,7 +82,7 @@ class BookingInquiryConcurrencyTest < ActiveSupport::TestCase
                 sleep 0.05
               end
             end
-          rescue ActiveRecord::StatementInvalid, ActiveRecord::RecordInvalid
+          rescue BookingInquiry::DatesUnavailable, ActiveRecord::StatementInvalid, ActiveRecord::RecordInvalid
             nil
           end
           inquiry.reload.status
@@ -146,6 +149,10 @@ class BookingInquiryConcurrencyTest < ActiveSupport::TestCase
   end
 
   test "concurrent purchases of overlapping dates charge exactly once" do
+    # Route helpers are loaded lazily in test. Initialize them before the two
+    # checkout threads both render the owner notification mailer.
+    Rails.application.routes.url_helpers.admin_booking_inquiry_url(0, host: "example.test")
+
     quote = MachineBookings::Quote.build(date: "2026-11-10", nights: 2, adults: 2, children: 0)
     orders = 2.times.map do
       PaymentOrder.create!(quote: quote.as_json, expires_at: 15.minutes.from_now, requirements: {

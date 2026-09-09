@@ -11,7 +11,7 @@ module BookingInquiries
   def accept(inquiry)
     inquiry.accept!
     inquiry
-  rescue ActiveRecord::RecordInvalid
+  rescue BookingInquiry::DatesUnavailable, ActiveRecord::RecordInvalid
     raise Error, "dates are no longer available"
   rescue ActiveRecord::StatementInvalid => error
     raise error unless error.cause.is_a?(PG::ExclusionViolation)
