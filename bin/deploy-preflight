@@ -23,7 +23,7 @@ if git ls-files | rg -q '(^|/)(\.env|.*\.(dump|sql|sqlite3))$'; then
 fi
 
 for file in $(git ls-files '.kamal/secrets*'); do
-  if rg -q '^(DATABASE_URL|AIRBNB_ICAL_URL|BOOKING_ICAL_URL|RAILS_MASTER_KEY|RESEND_API_KEY|SECRET_KEY_BASE|KAMAL_REGISTRY_PASSWORD)=[^$]' "$file"; then
+  if rg -q '^(DATABASE_URL|AIRBNB_ICAL_URL|BOOKING_ICAL_URL|ICAL_EXPORT_TOKEN|RAILS_MASTER_KEY|RESEND_API_KEY|SECRET_KEY_BASE|KAMAL_REGISTRY_PASSWORD)=[^$]' "$file"; then
     echo "raw secret value found in $file"
     exit 1
   fi
