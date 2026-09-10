@@ -26,6 +26,12 @@ class JournalPostTest < ActiveSupport::TestCase
     assert_equal [ "visible" ], JournalPost.published.pluck(:slug)
   end
 
+  test "public image path removes the filesystem public prefix" do
+    post = JournalPost.new(image_path: "/public/images/articles/story.webp")
+
+    assert_equal "/images/articles/story.webp", post.public_image_path
+  end
+
   private
 
   def create_post(slug:, published: true, published_on: Date.current)

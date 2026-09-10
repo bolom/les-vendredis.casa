@@ -19,7 +19,7 @@
 
     <% if @journal_post.image_path.present? %>
       <figure class="article-hero">
-        <%= image_tag @journal_post.image_path, alt: @journal_post.image_alt.presence || @journal_post.title, loading: "eager" %>
+        <%= image_tag @journal_post.public_image_path, alt: @journal_post.image_alt.presence || @journal_post.title, loading: "eager" %>
       </figure>
     <% end %>
 
