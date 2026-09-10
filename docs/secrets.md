@@ -14,7 +14,7 @@
 | `KAMAL_REGISTRY_PASSWORD` | 1Password vault `Compass Deploy` (Docker Hub access token, shared with the Compass deployments; fetched by `.kamal/secrets-common`) | GitHub Actions Secret (deploy CI) | Kamal image push/pull |
 | `SSH_PRIVATE_KEY` | Never in 1Password (keypair owned by GitHub Actions) | GitHub Actions Secret only | Deploy CI → VPS |
 | `GLITCHTIP_AUTH_TOKEN` | GlitchTip profile auth tokens | GitHub Actions Secret only | Register releases and deploys after a successful production deploy |
-| `GLITCHTIP_ORG`, `GLITCHTIP_PROJECT` | GlitchTip organization and project slugs | GitHub Actions Secrets | Select the GlitchTip project receiving release metadata |
+| `GLITCHTIP_ORG` | GlitchTip organization slug (`scionx`) | GitHub Actions Secret | Select the GlitchTip organization receiving release metadata |
 
 Why the mirrors exist: the automated deploy runs on GitHub Actions, which has
 no 1Password CLI session. The three values it needs (`RAILS_MASTER_KEY`,
@@ -53,5 +53,6 @@ only; real values are pasted in 1Password, never in the shell or repository.
   mirrored deliberately, never silently.
 - The deploy CI requires exactly: `SSH_PRIVATE_KEY`, `RAILS_MASTER_KEY`,
   `POSTGRES_PASSWORD`, `KAMAL_REGISTRY_PASSWORD`, `GLITCHTIP_AUTH_TOKEN`,
-  `GLITCHTIP_ORG`, `GLITCHTIP_PROJECT`
+  and `GLITCHTIP_ORG`. The workflow resolves project ID `7` to its slug
+  automatically through the GlitchTip API.
   (see `.github/workflows/deploy.yml`).
