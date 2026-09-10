@@ -123,7 +123,36 @@ If DNS was changed and application rollback is not enough, restore the previous 
 
 Monthly:
 
-- Restore latest PostgreSQL backup into a disposable database.
-- Boot Rails against it with production-like env.
-- Check admin dashboard, booking inquiries, availability blocks, calendar imports.
-- Delete disposable restore target.
+```bash
+sudo /usr/local/sbin/les-vendredis-postgres-restore-drill
+```
+
+The command restores the latest custom-format dump into a disposable PostgreSQL
+16 container, verifies that public tables exist, and always removes the
+container. It never connects the application to the restored database.
+
+## Backups and monitoring
+
+The VPS runs `les-vendredis-backup.timer` daily at 02:15 UTC (with up to ten
+minutes of randomized delay). Dumps are mode `0600` under
+`/var/backups/les-vendredis`; the default retention is 14 days. The source
+scripts and systemd units live under `ops/` and are installed with:
+
+```bash
+sudo install -m 0755 ops/postgres-backup /usr/local/sbin/les-vendredis-postgres-backup
+sudo install -m 0755 ops/postgres-restore-drill /usr/local/sbin/les-vendredis-postgres-restore-drill
+sudo install -m 0644 ops/systemd/les-vendredis-backup.service /etc/systemd/system/
+sudo install -m 0644 ops/systemd/les-vendredis-backup.timer /etc/systemd/system/
+sudo systemctl daemon-reload
+sudo systemctl enable --now les-vendredis-backup.timer
+```
+
+`Production Monitor` runs from GitHub Actions twice per hour. A failed workflow
+is the alert channel. It checks the production `/up` endpoint and, over SSH, verifies
+the web container, Solid Queue worker, failed jobs, iCal freshness, failed
+booking emails, administrator presence, and a non-empty backup newer than 26
+hours. Install its server-side check with:
+
+```bash
+sudo install -m 0755 ops/production-health-check /usr/local/sbin/les-vendredis-production-health-check
+```

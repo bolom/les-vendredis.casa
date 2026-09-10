@@ -8,16 +8,10 @@ class PaymentOrderTest < ActiveSupport::TestCase
       requirements: { scheme: "exact", network: "eip155:8453" }.as_json,
       expires_at: 15.minutes.from_now
     )
-    @previous_app_host = ENV["APP_HOST"]
-    ENV.delete("APP_HOST")
-  end
-
-  teardown do
-    @previous_app_host.nil? ? ENV.delete("APP_HOST") : ENV["APP_HOST"] = @previous_app_host
   end
 
   test "challenge defaults to the production resource url" do
-    challenge = @order.challenge
+    challenge = with_app_host("lesvendredis.casa") { @order.challenge }
     assert_equal 2, challenge[:x402Version]
     assert_equal "https://lesvendredis.casa/book?quote_id=#{@order.public_id}", challenge.dig(:resource, :url)
     assert_equal "application/json", challenge.dig(:resource, :mimeType)
@@ -25,27 +19,34 @@ class PaymentOrderTest < ActiveSupport::TestCase
   end
 
   test "challenge rejects the retired staging host" do
-    ENV["APP_HOST"] = "staging.lesvendredis.casa"
-    error = assert_raises(KeyError) { @order.challenge }
+    error = assert_raises(KeyError) do
+      with_app_host("staging.lesvendredis.casa") { @order.challenge }
+    end
     assert_match(/unauthorized APP_HOST/i, error.message)
   end
 
   test "challenge honours credentials app.host" do
-    original_fetch = AppConfig.method(:fetch)
-    AppConfig.define_singleton_method(:fetch) do |env_key, *credential_path, **kwargs|
-      credential_path == [ :app, :host ] ? "lesvendredis.casa" : original_fetch.call(env_key, *credential_path, **kwargs)
-    end
-    challenge = @order.challenge
+    challenge = with_app_host("lesvendredis.casa") { @order.challenge }
     assert_equal "https://lesvendredis.casa/book?quote_id=#{@order.public_id}", challenge.dig(:resource, :url)
-  ensure
-    AppConfig.define_singleton_method(:fetch, original_fetch)
   end
 
   test "challenge fails closed on an unauthorized host" do
-    ENV["APP_HOST"] = "attacker.example.test"
-    error = assert_raises(KeyError) { @order.challenge }
+    error = assert_raises(KeyError) do
+      with_app_host("attacker.example.test") { @order.challenge }
+    end
     assert_match(/unauthorized APP_HOST/i, error.message)
-    ENV["APP_HOST"] = "https://lesvendredis.casa"
-    assert_raises(KeyError) { @order.challenge }
+    assert_raises(KeyError) do
+      with_app_host("https://lesvendredis.casa") { @order.challenge }
+    end
+  end
+
+  private
+
+  def with_app_host(host)
+    original_fetch = AppConfig.method(:fetch)
+    AppConfig.define_singleton_method(:fetch) { |_env_key, *_credential_path, **_kwargs| host }
+    yield
+  ensure
+    AppConfig.define_singleton_method(:fetch, original_fetch)
   end
 end

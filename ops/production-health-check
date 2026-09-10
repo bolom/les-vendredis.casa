@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+backup_dir="${LES_VENDREDIS_BACKUP_DIR:-/var/backups/les-vendredis}"
+web_container="$(docker ps --filter name=les-vendredis-web --filter status=running --format '{{.Names}}' | head -1)"
+job_container="$(docker ps --filter name=les-vendredis-job --filter status=running --format '{{.Names}}' | head -1)"
+
+if [[ -z "${web_container}" ]]; then
+  echo "CRITICAL: Les Vendredis web container is not running" >&2
+  exit 1
+fi
+if [[ -z "${job_container}" ]]; then
+  echo "CRITICAL: Les Vendredis job container is not running" >&2
+  exit 1
+fi
+
+health="$(docker inspect --format '{{if .State.Health}}{{.State.Health.Status}}{{else}}{{.State.Status}}{{end}}' "${web_container}")"
+if [[ "${health}" != "healthy" ]]; then
+  echo "CRITICAL: web container status is ${health}" >&2
+  exit 1
+fi
+
+latest_backup="$(find "${backup_dir}" -type f -name 'les-vendredis-*.dump' -size +0c -mmin -1560 -print 2>/dev/null | sort | tail -1)"
+if [[ -z "${latest_backup}" ]]; then
+  echo "CRITICAL: no successful PostgreSQL backup in the last 26 hours" >&2
+  exit 1
+fi
+
+docker exec "${job_container}" bin/rails runner '
+  failures = []
+  failures << "no technical administrator account" unless User.where(technical_access: true).exists?
+  failures << "#{SolidQueue::FailedExecution.count} failed Solid Queue job(s)" if SolidQueue::FailedExecution.exists?
+  stale = CalendarImport.where(active: true).select(&:stale?).map(&:provider)
+  failures << "stale iCal sync: #{stale.join(", ")}" if stale.any?
+  failed_mail = BookingNotification.where(sent_at: nil).where.not(last_error: [nil, ""]).count
+  failures << "#{failed_mail} failed booking email(s)" if failed_mail.positive?
+  abort "CRITICAL: #{failures.join("; ")}" if failures.any?
+  puts "OK: admin, Solid Queue, iCal imports and booking emails"
+'
+
+echo "OK: web, worker and recent PostgreSQL backup"

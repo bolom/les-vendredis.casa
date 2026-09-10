@@ -27,5 +27,16 @@ module Admin
       assert_select "td", text: /850 ms/
       assert_select "td", text: /3 dernier cycle/
     end
+
+    test "shows synchronization age in French after several days" do
+      sign_in_as users(:one)
+      CalendarImport.create!(provider: "airbnb", last_status: "success", last_synced_at: 3.days.ago)
+
+      get admin_diagnostics_path
+
+      assert_response :success
+      assert_select "td", text: /3 jours/
+      assert_no_match(/Translation missing/, response.body)
+    end
   end
 end
