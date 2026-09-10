@@ -4,9 +4,16 @@ on:
   schedule:
     - cron: "7,37 * * * *"
   workflow_dispatch:
+    inputs:
+      verify_alert:
+        description: "Fail deliberately after health checks to verify the alert channel"
+        required: false
+        type: boolean
+        default: false
 
 permissions:
   contents: read
+  issues: write
 
 concurrency:
   group: production-monitor
@@ -31,3 +38,25 @@ jobs:
 
       - name: Check application, worker and critical jobs
         run: ssh ubuntu@185.143.102.224 sudo /usr/local/sbin/les-vendredis-production-health-check
+
+      - name: Trigger controlled alert drill
+        if: ${{ inputs.verify_alert }}
+        run: |
+          echo "::error::Controlled Production Monitor failure for alert-channel verification"
+          exit 1
+
+      - name: Open or update production alert
+        if: ${{ failure() }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ALERT_TITLE: "[Production alert] Production Monitor failed"
+        run: |
+          alert_number="$(gh issue list --repo "${GITHUB_REPOSITORY}" --state open --label production-alert --search "${ALERT_TITLE} in:title" --json number --jq '.[0].number // empty')"
+          run_url="${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
+
+          if [[ -n "${alert_number}" ]]; then
+            gh issue comment "${alert_number}" --repo "${GITHUB_REPOSITORY}" --body "Production Monitor failed again: ${run_url}"
+          else
+            gh label create production-alert --repo "${GITHUB_REPOSITORY}" --color B60205 --description "Production monitoring requires action" --force
+            gh issue create --repo "${GITHUB_REPOSITORY}" --title "${ALERT_TITLE}" --label production-alert --body "Production Monitor detected a critical failure. Investigate the failed run: ${run_url}"
+          fi

@@ -148,7 +148,7 @@ sudo systemctl enable --now les-vendredis-backup.timer
 ```
 
 `Production Monitor` runs from GitHub Actions twice per hour. A failed workflow
-is the alert channel. It checks the production `/up` endpoint and, over SSH, verifies
+opens (or updates) a GitHub issue labeled `production-alert`. It checks the production `/up` endpoint and, over SSH, verifies
 the web container, Solid Queue worker, failed jobs, iCal freshness, failed
 booking emails, administrator presence, and a non-empty backup newer than 26
 hours. Install its server-side check with:
@@ -156,3 +156,8 @@ hours. Install its server-side check with:
 ```bash
 sudo install -m 0755 ops/production-health-check /usr/local/sbin/les-vendredis-production-health-check
 ```
+
+Verify the alert path after changing the monitor by dispatching it with
+`verify_alert=true`. The health checks run first, then the controlled failure
+must produce a failed workflow and an observable `production-alert` issue.
+Close the alert issue after recording that the drill—not production—caused it.
