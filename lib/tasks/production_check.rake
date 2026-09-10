@@ -2,10 +2,11 @@ namespace :production do
   desc "Check production boot-critical configuration without printing secret values"
   task check: :environment do
     required_credentials = {
-      "database.url" => Rails.application.credentials.dig(:database, :url),
+      "database URL" => ENV["DATABASE_URL"].presence || Rails.application.credentials.dig(:database, :url),
       "resend.api_key" => Rails.application.credentials.dig(:resend, :api_key),
       "calendars.airbnb_ical_url" => Rails.application.credentials.dig(:calendars, :airbnb_ical_url),
       "calendars.booking_ical_url" => Rails.application.credentials.dig(:calendars, :booking_ical_url),
+      "calendars.export_token" => Rails.application.credentials.dig(:calendars, :export_token),
       "secret_key_base" => Rails.application.credentials.secret_key_base
     }
 
