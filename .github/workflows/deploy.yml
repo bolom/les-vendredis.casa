@@ -93,6 +93,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: ${{ github.sha }}
+          fetch-depth: 0
 
       - uses: ruby/setup-ruby@v1
         with:
@@ -118,3 +119,19 @@ jobs:
 
       - name: Post-deploy check
         run: curl -fsS https://lesvendredis.casa/up
+
+      - name: Install GlitchTip CLI
+        run: curl -fsSL https://glitchtip.com/install.sh | sh
+
+      - name: Register GlitchTip release
+        env:
+          SENTRY_URL: https://glitchtip.scionx.site
+          SENTRY_AUTH_TOKEN: ${{ secrets.GLITCHTIP_AUTH_TOKEN }}
+          SENTRY_ORG: ${{ secrets.GLITCHTIP_ORG }}
+          SENTRY_PROJECT: ${{ secrets.GLITCHTIP_PROJECT }}
+          RELEASE: ${{ github.sha }}
+        run: |
+          glitchtip-cli releases new "${RELEASE}"
+          glitchtip-cli releases set-commits "${RELEASE}" --auto
+          glitchtip-cli releases finalize "${RELEASE}"
+          glitchtip-cli deploys new "${RELEASE}" --env production
