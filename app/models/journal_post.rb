@@ -11,4 +11,8 @@ class JournalPost < ApplicationRecord
   def to_param
     slug
   end
+
+  def public_image_path
+    image_path&.sub(%r{\A/?public/}, "/")
+  end
 end

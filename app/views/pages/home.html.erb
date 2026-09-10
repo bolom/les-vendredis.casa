@@ -41,7 +41,7 @@
       <% if featured %>
         <%= link_to(french ? french_journal_post_path(featured.slug) : journal_post_path(featured.slug), class: "home-journal-featured") do %>
           <div class="home-journal-featured-img">
-            <%= image_tag(featured.image_path.presence || "jpk-cabane-facade-plein-air.webp", alt: featured.image_alt.presence || featured.title, loading: "eager") %>
+            <%= image_tag(featured.public_image_path.presence || "jpk-cabane-facade-plein-air.webp", alt: featured.image_alt.presence || featured.title, loading: "eager") %>
           </div>
           <div class="home-journal-featured-body">
             <span class="home-journal-date"><%= l(featured.published_on, format: :long) %></span>
