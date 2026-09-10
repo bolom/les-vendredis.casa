@@ -128,9 +128,16 @@ jobs:
           SENTRY_URL: https://glitchtip.scionx.site
           SENTRY_AUTH_TOKEN: ${{ secrets.GLITCHTIP_AUTH_TOKEN }}
           SENTRY_ORG: ${{ secrets.GLITCHTIP_ORG }}
-          SENTRY_PROJECT: ${{ secrets.GLITCHTIP_PROJECT }}
+          GLITCHTIP_PROJECT_ID: "7"
           RELEASE: ${{ github.sha }}
         run: |
+          project_slug="$(curl -fsSL \
+            -H "Authorization: Bearer ${SENTRY_AUTH_TOKEN}" \
+            "${SENTRY_URL}/api/0/organizations/${SENTRY_ORG}/projects/" \
+            | jq -r --arg id "${GLITCHTIP_PROJECT_ID}" '.[] | select((.id | tostring) == $id) | .slug' \
+            | head -n 1)"
+          test -n "${project_slug}" || { echo "::error::GlitchTip project ID ${GLITCHTIP_PROJECT_ID} was not found in organization ${SENTRY_ORG}"; exit 1; }
+          export SENTRY_PROJECT="${project_slug}"
           glitchtip-cli releases new "${RELEASE}"
           glitchtip-cli releases set-commits "${RELEASE}" --auto
           glitchtip-cli releases finalize "${RELEASE}"
