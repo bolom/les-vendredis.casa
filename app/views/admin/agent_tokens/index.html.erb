@@ -1,0 +1,79 @@
+<h1>Tokens agent</h1>
+<p class="admin-definition">Crée et révoque les accès à l’API agent. Le token complet n’est jamais conservé et ne peut être affiché qu’au moment de sa création.</p>
+
+<% if @plaintext_token %>
+  <section class="admin-card admin-token-secret" role="status" aria-labelledby="new-agent-token-title">
+    <h2 id="new-agent-token-title">Token « <%= @created_token.name %> » créé</h2>
+    <p>Copie-le maintenant et conserve-le dans ton gestionnaire de secrets. Il ne sera plus jamais affiché.</p>
+    <code><%= @plaintext_token %></code>
+  </section>
+<% end %>
+
+<h2>Créer un token</h2>
+<%= form_with scope: :agent_token, url: admin_agent_tokens_path, class: "admin-form" do |form| %>
+  <% if @agent_token.errors.any? %>
+    <p role="alert"><%= @agent_token.errors.full_messages.to_sentence %></p>
+  <% end %>
+
+  <div>
+    <%= form.label :name, "Nom" %>
+    <%= form.text_field :name, value: @agent_token.name, required: true, autocomplete: "off", placeholder: "Ex. : Assistant de Bolo" %>
+  </div>
+
+  <fieldset>
+    <legend>Permissions</legend>
+    <p class="admin-definition">La lecture est toujours autorisée. N’accorde que les actions nécessaires.</p>
+    <label><%= check_box_tag "agent_token[permissions][]", "read", true, disabled: true %> Lecture</label>
+    <% AgentToken::MUTATION_PERMISSIONS.each do |permission| %>
+      <label>
+        <%= check_box_tag "agent_token[permissions][]", permission, Array(params.dig(:agent_token, :permissions)).include?(permission) %>
+        <%= permission.humanize %>
+      </label>
+    <% end %>
+  </fieldset>
+
+  <div><%= form.submit "Créer le token" %></div>
+<% end %>
+
+<h2>Tokens existants</h2>
+<div class="admin-table-wrap">
+  <table class="admin-table">
+    <thead>
+      <tr>
+        <th scope="col">Nom</th>
+        <th scope="col">Préfixe</th>
+        <th scope="col">Permissions</th>
+        <th scope="col">Dernière utilisation</th>
+        <th scope="col">État</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @agent_tokens.each do |token| %>
+        <tr>
+          <td><%= token.name %></td>
+          <td><code><%= token.token_prefix %>…</code></td>
+          <td><%= token.permissions.map(&:humanize).to_sentence %></td>
+          <td><%= token.last_used_at ? l(token.last_used_at, format: :long) : "Jamais" %></td>
+          <td>
+            <% if token.active? && !token.revoked_at? %>
+              <span class="admin-state admin-state--ok">Actif</span>
+            <% else %>
+              <span class="admin-state admin-state--problem">Révoqué</span>
+            <% end %>
+          </td>
+          <td>
+            <% if token.active? && !token.revoked_at? %>
+              <%= button_to "Révoquer", revoke_admin_agent_token_path(token), method: :patch, class: "admin-button--danger", data: { lv_confirm: "Révoquer le token #{token.name} ? L’accès sera coupé immédiatement." } %>
+            <% else %>
+              —
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+      <% if @agent_tokens.empty? %>
+        <tr><td colspan="6">Aucun token agent.</td></tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

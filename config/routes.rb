@@ -25,6 +25,9 @@ Rails.application.routes.draw do
     get "calendars", to: "calendars#index", as: :calendars
     get "diagnostics", to: "diagnostics#index", as: :diagnostics
     get "notifications", to: "notifications#index", as: :notifications
+    resources :agent_tokens, only: [ :index, :create ] do
+      patch :revoke, on: :member
+    end
     resources :content_pages
     resources :users
     resources :payment_orders, only: [ :index, :show, :update ]

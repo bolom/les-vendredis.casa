@@ -338,6 +338,21 @@
   padding-top: 2px;
 }
 .admin-card dd { margin: 0; overflow-wrap: anywhere; line-height: 1.5; }
+.admin-token-secret {
+  border-color: var(--admin-ok-border);
+  background: var(--admin-ok-bg);
+}
+.admin-token-secret h2 {
+  margin-top: 0;
+  border-bottom-color: var(--admin-ok-border);
+}
+.admin-token-secret code {
+  display: block;
+  padding: 12px;
+  background: #fffdf8;
+  border: 1px solid var(--admin-ok-border);
+  user-select: all;
+}
 @media (max-width: 640px) {
   .admin-card dl { grid-template-columns: 1fr; gap: 2px; }
   .admin-card dt { margin-top: 10px; }
