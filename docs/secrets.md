@@ -8,7 +8,7 @@
 
 | Secret | Source of truth | Mirrored to | Used by |
 |---|---|---|---|
-| Rails app secrets (`SECRET_KEY_BASE`, `DATABASE_URL`, `RESEND_API_KEY`, calendar URLs, x402 settings) | `config/credentials.yml.enc` | — | Rails runtime (production) |
+| Rails app secrets (`SECRET_KEY_BASE`, `DATABASE_URL`, `RESEND_API_KEY`, GlitchTip DSN, calendar URLs, x402 settings) | `config/credentials.yml.enc` | — | Rails runtime (production) |
 | `RAILS_MASTER_KEY` | 1Password vault `lesvendredis.casa`, item `production` | GitHub Actions Secret (deploy CI) | Kamal (unlocks `credentials.yml.enc`) |
 | `POSTGRES_PASSWORD` | 1Password vault `lesvendredis.casa`, item `production` | GitHub Actions Secret (deploy CI) | Postgres accessory + `DATABASE_URL` build in `.kamal/secrets` |
 | `KAMAL_REGISTRY_PASSWORD` | 1Password vault `Compass Deploy` (Docker Hub access token, shared with the Compass deployments; fetched by `.kamal/secrets-common`) | GitHub Actions Secret (deploy CI) | Kamal image push/pull |

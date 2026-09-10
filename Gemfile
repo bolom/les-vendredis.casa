@@ -17,6 +17,10 @@ gem "stimulus-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
+# Report unhandled Rails exceptions to GlitchTip via its Sentry-compatible API.
+gem "sentry-ruby", "~> 7.0"
+gem "sentry-rails", "~> 7.0"
+
 # Render the existing journal Markdown with Rails.
 gem "kramdown", "~> 2.5"
 
