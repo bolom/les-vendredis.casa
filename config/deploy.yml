@@ -1,7 +1,7 @@
 # Production deployment. The Caddy reverse proxy on the VPS routes
-# staging.lesvendredis.casa to the app through Docker labels (see
-# servers/web/labels) while the public cutover is pending; switch the
-# caddy label to lesvendredis.casa (and lower the DNS TTL) at cutover.
+# staging.lesvendredis.casa and the public domains to the app through Docker
+# labels (see servers/web/labels). Keeping staging during cutover gives the
+# deploy workflow a stable health endpoint while public DNS propagates.
 service: les-vendredis
 image: bolomichelin/les-vendredis
 
@@ -11,7 +11,7 @@ servers:
       - <%= ENV.fetch("KAMAL_INFOMANIAK_HOST", "185.143.102.224") %>
     proxy: false
     labels:
-      caddy: staging.lesvendredis.casa
+      caddy: staging.lesvendredis.casa, lesvendredis.casa, www.lesvendredis.casa
       caddy.reverse_proxy: "{{upstreams 80}}"
     options:
       expose:
