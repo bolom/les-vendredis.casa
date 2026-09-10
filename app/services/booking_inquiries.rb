@@ -52,9 +52,6 @@ module BookingInquiries
   end
 
   # Cancelling an accepted booking releases its dates: the linked block is
-  # cancelled first, then the inquiry. Guards on the block model (managed
-  # stay, unresolved payment) still apply and surface as domain errors.
-  # Cancelling an accepted booking releases its dates: the linked block is
   # cancelled first, then the inquiry. Payment-protected stays refuse to
   # change; every failure surfaces as a domain error instead of a raw Rails
   # exception leaking to the admin HTML or the agent API.
