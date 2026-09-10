@@ -117,4 +117,4 @@ jobs:
         run: bin/kamal deploy
 
       - name: Post-deploy check
-        run: curl -fsS https://staging.lesvendredis.casa/up
+        run: curl -fsS https://lesvendredis.casa/up

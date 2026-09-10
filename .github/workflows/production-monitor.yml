@@ -25,7 +25,7 @@ jobs:
     timeout-minutes: 5
     steps:
       - name: Check production health endpoint
-        run: curl --fail --silent --show-error --max-time 20 https://staging.lesvendredis.casa/up
+        run: curl --fail --silent --show-error --max-time 20 https://lesvendredis.casa/up
 
       - name: Set up SSH key
         env:
