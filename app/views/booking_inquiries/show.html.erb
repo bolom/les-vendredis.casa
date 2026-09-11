@@ -3,46 +3,98 @@
 <% cancelled = @booking_inquiry.status_cancelled? %>
 <% declined = @booking_inquiry.status_declined? %>
 
-<h1>
+<div class="wrap inquiry-page" data-lv-inquiry-status="<%= @booking_inquiry.status %>">
+  <p class="inquiry-eyebrow">Les Vendredis · Sainte-Luce, Martinique</p>
+
   <% if accepted %>
-    <%= french ? "Séjour confirmé" : "Stay confirmed" %>
+    <span class="inquiry-status inquiry-status-ok">✓ <%= french ? "Réservation confirmée" : "Booking confirmed" %></span>
   <% elsif cancelled %>
-    <%= french ? "Séjour annulé" : "Stay cancelled" %>
+    <span class="inquiry-status inquiry-status-bad"><%= french ? "Séjour annulé" : "Stay cancelled" %></span>
   <% elsif declined %>
-    <%= french ? "Demande refusée" : "Request declined" %>
+    <span class="inquiry-status inquiry-status-bad"><%= french ? "Demande refusée" : "Request declined" %></span>
   <% else %>
-    <%= french ? "Demande reçue" : "Request received" %>
+    <span class="inquiry-status inquiry-status-pending"><%= french ? "Demande en cours de traitement" : "Request pending" %></span>
   <% end %>
-</h1>
 
-<p><%= french ? "Référence :" : "Reference:" %> <strong><%= @booking_inquiry.public_reference %></strong></p>
+  <h1 class="inquiry-title">
+    <% if accepted %>
+      <%= french ? "Votre séjour est confirmé" : "Your stay is confirmed" %>
+    <% elsif cancelled %>
+      <%= french ? "Séjour annulé" : "Stay cancelled" %>
+    <% elsif declined %>
+      <%= french ? "Demande refusée" : "Request declined" %>
+    <% else %>
+      <%= french ? "Demande reçue" : "Request received" %>
+    <% end %>
+  </h1>
 
-<% if accepted %>
-  <p>
-    <%= french ?
-      "Votre réservation est confirmée. Nous vous avons envoyé tous les détails par email." :
-      "Your booking is confirmed. We have emailed you all the details." %>
+  <p class="inquiry-lead">
+    <% if accepted %>
+      <%= french ? "Merci #{@booking_inquiry.guest_name} — nous avons le plaisir de vous accueillir." : "Thank you #{@booking_inquiry.guest_name} — we look forward to welcoming you." %>
+    <% elsif cancelled %>
+      <%= french ? "Ce séjour a été annulé. Les dates ont été libérées." : "This stay has been cancelled. The dates are available again." %>
+    <% elsif declined %>
+      <%= french ? "Cette demande n’a pas pu être acceptée. Écrivez-nous si vous souhaitez d’autres dates." : "This request could not be accepted. Write to us if you would like other dates." %>
+    <% else %>
+      <%= french ? "Merci #{@booking_inquiry.guest_name} — nous revenons vers vous très vite." : "Thank you #{@booking_inquiry.guest_name} — we will get back to you shortly." %>
+    <% end %>
   </p>
 
-  <ul>
-    <li><%= french ? "Arrivée" : "Check-in" %> : <%= l(@booking_inquiry.check_in, format: "%-d %B %Y") %></li>
-    <li><%= french ? "Départ" : "Check-out" %> : <%= l(@booking_inquiry.check_out, format: "%-d %B %Y") %></li>
-    <li><%= french ? "Durée" : "Length" %> : <%= @booking_inquiry.nights %> <%= french ? "nuit" : "night" %><%= "s" if @booking_inquiry.nights > 1 %></li>
-    <% if @price.present? %>
-      <li><%= french ? "Prix" : "Price" %> : <%= number_to_currency(@price, unit: "€", precision: 0, format: "%n %u") %></li>
+  <p class="inquiry-ref">Référence <strong><%= @booking_inquiry.public_reference %></strong></p>
+
+  <section class="inquiry-card" aria-label="<%= french ? "Détails du séjour" : "Stay details" %>">
+    <div class="inquiry-rows">
+      <div class="inquiry-row">
+        <span class="inquiry-row-label"><%= french ? "Arrivée" : "Check-in" %></span>
+        <span class="inquiry-row-value"><%= l(@booking_inquiry.check_in, format: "%-d %B %Y") %></span>
+      </div>
+      <div class="inquiry-row">
+        <span class="inquiry-row-label"><%= french ? "Départ" : "Check-out" %></span>
+        <span class="inquiry-row-value"><%= l(@booking_inquiry.check_out, format: "%-d %B %Y") %></span>
+      </div>
+      <div class="inquiry-row">
+        <span class="inquiry-row-label"><%= french ? "Durée" : "Length" %></span>
+        <span class="inquiry-row-value"><%= @booking_inquiry.nights %> <%= french ? "nuit" : "night" %><%= "s" if @booking_inquiry.nights > 1 %></span>
+      </div>
+      <% if @price.present? %>
+        <div class="inquiry-row inquiry-row-strong">
+          <span class="inquiry-row-label"><%= french ? "Prix total" : "Total price" %></span>
+          <span class="inquiry-row-value"><%= number_to_currency(@price, unit: "€", precision: 0, format: "%n %u") %></span>
+        </div>
+      <% end %>
+    </div>
+
+    <% if accepted && @price.present? %>
+      <div class="inquiry-payment">
+        <p class="inquiry-payment-label"><%= french ? "Paiement" : "Payment" %></p>
+        <p>
+          <%= french ?
+            "Règlement par virement bancaire : toutes les coordonnées (IBAN, montant, échéance) vous ont été envoyées par email." :
+            "Payment is made by bank transfer: full details (IBAN, amount, due date) have been emailed to you." %>
+        </p>
+        <p class="inquiry-muted">
+          <%= french ?
+            "Un email de relance part automatiquement 5 jours avant l'échéance. Question sur le virement ? Répondez simplement à cet email." :
+            "An automatic reminder is sent 5 days before the due date. A question about the transfer? Simply reply to that email." %>
+        </p>
+      </div>
     <% end %>
-  </ul>
-<% elsif cancelled %>
-  <p><%= french ? "Ce séjour a été annulé. Les dates ont été libérées." : "This stay has been cancelled. The dates are available again." %></p>
-<% elsif declined %>
-  <p><%= french ? "Cette demande n’a pas pu être acceptée. Écrivez-nous si vous souhaitez d’autres dates." : "This request could not be accepted. Write to us if you would like other dates." %></p>
-<% else %>
-  <p><%= french ? "Votre réservation n’est pas encore confirmée. Nous vous répondrons bientôt." : "This is not a confirmed booking yet. We will reply soon." %></p>
-  <ul>
-    <li><%= french ? "Arrivée" : "Check-in" %> : <%= l(@booking_inquiry.check_in, format: "%-d %B %Y") %></li>
-    <li><%= french ? "Départ" : "Check-out" %> : <%= l(@booking_inquiry.check_out, format: "%-d %B %Y") %></li>
-  </ul>
-<% end %>
+  </section>
+
+  <% if accepted %>
+    <aside class="inquiry-aside">
+      <h2 class="inquiry-aside-title"><%= french ? "Informations pratiques" : "Good to know" %></h2>
+      <ul class="inquiry-list">
+        <li><%= french ? "Quartier Montravail, route de Zaire — Sainte-Luce (à 5 min des plages en voiture)." : "Quartier Montravail, route de Zaire — Sainte-Luce (5 min from the beaches by car)." %></li>
+        <li><%= french ? "Nous vous accueillons nous-mêmes : prévenez-nous de votre heure d’arrivée." : "We welcome you ourselves: let us know your arrival time." %></li>
+        <li><%= french ? "Le lieu est pensé pour déconnecter : WiFi limité, alizés la nuit, animal bienvenu." : "The place is meant for disconnecting: limited WiFi, trade winds at night, pets welcome." %></li>
+      </ul>
+      <p class="inquiry-contact">
+        <%= french ? "Une question ? Écrivez à " : "Any question? Write to " %><a href="mailto:hello@lesvendredis.casa">hello@lesvendredis.casa</a>
+      </p>
+    </aside>
+  <% end %>
+</div>
 
 <script>
   window.LesVendredisAnalytics?.track("inquiry_success", { locale: "<%= j @booking_inquiry.locale %>", status: "<%= j @booking_inquiry.status %>", source: "booking_form" });
