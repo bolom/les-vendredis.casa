@@ -45,6 +45,52 @@ class BookingInquiryMailerTest < ActionMailer::TestCase
     assert_match "locale=fr", mail.html_part.body.to_s
   end
 
+  test "guest acceptance shows payment instructions in French" do
+    StayRule.current.update!(nightly_price_eur: 68)
+    inquiry = create_inquiry(locale: "fr")
+    inquiry.accept!
+    inquiry.reload
+
+    mail = BookingInquiryMailer.with(booking_inquiry: inquiry).guest_acceptance
+
+    text = mail.text_part.body.decoded
+    html = mail.html_part.body.decoded
+    assert_match "PAIEMENT", text
+    assert_match "Montant à régler : ", text
+    assert_match "virement bancaire", text
+    assert_match "14 septembre 2026", text
+    assert_match "Montant à régler", html
+  end
+
+  test "guest acceptance shows payment instructions in English" do
+    StayRule.current.update!(nightly_price_eur: 68)
+    inquiry = create_inquiry(locale: "en")
+    inquiry.accept!
+    inquiry.reload
+
+    mail = BookingInquiryMailer.with(booking_inquiry: inquiry).guest_acceptance
+
+    text = mail.text_part.body.decoded
+    assert_match "PAYMENT", text
+    assert_match "Amount due: €136 total", text
+    assert_match "bank transfer", text
+    assert_match "14 September 2026", text
+  end
+
+  test "guest acceptance deadline uses the configured PAYMENT_DEADLINE_DAYS" do
+    StayRule.current.update!(nightly_price_eur: 68)
+    inquiry = create_inquiry(locale: "en")
+    inquiry.accept!
+    inquiry.reload
+
+    ENV["PAYMENT_DEADLINE_DAYS"] = "14"
+    mail = BookingInquiryMailer.with(booking_inquiry: inquiry).guest_acceptance
+    body = mail.text_part.body.decoded
+    ENV.delete("PAYMENT_DEADLINE_DAYS")
+
+    assert_match "21 September 2026", body
+  end
+
   test "guest decline does not expose admin details" do
     inquiry = create_inquiry
     mail = BookingInquiryMailer.with(booking_inquiry: inquiry).guest_decline

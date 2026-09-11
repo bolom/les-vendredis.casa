@@ -74,6 +74,8 @@ class BookingInquiriesControllerTest < ActionDispatch::IntegrationTest
     assert_not_includes response.body, "8 January 2027"
     assert_includes response.body, "136 €"
     assert_includes response.body, "virement bancaire"
+    assert_includes response.body, "Montant à régler"
+    assert_includes response.body, "au plus tard le "
     assert_includes response.body, "Réservation confirmée"
   end
 
