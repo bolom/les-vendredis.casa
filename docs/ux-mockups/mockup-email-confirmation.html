@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Maquette M2 — Email « Séjour confirmé » · Les Vendredis</title>
+<style>
+  :root{
+    --cream:#F8F1E4; --cream-soft:#F2EAD9; --ink:#1F1611; --ink-soft:#4A3A2D;
+    --muted:#8C7B66; --rule:rgba(31,22,17,.14); --gold:#B08A4D; --accent:#B85F38;
+    --serif:'Cormorant Garamond','Times New Roman',serif;
+    --sans:'Inter Tight',ui-sans-serif,system-ui,sans-serif;
+  }
+  body{margin:0;padding:32px 12px;background:#E9E1D2;font-family:var(--sans);font-weight:300;color:var(--ink)}
+  .sheet{max-width:600px;margin:0 auto;background:var(--cream);border-radius:4px;overflow:hidden;box-shadow:0 2px 8px rgba(31,22,17,.12)}
+  .banner{position:sticky;top:0;font-size:11px;letter-spacing:.2em;text-transform:uppercase;text-align:center;padding:8px;background:var(--gold);color:var(--cream)}
+  .pad{padding:0 40px}
+  .head{text-align:center;padding:36px 32px 8px}
+  .head .brand{font-family:var(--serif);font-style:italic;font-size:26px;color:var(--ink)}
+  .head .place{font-size:10.5px;letter-spacing:.28em;text-transform:uppercase;color:var(--muted);margin-top:4px}
+  .orn{width:44px;height:1px;background:var(--gold);margin:22px auto}
+  h1{font-family:var(--serif);font-weight:400;font-size:28px;margin:0 0 10px}
+  .state{display:inline-block;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#35521F;border:1px solid #B3CD9F;background:#E6EFE0;padding:6px 14px;border-radius:2px;margin-bottom:18px}
+  .lead{color:var(--ink-soft);font-size:15px;line-height:1.65;margin:0 0 28px}
+  .card{background:var(--cream-soft);border-top:2px solid var(--gold);padding:22px 24px;margin-bottom:28px}
+  .row{display:flex;justify-content:space-between;font-size:14px;padding:7px 0;border-bottom:1px solid var(--rule)}
+  .row:last-child{border-bottom:0}
+  .row .l{color:var(--muted)}
+  .row .v{font-weight:400}
+  .row.strong .v{color:var(--accent);font-weight:400;font-size:16px}
+  .sec-title{font-size:10.5px;letter-spacing:.28em;text-transform:uppercase;color:var(--muted);margin:26px 0 10px}
+  .sec p{font-size:13.5px;line-height:1.7;color:var(--ink-soft);margin:0 0 10px}
+  .cta{text-align:center;margin:30px 0 8px}
+  .cta a{display:inline-block;background:var(--accent);color:var(--cream);text-decoration:none;font-size:13px;letter-spacing:.12em;text-transform:uppercase;padding:14px 34px}
+  .muted{font-size:12px;color:var(--muted);text-align:center;margin-bottom:30px;line-height:1.6}
+  .foot{border-top:1px solid var(--rule);padding:22px 40px 30px;text-align:center}
+  .foot .sig{font-family:var(--serif);font-style:italic;font-size:18px;color:var(--ink)}
+  .foot .who{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-top:6px}
+</style>
+</head>
+<body>
+<p class="banner">Maquette — email HTML « séjour confirmé »</p>
+<div class="sheet">
+  <div class="head">
+    <p class="brand">Les Vendredis</p>
+    <p class="place">Sainte-Luce · Martinique</p>
+    <div class="orn"></div>
+  </div>
+
+  <div class="pad">
+    <p class="state">Réservation confirmée</p>
+    <h1>Votre séjour est confirmé, Marie</h1>
+    <p class="lead">Nous avons le plaisir de vous accueillir. Voici tout ce qu'il faut savoir — gardez cet email, il contient votre référence.</p>
+
+    <div class="card">
+      <div class="row"><span class="l">Arrivée</span><span class="v">Vendredi 2 octobre 2026</span></div>
+      <div class="row"><span class="l">Départ</span><span class="v">Mercredi 7 octobre 2026</span></div>
+      <div class="row"><span class="l">Durée</span><span class="v">5 nuits</span></div>
+      <div class="row"><span class="l">Voyageurs</span><span class="v">2 adultes</span></div>
+      <div class="row"><span class="l">Référence</span><span class="v">LV-2409-A7Q3</span></div>
+      <div class="row strong"><span class="l">Prix total</span><span class="v">1 050 € (210 € la nuit)</span></div>
+    </div>
+
+    <div class="sec">
+      <p class="sec-title">Paiement</p>
+      <p>Règlement par virement bancaire : toutes les coordonnées (IBAN, montant, échéance) vous ont été envoyées dans un email séparé.</p>
+    </div>
+
+    <div class="sec">
+      <p class="sec-title">Où nous trouver</p>
+      <p>Les Vendredis — Quartier Montravail, route de Zaire, Sainte-Luce, Martinique.<br>
+      La cabane est à 250 m d'altitude, dans la forêt. Les plages de Sainte-Luce sont à 5 minutes en voiture ; une voiture est fortement recommandée.</p>
+    </div>
+
+    <div class="sec">
+      <p class="sec-title">Arrivée et départ</p>
+      <p>Pas de boîte à clés ni de code : nous vous accueillons nous-mêmes ou organisons un contact humain. Prevnez de votre heure d'arrivée.</p>
+    </div>
+
+    <div class="cta"><a href="#">Voir ma réservation</a></div>
+    <p class="muted">Une question ? Répondez simplement à cet email,<br>ou écrivez à hello@lesvendredis.casa</p>
+  </div>
+
+  <div class="foot">
+    <p class="sig">Bolo, Anaïs, Léon &amp; Samsam</p>
+    <p class="who">lesvendredis.casa · Instagram · WhatsApp</p>
+  </div>
+</div>
+</body>
+</html>

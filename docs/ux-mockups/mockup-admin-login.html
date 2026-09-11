@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Maquette M3 — Connexion admin · Les Vendredis</title>
+<style>
+  :root{
+    --cream:#F8F1E4; --cream-soft:#F2EAD9; --ink:#1F1611; --ink-soft:#4A3A2D;
+    --muted:#8C7B66; --rule:rgba(31,22,17,.14); --gold:#B08A4D; --accent:#B85F38;
+    --serif:'Cormorant Garamond','Times New Roman',serif;
+    --sans:'Inter Tight',ui-sans-serif,system-ui,sans-serif;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  body{min-height:100vh;display:flex;align-items:center;justify-content:center;background:var(--cream-soft);font-family:var(--sans);font-weight:300;color:var(--ink);padding:24px}
+  .banner{position:fixed;top:0;left:0;right:0;font-size:11px;letter-spacing:.2em;text-transform:uppercase;text-align:center;padding:8px;background:var(--gold);color:var(--cream)}
+  .card{width:100%;max-width:380px;background:var(--cream);border:1px solid var(--rule);border-radius:6px;padding:44px 40px 36px;text-align:center;box-shadow:0 12px 32px -20px rgba(31,22,17,.32)}
+  .brand{font-family:var(--serif);font-style:italic;font-size:28px;color:var(--ink)}
+  .place{font-size:10.5px;letter-spacing:.28em;text-transform:uppercase;color:var(--muted);margin-top:4px}
+  .orn{width:44px;height:1px;background:var(--gold);margin:24px auto 28px}
+  .field{text-align:left;margin-bottom:18px}
+  label{display:block;font-size:13px;font-weight:400;color:var(--ink-soft);margin-bottom:6px}
+  input{width:100%;background:transparent;border:0;border-bottom:1px solid var(--rule);padding:10px 2px;font:inherit;color:var(--ink);border-radius:0}
+  input:focus{outline:none;border-bottom-color:var(--accent);box-shadow:0 1px 0 var(--accent)}
+  .btn{width:100%;background:var(--accent);color:var(--cream);font:inherit;font-size:13px;letter-spacing:.12em;text-transform:uppercase;padding:13px;border:0;cursor:pointer;border-radius:2px;margin-top:10px}
+  .btn:hover{background:#9E4F2D}
+  .alert{background:#F7E0D8;border:1px solid #DFAE9C;color:#8C2A12;font-size:13px;text-align:left;padding:12px 14px;border-radius:4px;margin-bottom:22px}
+  .notice{background:#E6EFE0;border:1px solid #B3CD9F;color:#35521F;font-size:13px;text-align:left;padding:12px 14px;border-radius:4px;margin-bottom:22px}
+  .aux{margin-top:22px;font-size:12px;color:var(--muted)}
+  .aux a{color:var(--ink-soft);text-decoration:underline;text-underline-offset:3px}
+  .back{margin-top:30px;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
+</style>
+</head>
+<body>
+<p class="banner">Maquette — connexion admin</p>
+<div class="card">
+  <p class="brand">Les Vendredis</p>
+  <p class="place">Administration</p>
+  <div class="orn"></div>
+
+  <div class="alert" hidden>Email ou mot de passe incorrect.</div>
+  <div class="notice" hidden>Vous êtes déconnecté·e. À bientôt.</div>
+
+  <form onsubmit="return false">
+    <div class="field">
+      <label for="email">Email</label>
+      <input id="email" type="email" autocomplete="username" autofocus>
+    </div>
+    <div class="field">
+      <label for="pw">Mot de passe</label>
+      <input id="pw" type="password" autocomplete="current-password">
+    </div>
+    <button class="btn" type="submit">Se connecter</button>
+  </form>
+
+  <p class="aux"><a href="#">Mot de passe oublié ?</a></p>
+  <p class="back">← Retour au site</p>
+</div>
+</body>
+</html>
