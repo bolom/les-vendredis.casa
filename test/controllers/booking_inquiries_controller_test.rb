@@ -73,6 +73,8 @@ class BookingInquiriesControllerTest < ActionDispatch::IntegrationTest
     assert_includes response.body, "8 janvier 2027"
     assert_not_includes response.body, "8 January 2027"
     assert_includes response.body, "136 €"
+    assert_includes response.body, "virement bancaire"
+    assert_includes response.body, "Réservation confirmée"
   end
 
   test "accepted English booking ignores a conflicting URL locale" do
