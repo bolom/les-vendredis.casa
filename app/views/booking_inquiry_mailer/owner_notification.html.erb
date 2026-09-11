@@ -1,0 +1,33 @@
+<% bi = @booking_inquiry %>
+
+<p style="margin:0 0 10px 0; font-family:Georgia,'Times New Roman',Times,serif; font-size:27px; font-weight:normal; color:#1F1611;">
+  Nouvelle demande directe <%= bi.public_reference %>
+</p>
+
+<%# Récap card %>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#F2EAD9; border-top:2px solid #B08A4D; margin-bottom:28px;">
+  <tr><td style="padding:22px 24px;">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+      <tr><td style="padding:8px 0; border-bottom:1px solid #E3D9C6; font-family:Helvetica,Arial,sans-serif; font-size:13px; color:#8C7B66;">Dates</td>
+          <td align="right" style="padding:8px 0; border-bottom:1px solid #E3D9C6; font-family:Helvetica,Arial,sans-serif; font-size:14px; color:#1F1611;"><%= bi.check_in %> → <%= bi.check_out %> (<%= bi.nights %> nuits)</td></tr>
+      <tr><td style="padding:8px 0; border-bottom:1px solid #E3D9C6; font-family:Helvetica,Arial,sans-serif; font-size:13px; color:#8C7B66;">Voyageurs</td>
+          <td align="right" style="padding:8px 0; border-bottom:1px solid #E3D9C6; font-family:Helvetica,Arial,sans-serif; font-size:14px; color:#1F1611;"><%= bi.adults %> adulte(s), <%= bi.children %> enfant(s)</td></tr>
+      <tr><td style="padding:8px 0; border-bottom:1px solid #E3D9C6; font-family:Helvetica,Arial,sans-serif; font-size:13px; color:#8C7B66;">Nom</td>
+          <td align="right" style="padding:8px 0; border-bottom:1px solid #E3D9C6; font-family:Helvetica,Arial,sans-serif; font-size:14px; color:#1F1611;"><%= bi.guest_name %></td></tr>
+      <tr><td style="padding:8px 0; border-bottom:1px solid #E3D9C6; font-family:Helvetica,Arial,sans-serif; font-size:13px; color:#8C7B66;">Email</td>
+          <td align="right" style="padding:8px 0; border-bottom:1px solid #E3D9C6; font-family:Helvetica,Arial,sans-serif; font-size:14px; color:#1F1611;"><%= bi.email %></td></tr>
+      <tr><td style="padding:8px 0; border-bottom:1px solid #E3D9C6; font-family:Helvetica,Arial,sans-serif; font-size:13px; color:#8C7B66;">Téléphone</td>
+          <td align="right" style="padding:8px 0; border-bottom:1px solid #E3D9C6; font-family:Helvetica,Arial,sans-serif; font-size:14px; color:#1F1611;"><%= bi.phone.presence || "-" %></td></tr>
+      <tr><td style="padding:8px 0; font-family:Helvetica,Arial,sans-serif; font-size:13px; color:#8C7B66;">Référence</td>
+          <td align="right" style="padding:8px 0; font-family:Helvetica,Arial,sans-serif; font-size:14px; color:#1F1611;"><%= bi.public_reference %></td></tr>
+    </table>
+  </td></tr>
+</table>
+
+<p style="margin:26px 0 10px 0; font-family:Helvetica,Arial,sans-serif; font-size:10px; letter-spacing:3px; color:#8C7B66;">MESSAGE</p>
+<p style="margin:0 0 10px 0; font-family:Helvetica,Arial,sans-serif; font-size:14px; line-height:1.7; color:#4A3A2D;"><%= bi.message.presence || "-" %></p>
+
+<p style="margin:26px 0 10px 0; font-family:Helvetica,Arial,sans-serif; font-size:10px; letter-spacing:3px; color:#8C7B66;">ADMIN</p>
+<p style="margin:0 0 10px 0; font-family:Helvetica,Arial,sans-serif; font-size:13px; line-height:1.7; color:#4A3A2D;">
+  <a href="<%= admin_booking_inquiry_url(bi) %>" style="color:#B85F38; text-decoration:underline;"><%= admin_booking_inquiry_url(bi) %></a>
+</p>

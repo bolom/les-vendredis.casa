@@ -1,13 +1,63 @@
 <!DOCTYPE html>
-<html>
+<html lang="<%= I18n.locale %>">
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <style>
-      /* Email styles need to be inline */
-    </style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
+  <body style="margin:0; padding:0; background-color:#E9E1D2;">
+    <%# Email-safe layout: nested tables + inline styles only, no external assets %>
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#E9E1D2;">
+      <tr>
+        <td align="center" style="padding:24px 12px;">
+          <table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" style="max-width:600px; width:100%; background-color:#F8F1E4;">
+            <%# Head : brand serif italic %>
+            <tr>
+              <td align="center" style="padding:36px 32px 0 32px;">
+                <span style="font-family:Georgia,'Times New Roman',Times,serif; font-style:italic; font-size:26px; color:#1F1611;">Les Vendredis</span>
+              </td>
+            </tr>
+            <%# Surtitre %>
+            <tr>
+              <td align="center" style="padding:4px 32px 0 32px;">
+                <span style="font-family:Helvetica,Arial,sans-serif; font-size:10px; letter-spacing:3px; color:#8C7B66;">SAINTE-LUCE &middot; MARTINIQUE</span>
+              </td>
+            </tr>
+            <%# Ornement doré %>
+            <tr>
+              <td align="center" style="padding:22px 40px 0 40px;">
+                <table role="presentation" width="44" cellpadding="0" cellspacing="0" border="0" align="center">
+                  <tr><td style="border-top:1px solid #B08A4D; font-size:0; line-height:0;">&nbsp;</td></tr>
+                </table>
+              </td>
+            </tr>
 
-  <body>
-    <%= yield %>
+            <%# Contenu de la vue %>
+            <tr>
+              <td style="padding:8px 40px 0 40px;">
+                <%= yield %>
+              </td>
+            </tr>
+
+            <%# Signature pédale %>
+            <tr>
+              <td style="padding:28px 40px 0 40px;">
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-top:1px solid #E3D9C6;">
+                  <tr>
+                    <td align="center" style="padding:22px 0 8px 0;">
+                      <span style="font-family:Georgia,'Times New Roman',Times,serif; font-style:italic; font-size:18px; color:#1F1611;">Bolo, Ana&iuml;s, L&eacute;on &amp; Samsam</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td align="center" style="padding:0 0 30px 0;">
+                      <span style="font-family:Helvetica,Arial,sans-serif; font-size:11px; letter-spacing:2px; color:#8C7B66;">LESVENDREDIS.CASA</span>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
   </body>
 </html>
