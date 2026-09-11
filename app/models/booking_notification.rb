@@ -9,7 +9,11 @@ class BookingNotification < ApplicationRecord
     raise ArgumentError unless EVENTS.include?(event)
     message = BookingInquiryMailer.with(booking_inquiry: inquiry).public_send(event).message
     create!(booking_inquiry: inquiry, event: event, payload: {
-      from: message[:from].to_s, to: message.to, subject: message.subject, text: message.body.decoded
+      from: message[:from].to_s,
+      to: message.to,
+      subject: message.subject,
+      text: message.text_part&.decoded.presence,
+      html: message.html_part&.decoded.presence
     })
   end
 
