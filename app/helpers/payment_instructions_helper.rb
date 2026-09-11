@@ -1,13 +1,24 @@
 # Shared payment-instruction data for the confirmation page and the
 # guest_acceptance email (issue #92). One source of truth for both surfaces.
 module PaymentInstructionsHelper
-  # Returns the configured bank details, or nil when unset so nothing renders.
+  # Bank coordinates come from credentials as separate fields
+  # (payment: { iban, beneficiary, bic, wallet }). Rendered as a single block;
+  # nothing renders when none is set.
   def payment_bank_details
-    AppConfig.fetch(
-      "PAYMENT_BANK_DETAILS",
-      :payment, :bank_details,
-      default: nil
-    ).presence
+    details = Rails.application.credentials[:payment]
+    return if details.blank?
+
+    lines = []
+    lines << (fr_locale? ? "Bénéficiaire : #{details[:beneficiary]}" : "Beneficiary: #{details[:beneficiary]}") if details[:beneficiary].present?
+    lines << (fr_locale? ? "IBAN : #{details[:iban]}" : "IBAN: #{details[:iban]}") if details[:iban].present?
+    lines << (fr_locale? ? "BIC : #{details[:bic]}" : "BIC: #{details[:bic]}") if details[:bic].present?
+    lines << (fr_locale? ? "Portefeuille : #{details[:wallet]}" : "Wallet: #{details[:wallet]}") if details[:wallet].present?
+    lines.join("\n").presence
+  end
+
+  # True if the current booking inquiry is for a French guest.
+  def fr_locale?
+    @booking_inquiry&.locale.to_s == "fr"
   end
 
   # Payment deadline in days, overridable via AppConfig (default: 7).
