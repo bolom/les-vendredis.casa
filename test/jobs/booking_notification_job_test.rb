@@ -7,8 +7,13 @@ class BookingNotificationJobTest < ActiveSupport::TestCase
     @notification = BookingNotification.find_by!(booking_inquiry: @inquiry, event: "guest_acknowledgement")
   end
 
-  test "records notification atomically and sends only once" do
-    assert_equal 2, BookingNotification.where(booking_inquiry: @inquiry).count
+  test "payload captures both text and html bodies (multipart regression)" do
+    payload = @notification.reload.payload
+    assert payload["text"].present?, "text body must not be empty"
+    assert payload["html"].present?, "html body must not be empty"
+  end
+
+  test "records notification atomically and sends only once" do    assert_equal 2, BookingNotification.where(booking_inquiry: @inquiry).count
     assert_difference "ActionMailer::Base.deliveries.size", 1 do
       BookingNotificationJob.perform_now(@notification.id)
       assert @notification.reload.sent_at, @notification.last_error
