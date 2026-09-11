@@ -67,15 +67,30 @@
     <% if accepted && @price.present? %>
       <div class="inquiry-payment">
         <p class="inquiry-payment-label"><%= french ? "Paiement" : "Payment" %></p>
-        <p>
-          <%= french ?
-            "Règlement par virement bancaire : toutes les coordonnées (IBAN, montant, échéance) vous ont été envoyées par email." :
-            "Payment is made by bank transfer: full details (IBAN, amount, due date) have been emailed to you." %>
-        </p>
+        <% if payment_amount_eur.present? %>
+          <p class="inquiry-row-strong" style="margin:0 0 8px">
+            <% balance = "#{payment_amount_eur.round} €" %>
+            <%= french ? "Montant à régler : " : "Amount due: " %><strong><%= balance %></strong>
+            <% if payment_nightly_price_eur.present? %>
+              <%= " (#{payment_nightly_price_eur.round} € #{french ? 'la nuit' : 'per night'})" %>
+            <% end %>
+          </p>
+          <p>
+            <%= french ?
+              "Règlement par virement bancaire, à recevoir au plus tard le " :
+              "Bank transfer payment, to be received no later than " %><%= payment_due_date_l %>.
+          </p>
+          <% if payment_bank_details.present? %>
+            <p class="inquiry-payment-details">
+              <%= french ? "Coordonnées bancaires :" : "Bank details:" %><br>
+              <code><%= payment_bank_details %></code>
+            </p>
+          <% end %>
+        <% end %>
         <p class="inquiry-muted">
           <%= french ?
-            "Un email de relance part automatiquement 5 jours avant l'échéance. Question sur le virement ? Répondez simplement à cet email." :
-            "An automatic reminder is sent 5 days before the due date. A question about the transfer? Simply reply to that email." %>
+            "Question sur le virement ? Répondez simplement à l'email de confirmation." :
+            "A question about the transfer? Simply reply to the confirmation email." %>
         </p>
       </div>
     <% end %>

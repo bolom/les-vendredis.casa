@@ -94,6 +94,25 @@
   <% end %>
 </ul>
 
+<%# Section paiement %>
+<% if @price.present? %>
+<% pay_section_label = fr ? "PAIEMENT" : "PAYMENT" %>
+<p style="margin:26px 0 10px 0; font-family:Helvetica,Arial,sans-serif; font-size:10px; letter-spacing:3px; color:#8C7B66;"><%= pay_section_label %></p>
+<p style="margin:0 0 10px 0; font-family:Helvetica,Arial,sans-serif; font-size:14px; line-height:1.7; color:#4A3A2D;">
+  <% if fr %>
+    Montant à régler : <strong><%= payment_amount_eur.round %> €<%= " (#{payment_nightly_price_eur.round} € la nuit)" if payment_nightly_price_eur.present? %></strong>, par virement bancaire, à recevoir au plus tard le <%= payment_due_date_l %>.
+  <% else %>
+    Amount due: <strong>€<%= payment_amount_eur.round %><%= " (€#{payment_nightly_price_eur.round} per night)" if payment_nightly_price_eur.present? %></strong>, by bank transfer, to be received no later than <%= payment_due_date_l %>.
+  <% end %>
+</p>
+<% if payment_bank_details.present? %>
+<p style="margin:0 0 10px 0; font-family:Helvetica,Arial,sans-serif; font-size:14px; line-height:1.7; color:#4A3A2D;">
+  <%= fr ? "Coordonnées bancaires :" : "Bank details:" %><br>
+  <span style="font-family:Menlo,Consolas,monospace; font-size:13px;"><%= payment_bank_details %></span>
+</p>
+<% end %>
+<% end %>
+
 <%# CTA et note %>
 <table role="presentation" cellpadding="0" cellspacing="0" border="0" align="center" style="margin:30px 0 8px 0;">
   <tr>

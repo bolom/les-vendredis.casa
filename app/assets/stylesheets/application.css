@@ -2664,6 +2664,18 @@ body.nav-open {
   font-size: 13px;
   color: var(--muted);
 }
+.inquiry-payment-details {
+  font-size: 14px;
+}
+.inquiry-payment-details code {
+  display: inline-block;
+  margin-top: 4px;
+  font-size: 13px;
+  color: var(--ink);
+  background: var(--paper, #F2EAD9);
+  padding: 6px 10px;
+  border-radius: 4px;
+}
 .inquiry-aside {
   margin-top: clamp(24px, 3.5vw, 36px);
   border-left: 2px solid var(--gold);

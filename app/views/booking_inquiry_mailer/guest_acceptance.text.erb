@@ -21,6 +21,14 @@ La cabane est à 250 m d'altitude, dans la forêt. Les plages de Sainte-Luce son
 ARRIVÉE ET DÉPART
 Pas de boîte à clés ni de code : nous vous accueillons nous-mêmes ou organisons un contact humain. Prévenez-nous de votre heure d'arrivée.
 
+<% if @price.present? %>
+PAIEMENT
+Montant à régler : <%= payment_amount_eur.round %> € au total<%= " (#{payment_nightly_price_eur.round} € la nuit)" if payment_nightly_price_eur.present? %>, par virement bancaire, à recevoir au plus tard le <%= payment_due_date_l %>.
+<% if payment_bank_details.present? %>
+Coordonnées bancaires : <%= payment_bank_details %>
+<% end %>
+<% end %>
+
 BON À SAVOIR
 - Pas de climatisation, pas de télévision, WiFi limité : le lieu est pensé pour déconnecter. Les alizés rafraîchissent la cabane la nuit.
 - Votre animal est le bienvenu.
@@ -53,6 +61,14 @@ The cabin sits at 250 m altitude, surrounded by forest. The beaches of Sainte-Lu
 
 ARRIVAL AND DEPARTURE
 No lockbox, no code: we welcome you ourselves or arrange a human handover. Let us know your arrival time.
+
+<% if @price.present? %>
+PAYMENT
+Amount due: €<%= payment_amount_eur.round %> total<%= " (€#{payment_nightly_price_eur.round} per night)" if payment_nightly_price_eur.present? %>, by bank transfer, to be received no later than <%= payment_due_date_l %>.
+<% if payment_bank_details.present? %>
+Bank details: <%= payment_bank_details %>
+<% end %>
+<% end %>
 
 GOOD TO KNOW
 - No air conditioning, no TV, limited WiFi: the place is meant for disconnecting. Trade winds cool the cabin at night.
