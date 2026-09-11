@@ -18,7 +18,9 @@ class BookingInquiryMailerPreviewTest < ActionMailer::TestCase
     preview_actions.each do |action|
       mail = @preview.public_send(action)
       assert_not_nil mail.subject
-      assert mail.body.decoded.present?
+      assert mail.multipart?, "expected multipart email for #{action}"
+      assert mail.text_part.body.decoded.present?
+      assert mail.html_part.body.decoded.present?
     end
   end
 
@@ -28,8 +30,8 @@ class BookingInquiryMailerPreviewTest < ActionMailer::TestCase
 
     assert_match "is confirmed", english.subject
     assert_match "est confirmé", french.subject
-    assert_match "locale=en", english.body.decoded
-    assert_match "locale=fr", french.body.decoded
+    assert_match "locale=en", english.html_part.body.decoded
+    assert_match "locale=fr", french.html_part.body.decoded
   end
 
   private

@@ -1,0 +1,35 @@
+<% bi = @booking_inquiry
+   fr = bi.locale == "fr" %>
+
+<p style="margin:0 0 10px 0; font-family:Georgia,'Times New Roman',Times,serif; font-size:27px; font-weight:normal; color:#1F1611;">
+  <% if fr %>
+    Votre séjour est annulé, <%= bi.guest_name %>
+  <% else %>
+    Your stay is cancelled, <%= bi.guest_name %>
+  <% end %>
+</p>
+<p style="margin:0 0 28px 0; font-family:Helvetica,Arial,sans-serif; font-size:15px; line-height:1.65; color:#4A3A2D;">
+  <% if fr %>
+    Votre séjour du <%= bi.check_in %> au <%= bi.check_out %> a été annulé.
+    Contactez-nous pour toute question. Ce message ne constitue pas une confirmation de remboursement.
+  <% else %>
+    Your stay from <%= bi.check_in %> to <%= bi.check_out %> has been cancelled.
+    Please contact us with any questions. This message does not confirm a refund.
+  <% end %>
+</p>
+
+<%# Référence %>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#F2EAD9; border-top:2px solid #B08A4D; margin-bottom:28px;">
+  <tr><td style="padding:22px 24px;">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+      <tr>
+        <td style="padding:8px 0; font-family:Helvetica,Arial,sans-serif; font-size:13px; color:#8C7B66;"><%= fr ? "Référence" : "Reference" %></td>
+        <td align="right" style="padding:8px 0; font-family:Helvetica,Arial,sans-serif; font-size:14px; color:#1F1611;"><%= bi.public_reference %></td>
+      </tr>
+    </table>
+  </td></tr>
+</table>
+
+<p style="margin:0 0 30px 0; text-align:center; font-family:Helvetica,Arial,sans-serif; font-size:12px; line-height:1.6; color:#8C7B66;">
+  <%= fr ? "Une question ? Répondez simplement à cet email, ou écrivez à hello@lesvendredis.casa" : "Any question? Just reply to this email, or write to hello@lesvendredis.casa" %>
+</p>

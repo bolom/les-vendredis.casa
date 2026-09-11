@@ -37,9 +37,12 @@ class BookingInquiryMailerTest < ActionMailer::TestCase
 
     mail = BookingInquiryMailer.with(booking_inquiry: inquiry.reload).guest_acceptance
 
-    assert_match "1 octobre 2026", mail.body.decoded
-    assert_match "136 € au total \(68 € la nuit\)", mail.body.decoded
-    assert_match "locale=fr", mail.body.decoded
+    text = mail.text_part.body.decoded
+    html = mail.html_part.body.decoded
+    assert_match "1 octobre 2026", text
+    assert_match "136 € au total \(68 € la nuit\)", text
+    assert_match "136 € au total", html
+    assert_match "locale=fr", mail.html_part.body.to_s
   end
 
   test "guest decline does not expose admin details" do
@@ -63,5 +66,31 @@ class BookingInquiryMailerTest < ActionMailer::TestCase
       email: "guest@example.com",
       locale: locale
     )
+  end
+end
+
+class BookingInquiryMailerMultipartTest < ActionMailer::TestCase
+  test "emails are multipart with text and html parts" do
+    inquiry = BookingInquiry.create!(
+      check_in: Date.new(2026, 10, 1),
+      check_out: Date.new(2026, 10, 3),
+      adults: 2,
+      children: 0,
+      guest_name: "Guest",
+      email: "guest@example.com",
+      locale: "en"
+    )
+    inquiry.accept!
+
+    mail = BookingInquiryMailer.with(booking_inquiry: inquiry).guest_acceptance
+    assert mail.multipart?, "expected multipart email"
+    assert mail.text_part.present?, "expected text part"
+    assert mail.html_part.present?, "expected html part"
+    assert_match "confirmed", mail.html_part.body.decoded
+    assert_match "is confirmed", mail.text_part.body.decoded
+
+    ack = BookingInquiryMailer.with(booking_inquiry: inquiry).guest_acknowledgement
+    assert ack.multipart?
+    assert ack.text_part.present? && ack.html_part.present?
   end
 end
